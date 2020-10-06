@@ -153,10 +153,10 @@ class LDDFW_Order {
 		$html .= "<div class='container lddfw_map_buttons' >
 			<div class='row'>
 				<div class='col-12'>
-					<a class='waze btn btn-secondary  btn-block' href=\"https://waze.com/ul?q=" . $waze . "&nevigate=yes\"><i class='fab fa-waze'></i> " . esc_html( __( 'Navigate', 'lddfw' ) ) . '</a>
+					<a class='lddfw_waze btn btn-secondary  btn-block' href=\"https://waze.com/ul?q=" . $waze . "&nevigate=yes\"><i class='fab fa-waze'></i> " . esc_html( __( 'Navigate', 'lddfw' ) ) . "</a>
 				</div>
 			</div>
-		</div>';
+		</div>";
 
 		$html .= "
 	<div class='container' id='lddfw_order'>
