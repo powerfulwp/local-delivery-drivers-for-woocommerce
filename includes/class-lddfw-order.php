@@ -132,7 +132,7 @@ class LDDFW_Order {
 		}
 
 		$lddfw_google_api_key        = get_option( 'lddfw_google_api_key', '' );
-		$lddfw_dispatch_phone_number = get_option( 'lddfw_dispatch_phone_number_1', '' );
+		$lddfw_dispatch_phone_number = get_option( 'lddfw_dispatch_phone_number', '' );
 
 		// Map.
 		if ( '' !== $lddfw_google_api_key ) {
