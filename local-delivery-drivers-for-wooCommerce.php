@@ -115,7 +115,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-lddfw.php';
  *
  * @since 1.0.0
  */
-function run_delivery_guy()
+function lddfw_run()
 {
     $plugin = new LDDFW();
     $plugin->run();
@@ -263,4 +263,4 @@ function lddfw_fs_uninstall_cleanup()
 {
 }
 
-run_delivery_guy();
+lddfw_run();
