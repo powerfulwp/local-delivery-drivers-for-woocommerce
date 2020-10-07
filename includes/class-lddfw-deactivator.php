@@ -30,8 +30,7 @@ class LDDFW_Deactivator {
 	 * @since 1.0.0
 	 */
 	public static function deactivate() {
-		// Flush the rewrite rules.
-		flush_rewrite_rules();
+
 	}
 
 }

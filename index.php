@@ -12,60 +12,14 @@
  * Description:       Woocommerce Delivery Drivers.
  * Version:           1.0.0
  */
-/**
- * Function that get the path of wp-load.php.
- *
- * @since 1.0.0
- * @return string
- */
-function lddfw_wp_load_path()
-{
-    $base = dirname( __FILE__ );
-    $path = false;
-    if ( @file_exists( dirname( dirname( $base ) ) . '/wp-load.php' ) ) {
-        $path = dirname( dirname( $base ) ) . '/wp-load.php';
-    }
-    if ( @file_exists( dirname( dirname( dirname( $base ) ) ) . '/wp-load.php' ) ) {
-        $path = dirname( dirname( dirname( $base ) ) ) . '/wp-load.php';
-    }
-    if ( false !== $path ) {
-        $path = str_replace( '\\', '/', $path );
-    }
-    return $path;
+// If this file is called directly, abort.
+if ( !defined( 'WPINC' ) ) {
+    die;
 }
-
-/**
- * Load wp-load file.
-*/
-require_once lddfw_wp_load_path();
 /**
  * Set driver page variable.
 */
 $lddfw_driver_page = '1';
-/**
- * Load WordPress query_var.
-*/
-wp();
-/**
- * Set header status.
-*/
-status_header( 200 );
-/**
- * Force HTTPS and redirect to www.
-*/
-lddfw_force_https();
-/**
- * Set page title.
- *
- * @since 1.0.0
- * @return string
- */
-function lddfw_change_page_title()
-{
-    return esc_html( __( 'Delivery Drivers Manager', 'lddfw' ) );
-}
-
-add_filter( 'pre_get_document_title', 'lddfw_change_page_title' );
 /**
  * Remove version from head.
  *
@@ -102,7 +56,7 @@ function lddfw_filter_scripts()
 {
     global  $wp_scripts ;
     foreach ( $wp_scripts->queue as $handle ) {
-        if ( 'lddfw-bootstrap' !== $handle && 'lddfw-jquery-validate' !== $handle && 'lddfw' !== $handle && 'jquery-validation-plugin' !== $handle && 'jquery' !== $handle ) {
+        if ( 'lddfw-object' !== $handle && 'lddfw-bootstrap' !== $handle && 'lddfw-jquery-validate' !== $handle && 'lddfw' !== $handle && 'jquery-validation-plugin' !== $handle && 'jquery' !== $handle ) {
             // Deregister scripts.
             wp_deregister_script( $handle );
         }
@@ -121,10 +75,13 @@ function lddfw_filter_styles()
 {
     global  $wp_styles ;
     foreach ( $wp_styles->queue as $handle ) {
+        
         if ( 'lddfw' !== $handle && 'lddfw-bootstrap' !== $handle && 'lddfw-bootstrap' !== $handle && 'lddfw-fontawesome' !== $handle && 'lddfw-fonts' !== $handle ) {
             // Deregister style.
+            wp_dequeue_style( $handle );
             wp_deregister_style( $handle );
         }
+    
     }
 }
 
@@ -134,6 +91,16 @@ add_action( 'wp_print_styles', 'lddfw_filter_styles', 100 );
  */
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
+/**
+ * Remove admin bar.
+ */
+function lddfw_hide_wordpress_admin_bar()
+{
+    remove_action( 'wp_head', '_admin_bar_bump_cb' );
+    return false;
+}
+
+add_filter( 'show_admin_bar', 'lddfw_hide_wordpress_admin_bar' );
 /**
  * Get WordPress query_var.
  */
@@ -167,6 +134,7 @@ if ( !is_user_logged_in() ) {
     $lddfw_user = wp_get_current_user();
     
     if ( !in_array( 'driver', (array) $lddfw_user->roles, true ) ) {
+        LDDFW_Login::lddfw_logout();
         // User is not a delivery driver.
         $lddfw_user_is_driver = 0;
         $lddfw_content = $lddfw_screen->lddfw_home();
@@ -244,14 +212,7 @@ echo  esc_url( plugins_url() . '/' . LDDFW_FOLDER . '/public/images/favicon-32x3
  */
 wp_head();
 ?>
-</head>
-<body>
-	<div id = 'lddfw_page' >
-		<?php 
-echo  $lddfw_content ;
-?>
-	</div>
-	<script>
+<script>
 		var lddfw_driver_id    = "<?php 
 echo  esc_js( $lddfw_driver_id ) ;
 ?>";
@@ -273,7 +234,14 @@ echo  esc_js( __( 'hours', 'lddfw' ) ) ;
 		var lddfw_mins_text    = "<?php 
 echo  esc_js( __( 'mins', 'lddfw' ) ) ;
 ?>";
-	</script>
+</script>
+</head>
+<body>
+	<div id = 'lddfw_page' >
+		<?php 
+echo  $lddfw_content ;
+?>
+	</div>
 <?php 
 wp_footer();
 ?>

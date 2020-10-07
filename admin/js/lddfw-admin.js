@@ -41,7 +41,7 @@ jQuery(document).ready(
                         $("#lddfw_driverid_lddfw_action").show();
                     } else {
                         $.post(
-                            WPaAjax.ajaxurl, {
+                            lddfw_ajax.ajaxurl, {
                                 action: 'lddfw_ajax',
                                 lddfw_service: 'lddfw_get_drivers_list',
                                 lddfw_obj_id: 'lddfw_action',
@@ -65,7 +65,7 @@ jQuery(document).ready(
                         $("#lddfw_driverid_lddfw_action2").show();
                     } else {
                         $.post(
-                            WPaAjax.ajaxurl, {
+                            lddfw_ajax.ajaxurl, {
                                 action: 'lddfw_ajax',
                                 lddfw_service: 'lddfw_get_drivers_list',
                                 lddfw_obj_id: 'lddfw_action2',

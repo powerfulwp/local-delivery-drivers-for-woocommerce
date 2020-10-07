@@ -59,7 +59,7 @@ class LDDFW_Password {
 								$error = __( 'You are not a registered delivery driver.', 'lddfw' );
 							} else {
 								$user_login = $user->user_login;
-								$reset_url  = site_url( '/lddfwapp/resetpassword/' ) . get_password_reset_key( $user ) . '/' . rawurlencode( $user_login );
+								$reset_url  = lddfw_drivers_page_url() . "lddfw_action=resetpassword&lddfw_orderid=" . get_password_reset_key( $user ) . '&lddfw_page=' . rawurlencode( $user_login );
 
 								// email content.
 								$message  = __( 'Someone requested that the password be reset for the following account:', 'lddfw' ) . "\r\n\r\n";
@@ -154,10 +154,10 @@ class LDDFW_Password {
 		<div class='col-12'>
 			<h1>" . esc_html( __( 'Forgot your password?', 'lddfw' ) ) . '</h1>
 			<p>' . esc_html( __( "Enter your email, and we'll email you a link to change your password.", 'lddfw' ) ) . "</p>
-			<form method='post' name='lddfw_forgot_password_frm' id='lddfw_forgot_password_frm' action='" . esc_url( admin_url( 'admin-ajax.php' ) ) . "' nextpage='" . esc_url( get_site_url() ) . "/lddfwapp/dashboard'>
+			<form method='post' name='lddfw_forgot_password_frm' id='lddfw_forgot_password_frm' action='" . esc_url( admin_url( 'admin-ajax.php' ) ) . "' nextpage='" . lddfw_drivers_page_url()  . "lddfw_action=dashboard'>
 			<div class='lddfw_alert_wrap'></div>
 			<input type='text' autocapitalize='off' class='form-control form-control-lg' placeholder='" . esc_attr( __( 'Email', 'lddfw' ) ) . "' name='lddfw_user_email' id='lddfw_user_email' value=''>
-				<button class=\"submit_btn btn btn-primary btn-lg btn-block\" type=\"submit\">
+				<button class=\"lddfw_submit_btn btn btn-primary btn-lg btn-block\" type=\"submit\">
 				" . esc_html( __( 'Send', 'lddfw' ) ) . "
 				</button>
 				<button style='display:none' class=\"lddfw_loading_btn btn-lg btn btn-block btn-primary\" type=\"button\" disabled>
@@ -270,17 +270,17 @@ class LDDFW_Password {
 <div class='container'>
 	<div class='row'>
 		<div class='col-12'>
-			<form method='post' name='lddfw_new_password_frm' id='lddfw_new_password_frm' action='" . esc_url( admin_url( 'admin-ajax.php' ) ) . "' nextpage='" . esc_url( get_site_url() ) . "/lddfwapp/dashboard'>
+			<form method='post' name='lddfw_new_password_frm' id='lddfw_new_password_frm' action='" . esc_url( admin_url( 'admin-ajax.php' ) ) . "' nextpage='" . lddfw_drivers_page_url() . "lddfw_action=dashboard'>
 			<h1>" . esc_html( __( 'Create a new password.', 'lddfw' ) ) . "</h1>
 			<div class='lddfw_alert_wrap'></div>
 			<input type='text' autocapitalize=off class='form-control form-control-lg' placeholder='" . __( 'New password', 'lddfw' ) . "' name='lddfw_new_password'  id='lddfw_new_password' value=''>
 			<input type='text' autocapitalize=off class='form-control form-control-lg' placeholder='" . __( 'Confirm password', 'lddfw' ) . "' name='lddfw_confirm_password' id='lddfw_confirm_password' value=''>
 			<input type='hidden' id='lddfw_reset_key' name='lddfw_reset_key' value='" . $lddfw_reset_key . "'>
 			<input type='hidden' id='lddfw_reset_login' name='lddfw_reset_login' value='" . $lddfw_reset_login . "'>
-			<button class=\"submit_btn btn btn-lg btn-primary btn-block\" type=\"submit\">
+			<button class=\"lddfw_submit_btn btn btn-lg btn-primary btn-block\" type=\"submit\">
 			" . esc_html( __( 'Send', 'lddfw' ) ) . "
 			</button>
-			<button style='display:none' class=\"loading_btn btn btn-lg btn-block btn-primary\" type=\"button\" disabled>
+			<button style='display:none' class=\"lddfw_loading_btn btn btn-lg btn-block btn-primary\" type=\"button\" disabled>
 			<span class=\"spinner-border spinner-border-sm\" role=\"status\" aria-hidden=\"true\"></span>
 			" . esc_html( __( 'Send', 'lddfw' ) ) . "
 			</button>

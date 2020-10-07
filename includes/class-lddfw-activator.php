@@ -36,9 +36,28 @@ class LDDFW_Activator
             'edit_posts'   => false,
             'delete_posts' => false,
         ) );
-        // Add a rewrite rule for the driver page.
-        lddfw_rewrite_rule();
-        flush_rewrite_rules();
+        // Create delivery page for the first activation.
+        $lddfw_delivery_drivers_page = get_option( 'lddfw_delivery_drivers_page', '' );
+        
+        if ( '' === $lddfw_delivery_drivers_page ) {
+            $array = array(
+                'post_title'     => 'Delivery Drivers',
+                'post_type'      => 'page',
+                'post_name'      => 'lddfw',
+                'post_status'    => 'publish',
+                'comment_status' => 'closed',
+                'ping_status'    => 'closed',
+            );
+            $page_id = wp_insert_post( $array );
+            
+            if ( !get_option( 'lddfw_delivery_drivers_page' ) ) {
+                add_option( 'lddfw_delivery_drivers_page', $page_id );
+            } else {
+                update_option( 'lddfw_delivery_drivers_page', $page_id );
+            }
+        
+        }
+        
         // Set default settings options.
         add_option( 'lddfw_out_for_delivery_status', 'wc-out-for-delivery' );
         add_option( 'lddfw_delivered_status', 'wc-delivered' );

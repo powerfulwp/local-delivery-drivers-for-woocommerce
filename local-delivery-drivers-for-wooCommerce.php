@@ -75,6 +75,14 @@ if ( !function_exists( 'lddfw_fs' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  */
 define( 'LDDFW_VERSION', '1.0.0' );
+/**
+ * Define delivery driver page id.
+ */
+$lddfw_delivery_drivers_page = get_option( 'lddfw_delivery_drivers_page', '' );
+define( 'LDDFW_PAGE_ID', $lddfw_delivery_drivers_page );
+/**
+ * Define plugin folder name.
+ */
 $lddfw_plugin_basename = plugin_basename( __FILE__ );
 $lddfw_plugin_basename_array = explode( '/', $lddfw_plugin_basename );
 $lddfw_plugin_folder = $lddfw_plugin_basename_array[0];
@@ -122,6 +130,23 @@ function lddfw_run()
 }
 
 /**
+ * Get delivery driver page url.
+ *
+ * @since 1.0.0
+ */
+function lddfw_drivers_page_url()
+{
+    $link = get_page_link( LDDFW_PAGE_ID );
+    
+    if ( strpos( $link, '?' ) !== false ) {
+        return esc_url( $link ) . '&';
+    } else {
+        return esc_url( $link ) . '/?';
+    }
+
+}
+
+/**
  * Register_query_vars for delivery driver page.
  *
  * @since 1.0.0
@@ -130,98 +155,13 @@ function lddfw_run()
  */
 function lddfw_register_query_vars( $vars )
 {
-    $vars[] = 'lddfwaction';
+    $vars[] = 'lddfw_action';
     $vars[] = 'lddfw_orderid';
     $vars[] = 'lddfw_page';
     return $vars;
 }
 
 add_filter( 'query_vars', 'lddfw_register_query_vars' );
-/**
- * Set rewrite rules for driver page.
- *
- * @since 1.0.0
- * @return void
- */
-function lddfw_rewrite_rule()
-{
-    add_rewrite_tag( '%lddfw_action%', '([^/]+)' );
-    add_rewrite_tag( '%lddfw_orderid%', '([^/]+)' );
-    add_rewrite_tag( '%lddfw_page%', '([^/]+)' );
-    add_rewrite_rule( 'lddfwapp/(.*)/(.*)/(.*)/?$', 'wp-content/plugins/' . LDDFW_FOLDER . '/index.php?lddfw_action=$1&lddfw_orderid=$2&lddfw_page=$3', 'top' );
-    add_rewrite_rule( 'lddfwapp/(.*)/(.*)/?$', 'wp-content/plugins/' . LDDFW_FOLDER . '/index.php?lddfw_action=$1&lddfw_orderid=$2', 'top' );
-    add_rewrite_rule( 'lddfwapp/(.*)/?$', 'wp-content/plugins/' . LDDFW_FOLDER . '/index.php?lddfw_action=$1', 'top' );
-}
-
-add_action(
-    'init',
-    'lddfw_rewrite_rule',
-    10,
-    0
-);
-/**
- * Redirect to https and to www.
- *
- * @since 1.0.0
- * @return void
- */
-function lddfw_force_https()
-{
-    global  $wp ;
-    $location = '';
-    // Get protocol, domain and uri from url.
-    $url = esc_url( home_url( $wp->request ) );
-    
-    if ( strpos( $url, 'https://' ) !== false ) {
-        $url_protocol = 'https://';
-    } else {
-        $url_protocol = 'http://';
-    }
-    
-    $url_domain = explode( '/', str_replace( $url_protocol, '', $url ) )[0];
-    $url_request_uri = str_replace( $url_protocol . $url_domain, '', $url );
-    // Get protocol from admin url.
-    $pos_https = strpos( esc_url( admin_url() ), 'https://' );
-    $protocol = ( false !== $pos_https ? 'https://' : 'http://' );
-    $pos_www = strpos( esc_url( admin_url() ), '://www.' );
-    
-    if ( false === $pos_www ) {
-        // Admin url doesn't has www.
-        
-        if ( 'www.' === substr( $url_domain, 0, 4 ) ) {
-            // Remove www. from http_host.
-            $url_domain = str_replace( 'www.', '', $url_domain );
-            $location = $protocol . $url_domain . $url_request_uri;
-        }
-    
-    } else {
-        // Admin url has www.
-        
-        if ( 'www.' !== substr( $url_domain, 0, 4 ) ) {
-            // Add www. to http_host.
-            $url_domain = 'www.' . $url_domain;
-            $location = $protocol . $url_domain . $url_request_uri;
-        }
-    
-    }
-    
-    if ( false !== $pos_https ) {
-        // Admin url has https.
-        if ( 'http://' === $url_protocol ) {
-            // Redirect to https.
-            $location = $protocol . $url_domain . $url_request_uri;
-        }
-    }
-    
-    if ( '' !== $location ) {
-        // Redirect page.
-        header( 'HTTP/1.1 301 Moved Permanently' );
-        header( 'Location: ' . $location );
-        exit;
-    }
-
-}
-
 /**
  * Function that format the date for the plugin.
  *

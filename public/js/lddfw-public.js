@@ -7,6 +7,9 @@
 
     jQuery("#lddfw_out_for_delivery_button").click(
         function() {
+            jQuery("#lddfw_out_for_delivery_button").hide();
+            jQuery("#lddfw_out_for_delivery_button_loading").show();
+
             var lddfw_order_list = '';
             jQuery("#lddfw_alert").html();
             jQuery('.lddfw_multi_checkbox .custom-control-input').each(
@@ -31,6 +34,10 @@
                 }
             }).done(
                 function(data) {
+
+                    jQuery("#lddfw_out_for_delivery_button").show();
+                    jQuery("#lddfw_out_for_delivery_button_loading").hide();
+
                     jQuery("#lddfw_alert").show();
                     var lddfw_json = JSON.parse(data);
                     if (lddfw_json["result"] == "0") {
@@ -45,7 +52,7 @@
                                 }
                             }
                         );
-                        jQuery("#lddfw_alert").html("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">" + lddfw_json["error"] + "</div>");
+                        jQuery("#lddfw_alert").html(lddfw_json["error"]);
                         if (jQuery('.lddfw_multi_checkbox').length == 0) {
                             jQuery(".lddfw_footer_buttons").hide();
                         }
@@ -61,7 +68,6 @@
     jQuery(".lddfw_multi_checkbox").click(
         function() {
             var lddfw_chk = jQuery(this).find(".custom-control-input");
-            console.log(lddfw_chk.prop("checked"))
             if (lddfw_chk.prop("checked") == true) {
                 jQuery(this).removeClass("lddfw_active");
                 lddfw_chk.prop("checked", false);
@@ -409,13 +415,13 @@
             lddfw_loading_btn.show();
             lddfw_alert_wrap.html("");
 
-            var lddfw_ajax_url = lddfw_form.attr('action');
+
             var lddfw_nextpage = lddfw_form.attr('nextpage');
             jQuery.ajax({
                 type: "POST",
                 url: lddfw_ajax_url,
                 data: {
-                    lddfw_action: 'lddfw_ajax',
+                    action: 'lddfw_ajax',
                     lddfw_service: 'lddfw_forgot_password',
                     lddfw_user_email: jQuery("#lddfw_user_email").val(),
                     lddfw_wpnonce: lddfw_nonce
@@ -459,7 +465,7 @@
             lddfw_loading_btn.show();
             lddfw_alert_wrap.html("");
 
-            var lddfw_ajax_url = lddfw_form.attr('action');
+
             var lddfw_nextpage = lddfw_form.attr('nextpage');
             jQuery.ajax({
                 type: "POST",
@@ -514,7 +520,7 @@ function lddfw_openNav() {
 }
 
 function lddfw_closeNav() {
-    jQuery(".page_content").show();
+    jQuery(".lddfw_page_content").show();
     document.getElementById("lddfw_mySidenav").style.width = "0";
 }
 

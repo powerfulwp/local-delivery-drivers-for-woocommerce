@@ -102,7 +102,7 @@ class LDDFW_Admin
             $this->version,
             false
         );
-        wp_localize_script( $this->plugin_name, 'WPaAjax', array(
+        wp_localize_script( $this->plugin_name, 'lddfw_ajax', array(
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
         ) );
     }
@@ -148,7 +148,7 @@ class LDDFW_Admin
                                     $order->update_status( $out_for_delivery_status, __( 'The delivery driver changed the order status.', 'lddfw' ) );
                                     $order->save();
                                     $result = 1;
-                                    $error = __( 'Orders successfully marked as out of delivery.', 'lddfw' ) . ' <a id=\'view_out_of_delivery_orders_button\' href=\'' . esc_url( get_site_url() ) . '/lddfwapp/out_for_delivery\'  class=\'btn btn-block btn-primary\'>' . __( 'View out of delivery orders', 'lddfw' ) . '</a>';
+                                    $error = "<div class='alert alert-success alert-dismissible fade show'>" . __( 'Orders successfully marked as out of delivery.', 'lddfw' ) . "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div> <a id='view_out_of_delivery_orders_button' href='" . lddfw_drivers_page_url() . "lddfw_action=out_for_delivery'  class='btn btn-lg btn-block btn-primary'>" . __( 'View out of delivery orders', 'lddfw' ) . "</a>";
                                 }
                             
                             }
@@ -202,7 +202,7 @@ class LDDFW_Admin
                             }
                         }
                         $result = 1;
-                        $error = __( 'Orders successfully assigned to you', 'lddfw' ) . ' <a id=\'view_assigned_orders_button\' href=\'' . esc_url( get_site_url() ) . '/lddfwapp/assign_to_driver\'  class=\'btn btn-block btn-primary\'>' . __( 'View assigned orders', 'lddfw' ) . '</a>';
+                        $error = __( 'Orders successfully assigned to you', 'lddfw' ) . ' <a id=\'view_assigned_orders_button\' href=\'' . lddfw_drivers_page_url() . 'lddfw_action=assign_to_driver\'  class=\'btn btn-block btn-primary\'>' . __( 'View assigned orders', 'lddfw' ) . '</a>';
                     } else {
                         $error = __( 'Please choose the orders.', 'lddfw' );
                     }
@@ -548,11 +548,19 @@ class LDDFW_Admin
         register_setting( 'lddfw', 'lddfw_delivered_status' );
         register_setting( 'lddfw', 'lddfw_failed_attempt_status' );
         register_setting( 'lddfw', 'lddfw_processing_status' );
+        register_setting( 'lddfw', 'lddfw_delivery_drivers_page' );
         add_settings_section(
             'lddfw_setting_section',
             '',
             '',
             'lddfw'
+        );
+        add_settings_field(
+            'lddfw_delivery_drivers_page',
+            __( 'Delivery drivers page', 'lddfw' ),
+            array( $this, 'lddfw_delivery_drivers_page' ),
+            'lddfw',
+            'lddfw_setting_section'
         );
         add_settings_field(
             'lddfw_google_api_key',
@@ -741,7 +749,7 @@ class LDDFW_Admin
      */
     public function lddfw_failed_delivery_reasons_section()
     {
-        echo  'These are driver choices when delivery fails, to delete an option leave blank.' ;
+        echo  esc_html( __( 'These are driver choices when delivery fails, to delete an option leave blank.' ) ) ;
     }
     
     /**
@@ -751,7 +759,7 @@ class LDDFW_Admin
      */
     public function lddfw_delivery_dropoff_section()
     {
-        echo  'These are driver choices of drop off locations, to delete an option leave blank.' ;
+        echo  esc_html( __( 'These are driver choices of drop off locations, to delete an option leave blank.' ) ) ;
     }
     
     /**
@@ -985,7 +993,7 @@ class LDDFW_Admin
         echo  esc_html( __( 'General Settings', 'lddfw' ) ) ;
         ?></h1>
 			<a target="_blank" href='<?php 
-        echo  esc_url( get_home_url() . '/lddfwapp/' ) ;
+        echo  lddfw_drivers_page_url() ;
         ?>'><?php 
         echo  esc_html( __( 'Click here for Driver Dashboard', 'lddfw' ) ) ;
         ?></a>
@@ -1241,6 +1249,57 @@ class LDDFW_Admin
         }
         
         return $redirect_to;
+    }
+    
+    /**
+     * Plugin settings.
+     *
+     * @since 1.0.0
+     */
+    public function lddfw_delivery_drivers_page()
+    {
+        $args = array(
+            'sort_order'   => 'asc',
+            'sort_column'  => 'post_title',
+            'hierarchical' => 1,
+            'exclude'      => '',
+            'include'      => '',
+            'meta_key'     => '',
+            'meta_value'   => '',
+            'authors'      => '',
+            'child_of'     => 0,
+            'parent'       => -1,
+            'exclude_tree' => '',
+            'number'       => '',
+            'offset'       => 0,
+            'post_type'    => 'page',
+            'post_status'  => 'publish',
+        );
+        $pages = get_pages( $args );
+        ?>
+		<select name='lddfw_delivery_drivers_page'>
+			<?php 
+        if ( !empty($pages) ) {
+            foreach ( $pages as $page ) {
+                $page_id = $page->ID;
+                $page_title = $page->post_title;
+                ?>
+					<option value="<?php 
+                echo  esc_attr( $page_id ) ;
+                ?>" <?php 
+                selected( esc_attr( get_option( 'lddfw_delivery_drivers_page', '' ) ), $page_id );
+                ?>><?php 
+                echo  esc_html( $page_title ) ;
+                ?></option>
+					<?php 
+            }
+        }
+        ?>
+		</select>
+		<p class="lddfw_description" id="lddfw-gooogle-api-key-description"><?php 
+        echo  esc_html( __( 'The delivery driver page.', 'lddfw' ) ) ;
+        ?></p>
+		<?php 
     }
 
 }

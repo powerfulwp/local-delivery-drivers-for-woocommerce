@@ -107,12 +107,21 @@ class LDDFW_Public {
 		global $lddfw_driver_page;
 
 	 	if ( '1' === $lddfw_driver_page ) {
-
 		  wp_enqueue_script( 'lddfw-jquery-validate' , plugin_dir_url( __FILE__ )  . 'js/jquery.validate.min.js' , array( 'jquery' ) ,  false, true);
 		  wp_enqueue_script( 'lddfw-bootstrap' , plugin_dir_url( __FILE__ )  . 'js/bootstrap.min.js' , array( 'jquery' ) ,  false, true);
-	      wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/lddfw-public.js', array( 'jquery', 'jquery-effects-core', 'jquery-ui-core' ), false, true );
-		  
+		  wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/lddfw-public.js', array( 'jquery', 'jquery-effects-core', 'jquery-ui-core' ), false, true );
 	 	}
+	}
+
+
+	public function lddfw_page_template( $page_template )
+	{
+		global $post;
+
+		if( $post->ID === intval ( get_option( 'lddfw_delivery_drivers_page', '' ) ) ) {
+		 	$page_template = WP_PLUGIN_DIR  . '/' . LDDFW_FOLDER . '/index.php';
+		}
+		return $page_template;
 	}
 
 }

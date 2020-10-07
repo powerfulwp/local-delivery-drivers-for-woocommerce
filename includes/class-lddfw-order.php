@@ -306,7 +306,7 @@ class LDDFW_Order {
 		<i class='far fa-check-circle'></i>
 		<h1>" . esc_html( __( 'Thank you!', 'lddfw' ) ) . "</h1>
 		<div id='lddfw_next_delivery'></div>
-		<a class='btn btn-block btn-lg btn-secondary' href='" . esc_url( home_url( '/lddfwapp/out_for_delivery' ) ) . "'>" . esc_html( __( 'View deliveries', 'lddfw' ) ) . '</a>
+		<a class='btn btn-block btn-lg btn-secondary' href='" . lddfw_drivers_page_url() . 'lddfw_action=out_for_delivery' . "'>" . esc_html( __( 'View deliveries', 'lddfw' ) ) . '</a>
 		</div>
 		</div>
 		</form>
