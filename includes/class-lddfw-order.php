@@ -181,7 +181,7 @@ class LDDFW_Order
 			</div>';
         // Shipping address.
         $html .= '<div id="lddfw_shipping_address" class="lddfw_box">
-					<h3 class="title"><i class="fas fa-map-marker-alt"></i>  ' . esc_html( __( 'Shipping Address', 'lddfw' ) ) . "</h3>\r\n\t\t\t\t\t{$shipping_full_name}\r\n\t\t\t\t\t{$shipping_address}";
+					<h3 class="title"><i class="fas fa-map-marker-alt"></i> ' . esc_html( __( 'Shipping Address', 'lddfw' ) ) . '</h3>' . $shipping_full_name . ' ' . $shipping_address;
         // Map button.
         if ( '' === $lddfw_google_api_key ) {
             $html .= '<div class="row" id="lddfw_navigation_buttons">
