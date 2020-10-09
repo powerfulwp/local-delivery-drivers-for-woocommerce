@@ -68,9 +68,6 @@ class LDDFW_Driver
             /* translators: %s: driver name */
             $note = sprintf( __( 'Delivery driver %s has been assigned to order', 'lddfw' ), $driver_name );
             update_post_meta( $order_id, 'lddfw_driverid', $driver_id );
-            /* Email driver */
-            WC_Emails::instance();
-            do_action( 'lddfw_assigned_order_email_driver_notification', $order_id );
             $order->add_order_note( $note );
         }
     

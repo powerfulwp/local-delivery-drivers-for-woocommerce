@@ -43,7 +43,7 @@ function lddfw_metaboxes_build() {
 
 	$lddfw_driverid = get_post_meta( $post->ID, 'lddfw_driverid', true );
 
-	echo '<div class="lddfw_delivery_guy-driver-box">
+	echo '<div class="lddfw-driver-box">
 	<label>' .  esc_html( __( 'Delivery Driver', 'lddfw' ) ) . '</label>';
 	$drivers = LDDFW_Driver::lddfw_get_drivers();
 
@@ -122,7 +122,7 @@ function lddfw_driver_save_order_details( $post_id, $post ) {
 		}
 
 		$value = implode( ',', (array) $value );
-		// If $value is an array, make it a CSV (unlikely).
+		
 		$driver->assign_delivery_driver( $post->ID, $value, 'store' );
 		if ( ! $value ) {
 			/**

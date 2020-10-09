@@ -29,7 +29,7 @@ class LDDFW_Login
     public static function lddfw_logout()
     {
         wp_logout();
-        header( 'Location: ' . lddfw_drivers_page_url() . '' );
+        header( 'Location: ' . lddfw_drivers_page_url( '' ) );
         exit;
     }
     
@@ -42,8 +42,32 @@ class LDDFW_Login
     public function lddfw_login_screen()
     {
         // Login page.
-        $html = "<div class='lddfw_page' id='lddfw_login' style='display:none;'>\r\n\t\t\t\t<div class='container-fluid lddfw_cover'>\r\n\t\t\t\t\t<div class='row'>\r\n\t\t\t\t\t\t<div class='col-12'>\r\n\t\t\t\t\t\t<i class='fas fa-sign-in-alt'></i>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class='container'>\r\n\t\t\t\t\t<div class='row'>\r\n\t\t\t\t\t\t<div class='col-12'>\r\n\t\t\t\t\t\t\t<h1>" . esc_html( __( 'Login', 'lddfw' ) ) . '</h1>
-							<p>' . esc_html( __( 'Enter your details below to continue.', 'lddfw' ) ) . "</p>\r\n\t\t\t\t\t\t\t<form method='post' name='lddfw_login_frm' id='lddfw_login_frm' action='" . esc_url( admin_url( 'admin-ajax.php' ) ) . "' nextpage='" . lddfw_drivers_page_url() . "lddfw_action=dashboard'>\r\n\t\t\t\t\t\t\t<div class='lddfw_alert_wrap'></div>\r\n\r\n\t\t\t\t\t\t\t<input type='text' autocapitalize=off class='form-control form-control-lg' placeholder='" . esc_attr( __( 'Email', 'lddfw' ) ) . "' name='lddfw_login_email' id='lddfw_login_email'  value=''>\r\n\t\t\t\t\t\t\t\t<input type='password' autocapitalize=off class='form-control form-control-lg' placeholder='" . esc_attr( __( 'Password', 'lddfw' ) ) . "' name='lddfw_login_password' id='lddfw_login_password' value=''>\r\n\t\t\t\t\t\t\t\t<button class=\"lddfw_submit_btn btn btn-lg btn-primary btn-block\" type=\"submit\">\r\n\t\t\t\t\t\t\t\t" . esc_html( __( 'Login', 'lddfw' ) ) . "\r\n\t\t\t\t\t\t\t\t</button>\r\n\t\t\t\t\t\t\t\t<button style='display:none' class=\"lddfw_loading_btn btn-lg btn btn-block btn-primary\" type=\"button\" disabled>\r\n\t\t\t\t\t\t\t\t<span class=\"spinner-border spinner-border-sm\" role=\"status\" aria-hidden=\"true\"></span>\r\n\t\t\t\t\t\t\t\t" . esc_html( __( 'Loading', 'lddfw' ) ) . "\r\n\t\t\t\t\t\t\t\t</button>\r\n\t\t\t\t\t\t\t\t<a href='#' id='lddfw_forgot_password_link'>" . esc_html( __( 'Forgot password?', 'lddfw' ) ) . '</a>
+        $html = '<div class="lddfw_page" id="lddfw_login" style="display:none;">
+				<div class="container-fluid lddfw_cover">
+					<div class="row">
+						<div class="col-12">
+						<i class="fas fa-sign-in-alt"></i>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<h1>' . esc_html( __( 'Login', 'lddfw' ) ) . '</h1>
+							<p>' . esc_html( __( 'Enter your details below to continue.', 'lddfw' ) ) . '</p>
+							<form method="post" name="lddfw_login_frm" id="lddfw_login_frm" action="' . esc_url( admin_url( 'admin-ajax.php' ) ) . '" nextpage="' . lddfw_drivers_page_url( 'lddfw_screen=dashboard' ) . '">
+							<div class="lddfw_alert_wrap"></div>
+
+							<input type="text" autocapitalize=off class="form-control form-control-lg" placeholder="' . esc_attr( __( 'Email', 'lddfw' ) ) . '" name="lddfw_login_email" id="lddfw_login_email"  value="">
+								<input type="password" autocapitalize=off class="form-control form-control-lg" placeholder="' . esc_attr( __( 'Password', 'lddfw' ) ) . '" name="lddfw_login_password" id="lddfw_login_password" value="">
+								<button class="lddfw_submit_btn btn btn-lg btn-primary btn-block" type="submit">
+								' . esc_html( __( 'Login', 'lddfw' ) ) . '
+								</button>
+								<button style="display:none" class="lddfw_loading_btn btn-lg btn btn-block btn-primary" type="button" disabled>
+								<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+								' . esc_html( __( 'Loading', 'lddfw' ) ) . '
+								</button>
+								<a href="#" id="lddfw_forgot_password_link">' . esc_html( __( 'Forgot password?', 'lddfw' ) ) . '</a>
 							</form>
 						</div>';
         $html .= '</div>

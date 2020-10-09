@@ -59,7 +59,7 @@ class LDDFW_Password {
 								$error = __( 'You are not a registered delivery driver.', 'lddfw' );
 							} else {
 								$user_login = $user->user_login;
-								$reset_url  = lddfw_drivers_page_url() . "lddfw_action=resetpassword&lddfw_orderid=" . get_password_reset_key( $user ) . '&lddfw_page=' . rawurlencode( $user_login );
+								$reset_url  = lddfw_drivers_page_url( 'lddfw_screen=resetpassword&lddfw_reset_key=' . get_password_reset_key( $user ) . '&lddfw_reset_login=' . rawurlencode( $user_login ) );
 
 								// email content.
 								$message  = __( 'Someone requested that the password be reset for the following account:', 'lddfw' ) . "\r\n\r\n";
@@ -141,36 +141,36 @@ class LDDFW_Password {
 	 */
 	public function lddfw_forgot_password_screen() {
 		// forgot password page.
-		$html = "<div class='lddfw_page' id='lddfw_forgot_password' style='display:none;'>
-<div class='container-fluid lddfw_cover'>
-	<div class='row'>
-		<div class='col-12'>
-		<i class='fas fa-key'></i>
+		$html = '<div class="lddfw_page" id="lddfw_forgot_password" style="display:none;">
+		<div class="container-fluid lddfw_cover">
+			<div class="row">
+				<div class="col-12">
+				<i class="fas fa-key"></i>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-<div class='container'>
-	<div class='row'>
-		<div class='col-12'>
-			<h1>" . esc_html( __( 'Forgot your password?', 'lddfw' ) ) . '</h1>
-			<p>' . esc_html( __( "Enter your email, and we'll email you a link to change your password.", 'lddfw' ) ) . "</p>
-			<form method='post' name='lddfw_forgot_password_frm' id='lddfw_forgot_password_frm' action='" . esc_url( admin_url( 'admin-ajax.php' ) ) . "' nextpage='" . lddfw_drivers_page_url()  . "lddfw_action=dashboard'>
-			<div class='lddfw_alert_wrap'></div>
-			<input type='text' autocapitalize='off' class='form-control form-control-lg' placeholder='" . esc_attr( __( 'Email', 'lddfw' ) ) . "' name='lddfw_user_email' id='lddfw_user_email' value=''>
-				<button class=\"lddfw_submit_btn btn btn-primary btn-lg btn-block\" type=\"submit\">
-				" . esc_html( __( 'Send', 'lddfw' ) ) . "
-				</button>
-				<button style='display:none' class=\"lddfw_loading_btn btn-lg btn btn-block btn-primary\" type=\"button\" disabled>
-				<span class=\"spinner-border spinner-border-sm\" role=\"status\" aria-hidden=\"true\"></span>
-				" . esc_html( __( 'Loading', 'lddfw' ) ) . "
-				</button>
-				<a href='#' class='lddfw_back_to_login_link'><i class=\"fas fa-chevron-left\"></i> " . esc_html( __( 'Back to login', 'lddfw' ) ) . '</a>
-			</form>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h1>' . esc_html( __( 'Forgot your password?', 'lddfw' ) ) . '</h1>
+					<p>' . esc_html( __( "Enter your email, and we'll email you a link to change your password.", 'lddfw' ) ) . '</p>
+					<form method="post" name="lddfw_forgot_password_frm" id="lddfw_forgot_password_frm" action="' . esc_url( admin_url( 'admin-ajax.php' ) ) . '" nextpage="' . lddfw_drivers_page_url( 'lddfw_screen=dashboard' )  . '">
+					<div class="lddfw_alert_wrap"></div>
+					<input type="text" autocapitalize="off" class="form-control form-control-lg" placeholder="' . esc_attr( __( 'Email', 'lddfw' ) ) . '" name="lddfw_user_email" id="lddfw_user_email" value="">
+						<button class="lddfw_submit_btn btn btn-primary btn-lg btn-block" type="submit">
+						' . esc_html( __( 'Send', 'lddfw' ) ) . '
+						</button>
+						<button style="display:none" class="lddfw_loading_btn btn-lg btn btn-block btn-primary" type="button" disabled>
+						<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+						' . esc_html( __( 'Loading', 'lddfw' ) ) . '
+						</button>
+						<a href="#" class="lddfw_back_to_login_link"><i class="fas fa-chevron-left"></i> ' . esc_html( __( 'Back to login', 'lddfw' ) ) . '</a>
+					</form>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-</div>
-';
+		</div>
+		';
 		return $html;
 	}
 
@@ -185,21 +185,21 @@ class LDDFW_Password {
 	 */
 	public function lddfw_new_password_created_screen() {
 		// forgot password email sent.
-		$html = "<div class='lddfw_page' id='lddfw_new_password_created' style='display:none;'>
-<div class='container-fluid lddfw_cover'>
-	<div class='row'>
-		<div class='col-12'>
-			<i class=\"far fa-check-circle\"></i>
+		$html = '<div class="lddfw_page" id="lddfw_new_password_created" style="display:none;">
+<div class="container-fluid lddfw_cover">
+	<div class="row">
+		<div class="col-12">
+			<i class="far fa-check-circle"></i>
 		</div>
 	</div>
 </div>
-<div class='container'>
-	<div class='row'>
-		<div class='col-12'>
-			<h1>" . esc_html( __( 'Your password has been changed successfully.', 'lddfw' ) ) . '</h1>
-			<p>' . esc_html( __( 'Please click on the login button to login with your new password', 'lddfw' ) ) . "</p>
-			<button id='lddfw_login_button' class=\"btn btn-lg btn-primary btn-block\" type=\"button\">
-				" . esc_html( __( 'Login', 'lddfw' ) ) . '
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<h1>' . esc_html( __( 'Your password has been changed successfully.', 'lddfw' ) ) . '</h1>
+			<p>' . esc_html( __( 'Please click on the login button to login with your new password', 'lddfw' ) ) . '</p>
+			<button id="lddfw_login_button" class="btn btn-lg btn-primary btn-block" type="button">
+				' . esc_html( __( 'Login', 'lddfw' ) ) . '
 			</button>
 		</div>
 	</div>
@@ -217,28 +217,28 @@ class LDDFW_Password {
 	 */
 	public function lddfw_forgot_password_email_sent_screen() {
 		// forgot password email sent.
-		$html = "<div class='lddfw_page' id='lddfw_forgot_password_email_sent' style='display:none;'>
-<div class='container-fluid lddfw_cover'>
-	<div class='row'>
-		<div class='col-12'>
-			<i class=\"far fa-paper-plane\"></i>
+		$html = '<div class="lddfw_page" id="lddfw_forgot_password_email_sent" style="display:none;">
+		<div class="container-fluid lddfw_cover">
+			<div class="row">
+				<div class="col-12">
+					<i class="far fa-paper-plane"></i>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-<div class='container'>
-	<div class='row'>
-		<div class='col-12'>
-			<h1>" . esc_html( __( 'Reset password', 'lddfw' ) ) . '</h1>
-			<p>' . esc_html( __( 'A password reset link was sent. Click the link in the email to create a new password. If you do not receive an email within 5 minutes, please click on the resend email button below.', 'lddfw' ) ) . "</p>
-			<button id='lddfw_resend_button' class=\"btn btn-lg btn-primary btn-block\" type=\"button\">
-				" . esc_html( __( 'Resend email', 'lddfw' ) ) . "
-			</button>
-			<a href='#' id='lddfw_back_to_forgot_password_link'><i class=\"fas fa-chevron-left\"></i> " . esc_html( __( 'Back to forgot password', 'lddfw' ) ) . '</a>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h1>' . esc_html( __( 'Reset password', 'lddfw' ) ) . '</h1>
+					<p>' . esc_html( __( 'A password reset link was sent. Click the link in the email to create a new password. If you do not receive an email within 5 minutes, please click on the resend email button below.', 'lddfw' ) ) . '</p>
+					<button id="lddfw_resend_button" class="btn btn-lg btn-primary btn-block" type="button">
+						' . esc_html( __( 'Resend email', 'lddfw' ) ) . '
+					</button>
+					<a href="#" id="lddfw_back_to_forgot_password_link"><i class="fas fa-chevron-left"></i> ' . esc_html( __( 'Back to forgot password', 'lddfw' ) ) . '</a>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-</div>
-';
+		</div>
+		';
 		return $html;
 	}
 
@@ -249,50 +249,50 @@ class LDDFW_Password {
 	 * @return html
 	 */
 	public function lddfw_create_password_screen() {
-		// show delivery guy homepage.
-		global $lddfw_action, $lddfw_reset_key, $lddfw_reset_login;
+		// show delivery driver homepage.
+		global $lddfw_screen, $lddfw_reset_key, $lddfw_reset_login;
 
 		$style_password_reset = 'style="display:none"';
 
-		if ( 'resetpassword' === $lddfw_action ) {
+		if ( 'resetpassword' === $lddfw_screen ) {
 
 			$style_password_reset = 'style="display:block"';
 		}
 		// New password.
-		$html = "<div class='lddfw_page' id='lddfw_create_new_password' $style_password_reset>
-<div class='container-fluid lddfw_cover'>
-	<div class='row'>
-		<div class='col-12'>
-			<i class=\"fas fa-key\"></i>
+		$html = '<div class="lddfw_page" id="lddfw_create_new_password" '. $style_password_reset . '>
+		<div class="container-fluid lddfw_cover">
+			<div class="row">
+				<div class="col-12">
+					<i class="fas fa-key"></i>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-<div class='container'>
-	<div class='row'>
-		<div class='col-12'>
-			<form method='post' name='lddfw_new_password_frm' id='lddfw_new_password_frm' action='" . esc_url( admin_url( 'admin-ajax.php' ) ) . "' nextpage='" . lddfw_drivers_page_url() . "lddfw_action=dashboard'>
-			<h1>" . esc_html( __( 'Create a new password.', 'lddfw' ) ) . "</h1>
-			<div class='lddfw_alert_wrap'></div>
-			<input type='text' autocapitalize=off class='form-control form-control-lg' placeholder='" . __( 'New password', 'lddfw' ) . "' name='lddfw_new_password'  id='lddfw_new_password' value=''>
-			<input type='text' autocapitalize=off class='form-control form-control-lg' placeholder='" . __( 'Confirm password', 'lddfw' ) . "' name='lddfw_confirm_password' id='lddfw_confirm_password' value=''>
-			<input type='hidden' id='lddfw_reset_key' name='lddfw_reset_key' value='" . $lddfw_reset_key . "'>
-			<input type='hidden' id='lddfw_reset_login' name='lddfw_reset_login' value='" . $lddfw_reset_login . "'>
-			<button class=\"lddfw_submit_btn btn btn-lg btn-primary btn-block\" type=\"submit\">
-			" . esc_html( __( 'Send', 'lddfw' ) ) . "
-			</button>
-			<button style='display:none' class=\"lddfw_loading_btn btn btn-lg btn-block btn-primary\" type=\"button\" disabled>
-			<span class=\"spinner-border spinner-border-sm\" role=\"status\" aria-hidden=\"true\"></span>
-			" . esc_html( __( 'Send', 'lddfw' ) ) . "
-			</button>
-			<div class='lddfw_links'>
-			<a href='#' id='lddfw_new_password_reset_link'><i class=\"fas fa-chevron-left\"></i> " . esc_html( __( 'Back to forgot password', 'lddfw' ) ) . '</a>
-  			</div>
-			</form>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<form method="post" name="lddfw_new_password_frm" id="lddfw_new_password_frm" action="' . esc_url( admin_url( "admin-ajax.php" ) ) . '" nextpage="' . lddfw_drivers_page_url( "lddfw_screen=dashboard" ) . '">
+					<h1>' . esc_html( __( 'Create a new password.', 'lddfw' ) ) . '</h1>
+					<div class="lddfw_alert_wrap"></div>
+					<input type="text" autocapitalize=off class="form-control form-control-lg" placeholder="' . __( 'New password', 'lddfw' ) . '" name="lddfw_new_password"  id="lddfw_new_password" value="">
+					<input type="text" autocapitalize=off class="form-control form-control-lg" placeholder="' . __( 'Confirm password', 'lddfw' ) . '" name="lddfw_confirm_password" id="lddfw_confirm_password" value="">
+					<input type="hidden" id="lddfw_reset_key" name="lddfw_reset_key" value="' . $lddfw_reset_key . '">
+					<input type="hidden" id="lddfw_reset_login" name="lddfw_reset_login" value="' . $lddfw_reset_login . '">
+					<button class="lddfw_submit_btn btn btn-lg btn-primary btn-block" type="submit">
+					' . esc_html( __( 'Send', 'lddfw' ) ) . '
+					</button>
+					<button style="display:none" class="lddfw_loading_btn btn btn-lg btn-block btn-primary" type="button" disabled>
+					<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+					' . esc_html( __( 'Send', 'lddfw' ) ) . '
+					</button>
+					<div class="lddfw_links">
+					<a href="#" id="lddfw_new_password_reset_link"><i class="fas fa-chevron-left"></i> ' . esc_html( __( 'Back to forgot password', 'lddfw' ) ) . '</a>
+					  </div>
+					</form>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-</div>
-';
+		</div>
+		';
 		return $html;
 	}
 }

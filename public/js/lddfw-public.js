@@ -133,6 +133,17 @@
         }
     );
 
+    jQuery("#lddfw_dates_range").change(
+        function() {
+            var lddfw_location = jQuery(this).attr("data") + '&lddfw_dates=' + this.value;
+            window.location.replace(lddfw_location);
+            return false;
+        }
+    );
+
+    if (lddfw_dates != "") {
+        jQuery("#lddfw_dates_range").val(lddfw_dates);
+    }
 
 
     jQuery("#lddfw_delivered_screen_btn").click(
@@ -524,115 +535,5 @@ function lddfw_closeNav() {
     document.getElementById("lddfw_mySidenav").style.width = "0";
 }
 
-/* <fs_premium_only> */
-function lddfw_initMap() {
-    var lddfw_directionsService = new google.maps.DirectionsService();
-    var lddfw_directionsRenderer = new google.maps.DirectionsRenderer();
-    var lddfw_map = new google.maps.Map(
-        document.getElementById('lddfw_map123'), {
-            zoom: 6,
-            center: { lat: 41.85, lng: -87.65 }
-        }
-    );
-    lddfw_directionsRenderer.setMap(lddfw_map);
-    lddfw_calculateAndDisplayRoute(lddfw_directionsService, lddfw_directionsRenderer);
-}
 
-function lddfw_numtoletter(lddfw_num) {
-    var lddfw_s = '',
-        lddfw_t;
-
-    while (lddfw_num > 0) {
-        lddfw_t = (lddfw_num - 1) % 26;
-        lddfw_s = String.fromCharCode(65 + lddfw_t) + lddfw_s;
-        lddfw_num = (lddfw_num - lddfw_t) / 26 | 0;
-    }
-    return lddfw_s || undefined;
-}
-
-function lddfw_timeConvert(n) {
-    var lddfw_num = n;
-    var lddfw_hours = (lddfw_num / 60);
-    var lddfw_rhours = Math.floor(lddfw_hours);
-    var lddfw_minutes = (lddfw_hours - lddfw_rhours) * 60;
-    var lddfw_rminutes = Math.round(lddfw_minutes);
-    var lddfw_result = '';
-    if (lddfw_rhours > 1) {
-        lddfw_result = lddfw_rhours + " " + lddfw_hours_text + " ";
-    }
-    if (lddfw_rhours == 1) {
-        lddfw_result = lddfw_rhours + " " + lddfw_hour_text + " ";
-    }
-    if (lddfw_rminutes > 0) {
-        lddfw_result += lddfw_rminutes + " " + lddfw_mins_text;
-    }
-    return lddfw_result;
-}
-
-function lddfw_computeTotalDistance(result) {
-    var lddfw_totalDist = 0;
-    var lddfw_totalTime = 0;
-    var lddfw_distance_text = '';
-    var lddfw_distance_array = '';
-    var lddfw_distance_type = '';
-
-    var lddfw_myroute = result.routes[0];
-    for (i = 0; i < lddfw_myroute.legs.length; i++) {
-        lddfw_totalTime += lddfw_myroute.legs[i].duration.value;
-        lddfw_distance_text = lddfw_myroute.legs[i].distance.text;
-        lddfw_distance_array = lddfw_distance_text.split(" ");
-        lddfw_totalDist += parseFloat(lddfw_distance_array[0]);
-        lddfw_distance_type = lddfw_distance_array[1];
-    }
-    lddfw_totalTime = (lddfw_totalTime / 60).toFixed(0);
-    lddfw_TotalTimeText = timeConvert(lddfw_totalTime);
-    document.getElementById("total_route").innerHTML = "<b>" + lddfw_TotalTimeText + "</b> <span>(" + (lddfw_totalDist).toFixed(1) + " " + lddfw_distance_type + ")</span> ";
-}
-
-function lddfw_calculateAndDisplayRoute(directionsService, directionsRenderer) {
-    var lddfw_waypts = [];
-    var lddfw_orders_count = jQuery('.lddfw_address_chk').length;
-    var lddfw_last_waypoint = 0;
-    lddfw_destination_address = jQuery('.lddfw_address_chk').eq(jQuery('.lddfw_address_chk').length - 1).val();
-    jQuery('.lddfw_address_chk').each(
-        function(index, item) {
-            if (jQuery(this).val() != lddfw_destination_address) {
-                lddfw_waypts.push({
-                    location: jQuery(this).val(),
-                    stopover: true
-                });
-            }
-        }
-    );
-    directionsService.route({
-            origin: lddfw_google_api_origin,
-            destination: lddfw_destination_address,
-            waypoints: lddfw_waypts,
-            optimizeWaypoints: lddfw_optimizeWaypoints_flag,
-            travelMode: 'DRIVING'
-        },
-        function(response, status) {
-            if (status === 'OK') {
-                directionsRenderer.setDirections(response);
-                var lddfw_route = response.routes[0];
-                var lddfw_summaryPanel = document.getElementById('lddfw_directions-panel-listing');
-                lddfw_summaryPanel.innerHTML = '<div id="lddfw_total_route"></div>';
-                var lddfw_last_address = '';
-                // For each route, display summary information.
-                for (var i = 0; i < lddfw_route.legs.length; i++) {
-                    var lddfw_routeSegment = i + 1;
-                    if (lddfw_last_address != lddfw_route.legs[i].start_address) {
-                        lddfw_summaryPanel.innerHTML += '<div class="row lddfw_address"><div class="col-2 text-center" > <i class="fas fa-map-marker"></i><span class="lddfw_point">' + numtoletter(routeSegment) + '</span></div><div class="col-10">' + route.legs[i].start_address + '</div></div>';
-                    }
-                    lddfw_summaryPanel.innerHTML += '<div class="row lddfw_drive"><div class="col-2 text-center"><i class="fas fa-ellipsis-v up"></i><br><i class="fas fa-car"></i><br><i class="fas fa-ellipsis-v down"></i> </div><div class="col-10"  ><b>' + route.legs[i].duration.text + "</b><br>" + route.legs[i].distance.text + '</div></div></div>';
-                    lddfw_summaryPanel.innerHTML += '<div class="row lddfw_address"><div class="col-2 text-center"> <i class="fas fa-map-marker"></i><span class="point">' + numtoletter((routeSegment + 1) * 1) + '</span></div><div class="col-10">' + route.legs[i].end_address + '</div></div>';
-                    lddfw_last_address = lddfw_route.legs[i].end_address;
-                }
-                lddfw_computeTotalDistance(response);
-            } else {
-                window.alert('Directions request failed due to ' + status);
-            }
-        }
-    );
-}
-/* <fs_premium_only> */
+/* Premium Code Stripped by Freemius */

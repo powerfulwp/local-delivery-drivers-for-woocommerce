@@ -104,23 +104,23 @@ add_filter( 'show_admin_bar', 'lddfw_hide_wordpress_admin_bar' );
 /**
  * Get WordPress query_var.
  */
-$lddfw_action = ( '' !== get_query_var( 'lddfw_action' ) ? get_query_var( 'lddfw_action' ) : 'dashboard' );
+$lddfw_screen = ( '' !== get_query_var( 'lddfw_screen' ) ? get_query_var( 'lddfw_screen' ) : 'dashboard' );
 $lddfw_order_id = get_query_var( 'lddfw_orderid' );
-$lddfw_service = get_query_var( 'lddfw_orderid' );
-$lddfw_reset_key = get_query_var( 'lddfw_orderid' );
+$lddfw_reset_key = get_query_var( 'lddfw_reset_key' );
 $lddfw_page = get_query_var( 'lddfw_page' );
-$lddfw_reset_login = get_query_var( 'lddfw_page' );
+$lddfw_reset_login = get_query_var( 'lddfw_reset_login' );
+$lddfw_dates = get_query_var( 'lddfw_dates' );
 /**
  * Set global variables.
 */
 $lddfw_driver = new LDDFW_Driver();
-$lddfw_screen = new LDDFW_Screens();
+$lddfw_screens = new LDDFW_Screens();
 $lddfw_content = '';
 $lddfw_driver_id = '';
 /**
  * Log out delivery driver.
 */
-if ( 'logout' === $lddfw_action ) {
+if ( 'logout' === $lddfw_screen ) {
     LDDFW_Login::lddfw_logout();
 }
 /**
@@ -128,7 +128,7 @@ if ( 'logout' === $lddfw_action ) {
 */
 
 if ( !is_user_logged_in() ) {
-    $lddfw_content = $lddfw_screen->lddfw_home();
+    $lddfw_content = $lddfw_screens->lddfw_home();
 } else {
     // Check if user is a delivery driver.
     $lddfw_user = wp_get_current_user();
@@ -137,7 +137,7 @@ if ( !is_user_logged_in() ) {
         LDDFW_Login::lddfw_logout();
         // User is not a delivery driver.
         $lddfw_user_is_driver = 0;
-        $lddfw_content = $lddfw_screen->lddfw_home();
+        $lddfw_content = $lddfw_screens->lddfw_home();
     } else {
         // User is a delivery driver.
         // Set global variables.
@@ -177,23 +177,23 @@ if ( !is_user_logged_in() ) {
         /**
          * Drivers screens.
          */
-        if ( 'dashboard' === $lddfw_action ) {
-            $lddfw_content = $lddfw_screen->lddfw_dashboard_screen( $lddfw_driver_id );
+        if ( 'dashboard' === $lddfw_screen ) {
+            $lddfw_content = $lddfw_screens->lddfw_dashboard_screen( $lddfw_driver_id );
         }
-        if ( 'out_for_delivery' === $lddfw_action ) {
-            $lddfw_content = $lddfw_screen->lddfw_out_for_delivery_screen( $lddfw_driver_id );
+        if ( 'out_for_delivery' === $lddfw_screen ) {
+            $lddfw_content = $lddfw_screens->lddfw_out_for_delivery_screen( $lddfw_driver_id );
         }
-        if ( 'failed_delivery' === $lddfw_action ) {
-            $lddfw_content = $lddfw_screen->lddfw_failed_delivery_screen( $lddfw_driver_id );
+        if ( 'failed_delivery' === $lddfw_screen ) {
+            $lddfw_content = $lddfw_screens->lddfw_failed_delivery_screen( $lddfw_driver_id );
         }
-        if ( 'delivered' === $lddfw_action ) {
-            $lddfw_content = $lddfw_screen->lddfw_delivered_screen( $lddfw_driver_id );
+        if ( 'delivered' === $lddfw_screen ) {
+            $lddfw_content = $lddfw_screens->lddfw_delivered_screen( $lddfw_driver_id );
         }
-        if ( 'assign_to_driver' === $lddfw_action ) {
-            $lddfw_content = $lddfw_screen->lddfw_assign_to_driver_screen( $lddfw_driver_id );
+        if ( 'assign_to_driver' === $lddfw_screen ) {
+            $lddfw_content = $lddfw_screens->lddfw_assign_to_driver_screen( $lddfw_driver_id );
         }
-        if ( 'order' === $lddfw_action && '' !== $lddfw_order_id ) {
-            $lddfw_content = $lddfw_screen->lddfw_order_screen( $lddfw_driver_id );
+        if ( 'order' === $lddfw_screen && '' !== $lddfw_order_id ) {
+            $lddfw_content = $lddfw_screens->lddfw_order_screen( $lddfw_driver_id );
         }
     }
 
@@ -202,6 +202,7 @@ if ( !is_user_logged_in() ) {
 ?>
 <html>
 <head>
+<meta name="robots" content="noindex" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="<?php 
 echo  esc_url( plugins_url() . '/' . LDDFW_FOLDER . '/public/images/favicon-32x32.png?v=1.1' ) ;
@@ -212,32 +213,23 @@ echo  esc_url( plugins_url() . '/' . LDDFW_FOLDER . '/public/images/favicon-32x3
  */
 wp_head();
 ?>
-<script>
-		var lddfw_driver_id    = "<?php 
-echo  esc_js( $lddfw_driver_id ) ;
-?>";
-		var lddfw_ajax_url 	   = "<?php 
-echo  esc_url( admin_url( 'admin-ajax.php' ) ) ;
-?>";
-		var lddfw_confirm_text = "<?php 
-echo  esc_js( __( 'Are you sure?', 'lddfw' ) ) ;
-?>";
-		var lddfw_nonce 	   = "<?php 
-echo  esc_js( wp_create_nonce( 'lddfw-nonce' ) ) ;
-?>";
-		var lddfw_hour_text    = "<?php 
-echo  esc_js( __( 'hour', 'lddfw' ) ) ;
-?>";
-		var lddfw_hours_text   = "<?php 
-echo  esc_js( __( 'hours', 'lddfw' ) ) ;
-?>";
-		var lddfw_mins_text    = "<?php 
-echo  esc_js( __( 'mins', 'lddfw' ) ) ;
-?>";
-</script>
+
+<?php 
+echo  '<script>
+	var lddfw_driver_id = "' . esc_js( $lddfw_driver_id ) . '";
+	var lddfw_ajax_url = "' . esc_url( admin_url( 'admin-ajax.php' ) ) . '";
+	var lddfw_confirm_text = "' . esc_js( __( 'Are you sure?', 'lddfw' ) ) . '";
+	var lddfw_nonce = "' . esc_js( wp_create_nonce( 'lddfw-nonce' ) ) . '";
+	var lddfw_hour_text = "' . esc_js( __( 'hour', 'lddfw' ) ) . '";
+	var lddfw_hours_text = "' . esc_js( __( 'hours', 'lddfw' ) ) . '";
+	var lddfw_mins_text = "' . esc_js( __( 'mins', 'lddfw' ) ) . '";
+	var lddfw_dates = "' . esc_js( $lddfw_dates ) . '";
+</script>' ;
+?>
+
 </head>
 <body>
-	<div id = 'lddfw_page' >
+	<div id = "lddfw_page" >
 		<?php 
 echo  $lddfw_content ;
 ?>

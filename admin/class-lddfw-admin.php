@@ -148,7 +148,7 @@ class LDDFW_Admin
                                     $order->update_status( $out_for_delivery_status, __( 'The delivery driver changed the order status.', 'lddfw' ) );
                                     $order->save();
                                     $result = 1;
-                                    $error = "<div class='alert alert-success alert-dismissible fade show'>" . __( 'Orders successfully marked as out of delivery.', 'lddfw' ) . "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div> <a id='view_out_of_delivery_orders_button' href='" . lddfw_drivers_page_url() . "lddfw_action=out_for_delivery'  class='btn btn-lg btn-block btn-primary'>" . __( 'View out of delivery orders', 'lddfw' ) . "</a>";
+                                    $error = '<div class="alert alert-success alert-dismissible fade show">' . __( 'Orders successfully marked as out of delivery.', 'lddfw' ) . '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div> <a id="view_out_of_delivery_orders_button" href="' . lddfw_drivers_page_url( 'lddfw_screen=out_for_delivery' ) . '"  class="btn btn-lg btn-block btn-primary">' . __( 'View out of delivery orders', 'lddfw' ) . '</a>';
                                 }
                             
                             }
@@ -202,7 +202,7 @@ class LDDFW_Admin
                             }
                         }
                         $result = 1;
-                        $error = __( 'Orders successfully assigned to you', 'lddfw' ) . ' <a id=\'view_assigned_orders_button\' href=\'' . lddfw_drivers_page_url() . 'lddfw_action=assign_to_driver\'  class=\'btn btn-block btn-primary\'>' . __( 'View assigned orders', 'lddfw' ) . '</a>';
+                        $error = __( 'Orders successfully assigned to you', 'lddfw' ) . ' <a id=\'view_assigned_orders_button\' href=\'' . lddfw_drivers_page_url( 'lddfw_screen=assign_to_driver' ) . '\'  class=\'btn btn-block btn-primary\'>' . __( 'View assigned orders', 'lddfw' ) . '</a>';
                     } else {
                         $error = __( 'Please choose the orders.', 'lddfw' );
                     }
@@ -436,36 +436,20 @@ class LDDFW_Admin
         if ( get_option( 'lddfw_processing_status', true ) === 'wc-' . $status_to ) {
         }
         if ( get_option( 'lddfw_out_for_delivery_status', '' ) === 'wc-' . $status_to ) {
-            // Sent email template only to delivery guy status.
-            
-            if ( 'wc-out-for-delivery' === 'wc-' . $status_to ) {
-                WC_Emails::instance();
-                do_action( 'lddfw_out_for_delivery_email_notification', $order_id );
-            }
-        
         }
         // Update delivered data.
+        
         if ( get_option( 'lddfw_delivered_status', '' ) === 'wc-' . $status_to ) {
-            update_post_meta( $order_id, 'lddfw_delivered_date', gmdate( 'Y-m-d H:i:s' ) );
+            $order_driverid = $order->get_meta( 'lddfw_driverid' );
+            if ( '' != $order_driverid ) {
+                update_post_meta( $order_id, 'lddfw_delivered_date', gmdate( 'Y-m-d H:i:s' ) );
+            }
         }
+        
         // Update failed attempt data.
         if ( get_option( 'lddfw_failed_attempt_status', '' ) === 'wc-' . $status_to ) {
             update_post_meta( $order_id, 'lddfw_failed_attempt_date', gmdate( 'Y-m-d H:i:s' ) );
         }
-        // Sent email template only to delivery guy plugin status (wc-delivered,wc-failed-delivery).
-        
-        if ( 'wc-delivered' === 'wc-' . $status_to ) {
-            WC_Emails::instance();
-            do_action( 'lddfw_delivered_email_notification', $order_id );
-            do_action( 'lddfw_delivered_email_admin_notification', $order_id );
-        }
-        
-        
-        if ( 'wc-failed-delivery' === 'wc-' . $status_to ) {
-            WC_Emails::instance();
-            do_action( 'lddfw_failed_delivery_email_notification', $order_id );
-        }
-    
     }
     
     /**
@@ -483,7 +467,6 @@ class LDDFW_Admin
             
             if ( 'wc-processing' === $key ) {
                 $lddfw_statuses['wc-out-for-delivery'] = __( 'Out for Delivery', 'lddfw' );
-                $lddfw_statuses['wc-delivered'] = __( 'Delivered', 'lddfw' );
                 $lddfw_statuses['wc-failed-delivery'] = __( 'Failed Delivery Attempt', 'lddfw' );
             }
         
@@ -506,14 +489,6 @@ class LDDFW_Admin
             'show_in_admin_all_list'    => true,
             'exclude_from_search'       => false,
             'label_count'               => _n_noop( 'Out for Delivery <span class="count">(%s)</span>', 'Out for Delivery <span class="count">(%s)</span>', 'lddfw' ),
-        ) );
-        register_post_status( 'wc-delivered', array(
-            'label'                     => __( 'Delivered', 'lddfw' ),
-            'public'                    => true,
-            'show_in_admin_status_list' => true,
-            'show_in_admin_all_list'    => true,
-            'exclude_from_search'       => false,
-            'label_count'               => _n_noop( 'Delivered <span class="count">(%s)</span>', 'Delivered <span class="count">(%s)</span>', 'lddfw' ),
         ) );
         register_post_status( 'wc-failed-delivery', array(
             'label'                     => __( 'Failed Delivery Attempt', 'lddfw' ),
@@ -549,6 +524,9 @@ class LDDFW_Admin
         register_setting( 'lddfw', 'lddfw_failed_attempt_status' );
         register_setting( 'lddfw', 'lddfw_processing_status' );
         register_setting( 'lddfw', 'lddfw_delivery_drivers_page' );
+        // Admin notices
+        add_action( 'admin_notices', array( $this, 'lddfw_admin_notices' ) );
+        // Settings
         add_settings_section(
             'lddfw_setting_section',
             '',
@@ -992,11 +970,6 @@ class LDDFW_Admin
 			<h1><?php 
         echo  esc_html( __( 'General Settings', 'lddfw' ) ) ;
         ?></h1>
-			<a target="_blank" href='<?php 
-        echo  lddfw_drivers_page_url() ;
-        ?>'><?php 
-        echo  esc_html( __( 'Click here for Driver Dashboard', 'lddfw' ) ) ;
-        ?></a>
 			<?php 
         settings_fields( 'lddfw' );
         do_settings_sections( 'lddfw' );
@@ -1109,37 +1082,41 @@ class LDDFW_Admin
      */
     public function lddfw_user_fields( $user )
     {
-        wp_nonce_field( basename( __FILE__ ), 'lddfw_nonce_user' );
-        ?>
-		<h3><?php 
-        echo  esc_html( __( 'Driver info', 'lddfw' ) ) ;
-        ?></h3>
-		<table class="form-table">
-			<tr>
-				<th><label for="lddfw_driver_availability"><?php 
-        echo  esc_html( __( 'Driver availability', 'lddfw' ) ) ;
-        ?></label></th>
-				<td>
-					<select name="lddfw_driver_availability" id="lddfw_driver_availability">
-						<option value="0"><?php 
-        echo  esc_html( __( 'Unavailable', 'lddfw' ) ) ;
-        ?></option>
-						<?php 
-        $selected = ( get_user_meta( $user->ID, 'lddfw_driver_availability', true ) === '1' ? 'selected' : '' );
-        ?>
-						<option <?php 
-        echo  esc_attr( $selected ) ;
-        ?> value="1"><?php 
-        echo  esc_html( __( 'Available', 'lddfw' ) ) ;
-        ?></option>
-					</select>
-					<p class="lddfw_description"><?php 
-        echo  esc_html( __( 'Driver availability for working today.', 'lddfw' ) ) ;
-        ?></p>
-				</td>
-			</tr>
-		</table>
-		<?php 
+        
+        if ( in_array( 'driver', (array) $user->roles, true ) ) {
+            wp_nonce_field( basename( __FILE__ ), 'lddfw_nonce_user' );
+            ?>
+			<h3><?php 
+            echo  esc_html( __( 'Delivery Driver Info', 'lddfw' ) ) ;
+            ?></h3>
+			<table class="form-table">
+				<tr>
+					<th><label for="lddfw_driver_availability"><?php 
+            echo  esc_html( __( 'Delivery driver availability', 'lddfw' ) ) ;
+            ?></label></th>
+					<td>
+						<select name="lddfw_driver_availability" id="lddfw_driver_availability">
+							<option value="0"><?php 
+            echo  esc_html( __( 'Unavailable', 'lddfw' ) ) ;
+            ?></option>
+							<?php 
+            $selected = ( get_user_meta( $user->ID, 'lddfw_driver_availability', true ) === '1' ? 'selected' : '' );
+            ?>
+							<option <?php 
+            echo  esc_attr( $selected ) ;
+            ?> value="1"><?php 
+            echo  esc_html( __( 'Available', 'lddfw' ) ) ;
+            ?></option>
+						</select>
+						<p class="lddfw_description"><?php 
+            echo  esc_html( __( 'The delivery driver availability for work today.', 'lddfw' ) ) ;
+            ?></p>
+					</td>
+				</tr>
+			</table>
+			<?php 
+        }
+    
     }
     
     /**
@@ -1154,54 +1131,6 @@ class LDDFW_Admin
         wp_nonce_field( basename( __FILE__ ), 'lddfw_nonce_bulk_orders' );
         $actions['assign_a_driver'] = __( 'Assign orders to the delivery driver', 'lddfw' );
         return $actions;
-    }
-    
-    /**
-     * Plugin custom email class
-     *
-     * @since 1.0.0
-     * @param array $email_classes email classes.
-     * @return array
-     */
-    public function lddfw_woocommerce_emails( $email_classes )
-    {
-        // Add the email class to the list of email classes that WooCommerce loads.
-        $email_classes['LDDFW_Out_For_Delivery_Email'] = (include plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-lddfw-out-for-delivery-email.php');
-        $email_classes['LDDFW_Delivered_Email'] = (include plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-lddfw-delivered-email.php');
-        $email_classes['LDDFW_Failed_Delivery_Email'] = (include plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-lddfw-failed-delivery-email.php');
-        $email_classes['LDDFW_Delivered_Email_Admin'] = (include plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-lddfw-delivered-email-admin.php');
-        $email_classes['LDDFW_Assigned_Order_Email_Driver'] = (include plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-lddfw-assigned-order-email-driver.php');
-        return $email_classes;
-    }
-    
-    /**
-     * Plugin locate template
-     *
-     * @param array  $template template data array.
-     * @param string $template_name template name.
-     * @param string $template_path template path.
-     * @return string
-     */
-    public function lddfw_woocommerce_locate_template( $template, $template_name, $template_path )
-    {
-        global  $woocommerce ;
-        $_template = $template;
-        if ( !$template_path ) {
-            $template_path = $woocommerce->template_url;
-        }
-        $plugin_path = plugin_dir_path( dirname( __FILE__ ) ) . 'woocommerce/';
-        // Look within passed path within the theme - this is priority.
-        $template = locate_template( array( $template_path . $template_name, $template_name ) );
-        // Modification: Get the template from this plugin, if it exists.
-        if ( !$template && file_exists( $plugin_path . $template_name ) ) {
-            $template = $plugin_path . $template_name;
-        }
-        // Use default template.
-        if ( !$template ) {
-            $template = $_template;
-        }
-        // Return what we found.
-        return $template;
     }
     
     /**
@@ -1240,6 +1169,12 @@ class LDDFW_Admin
             foreach ( $post_ids as $post_id ) {
                 // assign an order to driver.
                 $driver->assign_delivery_driver( $post_id, $driver_id, 'store' );
+                if ( '' === $driver_id ) {
+                    /**
+                     * Delete if none
+                     */
+                    delete_post_meta( $post_id, 'lddfw_driverid' );
+                }
                 $processed_ids[] = $post_id;
                 $redirect_to = add_query_arg( array(
                     'processed_count' => count( $processed_ids ),
@@ -1296,10 +1231,31 @@ class LDDFW_Admin
         }
         ?>
 		</select>
-		<p class="lddfw_description" id="lddfw-gooogle-api-key-description"><?php 
-        echo  esc_html( __( 'The delivery driver page.', 'lddfw' ) ) ;
-        ?></p>
+		<p class="lddfw_description" id="lddfw-gooogle-api-key-description">
 		<?php 
+        echo  esc_html( __( 'The link below is the delivery driver\'s Mobile-Friendly panel URL. The delivery drivers can access it from their mobile phones.', 'lddfw' ) ) ;
+        ?>
+		<br>
+		<a target="_blank" href='<?php 
+        echo  lddfw_drivers_page_url( '' ) ;
+        ?>'><?php 
+        echo  lddfw_drivers_page_url( '' ) ;
+        ?></a>
+		<br>
+		<?php 
+        echo  esc_html( __( 'Please note that if you are visiting the driver\'s panel as an administrator you will log out from the admin panel.', 'lddfw' ) ) ;
+        ?>
+		</p>
+		<?php 
+    }
+    
+    /**
+     * Admin notices function.
+     *
+     * @since 1.0.0
+     */
+    public function lddfw_admin_notices()
+    {
     }
 
 }

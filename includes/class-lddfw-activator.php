@@ -60,7 +60,7 @@ class LDDFW_Activator
         
         // Set default settings options.
         add_option( 'lddfw_out_for_delivery_status', 'wc-out-for-delivery' );
-        add_option( 'lddfw_delivered_status', 'wc-delivered' );
+        add_option( 'lddfw_delivered_status', 'wc-completed' );
         add_option( 'lddfw_failed_attempt_status', 'wc-failed-delivery' );
         add_option( 'lddfw_processing_status', 'wc-processing' );
         add_option( 'lddfw_failed_delivery_reason_1', __( 'Refused by the recipient', 'lddfw' ) );

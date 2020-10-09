@@ -17,6 +17,11 @@ body {
     margin-bottom: 10px;
 }
 
+.lddfw_date_range {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
 .lddfw_box .lddfw_counter {
     border: 1px solid #f1f0f0;
     background: #f7f7f7;
@@ -309,15 +314,19 @@ label.lddfw_error {
     margin-bottom: 10px;
 }
 
-#lddfw_delivered_btn {
-    margin-bottom: 15px;
+#lddfw_orders_table .pagination {
+    margin: 0px;
 }
 
+#lddfw_delivered_btn,
+.lddfw_date_range,
 .lddfw_page form input,
 .lddfw_page form textarea,
 .lddfw_submit_btn,
 .lddfw_loading_btn,
-#lddfw_resend_button {
+#lddfw_resend_button,
+.lddfw_delivery_form .lddfw_btn,
+.lddfw_plain_route_wrap {
     margin-bottom: 15px;
 }
 
@@ -362,10 +371,6 @@ label.lddfw_error {
     margin-top: 40px;
 }
 
-.lddfw_delivery_form .lddfw_btn {
-    margin-top: 15px;
-}
-
 #lddfw_thankyou .lddfw_btn {
     margin-top: 20px;
 }
@@ -393,7 +398,7 @@ label.lddfw_error {
     position: fixed;
     top: 0px;
     left: 0px;
-    z-index: 1;
+    z-index: 999;
     padding-top: 70px;
 }
 
@@ -406,10 +411,6 @@ label.lddfw_error {
     border-top: 1px solid #dee2e6;
     box-shadow: 0px 0 10px rgba(216, 216, 216, 0.6);
     z-index: 99;
-}
-
-.lddfw_plain_route_wrap {
-    margin-bottom: 15px;
 }
 
 .lddfw_lightbox_close {
@@ -732,6 +733,7 @@ a.lddfw_closebtn {
 .lddfw_box.lddfw_no_orders {
     text-align: center;
     padding-top: 63px;
+    padding-bottom: 63px;
 }
 
 .lddfw_confirmation h2 {
