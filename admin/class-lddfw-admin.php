@@ -630,8 +630,8 @@ class LDDFW_Admin
 		<a href='#' data='[delivery_driver_last_name]'><?php 
         echo  esc_html( __( 'Delivery Driver Last Name', 'lddfw' ) ) ;
         ?></a> |
-		<a href='#' data='[delivery_driver_order_url]'><?php 
-        echo  esc_html( __( 'Delivery Driver Order URL', 'lddfw' ) ) ;
+		<a href='#' data='[delivery_driver_page]'><?php 
+        echo  esc_html( __( 'Delivery Driver Page', 'lddfw' ) ) ;
         ?></a> |
 		<a href='#' data='[store_name]'><?php 
         echo  esc_html( __( 'Store Name', 'lddfw' ) ) ;

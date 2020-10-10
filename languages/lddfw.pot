@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: BUG-EMAIL-ADDR <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: yyyy-mm-dd hh:mm+0000\n"
-"PO-Revision-Date: 2020-10-10 16:27+0200\n"
+"PO-Revision-Date: 2020-10-10 20:39+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -200,7 +200,7 @@ msgid "Delivery Driver Last Name"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:832
-msgid "Delivery Driver Order URL"
+msgid "Delivery Driver Page"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:833
@@ -315,130 +315,134 @@ msgstr ""
 msgid "SMS to customer when order is out for delivery"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:881 admin/class-lddfw-admin.php:960
+#: admin/class-lddfw-admin.php:881 admin/class-lddfw-admin.php:962
 msgid "SMS template"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:905
-msgid "Enabling self assigns delivery drivers."
+#: admin/class-lddfw-admin.php:882 admin/class-lddfw-admin.php:963
+msgid "Default template"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:907
+msgid "Enabling self assigns delivery drivers."
+msgstr ""
+
+#: admin/class-lddfw-admin.php:909
 msgid ""
 "Self assigns delivery drivers with each order that marked with the "
 "processing status."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:922
+#: admin/class-lddfw-admin.php:924
 msgid "Enable delivery driver's application."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:924
+#: admin/class-lddfw-admin.php:926
 msgid "Driver's can apply to become a delivery driver"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:939
+#: admin/class-lddfw-admin.php:941
 msgid "Enabling auto-assigns delivery drivers."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:941
+#: admin/class-lddfw-admin.php:943
 msgid ""
 "Auto-assign available delivery drivers with each order that marked processing"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:957
+#: admin/class-lddfw-admin.php:959
 msgid "SMS to the delivery driver when a new order is assigned"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:980
+#: admin/class-lddfw-admin.php:984
 msgid ""
 "Phone number to send SMS should be in the following format (+)(country code)"
 "(area code)(phone number) e.g +15024658206"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1014
+#: admin/class-lddfw-admin.php:1018
 msgid ""
 "These are driver choices when delivery fails, to delete an option leave "
 "blank."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1023
+#: admin/class-lddfw-admin.php:1027
 msgid ""
 "These are driver choices of drop off locations, to delete an option leave "
 "blank."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1062
+#: admin/class-lddfw-admin.php:1066
 msgid "Drivers can call this number if they have questions about orders."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1074
+#: admin/class-lddfw-admin.php:1078
 msgid "To use the Google Maps JavaScript API you must have an API key."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1098
+#: admin/class-lddfw-admin.php:1102
 msgid ""
 "On this status orders are ready for delivery, the delivery driver can claim "
 "orders or its already assigned to him."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1122
+#: admin/class-lddfw-admin.php:1126
 msgid "The delivery driver attempted to deliver but failed."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1146
+#: admin/class-lddfw-admin.php:1150
 msgid "The shipment was delivered successfully."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1169
+#: admin/class-lddfw-admin.php:1173
 msgid "The delivery driver is about to deliver the shipment."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1179
+#: admin/class-lddfw-admin.php:1183
 msgid "This Section Description"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1190
+#: admin/class-lddfw-admin.php:1194
 msgid "General Settings"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1244
+#: admin/class-lddfw-admin.php:1248
 msgid "Driver"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1295
+#: admin/class-lddfw-admin.php:1299
 msgid "Delivery Driver Info"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1298
+#: admin/class-lddfw-admin.php:1302
 msgid "Delivery driver availability"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1301 includes/class-lddfw-screens.php:226
+#: admin/class-lddfw-admin.php:1305 includes/class-lddfw-screens.php:226
 #: includes/class-lddfw-screens.php:234
 msgid "Unavailable"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1303 includes/class-lddfw-screens.php:226
+#: admin/class-lddfw-admin.php:1307 includes/class-lddfw-screens.php:226
 #: includes/class-lddfw-screens.php:234
 msgid "Available"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1305
+#: admin/class-lddfw-admin.php:1309
 msgid "The delivery driver availability for work today."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1324
+#: admin/class-lddfw-admin.php:1328
 msgid "Assign orders to the delivery driver"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1488
+#: admin/class-lddfw-admin.php:1492
 msgid ""
 "The link below is the delivery driver's Mobile-Friendly panel URL. The "
 "delivery drivers can access it from their mobile phones."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1494
+#: admin/class-lddfw-admin.php:1498
 msgid ""
 "Please note that if you are visiting the driver's panel as an administrator "
 "you will log out from the admin panel."
@@ -1103,12 +1107,12 @@ msgstr ""
 msgid "Failed to send SMS, the SMS text is missing."
 msgstr ""
 
-#: includes/class-lddfw-sms.php:311
+#: includes/class-lddfw-sms.php:310
 #, php-format
 msgid "SMS successfully has been sent to %s"
 msgstr ""
 
-#: includes/class-lddfw-sms.php:314
+#: includes/class-lddfw-sms.php:313
 #, php-format
 msgid "Failed to send SMS to %s "
 msgstr ""

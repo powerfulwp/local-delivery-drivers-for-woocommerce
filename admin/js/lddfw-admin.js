@@ -22,7 +22,20 @@ jQuery(document).ready(
             }
         );
 
-        $(".copy_tags_to_textarea a").click(
+
+
+        $(".lddfw_copy_template_to_textarea").click(
+            function() {
+                var textarea_id = $(this).parent().parent().find("textarea").attr("id");
+
+                var text = $(this).attr("data");
+                $("#" + textarea_id).val(text);
+
+                return false;
+            }
+        );
+
+        $(".lddfw_copy_tags_to_textarea a").click(
             function() {
                 var textarea_id = $(this).parent().attr("data-textarea");
                 var text = $("#" + textarea_id).val() + $(this).attr("data");

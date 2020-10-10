@@ -71,6 +71,8 @@ class LDDFW_Activator
         add_option( 'lddfw_delivery_dropoff_1', __( 'Delivered to the customer', 'lddfw' ) );
         add_option( 'lddfw_delivery_dropoff_2', __( 'Front door', 'lddfw' ) );
         add_option( 'lddfw_delivery_dropoff_3', __( 'Neighbor', 'lddfw' ) );
+        add_option( 'lddfw_sms_assign_to_driver_template', 'Hello [delivery_driver_first_name], order #[order_id] with [store_name] has been assigned to you. [delivery_driver_page]' );
+        add_option( 'lddfw_sms_out_for_delivery_template', 'Hello [billing_first_name], status of your order #[order_id] with [store_name] has been changed to [order_status].' );
     }
 
 }
