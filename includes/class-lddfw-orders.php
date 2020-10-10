@@ -313,8 +313,8 @@ class LDDFW_Orders {
 							<span class="lddfw_index lddfw_counter">'.$counter.'</span>
 							<input style="display:none" orderid="'.$orderid.'" type="checkbox" value="' . str_replace( "'", '', $shipping_address_1 . ' ' . $shipping_city ) . '" class="lddfw_address_chk">
 							<a class="lddfw_order_number" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '"><b>' . esc_html( __( 'Order #', 'lddfw' ) ) . $orderid.'</b></a>
-							<a class="lddfw_order_address" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">'. $shippingaddress .'<br> '.$shipping_city . $shipping_state . '</a>
-							<a class="lddfw_order_distance" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">' . esc_html( __( 'Distance', 'lddfw' ) ) . $distance .'</a>
+							<a class="lddfw_order_address" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">'. $shippingaddress .'<br> '.$shipping_city . ' ' . $shipping_state . '</a>
+							<a class="lddfw_order_distance" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">' . esc_html( __( 'Distance: ', 'lddfw' ) ) . $distance .'</a>
 							<div class="lddfw_handle_column"  style="display:none"><button  class="lddfw_sort-up btn btn-outline-secondary "><i class="fas fa-chevron-up"></i></button><button class="btn btn-outline-secondary lddfw_sort-down"><i class="fas fa-chevron-down"></i></button></div>
 						</div>
 					</div>
@@ -391,12 +391,12 @@ class LDDFW_Orders {
 						<div class="col-12">
 							<span class="lddfw_counter">'.$counter.'</span>
 							<a class="lddfw_order_number line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '"><b>' . esc_html( __( 'Order #', 'lddfw' ) ) . $orderid.'</b></a>
-							<a class="lddfw_order_address line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">'.$shippingaddress .'<br>'. $shipping_city . $shipping_state.'</a>';
+							<a class="lddfw_order_address line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">'.$shippingaddress .'<br>'. $shipping_city  . ' ' . $shipping_state.'</a>';
 								if ( '' !== $distance ) {
-									$html .= '<a class=\'lddfw_order_distance lddfw_line\' href=\'' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid )  . '\'>' . esc_html( __( 'Distance', 'lddfw' ) ) . $distance . '</a>';
+									$html .= '<a class=\'lddfw_order_distance lddfw_line\' href=\'' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid )  . '\'>' . esc_html( __( 'Distance: ', 'lddfw' ) ) . $distance . '</a>';
 								}
 								if ( '' !== $delivered_date ) {
-									$html .= '<a class=\'lddfw_order_failed_date lddfw_line\' href=\'' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid )  . '\'>Failed Date : ' . date( $date_format . ' ' . $time_format, strtotime( $failed_date ) ) . '</a>';
+									$html .= '<a class=\'lddfw_order_failed_date lddfw_line\' href=\'' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid )  . '\'>' . esc_html( __( 'Failed Date: ', 'lddfw' ) ) . date( $date_format . ' ' . $time_format, strtotime( $failed_date ) ) . '</a>';
 								}
 								$html .= '<input style="display:none" orderid="'.$orderid.'" type="checkbox" value="' . str_replace( "'", '', $shipping_address_1 . ' ' . $shipping_city ) . '" class="lddfw_address_chk">
 						</div>
@@ -535,8 +535,8 @@ class LDDFW_Orders {
 					<div class="row">
 						<div class="col-12">
 							<div class="custom-control custom-checkbox mr-sm-2 lddfw_order_checkbox">
-								<input value="$orderid" type="checkbox" class="custom-control-input" name="lddfw_order_id" id="lddfw_chk_order_id_$counter">
-								<label class="custom-control-label" for="lddfw_chk_order_id_$counter"></label>
+								<input value="'.$orderid.'" type="checkbox" class="custom-control-input" name="lddfw_order_id" id="lddfw_chk_order_id_'.$counter.'">
+								<label class="custom-control-label" for="lddfw_chk_order_id_'.$counter.'"></label>
 							</div>
 							<div class="lddfw_order">
 								<div class="lddfw_order_number"><b>' . esc_html( __( 'Order #', 'lddfw' ) ) . $orderid . '</b></div>
@@ -651,10 +651,10 @@ class LDDFW_Orders {
 							<a class="lddfw_order_number lddfw_line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '"><b>' . esc_html( __( 'Order #', 'lddfw' ) ) . $orderid.'</b></a>
 							<a class="lddfw_order_address lddfw_line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">'.$shippingaddress .'<br>'. $shipping_city. ' ' .$shipping_state.'</a>';
 							if ( '' !== $distance ){
-								$html .= '<a class="lddfw_order_distance lddfw_line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">' . esc_html( __( 'Distance', 'lddfw' ) ) . $distance . '</a>';
+								$html .= '<a class="lddfw_order_distance lddfw_line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">' . esc_html( __( 'Distance: ', 'lddfw' ) ) . $distance . '</a>';
 							}
 							if ( '' !== $delivered_date  ){
-								$html .= '<a class="lddfw_order_delivered_date lddfw_line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">' . esc_html( __( 'Delivered Date', 'lddfw' ) ) . ' : ' . date( $date_format . ' ' . $time_format, strtotime( $delivered_date ) ) . '</a>';
+								$html .= '<a class="lddfw_order_delivered_date lddfw_line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">' . esc_html( __( 'Delivered Date: ', 'lddfw' ) ) . date( $date_format . ' ' . $time_format, strtotime( $delivered_date ) ) . '</a>';
 							}
 							$html .= '<input style="display:none" orderid="'.$orderid.'" type="checkbox" value="' . str_replace( "'", '', $shipping_address_1 . ' ' . $shipping_city ) . '" class="address_chk">
 						</div>

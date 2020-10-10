@@ -78,7 +78,7 @@ class LDDFW_Screens
 					<h3>' . $lddfw_user->first_name . ' ' . $lddfw_user->last_name . '</h3>
 				</span>
 				<div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="' . lddfw_drivers_page_url( "" ) . '"><i class="fas fa-home"></i> ' . esc_html( __( "Dashboard", 'lddfw' ) ) . '</a>
+				<a class="dropdown-item" href="' . lddfw_drivers_page_url( "lddfw_screen=dashboard" ) . '"><i class="fas fa-home"></i> ' . esc_html( __( "Dashboard", 'lddfw' ) ) . '</a>
 				<div class="dropdown-divider"></div>';
         $html .= '
 					<a class="dropdown-item" href="' . lddfw_drivers_page_url( "lddfw_screen=assign_to_driver" ) . '"><i class="fas fa-angle-double-right"></i> ' . esc_html( __( 'Assign to driver', 'lddfw' ) ) . ' (' . $lddfw_assign_to_driver_counter . ')</a>

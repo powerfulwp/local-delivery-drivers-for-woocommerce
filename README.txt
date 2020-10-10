@@ -1,7 +1,7 @@
 === Local Delivery Drivers for WooCommerce ===
 Contributors: powerfulwp
 Donate link: https://powerfulwp.com
-Tags: delivery, courier, drivers, woocommerce
+Tags: delivery, courier, drivers, woocommerce, shipping
 Requires at least: 4.5
 Tested up to: 5.5.1
 Stable tag: 5.5.1
@@ -17,6 +17,52 @@ Improve the way you deliver, assign drivers to orders.
 The Local Delivery Drivers for WooCommerce plugin let you assign orders to delivery drivers,
 with Mobile-Friendly Panel delivery drivers can manage their deliveries.
 
+## Assign Orders To Delivery Drivers
+Admin can assign orders to the delivery drivers on the admin order page or by bulk action on the admin orders page.
+
+## Delivery Drivers Mobile-Friendly Panel
+An app-like experience for delivery drivers to manage all deliveries from their mobile.
+* Delivery drivers can update order statuses to delivered or failed attempts and leave comments on orders.
+* The delivery driver can easily call the customer or the dispatch.
+
+## Delivery Driver Order Page
+Fully order page in the delivery driver panel.
+* Delivery drivers can easily mark order status as delivered or not delivered.
+* The delivery driver can view all order details including billing address, shipping address, items, comments, and more.
+
+## Update order status
+Delivery drivers can easily update the order status to delivered or failed delivery and add comments to order.
+
+## 2 New Delivery Statuses For Your WooCommerce Orders
+* Failed Delivery attempt status - The delivery driver attempted to deliver but failed.
+* Out for delivery status - The delivery driver is about to deliver the shipment.
+
+## Premium Features
+
+[Local Delivery Drivers for WooCommerce Premium](https://powerfulwp.com/local-delivery-drivers-for-woocommerce-premium//) includes the following additional features:
+
+## Assign Orders To Delivery Drivers.
+* Auto-assign available delivery drivers with orders.
+* Delivery drivers can claim orders
+
+## Route Planning and Navigation.
+The delivery driver can plan his route and navigate to his destination.
+* Optimize route by distance - Delivery Drivers can optimize their routes by distance and get a short route to the destination.
+* Plan route manually - Delivery drivers can plan their route manually to get the best route they want.
+* Destination navigation
+* Next delivery - Once Delivery drivers complete their delivery they can easily navigate to the next destination in their route.
+
+## SMS & Emails Notifications.
+Delivery drivers and customers are notified by emails and SMS,
+SMS notifications are sending with twilio SMS provider.
+* SMS to the driver - SMS to the delivery driver when a new order is assigned.
+* SMS to the customer - SMS to customer when order is out for delivery.
+* Email to the driver - Email to the delivery driver when a new order is assigned.
+* Email to the customer - Email to customer when order is out for delivery and on failed delivery attempt.
+
+## Delivery driver's application
+Delivery drivers can apply to become a delivery driver.
+
 == Installation ==
 
 1. Make a backup of your website and database
@@ -24,7 +70,6 @@ with Mobile-Friendly Panel delivery drivers can manage their deliveries.
 1. Upload the plugin to the wp-content/plugins directory,
 1. Go to “plugins” in your WordPress admin, then click activate.
 1. You will now see the Delivery Driver option on your left navigation bar.
-
 
 == Frequently Asked Questions ==
 
@@ -35,7 +80,8 @@ Not at all, this plugin is very simple to use.
 == Screenshots ==
 
 1. Delivery Drivers Mobile-Friendly Panel.
-
+1. Delivery Drivers Mobile-Friendly Panel.
+1. Delivery Drivers Mobile-Friendly Panel.
 
 == Changelog ==
 

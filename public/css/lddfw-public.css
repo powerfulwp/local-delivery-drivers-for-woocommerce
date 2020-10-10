@@ -77,6 +77,14 @@ body {
     background-color: #cce5ff;
 }
 
+#lddfw_next_delivery .btn {
+    margin-top: 10px;
+}
+
+#lddfw_next_delivery {
+    margin-bottom: 15px;
+}
+
 .lddfw_handle_column .lddfw_sort-up {
     clear: both;
     display: block;
@@ -274,7 +282,7 @@ body::after {
     font-weight: bold;
 }
 
-label.lddfw_error {
+label.error {
     margin-top: -15px;
     color: #ce0404;
 }
@@ -472,7 +480,8 @@ label.lddfw_error {
 }
 
 #lddfw_order p,
-#lddfw_out_for_delivery_button_loading {
+#lddfw_out_for_delivery_button_loading,
+#lddfw_claim_orders_button_loading {
     margin: 0px;
 }
 
@@ -583,7 +592,7 @@ label.lddfw_error {
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 2;
+    z-index: 999;
     top: 0;
     left: 0;
     background-color: #ffffff;
@@ -601,7 +610,7 @@ label.lddfw_error {
     bottom: 0px;
 }
 
-#lddfw_directions-panel-listing .lddfw_fa-map-marker {
+#lddfw_directions-panel-listing .fa-map-marker {
     font-size: 26px;
     color: #eb4335;
     position: absolute;

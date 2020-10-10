@@ -512,12 +512,10 @@
             return false;
         }
     );
-    jQuery("#lddfw_orders_table .lddfw_box a").on(
-        "click",
-        function() {
-            jQuery(this).closest(".lddfw_box").addClass("lddfw_active");
-        }
-    );
+
+    jQuery("body").on("click", "#lddfw_orders_table .lddfw_box a", function() {
+        jQuery(this).closest(".lddfw_box").addClass("lddfw_active");
+    });
 
 
 

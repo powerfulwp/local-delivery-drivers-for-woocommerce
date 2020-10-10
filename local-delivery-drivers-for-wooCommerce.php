@@ -132,6 +132,7 @@ if ( !function_exists( 'lddfw_activate' ) ) {
     function lddfw_drivers_page_url( $params )
     {
         $link = get_page_link( LDDFW_PAGE_ID );
+        
         if ( '' !== $params ) {
             
             if ( strpos( $link, '?' ) !== false ) {
@@ -139,8 +140,10 @@ if ( !function_exists( 'lddfw_activate' ) ) {
             } else {
                 $link = esc_url( $link ) . '?' . $params;
             }
-        
+            
+            $link .= '&rnd=' . rand();
         }
+        
         return $link;
     }
     

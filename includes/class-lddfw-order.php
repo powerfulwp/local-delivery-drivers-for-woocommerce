@@ -201,7 +201,7 @@ class LDDFW_Order
 							</div>';
             if ( '' !== $billing_phone ) {
                 $html .= '	<div class="col-12 mt-1">
-								<span class="lddfw_label">' . esc_html( __( 'Phone', 'lddfw' ) ) . ':' . $billing_phone . '</span>
+								<span class="lddfw_label">' . esc_html( __( 'Phone', 'lddfw' ) ) . ': ' . $billing_phone . '</span>
 							</div>
 							<div class="col-12  mt-2">
 								<a class="btn btn-secondary btn-block " href="tel:$billing_phone"><i class="fas fa-phone-alt"></i> ' . esc_html( __( 'Call customer', 'lddfw' ) ) . '</a>
@@ -261,9 +261,8 @@ class LDDFW_Order
 			<div class="row">
 			<div class="col-12">
 			<i class="far fa-check-circle"></i>
-			<h1>' . esc_html( __( 'Thank you!', 'lddfw' ) ) . '</h1>
-			<div id="lddfw_next_delivery"></div>
-			<a class="btn btn-block btn-lg btn-secondary" href="' . lddfw_drivers_page_url( 'lddfw_screen=out_for_delivery' ) . '">' . esc_html( __( 'View deliveries', 'lddfw' ) ) . '</a>
+			<h1>' . esc_html( __( 'Thank you!', 'lddfw' ) ) . '</h1>';
+        $html .= '<a class="btn btn-block btn-lg btn-secondary" href="' . lddfw_drivers_page_url( 'lddfw_screen=out_for_delivery' ) . '">' . esc_html( __( 'View deliveries', 'lddfw' ) ) . '</a>
 			</div>
 			</div>
 			</form>
