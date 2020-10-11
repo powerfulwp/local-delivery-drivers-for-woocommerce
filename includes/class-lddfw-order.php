@@ -203,8 +203,8 @@ class LDDFW_Order
                 $html .= '	<div class="col-12 mt-1">
 								<span class="lddfw_label">' . esc_html( __( 'Phone', 'lddfw' ) ) . ': ' . $billing_phone . '</span>
 							</div>
-							<div class="col-12  mt-2">
-								<a class="btn btn-secondary btn-block " href="tel:$billing_phone"><i class="fas fa-phone-alt"></i> ' . esc_html( __( 'Call customer', 'lddfw' ) ) . '</a>
+							<div class="col-12 mt-2">
+								<a class="btn btn-secondary btn-block " href="tel:' . esc_attr( $billing_phone ) . '"><i class="fas fa-phone-alt"></i> ' . esc_html( __( 'Call customer', 'lddfw' ) ) . '</a>
 							</div>';
             }
             $html .= '</div>
