@@ -3,77 +3,75 @@ Contributors: powerfulwp
 Donate link: https://powerfulwp.com
 Tags: delivery, courier, drivers, woocommerce, shipping
 Requires at least: 4.5
+Requires PHP: 5.6
 Tested up to: 5.5.1
 Stable tag: 5.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Improve the way you deliver, assign drivers to orders.
+Improve the way you deliver, assign delivery drivers to orders.
 
 == Description ==
 
-## Local Delivery Drivers for WooCommerce
+## LOCAL DELIVERY DRIVERS FOR WOOCOMMERCE
+The Local Delivery Drivers for WooCommerce plugin let you assign delivery drivers to orders, and lets delivery drivers manage their deliveries with a mobile-friendly panel.
 
-The Local Delivery Drivers for WooCommerce plugin let you assign orders to delivery drivers,
-with Mobile-Friendly Panel delivery drivers can manage their deliveries.
+## NEW USER – DELIVERY DRIVER
+This plugin creates a new user role called delivery driver, once the delivery driver created you can update his availability for work and assign him to orders.
 
-## Assign Orders To Delivery Drivers
-Admin can assign orders to the delivery drivers on the admin order page or by bulk action on the admin orders page.
+## ASSIGN DELIVERY DRIVERS TO ORDERS
+Admin can assign delivery drivers to orders in the admin panel in two ways, one on the order page and second on the orders page with the bulk action.
 
-## Delivery Drivers Mobile-Friendly Panel
-An app-like experience for delivery drivers to manage all deliveries from their mobile.
+## 2 NEW DELIVERY STATUSES FOR YOUR WOOCOMMERCE ORDERS
+This plugin creates 2 new order statuses to manage the delivery process.
 
-* Delivery drivers can update order statuses to delivered or failed attempts and leave comments on orders.
+* Failed Delivery attempt status – The delivery driver attempted to deliver but failed.
+* Out for delivery status – The delivery driver is about to deliver the shipment.
 
-* The delivery driver can easily call the customer or the dispatch.
+## DELIVERY DRIVERS MOBILE-FRIENDLY PANEL
+An app-like experience for delivery drivers to manage all their deliveries from their mobile phones. the app-like can be added to the mobile homepage for easy access.
 
-## Delivery Driver Order Page
-Fully order page in the delivery driver panel.
+* The panel has a screen for each order status with easy access for all screens.
+* The delivery panel comes with the following screens: homepage, login, forgot password, dashboard, Assign to the driver, Out for delivery, Order, Failed delivery, Delivered, and more.
+* In the dashboard screen, the delivery drivers can update their availability for work and view the total of each order statuses.
+* In the assigned to the driver screen, the delivery drivers can view all their assigned orders and update their status to out for delivery.
+* In the out for delivery screen, the delivery drivers can view all the deliveries on their route.
+* In the Failed delivery screen the delivery drivers can view all their failed delivery orders.
+* In the delivered screen the delivery driver can view all their delivered orders from today, yesterday, this month, and last month.
 
-* Delivery drivers can easily mark order status as delivered or not delivered.
+## ORDER PAGE SCREEN
 
-* The delivery driver can view all order details including billing address, shipping address, items, comments, and more.
+* The delivery driver can see all the order details including billing address, shipping address, items, comments, and more.
+* The delivery drivers can easily update the status of the orders to delivered or to failed attempts and leave comments on orders.
+* The delivery driver can easily call the customer or the dispatch center.
 
-## Update order status
-Delivery drivers can easily update the order status to delivered or failed delivery and add comments to order.
 
-## 2 New Delivery Statuses For Your WooCommerce Orders
-* Failed Delivery attempt status - The delivery driver attempted to deliver but failed.
-
-* Out for delivery status - The delivery driver is about to deliver the shipment.
-
-## Premium Features
+## PREMIUM FEATURES
 
 [Local Delivery Drivers for WooCommerce Premium](https://powerfulwp.com/local-delivery-drivers-for-woocommerce-premium/) includes the following additional features:
 
-## Assign Orders To Delivery Drivers.
+## ASSIGN ORDERS TO DELIVERY DRIVERS.
 * Auto-assign available delivery drivers with orders.
 * Delivery drivers can claim orders.
 
-## Route Planning and Navigation.
+## ROUTE PLANNING AND NAVIGATION.
 The delivery driver can plan his route and navigate to his destination.
 
 * Optimize route by distance - Delivery Drivers can optimize their routes by distance and get a short route to the destination.
-
 * Plan route manually - Delivery drivers can plan their route manually to get the best route they want.
-
 * Destination navigation
-
 * Next delivery - Once Delivery drivers complete their delivery they can easily navigate to the next destination in their route.
 
-## SMS & Emails Notifications.
+## SMS & EMAILS NOTIFICATIONS.
 Delivery drivers and customers are notified by emails and SMS,
 SMS notifications are sending with twilio SMS provider.
 
 * SMS to the delivery driver when a new order is assigned.
-
 * SMS to the customer when order is out for delivery.
-
 * Email to the delivery driver when a new order is assigned.
-
 * Email to customer when order is out for delivery and on failed delivery attempt.
 
-## Delivery driver's application
+## DELIVERY DRIVER’S APPLICATION
 Delivery drivers can apply to become a delivery driver.
 
 [Design vector created by freepik - www.freepik.com](https://www.freepik.com/vectors/design)
