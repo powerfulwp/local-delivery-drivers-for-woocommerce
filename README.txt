@@ -17,7 +17,7 @@ Improve the way you deliver, assign delivery drivers to orders.
 The Local Delivery Drivers for WooCommerce plugin let you assign delivery drivers to orders, and lets delivery drivers manage their deliveries with a mobile-friendly panel.
 
 ## NEW USER – DELIVERY DRIVER
-This plugin creates a new user role called delivery driver, once the delivery driver created you can update his availability for work and assign him to orders.
+This plugin creates a new delivery driver user role, once the delivery driver has been created you can update his availability for work and assign him to orders.
 
 ## ASSIGN DELIVERY DRIVERS TO ORDERS
 Admin can assign delivery drivers to orders in the admin panel in two ways, one on the order page and second on the orders page with the bulk action.
