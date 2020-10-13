@@ -69,8 +69,12 @@ body {
     top: 0px;
     margin-top: 0px;
     z-index: 0;
-    /* border: 1px solid; */
     height: 100%;
+}
+
+#lddfw_header .lddfw_sidenav a.active,
+#lddfw_header .lddfw_sidenav a:active {
+    background-color: #cce5ff;
 }
 
 .lddfw_box.lddfw_active {
@@ -93,6 +97,10 @@ body {
 
 .lddfw_handle_column .lddfw_fas {
     font-size: 20px;
+}
+
+#lddfw_order {
+    margin-top: 15px;
 }
 
 .lddfw_box .lddfw_order_number {
@@ -216,6 +224,10 @@ h6 {
     margin-bottom: 10px;
 }
 
+.lddfw_dashboard .lddfw_box a:hover {
+    color: #000;
+}
+
 .lddfw_dashboard .lddfw_box .lddfw_number {
     font-size: 50px;
     display: block;
@@ -231,22 +243,22 @@ h6 {
 
 #lddfw_home .lddfw_cover {
     padding: 0px;
-    min-height: 60%;
+    height: 50%;
     background-color: #fed14c;
     text-align: center;
+    min-height: auto;
+    position: relative;
 }
 
 body::after {
     content: "";
     display: block;
-    /*  height: 100px;*/
 }
 
 .lddfw_cover {
     text-align: center;
     padding-top: 15px;
     padding-bottom: 15px;
-    min-height: 200px;
     background: #ffffff;
     color: #011627;
     margin-bottom: 15px;
@@ -255,7 +267,6 @@ body::after {
 #lddfw_home {
     text-align: center;
     background: #fed14c;
-    height: 100%;
     color: 011627;
     position: fixed;
     width: 100%;
@@ -268,7 +279,8 @@ body::after {
 }
 
 #lddfw_home .lddfw_cover img {
-    max-height: 60%;
+    height: auto;
+    width: auto;
 }
 
 #lddfw_page h1 {
@@ -278,7 +290,7 @@ body::after {
 
 #lddfw_home h1 {
     color: #011627;
-    font-size: 45px;
+    font-size: 30px;
     font-weight: bold;
 }
 
@@ -497,15 +509,9 @@ label.error {
     margin-bottom: 15px;
 }
 
-#lddfw_order #lddfw_shipping_address {}
-
 #lddfw_order #lddfw_customer {
     line-height: 19px;
 }
-
-#lddfw_order #lddfw_order_total {}
-
-#lddfw_order #lddfw_shipping_address {}
 
 #lddfw_menu {
     font-size: 32px;
@@ -519,6 +525,14 @@ label.error {
     position: relative;
 }
 
+#lddfw_availability .fa-toggle-off {
+    color: #dc3545;
+}
+
+#lddfw_availability .fa-toggle-on {
+    color: #28a745;
+}
+
 #lddfw_header a {
     color: #011627;
 }
@@ -529,7 +543,8 @@ label.error {
 
 .lddfw_cover i {
     font-size: 100px;
-    line-height: 240px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .lddfw_table td.lddfw_space_col {
@@ -648,7 +663,13 @@ label.error {
     margin-top: 5px;
 }
 
-tr:last-child td {
+.lddfw_order_products_tbl td,
+.lddfw_order_products_tbl .table th {
+    border-top: 1px solid whitesmoke;
+}
+
+tr:first-child td,
+tr:first-child th {
     border: none;
 }
 
@@ -689,7 +710,7 @@ a.lddfw_closebtn {
     font-size: 18px;
     color: #011627;
     display: block;
-    transition: 0.lddfw_3s;
+    transition: 0.3s;
 }
 
 .lddfw_sidenav a:hover {
@@ -705,7 +726,7 @@ a.lddfw_closebtn {
 }
 
 #lddfw_main {
-    transition: margin-left .lddfw_5s;
+    transition: margin-left .5s;
     padding: 16px;
 }
 
@@ -841,6 +862,10 @@ body {
 
 .lddfw_delivery_form h1 {
     font-size: 22px;
+}
+
+.table.lddfw_order_total_tbl tr:last-child td {
+    border-top: 1px solid #dee2e6;
 }
 
 @media screen and (max-height: 450px) {

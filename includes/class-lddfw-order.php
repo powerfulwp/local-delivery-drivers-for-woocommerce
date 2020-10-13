@@ -181,7 +181,7 @@ class LDDFW_Order
 			</div>';
         // Shipping address.
         $html .= '<div id="lddfw_shipping_address" class="lddfw_box">
-					<h3 class="title"><i class="fas fa-map-marker-alt"></i> ' . esc_html( __( 'Shipping Address', 'lddfw' ) ) . '</h3>' . $shipping_full_name . ' ' . $shipping_address;
+					<h3 class="lddfw_title"><i class="fas fa-map-marker-alt"></i> ' . esc_html( __( 'Shipping Address', 'lddfw' ) ) . '</h3>' . $shipping_full_name . ' ' . $shipping_address;
         // Map button.
         if ( '' === $lddfw_google_api_key ) {
             $html .= '<div class="row" id="lddfw_navigation_buttons">
@@ -401,7 +401,7 @@ class LDDFW_Order
         if ( '' !== $lddfw_failed_delivery_reason_4 ) {
             $html .= '<div class="custom-control custom-radio">
 				<input type="radio"  class="custom-control-input" id="lddfw_delivery_failed_4" value="' . $lddfw_failed_delivery_reason_4 . '" name="lddfw_delivery_failed_reason">
-				<label class="custom-control-label" for="lddfw_delivery_failed_4">' . $lddfw_failed_delivery_reason_4 . '"</label>
+				<label class="custom-control-label" for="lddfw_delivery_failed_4">' . $lddfw_failed_delivery_reason_4 . '</label>
 				</div>';
         }
         if ( '' !== $lddfw_failed_delivery_reason_5 ) {
@@ -446,7 +446,7 @@ class LDDFW_Order
         if ( !empty($items) ) {
             $product_html = '<div class="lddfw_box">
 	<div class="lddfw_title"><i class="fas fa-shopping-cart"></i> ' . esc_html( __( 'Products', 'lddfw' ) ) . '</div>
-	<table class="table" >
+	<table class="table lddfw_order_products_tbl" >
 	<tbody>
 	<tr>
 	<th align="center" >' . esc_html( __( 'Item', 'lddfw' ) ) . '</th>

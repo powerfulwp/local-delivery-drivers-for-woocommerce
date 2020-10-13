@@ -76,8 +76,8 @@ class LDDFW_Public {
 		global $lddfw_driver_page;
 
 		if ( '1' === $lddfw_driver_page ) {
-			wp_enqueue_style( 'lddfw-bootstrap', plugin_dir_url( __FILE__ ) . 'css/bootstrap.min.css', array(), $this->version, 'all' );
 			wp_enqueue_style( 'lddfw-fontawesome', plugin_dir_url( __FILE__ ) . 'css/fontawesome/css/all.min.css', array(), $this->version, 'all' );
+			wp_enqueue_style( 'lddfw-bootstrap', plugin_dir_url( __FILE__ ) . 'css/bootstrap.min.css', array(), $this->version, 'all' );
 			wp_enqueue_style( 'lddfw-fonts', 'https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap', array(), $this->version, 'all' );
 			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/lddfw-public.css', array(), $this->version, 'all' );
 		}

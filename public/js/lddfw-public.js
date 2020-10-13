@@ -162,6 +162,11 @@
         }
     );
 
+
+    jQuery(".lddfw_dashboard .lddfw_box a").click(function() {
+        jQuery(this).parent().addClass("lddfw_active");
+    });
+
     jQuery("#lddfw_delivered_btn").click(
         function() {
             jQuery(".lddfw_page_content").hide();
