@@ -123,6 +123,9 @@ Not at all, this plugin is very simple to use.
 = 1.0.2 =
 * Fixed design.
 
+= 1.0.3 =
+* Fixed delivery driver page
+
 == Upgrade Notice ==
 
 = 1.0.1 =
@@ -130,3 +133,6 @@ Fixed customer phone number button.
 
 = 1.0.2 =
 Fixed design.
+
+= 1.0.3 =
+Fixed delivery driver page

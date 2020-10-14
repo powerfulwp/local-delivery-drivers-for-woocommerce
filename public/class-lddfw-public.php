@@ -107,9 +107,7 @@ class LDDFW_Public {
 		global $lddfw_driver_page;
 
 	 	if ( '1' === $lddfw_driver_page ) {
-		  wp_enqueue_script( 'lddfw-jquery-validate' , plugin_dir_url( __FILE__ )  . 'js/jquery.validate.min.js' , array( 'jquery' ) ,  false, true);
-		  wp_enqueue_script( 'lddfw-bootstrap' , plugin_dir_url( __FILE__ )  . 'js/bootstrap.min.js' , array( 'jquery' ) ,  false, true);
-		  wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/lddfw-public.js', array( 'jquery', 'jquery-effects-core', 'jquery-ui-core' ), false, true );
+		  wp_enqueue_script( 'lddfw-jquery-validate' , plugin_dir_url( __FILE__ )  . 'js/jquery.validate.min.js' , array( 'jquery' , 'jquery-ui-core' ) ,  false, false);
 	 	}
 	}
 

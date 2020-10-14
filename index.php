@@ -76,7 +76,7 @@ function lddfw_filter_styles()
     global  $wp_styles ;
     foreach ( $wp_styles->queue as $handle ) {
         
-        if ( 'lddfw' !== $handle && 'lddfw-bootstrap' !== $handle && 'lddfw-bootstrap' !== $handle && 'lddfw-fontawesome' !== $handle && 'lddfw-fonts' !== $handle ) {
+        if ( 'lddfw' !== $handle && 'lddfw-bootstrap' !== $handle && 'lddfw-fontawesome' !== $handle && 'lddfw-fonts' !== $handle ) {
             // Deregister style.
             wp_dequeue_style( $handle );
             wp_deregister_style( $handle );
@@ -205,7 +205,7 @@ if ( !is_user_logged_in() ) {
 <meta name="robots" content="noindex" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="<?php 
-echo  esc_url( plugins_url() . '/' . LDDFW_FOLDER . '/public/images/favicon-32x32.png?v=1.1' ) ;
+echo  esc_url( plugin_dir_url( __FILE__ ) . 'public/images/favicon-32x32.png?ver=' . LDDFW_VERSION ) ;
 ?>" >
 <?php 
 /**
@@ -234,8 +234,7 @@ echo  '<script>
 echo  $lddfw_content ;
 ?>
 	</div>
-<?php 
-wp_footer();
-?>
+	<script src = "<?php echo esc_url( plugin_dir_url( __FILE__ ) . 'public/js/bootstrap.min.js?ver=' . LDDFW_VERSION ) ;?>" id="lddfw-bootstrap" ></script>
+	<script src = "<?php echo esc_url( plugin_dir_url( __FILE__ ) . 'public/js/lddfw-public.js?ver=' . LDDFW_VERSION ) ; ?>" id="lddfw-public-js" ></script>
 </body>
 </html>
