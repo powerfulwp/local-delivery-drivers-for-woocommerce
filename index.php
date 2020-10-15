@@ -17,91 +17,6 @@ if ( !defined( 'WPINC' ) ) {
     die;
 }
 /**
- * Set driver page variable.
-*/
-$lddfw_driver_page = '1';
-/**
- * Remove version from head.
- *
- * @since 1.0.0
- * @return string
- */
-function lddfw_remove_version()
-{
-    return '';
-}
-
-add_filter( 'the_generator', 'lddfw_remove_version' );
-/**
- * Clean head.
- */
-remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
-remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
-remove_action(
-    'template_redirect',
-    'rest_output_link_header',
-    11,
-    0
-);
-remove_action( 'wp_head', 'rsd_link' );
-remove_action( 'wp_head', 'wlwmanifest_link' );
-remove_action( 'wp_head', 'wp_shortlink_wp_head' );
-/**
- * Remove unnecessary scripts.
- *
- * @since 1.0.0
- * @return void
- */
-function lddfw_filter_scripts()
-{
-    global  $wp_scripts ;
-    foreach ( $wp_scripts->queue as $handle ) {
-        if ( 'lddfw-object' !== $handle && 'lddfw-bootstrap' !== $handle && 'lddfw-jquery-validate' !== $handle && 'lddfw' !== $handle && 'jquery-validation-plugin' !== $handle && 'jquery' !== $handle ) {
-            // Deregister scripts.
-            wp_deregister_script( $handle );
-        }
-    }
-}
-
-add_action( 'wp_print_scripts', 'lddfw_filter_scripts', 100 );
-add_action( 'wp_print_footer_scripts', 'lddfw_filter_scripts', 100 );
-/**
- * Remove unnecessary styles.
- *
- * @since 1.0.0
- * @return void
- */
-function lddfw_filter_styles()
-{
-    global  $wp_styles ;
-    foreach ( $wp_styles->queue as $handle ) {
-        
-        if ( 'lddfw' !== $handle && 'lddfw-bootstrap' !== $handle && 'lddfw-fontawesome' !== $handle && 'lddfw-fonts' !== $handle ) {
-            // Deregister style.
-            wp_dequeue_style( $handle );
-            wp_deregister_style( $handle );
-        }
-    
-    }
-}
-
-add_action( 'wp_print_styles', 'lddfw_filter_styles', 100 );
-/**
- * Remove emoji.
- */
-remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-remove_action( 'wp_print_styles', 'print_emoji_styles' );
-/**
- * Remove admin bar.
- */
-function lddfw_hide_wordpress_admin_bar()
-{
-    remove_action( 'wp_head', '_admin_bar_bump_cb' );
-    return false;
-}
-
-add_filter( 'show_admin_bar', 'lddfw_hide_wordpress_admin_bar' );
-/**
  * Get WordPress query_var.
  */
 $lddfw_screen = ( '' !== get_query_var( 'lddfw_screen' ) ? get_query_var( 'lddfw_screen' ) : 'dashboard' );
@@ -199,22 +114,79 @@ if ( !is_user_logged_in() ) {
 
 }
 
+/**
+ * Register scripts and css files
+ */
+wp_register_script(
+    'lddfw-jquery-validate',
+    plugin_dir_url( __FILE__ ) . 'public/js/jquery.validate.min.js',
+    array( 'jquery', 'jquery-ui-core' ),
+    LDDFW_VERSION,
+    true
+);
+wp_register_script(
+    'lddfw-bootstrap',
+    plugin_dir_url( __FILE__ ) . 'public/js/bootstrap.min.js',
+    array(),
+    LDDFW_VERSION,
+    false
+);
+wp_register_script(
+    'lddfw-public',
+    plugin_dir_url( __FILE__ ) . 'public/js/lddfw-public.js',
+    array(),
+    LDDFW_VERSION,
+    false
+);
+wp_register_style(
+    'lddfw-fontawesome',
+    plugin_dir_url( __FILE__ ) . 'public/css/fontawesome/css/all.min.css',
+    array(),
+    LDDFW_VERSION,
+    'all'
+);
+wp_register_style(
+    'lddfw-bootstrap',
+    plugin_dir_url( __FILE__ ) . 'public/css/bootstrap.min.css',
+    array(),
+    LDDFW_VERSION,
+    'all'
+);
+wp_register_style(
+    'lddfw-fonts',
+    'https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap',
+    array(),
+    LDDFW_VERSION,
+    'all'
+);
+wp_register_style(
+    'lddfw-public',
+    plugin_dir_url( __FILE__ ) . 'public/css/lddfw-public.css',
+    array(),
+    LDDFW_VERSION,
+    'all'
+);
 ?>
+<!DOCTYPE html>
 <html>
 <head>
+<?php 
+echo  '<title>' . esc_js( __( 'Delivery Driver', 'lddfw' ) ) . '</title>' ;
+?>
+
 <meta name="robots" content="noindex" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="<?php 
 echo  esc_url( plugin_dir_url( __FILE__ ) . 'public/images/favicon-32x32.png?ver=' . LDDFW_VERSION ) ;
 ?>" >
 <?php 
-/**
- * Load WordPress head.
- */
-wp_head();
-?>
-
-<?php 
+wp_print_styles( [
+    'lddfw-fontawesome',
+    'lddfw-fonts',
+    'lddfw-bootstrap',
+    'lddfw-public'
+] );
+wp_print_scripts( [ 'lddfw-jquery-validate' ] );
 echo  '<script>
 	var lddfw_driver_id = "' . esc_js( $lddfw_driver_id ) . '";
 	var lddfw_ajax_url = "' . esc_url( admin_url( 'admin-ajax.php' ) ) . '";
@@ -229,12 +201,11 @@ echo  '<script>
 
 </head>
 <body>
-	<div id = "lddfw_page" >
-		<?php 
+	<div id="lddfw_page" ><?php 
 echo  $lddfw_content ;
+?></div>
+<?php 
+wp_print_scripts( [ 'lddfw-bootstrap', 'lddfw-public' ] );
 ?>
-	</div>
-	<script src = "<?php echo esc_url( plugin_dir_url( __FILE__ ) . 'public/js/bootstrap.min.js?ver=' . LDDFW_VERSION ) ;?>" id="lddfw-bootstrap" ></script>
-	<script src = "<?php echo esc_url( plugin_dir_url( __FILE__ ) . 'public/js/lddfw-public.js?ver=' . LDDFW_VERSION ) ; ?>" id="lddfw-public-js" ></script>
 </body>
 </html>

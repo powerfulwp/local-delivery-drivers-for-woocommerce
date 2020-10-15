@@ -22,6 +22,10 @@ body {
     margin-bottom: 15px;
 }
 
+#lddfw_orders_table .lddfw_box {
+    min-height: 122px;
+}
+
 .lddfw_box .lddfw_counter {
     border: 1px solid #f1f0f0;
     background: #f7f7f7;

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: BUG-EMAIL-ADDR <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: yyyy-mm-dd hh:mm+0000\n"
-"PO-Revision-Date: 2020-10-10 20:39+0200\n"
+"PO-Revision-Date: 2020-10-16 01:35+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -18,19 +18,23 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "X-Generator: Eazy Po 0.9.5.3\n"
 
-#: index.php:230 includes/class-lddfw-order.php:408
+#: index.php:147 includes/lddfw-metaboxes.php:47
+msgid "Delivery Driver"
+msgstr ""
+
+#: index.php:161 includes/class-lddfw-order.php:408
 msgid "Are you sure?"
 msgstr ""
 
-#: index.php:232
+#: index.php:163
 msgid "hour"
 msgstr ""
 
-#: index.php:233
+#: index.php:164
 msgid "hours"
 msgstr ""
 
-#: index.php:234
+#: index.php:165
 msgid "mins"
 msgstr ""
 
@@ -977,10 +981,6 @@ msgstr ""
 msgid "Finish planning route"
 msgstr ""
 
-#: includes/class-lddfw-route.php:57
-msgid "Plain your route"
-msgstr ""
-
 #: includes/class-lddfw-route.php:142
 msgid "Your delivery route is completed"
 msgstr ""
@@ -1119,10 +1119,6 @@ msgstr ""
 
 #: includes/lddfw-metaboxes.php:26
 msgid "Drivers"
-msgstr ""
-
-#: includes/lddfw-metaboxes.php:47
-msgid "Delivery Driver"
 msgstr ""
 
 #: includes/lddfw-metaboxes.php:69

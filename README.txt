@@ -126,6 +126,9 @@ Not at all, this plugin is very simple to use.
 = 1.0.3 =
 * Fixed delivery driver page
 
+= 1.0.4 =
+Fixed delivery driver panel
+
 == Upgrade Notice ==
 
 = 1.0.1 =
@@ -136,3 +139,6 @@ Fixed design.
 
 = 1.0.3 =
 Fixed delivery driver page
+
+= 1.0.4 =
+Fixed delivery driver panel
