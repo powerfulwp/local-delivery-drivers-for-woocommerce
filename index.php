@@ -16,6 +16,9 @@
 if ( !defined( 'WPINC' ) ) {
     die;
 }
+if ( !class_exists( 'WooCommerce' ) ) {
+    die( esc_html( __( 'Local delivery drivers for WooCommerce is a WooCommerce add-on, you must activate a WooCommerce on your site.', 'lddfw' ) ) );
+}
 /**
  * Get WordPress query_var.
  */
@@ -47,8 +50,10 @@ if ( !is_user_logged_in() ) {
 } else {
     // Check if user is a delivery driver.
     $lddfw_user = wp_get_current_user();
+    $lddfw_driver_id = $lddfw_user->ID;
+    $lddfw_driver_account = get_user_meta( $lddfw_driver_id, 'lddfw_driver_account', true );
     
-    if ( !in_array( 'driver', (array) $lddfw_user->roles, true ) ) {
+    if ( !in_array( 'driver', (array) $lddfw_user->roles, true ) || '1' !== $lddfw_driver_account ) {
         LDDFW_Login::lddfw_logout();
         // User is not a delivery driver.
         $lddfw_user_is_driver = 0;
@@ -57,7 +62,6 @@ if ( !is_user_logged_in() ) {
         // User is a delivery driver.
         // Set global variables.
         $lddfw_user_is_driver = 1;
-        $lddfw_driver_id = $lddfw_user->ID;
         $lddfw_driver_name = $lddfw_user->first_name . ' ' . $lddfw_user->last_name;
         $lddfw_driver_availability = get_user_meta( $lddfw_driver_id, 'lddfw_driver_availability', true );
         // Get the number of orders in each status.
@@ -79,7 +83,7 @@ if ( !is_user_logged_in() ) {
                 case get_option( 'lddfw_delivered_status' ):
                     $lddfw_delivered_counter = $row->orders;
                     break;
-                case get_option( 'lddfw_processing_status' ):
+                case get_option( 'lddfw_driver_assigned_status' ):
                     $lddfw_assign_to_driver_counter = $row->orders;
                     break;
             }
@@ -139,13 +143,6 @@ wp_register_script(
     false
 );
 wp_register_style(
-    'lddfw-fontawesome',
-    plugin_dir_url( __FILE__ ) . 'public/css/fontawesome/css/all.min.css',
-    array(),
-    LDDFW_VERSION,
-    'all'
-);
-wp_register_style(
     'lddfw-bootstrap',
     plugin_dir_url( __FILE__ ) . 'public/css/bootstrap.min.css',
     array(),
@@ -180,12 +177,7 @@ echo  '<title>' . esc_js( __( 'Delivery Driver', 'lddfw' ) ) . '</title>' ;
 echo  esc_url( plugin_dir_url( __FILE__ ) . 'public/images/favicon-32x32.png?ver=' . LDDFW_VERSION ) ;
 ?>" >
 <?php 
-wp_print_styles( [
-    'lddfw-fontawesome',
-    'lddfw-fonts',
-    'lddfw-bootstrap',
-    'lddfw-public'
-] );
+wp_print_styles( [ 'lddfw-fonts', 'lddfw-bootstrap', 'lddfw-public' ] );
 wp_print_scripts( [ 'lddfw-jquery-validate' ] );
 echo  '<script>
 	var lddfw_driver_id = "' . esc_js( $lddfw_driver_id ) . '";

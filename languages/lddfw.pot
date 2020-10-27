@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: BUG-EMAIL-ADDR <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: yyyy-mm-dd hh:mm+0000\n"
-"PO-Revision-Date: 2020-10-16 01:35+0200\n"
+"PO-Revision-Date: 2020-10-24 18:09+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -18,470 +18,636 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "X-Generator: Eazy Po 0.9.5.3\n"
 
-#: index.php:147 includes/lddfw-metaboxes.php:47
+#: index.php:21 admin/class-lddfw-admin.php:1762
+msgid ""
+"Local delivery drivers for WooCommerce is a WooCommerce add-on, you must "
+"activate a WooCommerce on your site."
+msgstr ""
+
+#: index.php:151 includes/lddfw-metaboxes.php:47
 msgid "Delivery Driver"
 msgstr ""
 
-#: index.php:161 includes/class-lddfw-order.php:408
+#: index.php:165 includes/class-lddfw-order.php:412
 msgid "Are you sure?"
 msgstr ""
 
-#: index.php:163
+#: index.php:167
 msgid "hour"
 msgstr ""
 
-#: index.php:164
+#: index.php:168
 msgid "hours"
 msgstr ""
 
-#: index.php:165
+#: index.php:169
 msgid "mins"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:113 admin/class-lddfw-admin.php:163
-#: admin/class-lddfw-admin.php:201 includes/class-lddfw-application.php:41
+#: admin/class-lddfw-admin.php:112 admin/class-lddfw-admin.php:162
+#: admin/class-lddfw-admin.php:207 includes/class-lddfw-application.php:41
 #: includes/class-lddfw-login.php:99 includes/class-lddfw-password.php:37
-#: includes/class-lddfw-password.php:98 includes/class-lddfw-route.php:206
-msgid "Security Check Failure"
+#: includes/class-lddfw-password.php:98 includes/class-lddfw-route.php:207
+msgid ""
+"Security Check Failure - This alert may occur when you are logged in as an "
+"administrator and as a delivery driver on the same browser and the same "
+"device. If you want to work on both panels please try to work with two "
+"different browsers."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:129
+#: admin/class-lddfw-admin.php:128
 msgid "The delivery driver changed the order status."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:132
+#: admin/class-lddfw-admin.php:131
 msgid "Orders successfully marked as out of delivery."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:132
+#: admin/class-lddfw-admin.php:131
 msgid "View out of delivery orders"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:137 admin/class-lddfw-admin.php:178
+#: admin/class-lddfw-admin.php:136 admin/class-lddfw-admin.php:177
 msgid "Please choose the orders."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:142
+#: admin/class-lddfw-admin.php:141
 msgid "User is not a delivery driver"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:176
+#: admin/class-lddfw-admin.php:175
 msgid "Orders successfully assigned to you."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:176
+#: admin/class-lddfw-admin.php:175
 msgid "View assigned orders"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:183
+#: admin/class-lddfw-admin.php:182
 msgid "User is not a driver"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:370 admin/class-lddfw-admin.php:406
+#: admin/class-lddfw-admin.php:418
+msgid "Driver changed order status"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:421
+#, php-format
+msgid "Driver %s changed order status"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:426
 msgid "Driver note"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:404
-msgid "Driver changed order status, "
+#: admin/class-lddfw-admin.php:430
+#, php-format
+msgid "Driver %s note "
 msgstr ""
 
-#: admin/class-lddfw-admin.php:526 admin/class-lddfw-admin.php:543
+#: admin/class-lddfw-admin.php:555 admin/class-lddfw-admin.php:597
+msgid "Driver Assigned"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:556 admin/class-lddfw-admin.php:573
 msgid "Out for Delivery"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:527 admin/class-lddfw-admin.php:555
+#: admin/class-lddfw-admin.php:557 admin/class-lddfw-admin.php:585
 msgid "Failed Delivery Attempt"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:549
+#: admin/class-lddfw-admin.php:579
 #, php-format
 msgid "Out for Delivery <span class=\"count\">(%s)</span>"
 msgid_plural "Out for Delivery <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin/class-lddfw-admin.php:561
+#: admin/class-lddfw-admin.php:591
 #, php-format
 msgid "Failed Delivery Attempt <span class=\"count\">(%s)</span>"
 msgid_plural "Failed Delivery Attempt <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin/class-lddfw-admin.php:626
+#: admin/class-lddfw-admin.php:603
+#, php-format
+msgid "Driver Assigned <span class=\"count\">(%s)</span>"
+msgid_plural "Driver Assigned <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin/class-lddfw-admin.php:679
 msgid "Delivery drivers page"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:634
+#: admin/class-lddfw-admin.php:687
 msgid "Google API key"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:642
+#: admin/class-lddfw-admin.php:695
 msgid "Dispatch phone number"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:653
+#: admin/class-lddfw-admin.php:706
 msgid "Auto-assign delivery drivers"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:661
-msgid "Self assigns delivery drivers."
-msgstr ""
-
-#: admin/class-lddfw-admin.php:669
-msgid "Delivery drivers application"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:681
-msgid "Delivery statuses"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:690
-msgid "Out for delivery status"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:698
-msgid "Delivered status"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:706
-msgid "Failed Delivery attempt status"
-msgstr ""
-
 #: admin/class-lddfw-admin.php:714
-msgid "Order Processing status."
+msgid "Drivers can claim orders"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:722
-msgid "Common Reasons For Failed Delivery"
+msgid "Delivery drivers application"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:729
-msgid "Common Reasons"
+#: admin/class-lddfw-admin.php:732
+msgid "Delivery statuses"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:737
-msgid "Drop off delivery locations"
+#: admin/class-lddfw-admin.php:739
+msgid "Driver assigned status"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:744
-msgid "Options"
+#: admin/class-lddfw-admin.php:747
+msgid "Out for delivery status"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:756
-msgid "SMS Settings"
+#: admin/class-lddfw-admin.php:755
+msgid "Delivered status"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:763
-msgid "SMS Provider"
+msgid "Failed delivery attempt status"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:771
+msgid "Order processing status"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:782
+msgid "Ready notes for the drivers"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:789 includes/class-lddfw-reports.php:59
+#: includes/class-lddfw-reports.php:125 includes/class-lddfw-screens.php:99
+#: includes/class-lddfw-screens.php:287
+msgid "Failed delivery"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:798
+msgid "Successful delivery"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:810
+msgid "SMS Settings"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:817
+msgid "SMS provider"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:825
 msgid "API SID"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:779
+#: admin/class-lddfw-admin.php:833
 msgid "API AUTH TOKEN"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:787
+#: admin/class-lddfw-admin.php:841
 msgid "SMS phone number"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:795
+#: admin/class-lddfw-admin.php:849
 msgid "SMS to driver"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:803
+#: admin/class-lddfw-admin.php:857
 msgid "SMS to customer"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:830
-msgid "Delivery Driver First Name"
+#: admin/class-lddfw-admin.php:875
+msgid "Premium features:"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:831
-msgid "Delivery Driver Last Name"
+#: admin/class-lddfw-admin.php:876
+msgid "Route Planning &amp; Navigation."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:832
-msgid "Delivery Driver Page"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:833
-msgid "Store Name"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:835
-msgid "Order Id"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:836
-msgid "Order Create Date"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:837
-msgid "Order Status"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:838
-msgid "Order Amount"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:839
-msgid "Order Currency"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:840
-msgid "Shipping Method"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:841
-msgid "Payment Method"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:843
-msgid "Billing First Name"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:844
-msgid "Billing Last Name"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:845
-msgid "Billing Company"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:846
-msgid "Billing Address 1"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:847
-msgid "Billing Address 2"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:848
-msgid "Billing City"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:849
-msgid "Billing State"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:850
-msgid "Billing Postcode"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:851
-msgid "Billing Country"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:852
-msgid "Billing Phone"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:854
-msgid "Shipping First Name"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:855
-msgid "Shipping Last Name"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:856
-msgid "Shipping Company"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:857
-msgid "Shipping Address 1"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:858
-msgid "Shipping Address 2"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:859
-msgid "Shipping City"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:860
-msgid "Shipping State"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:861
-msgid "Shipping Postcode"
-msgstr ""
-
-#: admin/class-lddfw-admin.php:862
-msgid "Shipping Country"
+#: admin/class-lddfw-admin.php:877
+msgid "Next Delivery - Drivers Easily Navigate to the Next Destination."
 msgstr ""
 
 #: admin/class-lddfw-admin.php:878
-msgid "SMS to customer when order is out for delivery"
+msgid "Ready Notes for The Drivers."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:881 admin/class-lddfw-admin.php:962
-msgid "SMS template"
+#: admin/class-lddfw-admin.php:879
+msgid "Drivers can Claim Orders."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:882 admin/class-lddfw-admin.php:963
-msgid "Default template"
+#: admin/class-lddfw-admin.php:881
+msgid "Admin Driver Dashboard."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:907
-msgid "Enabling self assigns delivery drivers."
+#: admin/class-lddfw-admin.php:882
+msgid "Admin Orders Filters."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:909
+#: admin/class-lddfw-admin.php:883
 msgid ""
-"Self assigns delivery drivers with each order that marked with the "
-"processing status."
+"One-click to Update Drivers Availability, Claim Permission, and Accounts."
+msgstr ""
+
+#: admin/class-lddfw-admin.php:884
+msgid "Users Names in Orders Notes."
+msgstr ""
+
+#: admin/class-lddfw-admin.php:886
+msgid "Auto-assign Delivery Drivers."
+msgstr ""
+
+#: admin/class-lddfw-admin.php:887
+msgid "SMS Notifications for Customers and Drivers."
+msgstr ""
+
+#: admin/class-lddfw-admin.php:888
+msgid "Emails Notifications for Customers and Drivers."
+msgstr ""
+
+#: admin/class-lddfw-admin.php:889
+msgid "Bulk-assign Delivery Drivers."
+msgstr ""
+
+#: admin/class-lddfw-admin.php:891
+msgid "Delivery Drivers Application."
+msgstr ""
+
+#: admin/class-lddfw-admin.php:915
+msgid "Delivery Driver First Name"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:916
+msgid "Delivery Driver Last Name"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:917
+msgid "Delivery Driver Page"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:918
+msgid "Store Name"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:920
+msgid "Order Id"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:921
+msgid "Order Create Date"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:922
+msgid "Order Status"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:923
+msgid "Order Amount"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:924
-msgid "Enable delivery driver's application."
+msgid "Order Currency"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:925
+msgid "Shipping Method"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:926
-msgid "Driver's can apply to become a delivery driver"
+msgid "Payment Method"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:928
+msgid "Billing First Name"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:929
+msgid "Billing Last Name"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:930
+msgid "Billing Company"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:931
+msgid "Billing Address 1"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:932
+msgid "Billing Address 2"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:933
+msgid "Billing City"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:934
+msgid "Billing State"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:935
+msgid "Billing Postcode"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:936
+msgid "Billing Country"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:937
+msgid "Billing Phone"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:939
+msgid "Shipping First Name"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:940
+msgid "Shipping Last Name"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:941
-msgid "Enabling auto-assigns delivery drivers."
+msgid "Shipping Company"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:942
+msgid "Shipping Address 1"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:943
-msgid ""
-"Auto-assign available delivery drivers with each order that marked processing"
+msgid "Shipping Address 2"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:959
-msgid "SMS to the delivery driver when a new order is assigned"
+#: admin/class-lddfw-admin.php:944
+msgid "Shipping City"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:984
+#: admin/class-lddfw-admin.php:945
+msgid "Shipping State"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:946
+msgid "Shipping Postcode"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:947
+msgid "Shipping Country"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:963
+msgid "SMS to customer when order is out for delivery."
+msgstr ""
+
+#: admin/class-lddfw-admin.php:966 admin/class-lddfw-admin.php:1047
+msgid "SMS template"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:967 admin/class-lddfw-admin.php:1048
+msgid "Default template"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:992
+msgid "Enable drivers to claim orders"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:994
+msgid "Claim orders option available for processing status orders."
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1009
+msgid "Enable delivery driver's application."
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1011
+msgid "Drivers can apply to become a delivery driver."
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1026
+msgid "Enable auto-assigns delivery drivers."
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1028
+msgid "Auto-assign drivers action  happen on processing status orders."
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1044
+msgid "SMS to the delivery driver when a new order is assigned."
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1069
 msgid ""
 "Phone number to send SMS should be in the following format (+)(country code)"
 "(area code)(phone number) e.g +15024658206"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1018
+#: admin/class-lddfw-admin.php:1103
 msgid ""
-"These are driver choices when delivery fails, to delete an option leave "
-"blank."
+"These are the driver ready notes for the delivery, to delete an option "
+"please leave blank."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1027
-msgid ""
-"These are driver choices of drop off locations, to delete an option leave "
-"blank."
-msgstr ""
-
-#: admin/class-lddfw-admin.php:1066
+#: admin/class-lddfw-admin.php:1142
 msgid "Drivers can call this number if they have questions about orders."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1078
+#: admin/class-lddfw-admin.php:1154
 msgid "To use the Google Maps JavaScript API you must have an API key."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1102
-msgid ""
-"On this status orders are ready for delivery, the delivery driver can claim "
-"orders or its already assigned to him."
+#: admin/class-lddfw-admin.php:1181
+msgid "The orders are ready for delivery and drivers are able to claim."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1126
+#: admin/class-lddfw-admin.php:1208
 msgid "The delivery driver attempted to deliver but failed."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1150
+#: admin/class-lddfw-admin.php:1235
 msgid "The shipment was delivered successfully."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1173
+#: admin/class-lddfw-admin.php:1261
+msgid "The delivery driver was assigned to order."
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1287
 msgid "The delivery driver is about to deliver the shipment."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1183
+#: admin/class-lddfw-admin.php:1297
 msgid "This Section Description"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1194
+#: admin/class-lddfw-admin.php:1309
 msgid "General Settings"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1248
+#: admin/class-lddfw-admin.php:1331
+msgid "Delivery Drivers Settings"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1331
+msgid "Delivery Drivers"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1332 includes/class-lddfw-reports.php:212
+#: includes/class-lddfw-screens.php:81 includes/class-lddfw-screens.php:222
+msgid "Dashboard"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1333
+msgid "Settings"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1343
+msgid "Developed by"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1343
+msgid "Premium"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1343
+msgid "Documents"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1460
 msgid "Driver"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1299
+#: admin/class-lddfw-admin.php:1520
 msgid "Delivery Driver Info"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1302
-msgid "Delivery driver availability"
+#: admin/class-lddfw-admin.php:1523
+msgid "Driver account status"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1305 includes/class-lddfw-screens.php:226
-#: includes/class-lddfw-screens.php:234
+#: admin/class-lddfw-admin.php:1526
+msgid "Not active"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1528
+msgid "Active"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1530
+msgid "Only drivers with active accounts can access the drivers' panel."
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1534
+msgid "Driver availability"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1537 includes/class-lddfw-screens.php:234
+#: includes/class-lddfw-screens.php:242
 msgid "Unavailable"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1307 includes/class-lddfw-screens.php:226
-#: includes/class-lddfw-screens.php:234
+#: admin/class-lddfw-admin.php:1539 includes/class-lddfw-screens.php:234
+#: includes/class-lddfw-screens.php:242
 msgid "Available"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1309
+#: admin/class-lddfw-admin.php:1541
 msgid "The delivery driver availability for work today."
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1328
+#: admin/class-lddfw-admin.php:1545
+msgid "Driver can claim orders"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1553
+msgid "No"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1554
+msgid "Yes"
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1556
+msgid "Give the driver permission to claim orders."
+msgstr ""
+
+#: admin/class-lddfw-admin.php:1579
 msgid "Assign orders to the delivery driver"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1492
+#: admin/class-lddfw-admin.php:1745 includes/class-lddfw-reports.php:358
+#, php-format
 msgid ""
-"The link below is the delivery driver's Mobile-Friendly panel URL. The "
-"delivery drivers can access it from their mobile phones."
+"The link above is the delivery driver's Mobile-Friendly panel URL. %s The "
+"delivery drivers can access it from their mobile phones. %s"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1498
+#: admin/class-lddfw-admin.php:1746 includes/class-lddfw-reports.php:359
+#, php-format
 msgid ""
-"Please note that if you are visiting the driver's panel as an administrator "
-"you will log out from the admin panel."
+"Notice: If you want to be logged in as an administrator and to check the "
+"drivers' panel on the same device, %s %syou must work with two different "
+"browsers otherwise you will log out from the admin panel and the drivers' "
+"panel won't function correctly.%s"
 msgstr ""
 
-#: includes/class-lddfw-activator.php:79
-msgid "Refused by the recipient"
+#: admin/class-lddfw-admin.php:1777
+msgid "Filter By"
 msgstr ""
 
-#: includes/class-lddfw-activator.php:80
-msgid "Incorrect address"
+#: admin/class-lddfw-admin.php:1780
+msgid "With drivers"
 msgstr ""
 
-#: includes/class-lddfw-activator.php:81
-msgid "Failed delivery attempt"
+#: admin/class-lddfw-admin.php:1783
+msgid "Without drivers"
 msgstr ""
 
-#: includes/class-lddfw-activator.php:82
-msgid "Item Lost"
+#: admin/class-lddfw-admin.php:1785 includes/class-lddfw-reports.php:120
+#: includes/class-lddfw-reports.php:193 includes/class-lddfw-reports.php:240
+#: includes/class-lddfw-reports.php:335 includes/lddfw-metaboxes.php:26
+msgid "Drivers"
 msgstr ""
 
-#: includes/class-lddfw-activator.php:83
-msgid "Item damaged"
+#: includes/class-lddfw-activator.php:97
+msgid "Refused by the recipient."
 msgstr ""
 
-#: includes/class-lddfw-activator.php:84
-msgid "Delivered to the customer"
+#: includes/class-lddfw-activator.php:98
+msgid "Incorrect address."
 msgstr ""
 
-#: includes/class-lddfw-activator.php:85
-msgid "Front door"
+#: includes/class-lddfw-activator.php:99
+msgid "Failed delivery attempt."
 msgstr ""
 
-#: includes/class-lddfw-activator.php:86
-msgid "Neighbor"
+#: includes/class-lddfw-activator.php:100
+msgid "Item Lost."
+msgstr ""
+
+#: includes/class-lddfw-activator.php:101
+msgid "Item damaged."
+msgstr ""
+
+#: includes/class-lddfw-activator.php:102
+msgid "Delivered to the customer."
+msgstr ""
+
+#: includes/class-lddfw-activator.php:103
+msgid "Left at the front door."
+msgstr ""
+
+#: includes/class-lddfw-activator.php:104
+msgid "Left with the neighbor."
 msgstr ""
 
 #: includes/class-lddfw-application.php:35
@@ -524,46 +690,47 @@ msgstr ""
 msgid "We will contact you shortly."
 msgstr ""
 
-#: includes/class-lddfw-application.php:117
-#: includes/class-lddfw-application.php:162
-#: includes/class-lddfw-password.php:167
+#: includes/class-lddfw-application.php:118
+#: includes/class-lddfw-application.php:164
+#: includes/class-lddfw-password.php:168
 msgid "Back to login"
 msgstr ""
 
-#: includes/class-lddfw-application.php:147
+#: includes/class-lddfw-application.php:148
 msgid "Driver Application"
 msgstr ""
 
-#: includes/class-lddfw-application.php:148
+#: includes/class-lddfw-application.php:149
 msgid "Please fill out the form below, and we will contact you shortly."
 msgstr ""
 
-#: includes/class-lddfw-application.php:151
+#: includes/class-lddfw-application.php:152
 msgid "Full name"
 msgstr ""
 
-#: includes/class-lddfw-application.php:152 includes/class-lddfw-order.php:244
+#: includes/class-lddfw-application.php:153 includes/class-lddfw-order.php:247
+#: includes/class-lddfw-reports.php:121 includes/class-lddfw-reports.php:241
 msgid "Phone"
 msgstr ""
 
-#: includes/class-lddfw-application.php:153 includes/class-lddfw-login.php:58
-#: includes/class-lddfw-password.php:159
+#: includes/class-lddfw-application.php:154 includes/class-lddfw-login.php:58
+#: includes/class-lddfw-password.php:159 includes/class-lddfw-reports.php:242
 msgid "Email"
 msgstr ""
 
-#: includes/class-lddfw-application.php:154
+#: includes/class-lddfw-application.php:155
 msgid "Message"
 msgstr ""
 
-#: includes/class-lddfw-application.php:156 includes/class-lddfw-order.php:384
-#: includes/class-lddfw-order.php:485 includes/class-lddfw-password.php:161
-#: includes/class-lddfw-password.php:281 includes/class-lddfw-password.php:285
+#: includes/class-lddfw-application.php:157 includes/class-lddfw-order.php:388
+#: includes/class-lddfw-order.php:489 includes/class-lddfw-password.php:161
+#: includes/class-lddfw-password.php:283 includes/class-lddfw-password.php:287
 msgid "Send"
 msgstr ""
 
-#: includes/class-lddfw-application.php:160 includes/class-lddfw-login.php:65
-#: includes/class-lddfw-password.php:165 includes/class-lddfw-screens.php:364
-#: includes/class-lddfw-screens.php:419
+#: includes/class-lddfw-application.php:161 includes/class-lddfw-login.php:65
+#: includes/class-lddfw-password.php:165 includes/class-lddfw-screens.php:373
+#: includes/class-lddfw-screens.php:429
 msgid "Loading"
 msgstr ""
 
@@ -613,9 +780,18 @@ msgstr ""
 msgid "woocommerce"
 msgstr ""
 
-#: includes/class-lddfw-driver.php:68
+#: includes/class-lddfw-driver.php:67
+msgid "Delivery driver has been assigned to order"
+msgstr ""
+
+#: includes/class-lddfw-driver.php:75
 #, php-format
-msgid "Delivery driver %s has been assigned to order"
+msgid "by %s %s"
+msgstr ""
+
+#: includes/class-lddfw-driver.php:78
+#, php-format
+msgid "Delivery driver %s has been assigned to order%s"
 msgstr ""
 
 #: includes/class-lddfw-failed-delivery-email.php:35
@@ -638,7 +814,7 @@ msgid "Thank you for your order."
 msgstr ""
 
 #: includes/class-lddfw-login.php:53 includes/class-lddfw-login.php:61
-#: includes/class-lddfw-password.php:202
+#: includes/class-lddfw-password.php:203
 msgid "Login"
 msgstr ""
 
@@ -674,6 +850,10 @@ msgstr ""
 msgid "You are not a registered delivery driver."
 msgstr ""
 
+#: includes/class-lddfw-login.php:138
+msgid "Your account is not active, please contact the dispatch center."
+msgstr ""
+
 #: includes/class-lddfw-order.php:159
 msgid "Navigate"
 msgstr ""
@@ -698,8 +878,9 @@ msgstr ""
 msgid "Payment method"
 msgstr ""
 
-#: includes/class-lddfw-order.php:206 includes/class-lddfw-order.php:516
-#: includes/class-lddfw-order.php:592
+#: includes/class-lddfw-order.php:206 includes/class-lddfw-order.php:520
+#: includes/class-lddfw-order.php:596 includes/class-lddfw-reports.php:60
+#: includes/class-lddfw-reports.php:126
 msgid "Total"
 msgstr ""
 
@@ -707,133 +888,133 @@ msgstr ""
 msgid "Call Dispatch"
 msgstr ""
 
-#: includes/class-lddfw-order.php:221
+#: includes/class-lddfw-order.php:222
 msgid "Shipping Address"
 msgstr ""
 
-#: includes/class-lddfw-order.php:227
+#: includes/class-lddfw-order.php:229
 msgid "Map"
 msgstr ""
 
-#: includes/class-lddfw-order.php:238
+#: includes/class-lddfw-order.php:241
 msgid "Customer"
 msgstr ""
 
-#: includes/class-lddfw-order.php:247
+#: includes/class-lddfw-order.php:250
 msgid "Call customer"
 msgstr ""
 
-#: includes/class-lddfw-order.php:267
+#: includes/class-lddfw-order.php:271
 msgid "Billing Address"
 msgstr ""
 
-#: includes/class-lddfw-order.php:285 includes/class-lddfw-screens.php:94
-#: includes/class-lddfw-screens.php:285 includes/class-lddfw-screens.php:438
+#: includes/class-lddfw-order.php:289 includes/class-lddfw-screens.php:101
+#: includes/class-lddfw-screens.php:294 includes/class-lddfw-screens.php:448
 msgid "Delivered"
 msgstr ""
 
-#: includes/class-lddfw-order.php:286
+#: includes/class-lddfw-order.php:290
 msgid "Not Delivered"
 msgstr ""
 
-#: includes/class-lddfw-order.php:310
+#: includes/class-lddfw-order.php:314
 msgid "Thank you!"
 msgstr ""
 
-#: includes/class-lddfw-order.php:316
+#: includes/class-lddfw-order.php:320
 msgid "Loading next delivery"
 msgstr ""
 
-#: includes/class-lddfw-order.php:321
+#: includes/class-lddfw-order.php:325
 msgid "View deliveries"
 msgstr ""
 
-#: includes/class-lddfw-order.php:348
+#: includes/class-lddfw-order.php:352
 msgid "Where did you leave the order?"
 msgstr ""
 
-#: includes/class-lddfw-order.php:376
+#: includes/class-lddfw-order.php:380
 msgid "Other"
 msgstr ""
 
-#: includes/class-lddfw-order.php:380 includes/class-lddfw-order.php:482
+#: includes/class-lddfw-order.php:384 includes/class-lddfw-order.php:486
 msgid "Note"
 msgstr ""
 
-#: includes/class-lddfw-order.php:409
+#: includes/class-lddfw-order.php:413
 msgid "Cancel"
 msgstr ""
 
-#: includes/class-lddfw-order.php:410
+#: includes/class-lddfw-order.php:414
 msgid "Ok"
 msgstr ""
 
-#: includes/class-lddfw-order.php:440
+#: includes/class-lddfw-order.php:444
 msgid "Why did the attempted delivery fail?"
 msgstr ""
 
-#: includes/class-lddfw-order.php:441
+#: includes/class-lddfw-order.php:445
 msgid "Please select an option or write a note and click the send button"
 msgstr ""
 
-#: includes/class-lddfw-order.php:479
+#: includes/class-lddfw-order.php:483
 msgid "Other issues"
 msgstr ""
 
-#: includes/class-lddfw-order.php:510
+#: includes/class-lddfw-order.php:514
 msgid "Products"
 msgstr ""
 
-#: includes/class-lddfw-order.php:514
+#: includes/class-lddfw-order.php:518
 msgid "Item"
 msgstr ""
 
-#: includes/class-lddfw-order.php:555
+#: includes/class-lddfw-order.php:559
 msgid "Discount"
 msgstr ""
 
-#: includes/class-lddfw-order.php:569
+#: includes/class-lddfw-order.php:573
 msgid "Shipping"
 msgstr ""
 
-#: includes/class-lddfw-order.php:569
+#: includes/class-lddfw-order.php:573
 msgid "via"
 msgstr ""
 
-#: includes/class-lddfw-orders.php:315 includes/class-lddfw-orders.php:393
-#: includes/class-lddfw-orders.php:472 includes/class-lddfw-orders.php:542
-#: includes/class-lddfw-orders.php:651 includes/class-lddfw-screens.php:507
+#: includes/class-lddfw-orders.php:398 includes/class-lddfw-orders.php:487
+#: includes/class-lddfw-orders.php:575 includes/class-lddfw-orders.php:655
+#: includes/class-lddfw-orders.php:773 includes/class-lddfw-screens.php:515
 msgid "Order #"
 msgstr ""
 
-#: includes/class-lddfw-orders.php:317 includes/class-lddfw-orders.php:396
-#: includes/class-lddfw-orders.php:654
+#: includes/class-lddfw-orders.php:400 includes/class-lddfw-orders.php:490
+#: includes/class-lddfw-orders.php:776
 msgid "Distance: "
 msgstr ""
 
-#: includes/class-lddfw-orders.php:327 includes/class-lddfw-orders.php:407
-#: includes/class-lddfw-orders.php:480 includes/class-lddfw-orders.php:550
-#: includes/class-lddfw-orders.php:680
+#: includes/class-lddfw-orders.php:411 includes/class-lddfw-orders.php:501
+#: includes/class-lddfw-orders.php:583 includes/class-lddfw-orders.php:663
+#: includes/class-lddfw-orders.php:802
 msgid "There are no orders."
 msgstr ""
 
-#: includes/class-lddfw-orders.php:399
+#: includes/class-lddfw-orders.php:493
 msgid "Failed Date: "
 msgstr ""
 
-#: includes/class-lddfw-orders.php:583
+#: includes/class-lddfw-orders.php:696
 msgid "<<"
 msgstr ""
 
-#: includes/class-lddfw-orders.php:584
+#: includes/class-lddfw-orders.php:697
 msgid ">>"
 msgstr ""
 
-#: includes/class-lddfw-orders.php:603
+#: includes/class-lddfw-orders.php:716
 msgid "Orders"
 msgstr ""
 
-#: includes/class-lddfw-orders.php:657
+#: includes/class-lddfw-orders.php:779
 msgid "Delivered Date: "
 msgstr ""
 
@@ -914,43 +1095,120 @@ msgstr ""
 msgid "Enter your email, and we'll email you a link to change your password."
 msgstr ""
 
-#: includes/class-lddfw-password.php:199
+#: includes/class-lddfw-password.php:200
 msgid "Your password has been changed successfully."
 msgstr ""
 
-#: includes/class-lddfw-password.php:200
+#: includes/class-lddfw-password.php:201
 msgid "Please click on the login button to login with your new password"
 msgstr ""
 
-#: includes/class-lddfw-password.php:231
+#: includes/class-lddfw-password.php:232
 msgid "Reset password"
 msgstr ""
 
-#: includes/class-lddfw-password.php:232
+#: includes/class-lddfw-password.php:233
 msgid ""
 "A password reset link was sent. Click the link in the email to create a new "
 "password. If you do not receive an email within 5 minutes, please click on "
 "the resend email button below."
 msgstr ""
 
-#: includes/class-lddfw-password.php:234
+#: includes/class-lddfw-password.php:235
 msgid "Resend email"
 msgstr ""
 
-#: includes/class-lddfw-password.php:236 includes/class-lddfw-password.php:288
+#: includes/class-lddfw-password.php:238 includes/class-lddfw-password.php:291
 msgid "Back to forgot password"
 msgstr ""
 
-#: includes/class-lddfw-password.php:274
+#: includes/class-lddfw-password.php:276
 msgid "Create a new password."
 msgstr ""
 
-#: includes/class-lddfw-password.php:276
+#: includes/class-lddfw-password.php:278
 msgid "New password"
 msgstr ""
 
-#: includes/class-lddfw-password.php:277
+#: includes/class-lddfw-password.php:279
 msgid "Confirm password"
+msgstr ""
+
+#: includes/class-lddfw-reports.php:51
+msgid "Orders without drivers"
+msgstr ""
+
+#: includes/class-lddfw-reports.php:55
+msgid "Ready for claim"
+msgstr ""
+
+#: includes/class-lddfw-reports.php:56 includes/class-lddfw-reports.php:122
+#: includes/class-lddfw-screens.php:95 includes/class-lddfw-screens.php:273
+#: includes/class-lddfw-screens.php:337
+msgid "Driver assigned"
+msgstr ""
+
+#: includes/class-lddfw-reports.php:57 includes/class-lddfw-reports.php:123
+#: includes/class-lddfw-screens.php:97 includes/class-lddfw-screens.php:280
+#: includes/class-lddfw-screens.php:371
+msgid "Out for delivery"
+msgstr ""
+
+#: includes/class-lddfw-reports.php:58 includes/class-lddfw-reports.php:124
+msgid "Delivered today"
+msgstr ""
+
+#: includes/class-lddfw-reports.php:73 includes/class-lddfw-reports.php:147
+msgid "No orders"
+msgstr ""
+
+#: includes/class-lddfw-reports.php:116
+msgid "Drivers orders"
+msgstr ""
+
+#: includes/class-lddfw-reports.php:231
+msgid "Active drivers"
+msgstr ""
+
+#: includes/class-lddfw-reports.php:232
+msgid "Add new driver"
+msgstr ""
+
+#: includes/class-lddfw-reports.php:235
+msgid "All drivers"
+msgstr ""
+
+#: includes/class-lddfw-reports.php:243
+msgid "Address"
+msgstr ""
+
+#: includes/class-lddfw-reports.php:244
+msgid "Availability"
+msgstr ""
+
+#: includes/class-lddfw-reports.php:245 includes/class-lddfw-screens.php:88
+#: includes/class-lddfw-screens.php:262
+msgid "Claim orders"
+msgstr ""
+
+#: includes/class-lddfw-reports.php:254
+msgid "No drivers"
+msgstr ""
+
+#: includes/class-lddfw-reports.php:339
+msgid "Availables"
+msgstr ""
+
+#: includes/class-lddfw-reports.php:339
+msgid "Unavailables"
+msgstr ""
+
+#: includes/class-lddfw-reports.php:340
+msgid "Can claim"
+msgstr ""
+
+#: includes/class-lddfw-reports.php:340
+msgid "Can't claim"
 msgstr ""
 
 #: includes/class-lddfw-route.php:47
@@ -973,7 +1231,7 @@ msgstr ""
 msgid "Please wait..."
 msgstr ""
 
-#: includes/class-lddfw-route.php:57
+#: includes/class-lddfw-route.php:57 includes/class-lddfw-route.php:58
 msgid "Plan your route"
 msgstr ""
 
@@ -981,101 +1239,79 @@ msgstr ""
 msgid "Finish planning route"
 msgstr ""
 
-#: includes/class-lddfw-route.php:142
+#: includes/class-lddfw-route.php:143
 msgid "Your delivery route is completed"
 msgstr ""
 
-#: includes/class-lddfw-route.php:186
+#: includes/class-lddfw-route.php:187
 msgid "Your next delivery"
 msgstr ""
 
-#: includes/class-lddfw-route.php:186
+#: includes/class-lddfw-route.php:187
 msgid "Drive to the next delivery"
 msgstr ""
 
-#: includes/class-lddfw-route.php:360
+#: includes/class-lddfw-route.php:361
 msgid "An unexpected error has occurred, please try again."
 msgstr ""
 
-#: includes/class-lddfw-route.php:526
+#: includes/class-lddfw-route.php:528
 msgid "View Route"
 msgstr ""
 
-#: includes/class-lddfw-route.php:550
+#: includes/class-lddfw-route.php:553
 msgid "Route"
 msgstr ""
 
-#: includes/class-lddfw-screens.php:79 includes/class-lddfw-screens.php:214
-msgid "Dashboard"
-msgstr ""
-
-#: includes/class-lddfw-screens.php:85 includes/class-lddfw-screens.php:253
-msgid "Claim orders"
-msgstr ""
-
-#: includes/class-lddfw-screens.php:91 includes/class-lddfw-screens.php:264
-#: includes/class-lddfw-screens.php:328
-msgid "Assign to driver"
-msgstr ""
-
-#: includes/class-lddfw-screens.php:92 includes/class-lddfw-screens.php:271
-#: includes/class-lddfw-screens.php:362
-msgid "Out for delivery"
-msgstr ""
-
-#: includes/class-lddfw-screens.php:93 includes/class-lddfw-screens.php:278
-msgid "Failed delivery"
-msgstr ""
-
-#: includes/class-lddfw-screens.php:98
+#: includes/class-lddfw-screens.php:105 includes/class-lddfw-screens.php:106
 msgid "Log out"
 msgstr ""
 
-#: includes/class-lddfw-screens.php:128
+#: includes/class-lddfw-screens.php:136
 msgid "WELCOME"
 msgstr ""
 
-#: includes/class-lddfw-screens.php:129
+#: includes/class-lddfw-screens.php:137
 msgid "To delivery drivers manager"
 msgstr ""
 
-#: includes/class-lddfw-screens.php:130
+#: includes/class-lddfw-screens.php:138
 msgid "Get started"
 msgstr ""
 
-#: includes/class-lddfw-screens.php:166
+#: includes/class-lddfw-screens.php:175
 msgid "Out For Delivery"
 msgstr ""
 
-#: includes/class-lddfw-screens.php:222
+#: includes/class-lddfw-screens.php:230
 msgid "I am"
 msgstr ""
 
-#: includes/class-lddfw-screens.php:229 includes/class-lddfw-screens.php:237
+#: includes/class-lddfw-screens.php:237 includes/class-lddfw-screens.php:245
 msgid "Availability status"
 msgstr ""
 
-#: includes/class-lddfw-screens.php:302
+#: includes/class-lddfw-screens.php:312
 msgid "Failed Delivery"
 msgstr ""
 
-#: includes/class-lddfw-screens.php:340
+#: includes/class-lddfw-screens.php:349
 msgid "Mark orders as out for delivery"
 msgstr ""
 
-#: includes/class-lddfw-screens.php:341 includes/class-lddfw-screens.php:396
+#: includes/class-lddfw-screens.php:350 includes/class-lddfw-screens.php:404
 msgid "Choose orders and click on the button"
 msgstr ""
 
-#: includes/class-lddfw-screens.php:384 includes/class-lddfw-screens.php:417
+#: includes/class-lddfw-screens.php:392 includes/class-lddfw-screens.php:427
 msgid "Claim Orders"
 msgstr ""
 
-#: includes/class-lddfw-screens.php:395
+#: includes/class-lddfw-screens.php:403
 msgid "Assign orders to you"
 msgstr ""
 
-#: includes/class-lddfw-screens.php:513
+#: includes/class-lddfw-screens.php:521
 msgid "Access Denied, You do not have permissions to access this order"
 msgstr ""
 
@@ -1117,15 +1353,11 @@ msgstr ""
 msgid "Failed to send SMS to %s "
 msgstr ""
 
-#: includes/lddfw-metaboxes.php:26
-msgid "Drivers"
-msgstr ""
-
 #: includes/lddfw-metaboxes.php:69
 msgid "Assign a driver"
 msgstr ""
 
-#: includes/lddfw-metaboxes.php:85
+#: includes/lddfw-metaboxes.php:86
 msgid "drivers"
 msgstr ""
 

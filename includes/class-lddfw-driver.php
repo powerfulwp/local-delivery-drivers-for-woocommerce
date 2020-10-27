@@ -65,9 +65,19 @@ class LDDFW_Driver
         if ( $driver_id !== $order_driverid && '-1' !== $driver_id && '' !== $driver_id ) {
             $driver = get_userdata( $driver_id );
             $driver_name = $driver->first_name . ' ' . $driver->last_name;
-            /* translators: %s: driver name */
-            $note = sprintf( __( 'Delivery driver %s has been assigned to order', 'lddfw' ), $driver_name );
+            $note = __( 'Delivery driver has been assigned to order', 'lddfw' );
+            $user_note = '';
             update_post_meta( $order_id, 'lddfw_driverid', $driver_id );
+            /**
+             * Update order status to driver assigned.
+             */
+            $lddfw_driver_assigned_status = get_option( 'lddfw_driver_assigned_status', '' );
+            
+            if ( '' !== $lddfw_driver_assigned_status ) {
+                $order->update_status( $lddfw_driver_assigned_status, '' );
+                $order->save();
+            }
+            
             $order->add_order_note( $note );
         }
     
@@ -85,19 +95,23 @@ class LDDFW_Driver
         $array = $wpdb->get_results( $wpdb->prepare( ' select mt.user_id from ' . $wpdb->prefix . 'users u
 				inner join ' . $wpdb->prefix . 'usermeta mt on mt.user_id = u.id and mt.meta_key = \'wp_capabilities\'
 				inner join ' . $wpdb->prefix . 'usermeta mt1 on mt1.user_id = u.id and mt1.meta_key = \'lddfw_driver_availability\' 
+				inner join ' . $wpdb->prefix . 'usermeta mt2 on mt2.user_id = u.id and mt2.meta_key = \'lddfw_driver_account\' 
+				inner join ' . $wpdb->prefix . 'usermeta mt3 on mt3.user_id = u.id and mt3.meta_key = \'lddfw_driver_claim\' 
 				left join (
-					select mt.meta_value as driver_id ,wp_posts.ID as orders 
+					select mt.meta_value as driver_id ,wp_posts.ID as orders
 					from ' . $wpdb->prefix . 'posts
 					inner join ' . $wpdb->prefix . 'postmeta mt on mt.post_id = wp_posts.ID
 					where  post_type = \'shop_order\' and
-					post_status in (%s,%s,%s)
+					post_status in (%s,%s,%s,%s)
 					and mt.meta_key = \'lddfw_driverid\'
 					and mt.meta_value <> \'\' and mt.meta_value <> \'-1\'
 				) t on t.driver_id = mt.user_id
-				where mt.meta_value like %s and mt1.meta_value = \'1\'
+				where
+				mt.meta_value like %s and mt1.meta_value = \'1\' and mt2.meta_value = \'1\' and mt3.meta_value = \'1\'
 				group by mt.user_id
 				order by count(t.orders)
 				limit 1 ', array(
+            get_option( 'lddfw_driver_assigned_status', '' ),
             get_option( 'lddfw_processing_status', '' ),
             get_option( 'lddfw_out_for_delivery_status', '' ),
             get_option( 'lddfw_failed_attempt_status', '' ),

@@ -8,8 +8,14 @@ body {
     margin: 0;
     position: relative;
     background: #f7f7f7;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', 'arial', 'sans-serif';
     color: #011627;
+}
+
+.lddfw_back_to_login_link svg,
+#lddfw_back_to_forgot_password_link svg {
+    width: 12px;
+    top: -1px;
 }
 
 #lddfw_driver_delivered_note_wrap,
@@ -402,6 +408,12 @@ label.error {
 #lddfw_thankyou .fa-check-circle {
     font-size: 75px;
     margin-bottom: 20px;
+    width: 100px;
+    color: #51b951;
+}
+
+#lddfw_application_thankyou .fa-check-circle {
+    color: #51b951;
 }
 
 #lddfw_thankyou .lddfw_lightbox_wrap {
@@ -509,24 +521,19 @@ label.error {
     margin-top: 15px;
 }
 
-.lddfw_waze.btn {
-    margin-bottom: 15px;
-}
-
 #lddfw_order #lddfw_customer {
     line-height: 19px;
 }
 
 #lddfw_menu {
-    font-size: 32px;
     position: relative;
 }
 
 #lddfw_availability {
     font-size: 28px;
     vertical-align: middle;
-    top: -1px;
     position: relative;
+    top: -2px;
 }
 
 #lddfw_availability .fa-toggle-off {
@@ -549,6 +556,52 @@ label.error {
     font-size: 100px;
     padding-top: 30px;
     padding-bottom: 30px;
+}
+
+svg {
+    width: 20px;
+    vertical-align: middle;
+    position: relative;
+}
+
+#lddfw_mySidenav svg,
+.lddfw_waze svg {
+    top: -2px;
+}
+
+.lddfw_cover svg {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100px;
+}
+
+.lddfw_back_link svg,
+#lddfw_menu .fa-bars,
+#lddfw_availability svg,
+#lddfw_hide_map_btn .fa-arrow-left {
+    width: 30px;
+}
+
+#lddfw_claim_orders_button svg,
+#lddfw_out_for_delivery_button svg {
+    top: -1px;
+}
+
+#lddfw_order svg {
+    top: -2px;
+    width: 16px;
+}
+
+#lddfw_plainroute_btn svg {
+    top: -3px;
+}
+
+#lddfw_plainroute_btn .fa-lock {
+    width: 16px;
+}
+
+.availability-text {
+    line-height: 42px;
 }
 
 .lddfw_table td.lddfw_space_col {
@@ -594,11 +647,12 @@ label.error {
 #lddfw_menu .lddfw_availability {
     position: absolute;
     font-size: 8px;
-    right: 18px;
-    top: 24px;
+    right: 20px;
+    top: 16px;
     background: #fff;
     border-radius: 28px;
     padding: 2px;
+    width: 11px;
 }
 
 .lddfw_sidenav h3 {
@@ -807,11 +861,6 @@ a.lddfw_closebtn {
 
 #lddfw_right-panel i {
     font-size: 12px;
-}
-
-.lddfw_back_link,
-#lddfw_hide_map_btn {
-    font-size: 32px;
 }
 
 html,

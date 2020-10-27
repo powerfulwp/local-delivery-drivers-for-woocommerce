@@ -148,6 +148,10 @@ if ( !class_exists( 'LDDFW' ) ) {
              * The file responsible for the orders
              */
             include_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-lddfw-orders.php';
+            /**
+             * The file responsible for reports in admin panel
+             */
+            include_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-lddfw-reports.php';
             $this->loader = new LDDFW_Loader();
         }
         
@@ -181,6 +185,17 @@ if ( !class_exists( 'LDDFW' ) ) {
              */
             $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
             $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+            /**
+             * Users custom columns
+             */
+            $this->loader->add_filter( 'manage_users_columns', $plugin_admin, 'lddfw_users_list_columns' );
+            $this->loader->add_filter(
+                'manage_users_custom_column',
+                $plugin_admin,
+                'lddfw_users_list_columns_raw',
+                10,
+                3
+            );
             /**
              * Order custom columns
              */
@@ -231,7 +246,7 @@ if ( !class_exists( 'LDDFW' ) ) {
                 'woocommerce_order_status_changed',
                 $plugin_admin,
                 'lddfw_status_changed',
-                10,
+                9,
                 4
             );
             /**
@@ -241,23 +256,6 @@ if ( !class_exists( 'LDDFW' ) ) {
             $this->loader->add_action( 'edit_user_profile', $plugin_admin, 'lddfw_user_fields' );
             $this->loader->add_action( 'personal_options_update', $plugin_admin, 'lddfw_user_fields_save' );
             $this->loader->add_action( 'edit_user_profile_update', $plugin_admin, 'lddfw_user_fields_save' );
-            /**
-             * Bulk update
-             */
-            $this->loader->add_filter(
-                'handle_bulk_actions-edit-shop_order',
-                $plugin_admin,
-                'lddfw_handle_bulk_actions',
-                10,
-                3
-            );
-            $this->loader->add_filter(
-                'bulk_actions-edit-shop_order',
-                $plugin_admin,
-                'lddfw_bulk_actions_edit',
-                20,
-                1
-            );
         }
         
         /**

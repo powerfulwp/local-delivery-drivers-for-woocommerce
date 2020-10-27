@@ -30,7 +30,8 @@
                     lddfw_service: 'lddfw_out_for_delivery',
                     lddfw_orders_list: lddfw_order_list,
                     lddfw_driver_id: lddfw_driver_id,
-                    lddfw_wpnonce: lddfw_nonce
+                    lddfw_wpnonce: lddfw_nonce,
+                    lddfw_data_type: 'json'
                 }
             }).done(
                 function(data) {
@@ -99,7 +100,7 @@
         function() {
             if (jQuery(this).hasClass("lddfw_active")) {
                 jQuery(this).removeClass("lddfw_active");
-                jQuery(this).html("<i class='fas fa-toggle-off'></i>");
+                jQuery(this).html('<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="toggle-off" class="svg-inline--fa fa-toggle-off fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M384 64H192C85.961 64 0 149.961 0 256s85.961 192 192 192h192c106.039 0 192-85.961 192-192S490.039 64 384 64zM64 256c0-70.741 57.249-128 128-128 70.741 0 128 57.249 128 128 0 70.741-57.249 128-128 128-70.741 0-128-57.249-128-128zm320 128h-48.905c65.217-72.858 65.236-183.12 0-256H384c70.741 0 128 57.249 128 128 0 70.74-57.249 128-128 128z"></path></svg>');
                 jQuery("#lddfw_availability_status").html(jQuery("#lddfw_availability_status").attr("unavailable"));
                 jQuery("#lddfw_menu .lddfw_availability").removeClass("text-success");
                 jQuery("#lddfw_menu .lddfw_availability").addClass("text-danger");
@@ -109,14 +110,14 @@
                         lddfw_service: 'lddfw_availability',
                         lddfw_availability: "0",
                         lddfw_driver_id: lddfw_driver_id,
-                        lddfw_wpnonce: lddfw_nonce
+                        lddfw_wpnonce: lddfw_nonce,
+                        lddfw_data_type: 'html'
                     }
                 );
-
             } else {
                 jQuery(this).addClass("lddfw_active");
                 jQuery("#lddfw_availability_status").html(jQuery("#lddfw_availability_status").attr("available"));
-                jQuery(this).html("<i class='fas fa-toggle-on'></i>");
+                jQuery(this).html('<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="toggle-on" class="svg-inline--fa fa-toggle-on fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M384 64H192C86 64 0 150 0 256s86 192 192 192h192c106 0 192-86 192-192S490 64 384 64zm0 320c-70.8 0-128-57.3-128-128 0-70.8 57.3-128 128-128 70.8 0 128 57.3 128 128 0 70.8-57.3 128-128 128z"></path></svg>');
                 jQuery("#lddfw_menu .lddfw_availability").removeClass("text-danger");
                 jQuery("#lddfw_menu .lddfw_availability").addClass("text-success");
                 jQuery.post(
@@ -125,7 +126,8 @@
                         lddfw_service: 'lddfw_availability',
                         lddfw_availability: "1",
                         lddfw_driver_id: lddfw_driver_id,
-                        lddfw_wpnonce: lddfw_nonce
+                        lddfw_wpnonce: lddfw_nonce,
+                        lddfw_data_type: 'html'
                     }
                 );
             }
@@ -162,56 +164,9 @@
         }
     );
 
-
     jQuery(".lddfw_dashboard .lddfw_box a").click(function() {
         jQuery(this).parent().addClass("lddfw_active");
     });
-
-    jQuery("#lddfw_delivered_btn").click(
-        function() {
-            jQuery(".lddfw_page_content").hide();
-            jQuery("#lddfw_thankyou").show();
-
-            jQuery.ajax({
-                type: "POST",
-                url: lddfw_ajax_url,
-                data: {
-                    action: 'lddfw_ajax',
-                    lddfw_service: 'lddfw_status',
-                    lddfw_order_id: jQuery(this).attr("order_id"),
-                    lddfw_order_status: jQuery(this).attr("order_status"),
-                    lddfw_driver_id: lddfw_driver_id,
-                    lddfw_wpnonce: lddfw_nonce
-                },
-                success: function(data) {
-                    
-/* Premium Code Stripped by Freemius */
-
-                },
-                error: function(request, status, error) {}
-
-            });
-            return false;
-        }
-    );
-
-    jQuery("#lddfw_failed_delivered_btn").click(
-        function() {
-            jQuery(".lddfw_page_content").hide();
-            jQuery("#lddfw_failed_delivery").show();
-            jQuery.post(
-                lddfw_ajax_url, {
-                    action: 'lddfw_ajax',
-                    lddfw_service: 'lddfw_status',
-                    lddfw_order_id: jQuery(this).attr("order_id"),
-                    lddfw_order_status: jQuery(this).attr("order_status"),
-                    lddfw_driver_id: lddfw_driver_id,
-                    lddfw_wpnonce: lddfw_nonce
-                }
-            );
-            return false;
-        }
-    );
 
     jQuery(".lddfw_confirmation .lddfw_cancel").click(
         function() {
@@ -232,7 +187,7 @@
     jQuery("#lddfw_delivered_confirmation .lddfw_ok").click(
         function() {
 
-            var lddfw_reason = jQuery('input[name=delivery_dropoff_location]:checked', '#lddfw_delivered_form');
+            var lddfw_reason = jQuery('input[name=lddfw_delivery_dropoff_location]:checked', '#lddfw_delivered_form');
             if (lddfw_reason.attr("id") != "lddfw_delivery_dropoff_other") {
                 jQuery("#lddfw_driver_delivered_note").val(lddfw_reason.val());
             }
@@ -248,7 +203,8 @@
                     lddfw_order_status: jQuery("#lddfw_driver_delivered_note_btn").attr("order_status"),
                     lddfw_driver_id: lddfw_driver_id,
                     lddfw_note: jQuery("#lddfw_driver_delivered_note").val(),
-                    lddfw_wpnonce: lddfw_nonce
+                    lddfw_wpnonce: lddfw_nonce,
+                    lddfw_data_type: 'html'
                 },
                 success: function(data) {
                     
@@ -289,7 +245,8 @@
                     lddfw_order_status: jQuery("#lddfw_driver_note_btn").attr("order_status"),
                     lddfw_driver_id: lddfw_driver_id,
                     lddfw_note: jQuery("#lddfw_driver_note").val(),
-                    lddfw_wpnonce: lddfw_nonce
+                    lddfw_wpnonce: lddfw_nonce,
+                    lddfw_data_type: 'html'
                 },
                 success: function(data) {
                     
@@ -300,6 +257,17 @@
             });
 
             return false;
+        }
+    );
+
+    jQuery("#lddfw_delivered_form input[type=radio]").click(
+        function() {
+            jQuery("#lddfw_driver_delivered_note").val("");
+            if (jQuery(this).attr("id") == "lddfw_delivery_dropoff_other") {
+                jQuery("#lddfw_driver_delivered_note_wrap").show();
+            } else {
+                jQuery("#lddfw_driver_delivered_note_wrap").hide();
+            }
         }
     );
 
@@ -346,7 +314,8 @@
                     lddfw_service: 'lddfw_login',
                     lddfw_login_email: jQuery("#lddfw_login_email").val(),
                     lddfw_login_password: jQuery("#lddfw_login_password").val(),
-                    lddfw_wpnonce: lddfw_nonce
+                    lddfw_wpnonce: lddfw_nonce,
+                    lddfw_data_type: 'json'
                 },
                 success: function(data) {
                     var lddfw_json = JSON.parse(data);
@@ -440,7 +409,8 @@
                     action: 'lddfw_ajax',
                     lddfw_service: 'lddfw_forgot_password',
                     lddfw_user_email: jQuery("#lddfw_user_email").val(),
-                    lddfw_wpnonce: lddfw_nonce
+                    lddfw_wpnonce: lddfw_nonce,
+                    lddfw_data_type: 'json'
 
                 },
                 success: function(data) {
@@ -493,7 +463,8 @@
                     lddfw_confirm_password: jQuery("#lddfw_confirm_password").val(),
                     lddfw_reset_key: jQuery("#lddfw_reset_key").val(),
                     lddfw_reset_login: jQuery("#lddfw_reset_login").val(),
-                    lddfw_wpnonce: lddfw_nonce
+                    lddfw_wpnonce: lddfw_nonce,
+                    lddfw_data_type: 'json'
                 },
 
                 success: function(data) {

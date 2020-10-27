@@ -1,5 +1,8 @@
 jQuery(document).ready(
     function($) {
+        
+/* Premium Code Stripped by Freemius */
+
 
         function checkbox_toggle(element) {
             if (!element.is(':checked')) {
@@ -45,54 +48,12 @@ jQuery(document).ready(
             }
         );
 
-        $(".post-type-shop_order #bulk-action-selector-top").change(
-            function() {
+        
+/* Premium Code Stripped by Freemius */
 
-                if ($(this).val() == "assign_a_driver") {
-                    var $this = $(this);
-                    if ($("#lddfw_driverid_lddfw_action").length) {
-                        $("#lddfw_driverid_lddfw_action").show();
-                    } else {
-                        $.post(
-                            lddfw_ajax.ajaxurl, {
-                                action: 'lddfw_ajax',
-                                lddfw_service: 'lddfw_get_drivers_list',
-                                lddfw_obj_id: 'lddfw_action',
-                            },
-                            function(data) {
-                                $(data).insertAfter($this);
-                            }
-                        );
-                    }
-                } else {
-                    $("#lddfw_driverid_lddfw_action").hide();
-                }
-            }
-        );
-
-        $(".post-type-shop_order #bulk-action-selector-bottom").change(
-            function() {
-                if ($(this).val() == "assign_a_driver") {
-                    var $this = $(this);
-                    if ($("#lddfw_driverid_lddfw_action2").length) {
-                        $("#lddfw_driverid_lddfw_action2").show();
-                    } else {
-                        $.post(
-                            lddfw_ajax.ajaxurl, {
-                                action: 'lddfw_ajax',
-                                lddfw_service: 'lddfw_get_drivers_list',
-                                lddfw_obj_id: 'lddfw_action2',
-                            },
-                            function(data) {
-                                $(data).insertAfter($this);
-                            }
-                        );
-                    }
-                } else {
-                    $("#lddfw_driverid_lddfw_action2").hide();
-                }
-            }
-        );
 
     }
 );
+
+
+/* Premium Code Stripped by Freemius */

@@ -105,6 +105,7 @@ class LDDFW_Admin
         wp_localize_script( $this->plugin_name, 'lddfw_ajax', array(
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
         ) );
+        wp_localize_script( $this->plugin_name, 'lddfw_nonce', esc_js( wp_create_nonce( 'lddfw-nonce' ) ) );
     }
     
     /**
@@ -126,7 +127,7 @@ class LDDFW_Admin
                 $nonce = sanitize_text_field( wp_unslash( $_POST['lddfw_wpnonce'] ) );
                 
                 if ( !wp_verify_nonce( $nonce, 'lddfw-nonce' ) ) {
-                    $error = __( 'Security Check Failure', 'lddfw' );
+                    $error = __( 'Security Check Failure - This alert may occur when you are logged in as an administrator and as a delivery driver on the same browser and the same device. If you want to work on both panels please try to work with two different browsers.', 'lddfw' );
                 } else {
                     // Get list of orders.
                     $orders_list = ( isset( $_POST['lddfw_orders_list'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_orders_list'] ) ) : '' );
@@ -139,11 +140,11 @@ class LDDFW_Admin
                                 $order = new WC_Order( $order_id );
                                 $order_driverid = $order->get_meta( 'lddfw_driverid' );
                                 $out_for_delivery_status = get_option( 'lddfw_out_for_delivery_status', '' );
-                                $processing_status = get_option( 'lddfw_processing_status', '' );
+                                $driver_assigned_status = get_option( 'lddfw_driver_assigned_status', '' );
                                 $current_order_status = 'wc-' . $order->get_status();
                                 // Check if order belongs to driver and status is processing.
                                 
-                                if ( intval( $order_driverid ) === intval( $driver_id ) && $current_order_status === $processing_status ) {
+                                if ( intval( $order_driverid ) === intval( $driver_id ) && $current_order_status === $driver_assigned_status ) {
                                     // Update order status.
                                     $order->update_status( $out_for_delivery_status, __( 'The delivery driver changed the order status.', 'lddfw' ) );
                                     $order->save();
@@ -189,7 +190,7 @@ class LDDFW_Admin
                 $nonce = sanitize_text_field( wp_unslash( $_POST['lddfw_wpnonce'] ) );
                 
                 if ( !wp_verify_nonce( $nonce, 'lddfw-nonce' ) ) {
-                    $error = __( 'Security Check Failure', 'lddfw' );
+                    $error = __( 'Security Check Failure - This alert may occur when you are logged in as an administrator and as a delivery driver on the same browser and the same device. If you want to work on both panels please try to work with two different browsers.', 'lddfw' );
                 } else {
                     $orders_list = ( isset( $_POST['lddfw_orders_list'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_orders_list'] ) ) : '' );
                     
@@ -226,21 +227,32 @@ class LDDFW_Admin
      */
     public function lddfw_ajax()
     {
+        $lddfw_data_type = ( isset( $_POST['lddfw_data_type'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_data_type'] ) ) : '' );
+        $lddfw_obj_id = ( isset( $_POST['lddfw_obj_id'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_obj_id'] ) ) : '' );
+        $lddfw_service = ( isset( $_POST['lddfw_service'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_service'] ) ) : '' );
+        $lddfw_driver_id = ( isset( $_POST['lddfw_driver_id'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_driver_id'] ) ) : '' );
+        $result = 0;
+        /**
+         * Security check.
+         */
         
         if ( isset( $_POST['lddfw_wpnonce'] ) ) {
             $nonce = sanitize_text_field( wp_unslash( $_POST['lddfw_wpnonce'] ) );
             
             if ( !wp_verify_nonce( $nonce, 'lddfw-nonce' ) ) {
-                echo  "<div class='alert alert-danger' >" . esc_html( __( 'Security Check Failure', 'lddfw' ) ) . '</div>' ;
+                $error = esc_js( __( 'Security Check Failure - This alert may occur when you are logged in as an administrator and as a delivery driver on the same browser and the same device. If you want to work on both panels please try to work with two different browsers.', 'lddfw' ) );
+                
+                if ( 'json' === $lddfw_data_type ) {
+                    echo  "{\"result\":\"{$result}\",\"error\":\"{$error}\"}" ;
+                } else {
+                    echo  '<div class=\'alert alert-danger alert-dismissible fade show\'>' . $error . '<button type=\'button\' class=\'close\' data-dismiss=\'alert\' aria-label=\'Close\'><span aria-hidden=\'true\'>&times;</span></button></div>' ;
+                }
+                
                 exit;
             }
         
         }
         
-        $lddfw_obj_id = ( isset( $_POST['lddfw_obj_id'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_obj_id'] ) ) : '' );
-        $lddfw_service = ( isset( $_POST['lddfw_service'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_service'] ) ) : '' );
-        $lddfw_driver_id = ( isset( $_POST['lddfw_driver_id'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_driver_id'] ) ) : '' );
-        $result = 0;
         /* login driver service */
         
         if ( 'lddfw_login' === $lddfw_service ) {
@@ -268,6 +280,28 @@ class LDDFW_Admin
         if ( 'lddfw_logout' === $lddfw_service ) {
             LDDFW_Login::lddfw_logout();
         }
+        /*
+        Set driver account status.
+        */
+        
+        if ( 'lddfw_account_status' === $lddfw_service ) {
+            $user = wp_get_current_user();
+            // Switch to driver user if administrator is logged in.
+            if ( in_array( 'administrator', (array) $user->roles, true ) && '' !== $lddfw_driver_id ) {
+                $user = get_user_by( 'id', $lddfw_driver_id );
+            }
+            // Check if user has a driver role.
+            
+            if ( in_array( 'driver', (array) $user->roles, true ) ) {
+                $driver_id = $user->ID;
+                $account_status = ( isset( $_POST['lddfw_account_status'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_account_status'] ) ) : '' );
+                update_user_meta( $driver_id, 'lddfw_driver_account', $account_status );
+                $result = 1;
+            }
+            
+            echo  esc_html( $result ) ;
+        }
+        
         /*
         Set driver availability.
         */
@@ -324,43 +358,6 @@ class LDDFW_Admin
         
         }
         
-        /* Add comment to order */
-        
-        if ( 'lddfw_note' === $lddfw_service ) {
-            $user = wp_get_current_user();
-            // Switch to driver user if administrator is logged in.
-            if ( in_array( 'administrator', (array) $user->roles, true ) && '' !== $lddfw_driver_id ) {
-                $user = get_user_by( 'id', $lddfw_driver_id );
-            }
-            // Check if user has a driver role.
-            
-            if ( in_array( 'driver', (array) $user->roles, true ) ) {
-                $order_id = ( isset( $_POST['lddfw_order_id'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_order_id'] ) ) : '' );
-                $note = ( isset( $_POST['lddfw_note'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_note'] ) ) : '' );
-                $driver_id = ( isset( $_POST['lddfw_driver_id'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_driver_id'] ) ) : '' );
-                /* check if the variables are not empty */
-                
-                if ( '' !== $order_id && '' !== $note && '' !== $driver_id ) {
-                    $order = new WC_Order( $order_id );
-                    $order_driverid = $order->get_meta( 'lddfw_driverid' );
-                    $out_for_delivery_status = get_option( 'lddfw_out_for_delivery_status', '' );
-                    $current_order_status = 'wc-' . $order->get_status();
-                    /* Check if order belongs to driver */
-                    
-                    if ( intval( $order_driverid ) === intval( $driver_id ) ) {
-                        // Add the note.
-                        $note = __( 'Driver note', 'lddfw' ) . ': ' . $note;
-                        $order->add_order_note( $note );
-                        $result = 1;
-                    }
-                
-                }
-            
-            }
-            
-            echo  esc_html( $result ) ;
-        }
-        
         
         if ( 'lddfw_status' === $lddfw_service ) {
             $user = wp_get_current_user();
@@ -387,11 +384,12 @@ class LDDFW_Admin
                     
                     if ( intval( $order_driverid ) === intval( $driver_id ) && ($current_order_status === $out_for_delivery_status || $current_order_status === $failed_attempt_status) ) {
                         /* Update order status */
-                        $order->update_status( $order_status, __( 'Driver changed order status, ', 'lddfw' ) );
+                        $status_note = esc_html__( 'Driver changed order status', 'lddfw' );
+                        $order->update_status( $order_status, $status_note );
                         
                         if ( '' !== $note ) {
-                            $note = __( 'Driver note', 'lddfw' ) . ': ' . $note;
-                            $order->add_order_note( $note );
+                            $Driver_note = __( 'Driver note', 'lddfw' ) . ': ' . $note;
+                            $order->add_order_note( $Driver_note );
                         }
                         
                         $order->save();
@@ -405,14 +403,6 @@ class LDDFW_Admin
             echo  esc_html( $result ) ;
         }
         
-        if ( 'lddfw_get_drivers_list' === $lddfw_service ) {
-            echo  lddfw_driver_drivers_selectbox(
-                LDDFW_Driver::lddfw_get_drivers(),
-                '',
-                $lddfw_obj_id,
-                'bulk'
-            ) ;
-        }
         exit;
     }
     
@@ -441,8 +431,8 @@ class LDDFW_Admin
         
         if ( get_option( 'lddfw_delivered_status', '' ) === 'wc-' . $status_to ) {
             $order_driverid = $order->get_meta( 'lddfw_driverid' );
+            update_post_meta( $order_id, 'lddfw_delivered_date', gmdate( 'Y-m-d H:i:s' ) );
             if ( '' != $order_driverid ) {
-                update_post_meta( $order_id, 'lddfw_delivered_date', gmdate( 'Y-m-d H:i:s' ) );
             }
         }
         
@@ -466,6 +456,7 @@ class LDDFW_Admin
             $lddfw_statuses[$key] = $status;
             
             if ( 'wc-processing' === $key ) {
+                $lddfw_statuses['wc-driver-assigned'] = __( 'Driver Assigned', 'lddfw' );
                 $lddfw_statuses['wc-out-for-delivery'] = __( 'Out for Delivery', 'lddfw' );
                 $lddfw_statuses['wc-failed-delivery'] = __( 'Failed Delivery Attempt', 'lddfw' );
             }
@@ -498,6 +489,14 @@ class LDDFW_Admin
             'exclude_from_search'       => false,
             'label_count'               => _n_noop( 'Failed Delivery Attempt <span class="count">(%s)</span>', 'Failed Delivery Attempt <span class="count">(%s)</span>', 'lddfw' ),
         ) );
+        register_post_status( 'wc-driver-assigned', array(
+            'label'                     => __( 'Driver Assigned', 'lddfw' ),
+            'public'                    => true,
+            'show_in_admin_status_list' => true,
+            'show_in_admin_all_list'    => true,
+            'exclude_from_search'       => false,
+            'label_count'               => _n_noop( 'Driver Assigned <span class="count">(%s)</span>', 'Driver Assigned <span class="count">(%s)</span>', 'lddfw' ),
+        ) );
     }
     
     /**
@@ -508,22 +507,23 @@ class LDDFW_Admin
      */
     public function lddfw_settings_init()
     {
-        register_setting( 'lddfw', 'lddfw_failed_delivery_reason_1' );
-        register_setting( 'lddfw', 'lddfw_failed_delivery_reason_2' );
-        register_setting( 'lddfw', 'lddfw_failed_delivery_reason_3' );
-        register_setting( 'lddfw', 'lddfw_failed_delivery_reason_4' );
-        register_setting( 'lddfw', 'lddfw_failed_delivery_reason_5' );
-        register_setting( 'lddfw', 'lddfw_delivery_dropoff_1' );
-        register_setting( 'lddfw', 'lddfw_delivery_dropoff_2' );
-        register_setting( 'lddfw', 'lddfw_delivery_dropoff_3' );
         register_setting( 'lddfw', 'lddfw_google_api_key' );
         register_setting( 'lddfw', 'lddfw_dispatch_phone_number' );
         register_setting( 'lddfw', 'lddfw_status_section' );
+        register_setting( 'lddfw', 'lddfw_driver_assigned_status' );
         register_setting( 'lddfw', 'lddfw_out_for_delivery_status' );
         register_setting( 'lddfw', 'lddfw_delivered_status' );
         register_setting( 'lddfw', 'lddfw_failed_attempt_status' );
         register_setting( 'lddfw', 'lddfw_processing_status' );
         register_setting( 'lddfw', 'lddfw_delivery_drivers_page' );
+        /**
+         * Update driver_assigned status if empty.
+         * This update will be removed in the future versions.
+         */
+        $lddfw_driver_assigned_status = get_option( 'lddfw_driver_assigned_status', '' );
+        if ( '' === $lddfw_driver_assigned_status ) {
+            update_option( 'lddfw_driver_assigned_status', 'wc-driver-assigned' );
+        }
         // Admin notices
         add_action( 'admin_notices', array( $this, 'lddfw_admin_notices' ) );
         // Settings
@@ -561,6 +561,13 @@ class LDDFW_Admin
             'lddfw'
         );
         add_settings_field(
+            'lddfw_driver_assigned_status',
+            __( 'Driver assigned status', 'lddfw' ),
+            array( $this, 'lddfw_driver_assigned_status' ),
+            'lddfw',
+            'lddfw_status_section'
+        );
+        add_settings_field(
             'lddfw_out_for_delivery_status',
             __( 'Out for delivery status', 'lddfw' ),
             array( $this, 'lddfw_out_for_delivery_status' ),
@@ -576,44 +583,47 @@ class LDDFW_Admin
         );
         add_settings_field(
             'lddfw_failed_attempt_status',
-            __( 'Failed Delivery attempt status', 'lddfw' ),
+            __( 'Failed delivery attempt status', 'lddfw' ),
             array( $this, 'lddfw_failed_attempt_status' ),
             'lddfw',
             'lddfw_status_section'
         );
         add_settings_field(
             'lddfw_processing_status',
-            __( 'Order Processing status.', 'lddfw' ),
+            __( 'Order processing status', 'lddfw' ),
             array( $this, 'lddfw_processing_status' ),
             'lddfw',
             'lddfw_status_section'
         );
-        add_settings_section(
-            'lddfw_failed_delivery_reasons',
-            __( 'Common Reasons For Failed Delivery', 'lddfw' ),
-            array( $this, 'lddfw_failed_delivery_reasons_section' ),
-            'lddfw'
-        );
-        add_settings_field(
-            'lddfw_failed_delivery_reason_1',
-            __( 'Common Reasons', 'lddfw' ),
-            array( $this, 'lddfw_failed_delivery_reason_1' ),
-            'lddfw',
-            'lddfw_failed_delivery_reasons'
-        );
-        add_settings_section(
-            'lddfw_delivery_dropoff',
-            __( 'Drop off delivery locations', 'lddfw' ),
-            array( $this, 'lddfw_delivery_dropoff_section' ),
-            'lddfw'
-        );
-        add_settings_field(
-            'lddfw_delivery_dropoff_1',
-            __( 'Options', 'lddfw' ),
-            array( $this, 'lddfw_delivery_dropoff_1' ),
-            'lddfw',
-            'lddfw_delivery_dropoff'
-        );
+    }
+    
+    /**
+     * Plugin premium_features.
+     *
+     * @since 1.0.0
+     */
+    public function lddfw_premium_features()
+    {
+        if ( lddfw_is_free() ) {
+            echo  '<h2>' . __( 'Premium features:', 'lddfw' ) . '</h2><hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Route Planning &amp; Navigation.', 'lddfw' ) . '
+				  <hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Next Delivery - Drivers Easily Navigate to the Next Destination.', 'lddfw' ) . '
+				  <hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Ready Notes for The Drivers.', 'lddfw' ) . '
+				  <hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Drivers can Claim Orders.', 'lddfw' ) . '
+
+				  <hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Admin Driver Dashboard.', 'lddfw' ) . '
+			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Admin Orders Filters.', 'lddfw' ) . '
+			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'One-click to Update Drivers Availability, Claim Permission, and Accounts.', 'lddfw' ) . '
+			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Users Names in Orders Notes.', 'lddfw' ) . '
+
+			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Auto-assign Delivery Drivers.', 'lddfw' ) . '
+			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'SMS Notifications for Customers and Drivers.', 'lddfw' ) . '
+			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Emails Notifications for Customers and Drivers.', 'lddfw' ) . '
+			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Bulk-assign Delivery Drivers.', 'lddfw' ) . '
+			
+			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Delivery Drivers Application.', 'lddfw' ) . '
+			
+			<hr>' ;
+        }
     }
     
     /**
@@ -725,72 +735,6 @@ class LDDFW_Admin
      *
      * @since 1.0.0
      */
-    public function lddfw_failed_delivery_reasons_section()
-    {
-        echo  esc_html( __( 'These are driver choices when delivery fails, to delete an option leave blank.' ) ) ;
-    }
-    
-    /**
-     * Plugin settings.
-     *
-     * @since 1.0.0
-     */
-    public function lddfw_delivery_dropoff_section()
-    {
-        echo  esc_html( __( 'These are driver choices of drop off locations, to delete an option leave blank.' ) ) ;
-    }
-    
-    /**
-     * Plugin settings.
-     *
-     * @since 1.0.0
-     */
-    public function lddfw_failed_delivery_reason_1()
-    {
-        ?>
-		<p> 1. <input type='text' class='regular-text' name='lddfw_failed_delivery_reason_1' value='<?php 
-        echo  esc_attr( get_option( 'lddfw_failed_delivery_reason_1', '' ) ) ;
-        ?>'></p>
-		<p> 2. <input type='text' class='regular-text' name='lddfw_failed_delivery_reason_2' value='<?php 
-        echo  esc_attr( get_option( 'lddfw_failed_delivery_reason_2', '' ) ) ;
-        ?>'></p>
-		<p> 3. <input type='text' class='regular-text' name='lddfw_failed_delivery_reason_3' value='<?php 
-        echo  esc_attr( get_option( 'lddfw_failed_delivery_reason_3', '' ) ) ;
-        ?>'></p>
-		<p> 4. <input type='text' class='regular-text' name='lddfw_failed_delivery_reason_4' value='<?php 
-        echo  esc_attr( get_option( 'lddfw_failed_delivery_reason_4', '' ) ) ;
-        ?>'></p>
-		<p> 5. <input type='text' class='regular-text' name='lddfw_failed_delivery_reason_5' value='<?php 
-        echo  esc_attr( get_option( 'lddfw_failed_delivery_reason_5', '' ) ) ;
-        ?>'></p>
-		<?php 
-    }
-    
-    /**
-     * Plugin settings.
-     *
-     * @since 1.0.0
-     */
-    public function lddfw_delivery_dropoff_1()
-    {
-        ?>
-		<p>1. <input type='text' class='regular-text' name='lddfw_delivery_dropoff_1' value='<?php 
-        echo  esc_attr( get_option( 'lddfw_delivery_dropoff_1', '' ) ) ;
-        ?>'></p>
-		<p>2. <input type='text' class='regular-text' name='lddfw_delivery_dropoff_2' value='<?php 
-        echo  esc_attr( get_option( 'lddfw_delivery_dropoff_2', '' ) ) ;
-        ?>'></p>
-		<p>3. <input type='text' class='regular-text' name='lddfw_delivery_dropoff_3' value='<?php 
-        echo  esc_attr( get_option( 'lddfw_delivery_dropoff_3', '' ) ) ;
-        ?>'></p>
-		<?php 
-    }
-    
-    /**
-     * Plugin settings.
-     *
-     * @since 1.0.0
-     */
     public function lddfw_dispatch_phone_number()
     {
         ?>
@@ -827,7 +771,10 @@ class LDDFW_Admin
      */
     public function lddfw_processing_status()
     {
-        $result = wc_get_order_statuses();
+        $result = '';
+        if ( function_exists( 'wc_get_order_statuses' ) ) {
+            $result = wc_get_order_statuses();
+        }
         ?>
 		<select name='lddfw_processing_status'>
 			<?php 
@@ -847,7 +794,7 @@ class LDDFW_Admin
         ?>
 		</select>
 		<p class="lddfw_description" id="lddfw-gooogle-api-key-description"><?php 
-        echo  esc_html( __( 'On this status orders are ready for delivery, the delivery driver can claim orders or its already assigned to him.', 'lddfw' ) ) ;
+        echo  esc_html( __( 'The orders are ready for delivery and drivers are able to claim.', 'lddfw' ) ) ;
         ?></p>
 		<?php 
     }
@@ -859,7 +806,10 @@ class LDDFW_Admin
      */
     public function lddfw_failed_attempt_status()
     {
-        $result = wc_get_order_statuses();
+        $result = '';
+        if ( function_exists( 'wc_get_order_statuses' ) ) {
+            $result = wc_get_order_statuses();
+        }
         ?>
 		<select name='lddfw_failed_attempt_status'>
 			<?php 
@@ -891,7 +841,10 @@ class LDDFW_Admin
      */
     public function lddfw_delivered_status()
     {
-        $result = wc_get_order_statuses();
+        $result = '';
+        if ( function_exists( 'wc_get_order_statuses' ) ) {
+            $result = wc_get_order_statuses();
+        }
         ?>
 		<select name='lddfw_delivered_status'>
 			<?php 
@@ -921,9 +874,47 @@ class LDDFW_Admin
      *
      * @since 1.0.0
      */
+    public function lddfw_driver_assigned_status()
+    {
+        $result = '';
+        if ( function_exists( 'wc_get_order_statuses' ) ) {
+            $result = wc_get_order_statuses();
+        }
+        ?>
+		<select name='lddfw_driver_assigned_status'>
+			<?php 
+        if ( !empty($result) ) {
+            foreach ( $result as $key => $status ) {
+                ?>
+					<option value="<?php 
+                echo  esc_attr( $key ) ;
+                ?>" <?php 
+                selected( esc_attr( get_option( 'lddfw_driver_assigned_status', '' ) ), $key );
+                ?>><?php 
+                echo  esc_html( $status ) ;
+                ?></option>
+					<?php 
+            }
+        }
+        ?>
+		</select>
+		<p class="lddfw_description" id="lddfw-gooogle-api-key-description"><?php 
+        echo  esc_html( __( 'The delivery driver was assigned to order.', 'lddfw' ) ) ;
+        ?></p>
+		<?php 
+    }
+    
+    /**
+     * Plugin settings.
+     *
+     * @since 1.0.0
+     */
     public function lddfw_out_for_delivery_status()
     {
-        $result = wc_get_order_statuses();
+        $result = '';
+        if ( function_exists( 'wc_get_order_statuses' ) ) {
+            $result = wc_get_order_statuses();
+        }
         ?>
 		<select name='lddfw_out_for_delivery_status'>
 			<?php 
@@ -966,16 +957,21 @@ class LDDFW_Admin
     public function lddfw_settings()
     {
         ?>
+		<div class="wrap">
 		<form action='options.php' method='post'>
-			<h1><?php 
+			<h1 class="wp-heading-inline"><?php 
         echo  esc_html( __( 'General Settings', 'lddfw' ) ) ;
         ?></h1>
 			<?php 
+        echo  LDDFW_Admin::lddfw_admin_plugin_bar() . '
+			<hr class="wp-header-end">' ;
         settings_fields( 'lddfw' );
         do_settings_sections( 'lddfw' );
         submit_button();
+        $this->lddfw_premium_features();
         ?>
 		</form>
+	</div>
 		<?php 
     }
     
@@ -989,12 +985,92 @@ class LDDFW_Admin
     {
         // add menu to main menu.
         add_menu_page(
-            'Delivery Drivers Settings',
-            'Delivery Drivers',
+            esc_html( __( 'Delivery Drivers Settings', 'lddfw' ) ),
+            esc_html( __( 'Delivery Drivers', 'lddfw' ) ),
             'edit_pages',
+            'lddfw-dashboard',
+            array( &$this, 'lddfw_dashboard' ),
+            'dashicons-location',
+            56
+        );
+        add_submenu_page(
+            'lddfw-dashboard',
+            esc_html( __( 'Dashboard', 'lddfw' ) ),
+            esc_html( __( 'Dashboard', 'lddfw' ) ),
+            1,
+            'lddfw-dashboard',
+            array( &$this, 'lddfw_dashboard' )
+        );
+        add_submenu_page(
+            'lddfw-dashboard',
+            esc_html( __( 'Settings', 'lddfw' ) ),
+            esc_html( __( 'Settings', 'lddfw' ) ),
+            1,
             'lddfw-settings',
             array( &$this, 'lddfw_settings' )
         );
+    }
+    
+    /**
+     * Admin plugin bar.
+     *
+     * @since 1.1.0
+     * @return void
+     */
+    static function lddfw_admin_plugin_bar()
+    {
+        return '<div class="lddfw_admin_bar">' . esc_html( __( 'Developed by', 'lddfw' ) ) . ' <a href="https://powerfulwp.com/" target="_blank">PowerfulWP</a> | <a href="https://powerfulwp.com/local-delivery-drivers-for-woocommerce-premium/" target="_blank" >' . esc_html( __( 'Premium', 'lddfw' ) ) . '</a> | <a href="https://powerfulwp.com/docs/local-delivery-drivers-for-woocommerce-premium/" target="_blank" >' . esc_html( __( 'Documents', 'lddfw' ) ) . '</a></div>';
+    }
+    
+    /**
+     * Plugin reports.
+     *
+     * @since 1.0.0
+     */
+    public function lddfw_dashboard()
+    {
+        $dashboard = new LDDFW_Reports();
+        echo  $dashboard->screen_dashboard() ;
+    }
+    
+    /**
+     * Plugin reports.
+     *
+     * @since 1.0.0
+     */
+    public function lddfw_reports()
+    {
+        $reports = new LDDFW_Reports();
+        echo  $reports->screen_reports() ;
+    }
+    
+    public function lddfw_users_list_columns( $column )
+    {
+        
+        if ( isset( $_GET['role'] ) && $_GET['role'] === 'driver' ) {
+            $column['lddfw_driver_availability'] = 'Availability';
+            $column['lddfw_driver_claim'] = 'Claim orders';
+            $column['lddfw_driver_account'] = 'Account';
+        }
+        
+        return $column;
+    }
+    
+    public function lddfw_users_list_columns_raw( $val, $column_name, $user_id )
+    {
+        $availability_icon = '';
+        $driver_claim_icon = '';
+        $driver_account_icon = '';
+        switch ( $column_name ) {
+            case 'lddfw_driver_availability':
+                return lddfw_premium_feature( $availability_icon );
+            case 'lddfw_driver_claim':
+                return lddfw_premium_feature( $driver_claim_icon );
+            case 'lddfw_driver_account':
+                return lddfw_premium_feature( $driver_account_icon );
+            default:
+        }
+        return $val;
     }
     
     /**
@@ -1070,7 +1146,9 @@ class LDDFW_Admin
             }
         }
         
+        $lddfw_driver_account = ( isset( $_POST['lddfw_driver_account'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_driver_account'] ) ) : '' );
         $lddfw_driver_availability = ( isset( $_POST['lddfw_driver_availability'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_driver_availability'] ) ) : '' );
+        update_user_meta( $user_id, 'lddfw_driver_account', $lddfw_driver_account );
         update_user_meta( $user_id, 'lddfw_driver_availability', $lddfw_driver_availability );
     }
     
@@ -1090,9 +1168,32 @@ class LDDFW_Admin
             echo  esc_html( __( 'Delivery Driver Info', 'lddfw' ) ) ;
             ?></h3>
 			<table class="form-table">
-				<tr>
+			<tr>
+					<th><label for="lddfw_driver_account"><?php 
+            echo  esc_html( __( 'Driver account status', 'lddfw' ) ) ;
+            ?></label></th>
+					<td>
+						<select name="lddfw_driver_account" id="lddfw_driver_account">
+							<option value="0"><?php 
+            echo  esc_html( __( 'Not active', 'lddfw' ) ) ;
+            ?></option>
+							<?php 
+            $selected = ( get_user_meta( $user->ID, 'lddfw_driver_account', true ) === '1' ? 'selected' : '' );
+            ?>
+							<option <?php 
+            echo  esc_attr( $selected ) ;
+            ?> value="1"><?php 
+            echo  esc_html( __( 'Active', 'lddfw' ) ) ;
+            ?></option>
+						</select>
+						<p class="lddfw_description"><?php 
+            echo  esc_html( __( 'Only drivers with active accounts can access the drivers\' panel.', 'lddfw' ) ) ;
+            ?></p>
+					</td>
+			</tr>
+			<tr>
 					<th><label for="lddfw_driver_availability"><?php 
-            echo  esc_html( __( 'Delivery driver availability', 'lddfw' ) ) ;
+            echo  esc_html( __( 'Driver availability', 'lddfw' ) ) ;
             ?></label></th>
 					<td>
 						<select name="lddfw_driver_availability" id="lddfw_driver_availability">
@@ -1112,78 +1213,23 @@ class LDDFW_Admin
             echo  esc_html( __( 'The delivery driver availability for work today.', 'lddfw' ) ) ;
             ?></p>
 					</td>
-				</tr>
+			</tr>
+			<tr>
+					<th><label for="lddfw_driver_claim"><?php 
+            echo  esc_html( __( 'Driver can claim orders', 'lddfw' ) ) ;
+            ?></label></th>
+					<td>
+					<?php 
+            $html = '';
+            echo  lddfw_premium_feature( $html ) ;
+            ?>
+
+					</td>
+			</tr>
 			</table>
 			<?php 
         }
     
-    }
-    
-    /**
-     * Bulk edit assign to driver
-     *
-     * @since 1.0.0
-     * @param array $actions edit action array.
-     * @return array
-     */
-    public function lddfw_bulk_actions_edit( $actions )
-    {
-        wp_nonce_field( basename( __FILE__ ), 'lddfw_nonce_bulk_orders' );
-        $actions['assign_a_driver'] = __( 'Assign orders to the delivery driver', 'lddfw' );
-        return $actions;
-    }
-    
-    /**
-     * Plugin bulk actions , assign an order to driver
-     *
-     * @param string $redirect_to redirect to url.
-     * @param string $action action.
-     * @param array  $post_ids array of posts.
-     * @return array
-     */
-    public function lddfw_handle_bulk_actions( $redirect_to, $action, $post_ids )
-    {
-        $driver = new LDDFW_Driver();
-        
-        if ( 'assign_a_driver' === $action ) {
-            $nonce_key = 'lddfw_nonce_bulk_orders';
-            
-            if ( isset( $_REQUEST[$nonce_key] ) ) {
-                $retrieved_nonce = sanitize_text_field( wp_unslash( $_REQUEST[$nonce_key] ) );
-                if ( !wp_verify_nonce( $retrieved_nonce, basename( __FILE__ ) ) ) {
-                    die( 'Failed security check' );
-                }
-            }
-            
-            $lddfw_driverid_action = ( isset( $_GET['lddfw_driverid_lddfw_action'] ) ? sanitize_text_field( wp_unslash( $_GET['lddfw_driverid_lddfw_action'] ) ) : '' );
-            $lddfw_driverid_action2 = ( isset( $_GET['lddfw_driverid_lddfw_action2'] ) ? sanitize_text_field( wp_unslash( $_GET['lddfw_driverid_lddfw_action2'] ) ) : '' );
-            $action_get = ( isset( $_GET['action'] ) ? sanitize_text_field( wp_unslash( $_GET['action'] ) ) : '' );
-            $action2_get = ( isset( $_GET['action2'] ) ? sanitize_text_field( wp_unslash( $_GET['action2'] ) ) : '' );
-            if ( $action === $action_get ) {
-                $driver_id = $lddfw_driverid_action;
-            }
-            if ( $action === $action2_get ) {
-                $driver_id = $lddfw_driverid_action2;
-            }
-            $processed_ids = array();
-            foreach ( $post_ids as $post_id ) {
-                // assign an order to driver.
-                $driver->assign_delivery_driver( $post_id, $driver_id, 'store' );
-                if ( '' === $driver_id ) {
-                    /**
-                     * Delete if none
-                     */
-                    delete_post_meta( $post_id, 'lddfw_driverid' );
-                }
-                $processed_ids[] = $post_id;
-                $redirect_to = add_query_arg( array(
-                    'processed_count' => count( $processed_ids ),
-                    'processed_ids'   => implode( ',', $processed_ids ),
-                ), $redirect_to );
-            }
-        }
-        
-        return $redirect_to;
     }
     
     /**
@@ -1233,17 +1279,17 @@ class LDDFW_Admin
 		</select>
 		<p class="lddfw_description" id="lddfw-gooogle-api-key-description">
 		<?php 
-        echo  esc_html( __( 'The link below is the delivery driver\'s Mobile-Friendly panel URL. The delivery drivers can access it from their mobile phones.', 'lddfw' ) ) ;
-        ?>
-		<br>
-		<a target="_blank" href='<?php 
-        echo  lddfw_drivers_page_url( '' ) ;
-        ?>'><?php 
-        echo  lddfw_drivers_page_url( '' ) ;
-        ?></a>
-		<br>
-		<?php 
-        echo  esc_html( __( 'Please note that if you are visiting the driver\'s panel as an administrator you will log out from the admin panel.', 'lddfw' ) ) ;
+        echo  '<div class="driver_app">
+				<img alt="' . esc_attr( 'Drivers app', 'lddfw' ) . '" title="' . esc_attr( 'Drivers app', 'lddfw' ) . '" src="' . esc_attr( plugins_url() . '/' . LDDFW_FOLDER . '/public/images/drivers_app.png?ver=' . LDDFW_VERSION ) . '">
+				<p>
+					<b><a target="_blank" href="' . lddfw_drivers_page_url( '' ) . '">' . lddfw_drivers_page_url( '' ) . '</a></b><br>' . sprintf( esc_html( __( 'The link above is the delivery driver\'s Mobile-Friendly panel URL. %s The delivery drivers can access it from their mobile phones. %s', 'lddfw' ) ), '<br>', '<br>' ) . sprintf(
+            esc_html( __( 'Notice: If you want to be logged in as an administrator and to check the drivers\' panel on the same device, %s %syou must work with two different browsers otherwise you will log out from the admin panel and the drivers\' panel won\'t function correctly.%s', 'lddfw' ) ),
+            '<br>',
+            '<b>',
+            '</b>'
+        ) . '
+				</p>
+			</div>' ;
         ?>
 		</p>
 		<?php 
@@ -1256,6 +1302,11 @@ class LDDFW_Admin
      */
     public function lddfw_admin_notices()
     {
+        if ( !class_exists( 'WooCommerce' ) ) {
+            echo  '<div class="notice notice-info is-dismissible">
+          			<p>' . esc_html( __( 'Local delivery drivers for WooCommerce is a WooCommerce add-on, you must activate a WooCommerce on your site.', 'lddfw' ) ) . '</p>
+		 		  </div>' ;
+        }
     }
 
 }

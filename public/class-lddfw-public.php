@@ -95,12 +95,11 @@ class LDDFW_Public {
 	}
 
 
-	public function lddfw_page_template( $page_template )
-	{
+	public function lddfw_page_template( $page_template ) {
 		global $post;
 
-		if( $post->ID === intval ( get_option( 'lddfw_delivery_drivers_page', '' ) ) ) {
-		 	$page_template = WP_PLUGIN_DIR  . '/' . LDDFW_FOLDER . '/index.php';
+		if ( $post->ID === intval( get_option( 'lddfw_delivery_drivers_page', '' ) ) ) {
+			$page_template = WP_PLUGIN_DIR . '/' . LDDFW_FOLDER . '/index.php';
 		}
 		return $page_template;
 	}

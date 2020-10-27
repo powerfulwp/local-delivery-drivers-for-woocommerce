@@ -2,3 +2,42 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+
+
+
+/* Premium Code Stripped by Freemius */
+
+
+.lddfw-text-center {
+    text-align: center !important;
+}
+
+.lddfw_admin_bar {
+    margin-bottom: 15px;
+}
+
+.column-lddfw_driver_claim,
+.column-lddfw_driver_availability,
+.column-lddfw_driver_account {
+    text-align: center !important;
+}
+
+.lddfw_premium_icon {
+    cursor: pointer;
+    vertical-align: bottom;
+}
+
+.driver_app {
+    margin-top: 25px;
+}
+
+.driver_app img {
+    float: left;
+    margin-right: 10px;
+}
+
+.lddfw-text-center a {
+    transition: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}

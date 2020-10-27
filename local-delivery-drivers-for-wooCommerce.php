@@ -16,7 +16,7 @@
  * Plugin Name:       Local Delivery Drivers for WooCommerce
  * Plugin URI:        https://powerfulwp.com/local-delivery-drivers-for-woocommerce-premium/
  * Description:       Delivery Drivers for Woocommerce.
- * Version:           1.0.4
+ * Version:           1.1.0
  * Author:            powerfulwp
  * Author URI:        http://www.powerfulwp.com
  * License:           GPL-2.0+
@@ -41,23 +41,24 @@ if ( !function_exists( 'lddfw_fs' ) ) {
             // Include Freemius SDK.
             require_once dirname( __FILE__ ) . '/freemius/start.php';
             $lddfw_fs = fs_dynamic_init( array(
-                'id'             => '6995',
-                'slug'           => 'local-delivery-drivers-for-woocommerce',
-                'type'           => 'plugin',
-                'public_key'     => 'pk_5ae065da4addc985fe67f63c46a51',
-                'is_premium'     => false,
-                'premium_suffix' => 'Premium',
-                'has_addons'     => false,
-                'has_paid_plans' => true,
-                'trial'          => array(
+                'id'              => '6995',
+                'slug'            => 'local-delivery-drivers-for-woocommerce',
+                'type'            => 'plugin',
+                'public_key'      => 'pk_5ae065da4addc985fe67f63c46a51',
+                'is_premium'      => false,
+                'premium_suffix'  => 'Premium',
+                'has_addons'      => false,
+                'has_paid_plans'  => true,
+                'trial'           => array(
                 'days'               => 14,
                 'is_require_payment' => true,
             ),
-                'menu'           => array(
-                'slug'    => 'lddfw-settings',
+                'has_affiliation' => 'selected',
+                'menu'            => array(
+                'slug'    => 'lddfw-dashboard',
                 'support' => false,
             ),
-                'is_live'        => true,
+                'is_live'         => true,
             ) );
         }
         
@@ -80,7 +81,7 @@ if ( !function_exists( 'lddfw_activate' ) ) {
      * Currently plugin version.
      * Start at version 1.0.0 and use SemVer - https://semver.org
      */
-    define( 'LDDFW_VERSION', '1.0.4' );
+    define( 'LDDFW_VERSION', '1.1.0' );
     /**
      * Define delivery driver page id.
      */
@@ -97,6 +98,29 @@ if ( !function_exists( 'lddfw_activate' ) ) {
     {
         include_once plugin_dir_path( __FILE__ ) . 'includes/class-lddfw-activator.php';
         LDDFW_Activator::activate();
+    }
+    
+    /**
+     * Check for free version
+     */
+    function lddfw_is_free()
+    {
+        if ( LDDFW_FOLDER === 'local-delivery-drivers-for-woocommerce' ) {
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * Show premium values.
+     */
+    function lddfw_premium_feature( $value )
+    {
+        $result = $value;
+        if ( LDDFW_FOLDER === 'local-delivery-drivers-for-woocommerce' ) {
+            $result = '<svg style="color:#ffc106" width=20 aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" class=" lddfw_premium_iconsvg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"> <title>' . esc_attr( 'Premium Feature', 'lddfw' ) . '</title><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>';
+        }
+        return $result;
     }
     
     /**
