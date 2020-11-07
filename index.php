@@ -72,6 +72,38 @@ if ( !is_user_logged_in() ) {
         $lddfw_delivered_counter = 0;
         $lddfw_assign_to_driver_counter = 0;
         $lddfw_claim_orders_counter = 0;
+        /**
+         * Set current status names
+         */
+        $lddfw_driver_assigned_status_name = esc_html( __( 'Driver assigned', 'lddfw' ) );
+        $lddfw_out_for_delivery_status_name = esc_html( __( 'Out for delivery', 'lddfw' ) );
+        $lddfw_failed_attempt_status_name = esc_html( __( 'Failed delivery', 'lddfw' ) );
+        
+        if ( function_exists( 'wc_get_order_statuses' ) ) {
+            $result = wc_get_order_statuses();
+            if ( !empty($result) ) {
+                foreach ( $result as $key => $status ) {
+                    switch ( $key ) {
+                        case get_option( 'lddfw_out_for_delivery_status' ):
+                            if ( $status !== $lddfw_out_for_delivery_status_name ) {
+                                $lddfw_out_for_delivery_status_name = $status;
+                            }
+                            break;
+                        case get_option( 'lddfw_failed_attempt_status' ):
+                            if ( $status !== esc_html( __( 'Failed Delivery Attempt', 'lddfw' ) ) ) {
+                                $lddfw_failed_attempt_status_name = $status;
+                            }
+                            break;
+                        case get_option( 'lddfw_driver_assigned_status' ):
+                            if ( $status !== $lddfw_driver_assigned_status_name ) {
+                                $lddfw_driver_assigned_status_name = $status;
+                            }
+                            break;
+                    }
+                }
+            }
+        }
+        
         foreach ( $lddfw_array as $row ) {
             switch ( $row->post_status ) {
                 case get_option( 'lddfw_out_for_delivery_status' ):
@@ -170,11 +202,10 @@ wp_register_style(
 <?php 
 echo  '<title>' . esc_js( __( 'Delivery Driver', 'lddfw' ) ) . '</title>' ;
 ?>
-
 <meta name="robots" content="noindex" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="<?php 
-echo  esc_url( plugin_dir_url( __FILE__ ) . 'public/images/favicon-32x32.png?ver=' . LDDFW_VERSION ) ;
+echo  get_site_icon_url( 32, esc_url( plugin_dir_url( __FILE__ ) . 'public/images/favicon-32x32.png?ver=' . LDDFW_VERSION ) ) ;
 ?>" >
 <?php 
 wp_print_styles( [ 'lddfw-fonts', 'lddfw-bootstrap', 'lddfw-public' ] );

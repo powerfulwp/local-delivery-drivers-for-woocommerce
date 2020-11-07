@@ -54,7 +54,7 @@ class LDDFW_Screens
             <div class="container">
                 <div class="row">';
         $html .= '<div class="col-2">';
-        if ( '' !== $back_url ) {
+        if ( null !== $back_url ) {
             $html .= '<a href="' . $back_url . '" class="lddfw_back_link">
 			<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-left" class="svg-inline--fa fa-arrow-left fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"></path></svg></a>';
         }
@@ -63,6 +63,9 @@ class LDDFW_Screens
         $html .= $title;
         $html .= '</div>';
         global 
+            $lddfw_driver_assigned_status_name,
+            $lddfw_out_for_delivery_status_name,
+            $lddfw_failed_attempt_status_name,
             $lddfw_out_for_delivery_counter,
             $lddfw_failed_attempt_counter,
             $lddfw_delivered_counter,
@@ -84,11 +87,11 @@ class LDDFW_Screens
 				<div class="dropdown-divider"></div>';
         $html .= '
 					<a class="dropdown-item" href="' . lddfw_drivers_page_url( "lddfw_screen=assign_to_driver" ) . '">
-					<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-double-right" class="svg-inline--fa fa-angle-double-right fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg> ' . esc_html( __( 'Driver assigned', 'lddfw' ) ) . ' (' . $lddfw_assign_to_driver_counter . ')</a>
+					<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-double-right" class="svg-inline--fa fa-angle-double-right fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg> ' . $lddfw_driver_assigned_status_name . ' (' . $lddfw_assign_to_driver_counter . ')</a>
 					<a class="dropdown-item" href="' . lddfw_drivers_page_url( "lddfw_screen=out_for_delivery" ) . '">
-					<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-double-right" class="svg-inline--fa fa-angle-double-right fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg> ' . esc_html( __( 'Out for delivery', 'lddfw' ) ) . ' (' . $lddfw_out_for_delivery_counter . ')</a>
+					<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-double-right" class="svg-inline--fa fa-angle-double-right fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg> ' . $lddfw_out_for_delivery_status_name . ' (' . $lddfw_out_for_delivery_counter . ')</a>
 					<a class="dropdown-item" href="' . lddfw_drivers_page_url( "lddfw_screen=failed_delivery" ) . '">
-					<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-double-right" class="svg-inline--fa fa-angle-double-right fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg> ' . esc_html( __( 'Failed delivery', 'lddfw' ) ) . ' (' . $lddfw_failed_attempt_counter . ')</a>
+					<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-double-right" class="svg-inline--fa fa-angle-double-right fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg> ' . $lddfw_failed_attempt_status_name . ' (' . $lddfw_failed_attempt_counter . ')</a>
 					<a class="dropdown-item" href="' . lddfw_drivers_page_url( "lddfw_screen=delivered" ) . '">
 					<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-double-right" class="svg-inline--fa fa-angle-double-right fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg> ' . esc_html( __( 'Delivered', 'lddfw' ) ) . ' (' . $lddfw_delivered_counter . ')</a>
 					';
@@ -119,12 +122,15 @@ class LDDFW_Screens
         }
         // home page.
         $html = '<div class="lddfw_wpage" id="lddfw_home" ' . $style_home . '>
-		<div class="container-fluid lddfw_cover">
-		  <img class="lddfw_header_image" src="' . plugins_url() . '/' . LDDFW_FOLDER . '/public/images/lddfw.png?ver=' . LDDFW_VERSION . '">
-		 </div>
+		<div class="container-fluid lddfw_cover"><span class="lddfw_helper"></span>';
+        $title = esc_html( __( 'WELCOME', 'lddfw' ) );
+        $subtitle = esc_html( __( 'To delivery drivers manager', 'lddfw' ) );
+        $logo = '<img class="lddfw_header_image" src="' . plugins_url() . '/' . LDDFW_FOLDER . '/public/images/lddfw.png?ver=' . LDDFW_VERSION . '">';
+        $html .= $logo;
+        $html .= '</div>
 		<div class="container">
-			<h1>' . esc_html( __( 'WELCOME', 'lddfw' ) ) . '</h1>
-			<p>' . esc_html( __( 'To delivery drivers manager', 'lddfw' ) ) . '</p>
+			<h1>' . $title . '</h1>
+			<p>' . $subtitle . '</p>
 			<button id="lddfw_start" class="btn btn-primary btn-lg btn-block" type="button">' . esc_html( __( 'Get started', 'lddfw' ) ) . '</button>
 		</div>
 	</div>
@@ -148,14 +154,24 @@ class LDDFW_Screens
      */
     public function lddfw_out_for_delivery_screen( $driver_id )
     {
+        global  $lddfw_out_for_delivery_status_name ;
         $orders = new LDDFW_Orders();
         $orders_counter = $orders->lddfw_out_for_delivery_orders_counter( $driver_id );
-        $title = __( 'Out For Delivery', 'lddfw' );
+        $title = $lddfw_out_for_delivery_status_name;
         $back_url = lddfw_drivers_page_url( 'lddfw_screen=dashboard' );
         $html = $this->lddfw_header( $title, $back_url );
         $html .= '<div id="lddfw_content" class="container lddfw_page_content">
             <div class="row">';
         $html .= '<div class="col-12">';
+        
+        if ( lddfw_is_free() ) {
+            $button = esc_attr( __( "Plan your route", "lddfw" ) );
+            $content = lddfw_premium_feature( '' ) . ' ' . esc_html( __( "Plan your Route by Distance or Manually.", "lddfw" ) ) . '
+					<hr>' . lddfw_premium_feature( '' ) . ' ' . esc_html( __( "View your Route on Google Maps.", "lddfw" ) ) . '
+					<hr>' . lddfw_premium_feature( '' ) . ' ' . esc_html( __( "Navigate with Waze, Apple Maps, or Google Maps.", "lddfw" ) );
+            $html .= '<div style="margin-bottom:15px;">' . lddfw_premium_feature_notice( $button, $content, '' ) . '</div>';
+        }
+        
         $html .= '<div id="lddfw_plain_route_container">';
         $html .= $orders->lddfw_out_for_delivery( $driver_id );
         $html .= '</div>
@@ -176,6 +192,9 @@ class LDDFW_Screens
     public function lddfw_dashboard_screen( $driver_id )
     {
         global 
+            $lddfw_driver_assigned_status_name,
+            $lddfw_out_for_delivery_status_name,
+            $lddfw_failed_attempt_status_name,
             $lddfw_driver_availability,
             $lddfw_out_for_delivery_counter,
             $lddfw_failed_attempt_counter,
@@ -206,7 +225,7 @@ class LDDFW_Screens
 				</div>
 				<div class="col-3 text-right">
 				<a id="lddfw_availability" class="" title="' . esc_attr( __( 'Availability status', 'lddfw' ) ) . '" href="' . esc_url( admin_url( 'admin-ajax.php' ) ) . '">
-				
+
 <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="toggle-off" class="svg-inline--fa fa-toggle-off fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M384 64H192C85.961 64 0 149.961 0 256s85.961 192 192 192h192c106.039 0 192-85.961 192-192S490.039 64 384 64zM64 256c0-70.741 57.249-128 128-128 70.741 0 128 57.249 128 128 0 70.741-57.249 128-128 128-70.741 0-128-57.249-128-128zm320 128h-48.905c65.217-72.858 65.236-183.12 0-256H384c70.741 0 128 57.249 128 128 0 70.74-57.249 128-128 128z"></path></svg></a></div>';
         }
         
@@ -214,25 +233,41 @@ class LDDFW_Screens
 			</div>
 			</div>
 			</div>';
+        // Driver report.
+        $report = new LDDFW_Reports();
+        $report_array = $report->lddfw_drivers_commission_query( gmdate( 'Y-m-d' ), gmdate( 'Y-m-d' ), $driver_id );
+        $commission = 0;
+        if ( !empty($report_array) ) {
+        }
+        $html .= '<div class = "col-12 "><div class="lddfw_box min">' . esc_html( __( 'Today Earnings: ', 'lddfw' ) );
+        
+        if ( lddfw_is_free() ) {
+            $content = lddfw_premium_feature( '' ) . ' ' . esc_html( __( "View how much money did you make today.", "lddfw" ) );
+            $html .= lddfw_premium_feature_notice( '', $content, 'lddfw_inline' );
+        } else {
+            $html .= '<b>' . lddfw_premium_feature( get_woocommerce_currency_symbol() . $commission ) . '</b>';
+        }
+        
+        $html .= '</div></div>';
         $html .= '	<div class="col-6">
 				<div class="lddfw_box min text-center">
 				<a href="' . lddfw_drivers_page_url( 'lddfw_screen=assign_to_driver' ) . '">
 				<span class="lddfw_number">' . $lddfw_assign_to_driver_counter . '</span>
-				<span class="lddfw_label">' . esc_html( __( 'Driver assigned', 'lddfw' ) ) . '</span></a>
+				<span class="lddfw_label">' . $lddfw_driver_assigned_status_name . '</span></a>
 				</div>
 			</div>
 			<div class="col-6">
 				<div class="lddfw_box min text-center">
 				<a href="' . lddfw_drivers_page_url( 'lddfw_screen=out_for_delivery' ) . '">
 				<span class="lddfw_number">' . $lddfw_out_for_delivery_counter . '</span>
-				<span class="lddfw_label">' . esc_html( __( 'Out for delivery', 'lddfw' ) ) . '</span></a>
+				<span class="lddfw_label">' . $lddfw_out_for_delivery_status_name . '</span></a>
 				</div>
 			</div>
 			<div class="col-6">
 				<div class="lddfw_box min text-center">
 				<a href="' . lddfw_drivers_page_url( 'lddfw_screen=failed_delivery' ) . '">
 				<span class="lddfw_number">' . $lddfw_failed_attempt_counter . '</span>
-				<span class="lddfw_label">' . esc_html( __( 'Failed delivery', 'lddfw' ) ) . '</span></a>
+				<span class="lddfw_label">' . $lddfw_failed_attempt_status_name . '</span></a>
 				</div>
 			</div>
 			<div class="col-6">
@@ -257,7 +292,8 @@ class LDDFW_Screens
      */
     public function lddfw_failed_delivery_screen( $driver_id )
     {
-        $title = __( 'Failed Delivery', 'lddfw' );
+        global  $lddfw_failed_attempt_status_name ;
+        $title = $lddfw_failed_attempt_status_name;
         $back_url = lddfw_drivers_page_url( 'lddfw_screen=dashboard' );
         $html = $this->lddfw_header( $title, $back_url );
         $html .= '<div id="lddfw_content" class="container lddfw_page_content">
@@ -281,20 +317,29 @@ class LDDFW_Screens
      */
     public function lddfw_assign_to_driver_screen( $driver_id )
     {
-        $title = __( 'Driver assigned', 'lddfw' );
+        global  $lddfw_driver_assigned_status_name ;
+        $title = $lddfw_driver_assigned_status_name;
         $back_url = lddfw_drivers_page_url( 'lddfw_screen=dashboard' );
         $html = $this->lddfw_header( $title, $back_url );
         $orders = new LDDFW_Orders();
         $array = $orders->lddfw_assign_to_driver_count_query( $driver_id );
         $html .= '<div id="lddfw_content" class="container lddfw_page_content">
 		<div class="row">';
+        
         if ( !empty($array) ) {
             $html .= '
 			<div class="col-12">
 				<h1>' . esc_html( __( 'Mark orders as out for delivery', 'lddfw' ) ) . '</h1>
-				<p>' . esc_html( __( 'Choose orders and click on the button', 'lddfw' ) ) . '</p>
-			</div>';
+				<div class="lddfw_subtitle" >' . esc_html( __( 'Choose orders and click on the button', 'lddfw' ) );
+            
+            if ( lddfw_is_free() ) {
+                $content = lddfw_premium_feature( '' ) . ' ' . esc_html( __( "View orders details on this screen.", "lddfw" ) );
+                $html .= ' ' . lddfw_premium_feature_notice( '', $content, 'lddfw_inline' );
+            }
+            
+            $html .= '</div></div>';
         }
+        
         $html .= '<div class="col-12">
 					<div id="lddfw_alert" style="margin-top: 17px; display: none;"></div>
 			 	  </div>';
@@ -348,6 +393,8 @@ class LDDFW_Screens
         
         if ( '' === $lddfw_dates ) {
             $html .= gmdate( lddfw_date_format( 'date' ) );
+            $from_date = gmdate( 'Y-m-d' );
+            $to_date = gmdate( 'Y-m-d' );
         } else {
             $lddfw_dates_array = explode( ',', $lddfw_dates );
             
@@ -355,17 +402,71 @@ class LDDFW_Screens
                 
                 if ( $lddfw_dates_array[0] === $lddfw_dates_array[1] ) {
                     $html .= gmdate( lddfw_date_format( 'date' ), strtotime( $lddfw_dates_array[0] ) );
+                    $from_date = gmdate( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
+                    $to_date = gmdate( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
                 } else {
                     $html .= gmdate( lddfw_date_format( 'date' ), strtotime( $lddfw_dates_array[0] ) ) . ' - ' . gmdate( lddfw_date_format( 'date' ), strtotime( $lddfw_dates_array[1] ) );
+                    $from_date = gmdate( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
+                    $to_date = gmdate( 'Y-m-d', strtotime( $lddfw_dates_array[1] ) );
                 }
             
             } else {
                 $html .= gmdate( lddfw_date_format( 'date' ), strtotime( $lddfw_dates_array[0] ) );
+                $from_date = gmdate( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
+                $to_date = gmdate( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
             }
         
         }
         
         $html .= '</div>';
+        // Driver report.
+        $report = new LDDFW_Reports();
+        $refund_array = $report->lddfw_drivers_refund_query( $from_date, $to_date, $driver_id );
+        $report_array = $report->lddfw_drivers_commission_query( $from_date, $to_date, $driver_id );
+        $orders_price = 0;
+        $shipping_price = 0;
+        $commission = 0;
+        
+        if ( !empty($report_array) ) {
+            $orders_counter = $report_array[0]->orders;
+            $content = lddfw_premium_feature( '' ) . ' ' . esc_html( __( "View how much money did you make, orders total, and shipping total.", "lddfw" ) );
+            $html .= '
+				<div class="row">
+					 <div class = "col-6 col-md-3">
+						<div class="lddfw_box min text-center">
+							<b class="lddfw_text">' . $orders_counter . '</b>
+							<br>' . esc_html( __( 'Orders', 'lddfw' ) ) . '</div>
+					 </div>
+					 <div class = "col-6 col-md-3"><div class="lddfw_box min text-center">';
+            
+            if ( lddfw_is_free() ) {
+                $html .= lddfw_premium_feature_notice( '', $content, 'lddfw_inline' );
+            } else {
+                $html .= '<b class="lddfw_text">' . lddfw_premium_feature( get_woocommerce_currency_symbol() . $orders_price ) . '</b>';
+            }
+            
+            $html .= '<br> ' . esc_html( __( 'Orders Total', 'lddfw' ) ) . '</div></div>
+					 <div class = "col-6 col-md-3"><div class="lddfw_box min text-center">';
+            
+            if ( lddfw_is_free() ) {
+                $html .= lddfw_premium_feature_notice( '', $content, 'lddfw_inline' );
+            } else {
+                $html .= '<b class="lddfw_text">' . lddfw_premium_feature( get_woocommerce_currency_symbol() . $shipping_price ) . '</b>';
+            }
+            
+            $html .= '<br> ' . esc_html( __( 'Shipping Total', 'lddfw' ) ) . '</div></div>
+					 <div class = "col-6 col-md-3"><div class="lddfw_box min text-center">';
+            
+            if ( lddfw_is_free() ) {
+                $html .= lddfw_premium_feature_notice( '', $content, 'lddfw_inline' );
+            } else {
+                $html .= '<b class="lddfw_text">' . lddfw_premium_feature( get_woocommerce_currency_symbol() . $commission ) . '</b>';
+            }
+            
+            $html .= '<br> ' . esc_html( __( 'Commission', 'lddfw' ) ) . '</div></div>
+				</div>';
+        }
+        
         $orders = new LDDFW_Orders();
         $html .= $orders->lddfw_delivered( $driver_id );
         $html .= ' </div>
@@ -389,6 +490,7 @@ class LDDFW_Screens
         $order = new WC_Order( $lddfw_order_id );
         $order_driverid = get_post_meta( $lddfw_order_id, 'lddfw_driverid', true );
         $order_status = $order->get_status();
+        // Set back url.
         $back_url = lddfw_drivers_page_url( 'lddfw_screen=dashboard' );
         switch ( 'wc-' . $order_status ) {
             case get_option( 'lddfw_delivered_status' ):
@@ -400,7 +502,13 @@ class LDDFW_Screens
             case get_option( 'lddfw_out_for_delivery_status' ):
                 $back_url = lddfw_drivers_page_url( 'lddfw_screen=out_for_delivery' );
                 break;
+            case get_option( 'lddfw_driver_assigned_status' ):
+                $back_url = lddfw_drivers_page_url( 'lddfw_screen=assign_to_driver' );
+                break;
         }
+        // Set back url from parameter.
+        $back_url = ( isset( $_GET['lddfw_dates'] ) ? $back_url . '&lddfw_dates=' . sanitize_text_field( wp_unslash( $_GET['lddfw_dates'] ) ) : $back_url );
+        $back_url = ( isset( $_GET['lddfw_page'] ) ? $back_url . '&lddfw_page=' . sanitize_text_field( wp_unslash( $_GET['lddfw_page'] ) ) : $back_url );
         $title = __( 'Order #', 'lddfw' ) . ' ' . $lddfw_order_id;
         $html = $this->lddfw_header( $title, $back_url );
         

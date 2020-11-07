@@ -15,8 +15,8 @@
  * @wordpress-plugin
  * Plugin Name:       Local Delivery Drivers for WooCommerce
  * Plugin URI:        https://powerfulwp.com/local-delivery-drivers-for-woocommerce-premium/
- * Description:       Delivery Drivers for Woocommerce.
- * Version:           1.1.0
+ * Description:       Improve the way you deliver, manage drivers, assign drivers to orders, and with premium version much more, send SMS and email notifications, routes planning, navigation & more!
+ * Version:           1.2.0
  * Author:            powerfulwp
  * Author URI:        http://www.powerfulwp.com
  * License:           GPL-2.0+
@@ -81,7 +81,7 @@ if ( !function_exists( 'lddfw_activate' ) ) {
      * Currently plugin version.
      * Start at version 1.0.0 and use SemVer - https://semver.org
      */
-    define( 'LDDFW_VERSION', '1.1.0' );
+    define( 'LDDFW_VERSION', '1.2.0' );
     /**
      * Define delivery driver page id.
      */
@@ -102,6 +102,9 @@ if ( !function_exists( 'lddfw_activate' ) ) {
     
     /**
      * Check for free version
+     *
+     * @since 1.1.2
+     * @return boolean
      */
     function lddfw_is_free()
     {
@@ -112,12 +115,45 @@ if ( !function_exists( 'lddfw_activate' ) ) {
     }
     
     /**
-     * Show premium values.
+     * Premium feature notice.
+     *
+     * @since 1.1.2
+     * @param string $button text.
+     * @param string $html html.
+     * @param string $class class.
+     * @return html
+     */
+    function lddfw_premium_feature_notice( $button, $html, $class )
+    {
+        return '<div class="lddfw_premium-feature ' . $class . '">
+<button class="btn btn-secondary btn-sm">' . lddfw_premium_feature( '' ) . ' ' . $button . '</button>
+<div class="lddfw_lightbox" style="display:none">
+<div class="lddfw_lightbox_wrap">
+<div class="container">
+<a href="#" class="lddfw_lightbox_close">×</a>
+	<div class="lddfw_title">
+	 <h2>' . esc_html( __( "Premium Feature", "lddfw" ) ) . '</h2>
+	 <p>' . esc_html( __( "You Discovered a Premium Feature!", "lddfw" ) ) . '</p>
+	</div>
+	 <p class="lddfw_content-title">' . esc_html( __( "With premium version you will be able to:", "lddfw" ) ) . '</p>
+	' . $html . '
+</div>
+</div>
+</div>
+</div>';
+    }
+    
+    /**
+     * Premium feature.
+     *
+     * @since 1.1.2
+     * @param string $value text.
+     * @return html
      */
     function lddfw_premium_feature( $value )
     {
         $result = $value;
-        if ( LDDFW_FOLDER === 'local-delivery-drivers-for-woocommerce' ) {
+        if ( lddfw_is_free() ) {
             $result = '<svg style="color:#ffc106" width=20 aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" class=" lddfw_premium_iconsvg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"> <title>' . esc_attr( 'Premium Feature', 'lddfw' ) . '</title><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>';
         }
         return $result;

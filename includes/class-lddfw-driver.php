@@ -59,7 +59,7 @@ class LDDFW_Driver
      */
     public static function assign_delivery_driver( $order_id, $driver_id, $operator )
     {
-        $order = wc_get_order( $order_id );
+        $order = new WC_Order( $order_id );
         $order_driverid = get_post_meta( $order_id, 'lddfw_driverid', true );
         
         if ( $driver_id !== $order_driverid && '-1' !== $driver_id && '' !== $driver_id ) {
@@ -72,8 +72,10 @@ class LDDFW_Driver
              * Update order status to driver assigned.
              */
             $lddfw_driver_assigned_status = get_option( 'lddfw_driver_assigned_status', '' );
+            $lddfw_processing_status = get_option( 'lddfw_processing_status', '' );
+            $current_order_status = 'wc-' . $order->get_status();
             
-            if ( '' !== $lddfw_driver_assigned_status ) {
+            if ( '' !== $lddfw_driver_assigned_status && $current_order_status === $lddfw_processing_status ) {
                 $order->update_status( $lddfw_driver_assigned_status, '' );
                 $order->save();
             }

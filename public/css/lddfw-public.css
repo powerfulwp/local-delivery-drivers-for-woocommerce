@@ -26,6 +26,7 @@ body {
 .lddfw_date_range {
     margin-top: 15px;
     margin-bottom: 15px;
+    line-height: 12px;
 }
 
 #lddfw_orders_table .lddfw_box {
@@ -48,8 +49,14 @@ body {
     margin-top: -15px;
 }
 
+.lddfw_order_view {
+    padding: 2px 8px;
+    margin-left: 45px;
+}
+
 .lddfw_multi_checkbox {
     cursor: pointer;
+    position: relative;
 }
 
 .lddfw_multi_checkbox.lddfw_active {
@@ -119,15 +126,14 @@ body {
     padding-left: 45px;
 }
 
-.lddfw_box .lddfw_order_address {
+.lddfw_box .lddfw_order_address,
+.lddfw_box .lddfw_order_custom {
     display: block;
     padding-left: 45px;
 }
 
 .lddfw_box .lddfw_order_distance {
     display: block;
-    font-size: 12px;
-    color: #717171;
     padding-left: 45px;
 }
 
@@ -274,10 +280,16 @@ body::after {
     margin-bottom: 15px;
 }
 
+.lddfw_helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
 #lddfw_home {
     text-align: center;
-    background: #fed14c;
-    color: 011627;
+    background-color: #fed14c;
+    color: #011627;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -346,6 +358,7 @@ label.error {
 
 #lddfw_orders_table .pagination {
     margin: 0px;
+    margin-bottom: 7px;
 }
 
 #lddfw_delivered_btn,
@@ -565,14 +578,51 @@ svg {
 }
 
 #lddfw_mySidenav svg,
-.lddfw_waze svg {
+.lddfw_navigation svg {
     top: -2px;
+}
+
+.lddfw_box .lddfw_text {
+    font-size: 21px;
 }
 
 .lddfw_cover svg {
     padding-top: 30px;
     padding-bottom: 30px;
     width: 100px;
+}
+
+.lddfw_premium-feature .lddfw_content-title {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.lddfw_subtitle {
+    margin-bottom: 15px;
+}
+
+.lddfw_premium-feature {
+    text-align: left;
+}
+
+.lddfw_premium-feature .lddfw_title {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.lddfw_premium-feature svg {
+    top: -3px;
+}
+
+.lddfw_premium-feature.lddfw_inline {
+    display: inline-block;
+}
+
+.lddfw_items img {
+    float: left;
+    margin-right: 10px;
+    max-width: 50px;
+    max-height: 50px;
 }
 
 .lddfw_back_link svg,

@@ -4,12 +4,12 @@ Donate link: https://powerfulwp.com
 Tags: delivery, courier, drivers, woocommerce, shipping
 Requires at least: 4.5
 Requires PHP: 5.6
-Tested up to: 5.5.1
-Stable tag: 5.5.1
+Tested up to: 5.5.3
+Stable tag: 5.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Improve the way you deliver!
+Improve the way you deliver, manage drivers, assign drivers to orders, send SMS and email notifications, routes planning, navigation & more!
 
 == Description ==
 
@@ -159,63 +159,81 @@ Not at all. This plugin is straightforward to use.
 * Initial release.
 
 = 1.0.1 =
-* Fixed customer phone number button.
+* Fix: Customer phone number button.
 
 = 1.0.2 =
-* Fixed design.
+* Fix: Improved CSS.
 
 = 1.0.3 =
-* Fixed delivery driver page
+* Fix: Improved delivery driver panel.
 
 = 1.0.4 =
-Fixed delivery driver panel
+* Fix: Improved delivery driver panel.
 
 = 1.1.0 =
-* The delivery process has been improved.
-* A new order status called "Driver assigned" has been added, all the drivers assigned orders will be in this status.
-* When the driver is assigned to order, the status change to "Driver assigned" automatically.
-* All security alerts have been updated to be more clear.
-* A notice for not using both admin and driver panels in the same browser on the same device has been added.
-* The customer name has been added to all orders screen on the driver panel.
-* Updates to the Premium plugin:
-* Orders filters.
-* Orders' notes have been improved to be more specifics.
-* New Dashboard screen has been added to the plugin menu.
-* The Dashboard screen includes:
-* How many orders each driver has in each status.
-* How many orders don’t have a driver.
-* How many orders are ready to claim.
-* List of all your active drivers,  availability, and claim permissions all statuses can be updated in one click.
-* Better admin users screen with drivers statuses updates in one click.
+* Fix: The delivery process has been improved.
+* Add: A new order status called "Driver assigned" has been added, all the drivers assigned orders will be in this status.
+* Add: When the driver is assigned to order, the status change to "Driver assigned" automatically.
+* Fix: All security alerts have been updated to be more clear.
+* Add: A notice for not using both admin and driver panels in the same browser on the same device has been added.
+* Add: The customer name has been added to all orders screen on the driver panel.
+* Add: Premium - Orders filters.
+* Fix: Premium - Orders' notes have been improved to be more specifics.
+* Add: Premium - New Dashboard screen has been added to the plugin menu.
+* Add: Premium - How many orders each driver has in each status.
+* Add: Premium - How many orders don’t have a driver.
+* Add: Premium - How many orders are ready to claim.
+* Add: Premium - List of all your active drivers,  availability, and claim permissions all statuses can be updated in one click.
+* Add: Premium - Admin users screen with drivers statuses updates in one click.
+
+= 1.2.0 =
+* Fix: Order status automatically changes to "driver assigned" only when a driver has been assigned to order that in processing status.
+* Fix: Drivers panel screen titles by current status names.
+* Fix: Drivers panel gets the site favicon if exist.
+* Fix: Premium - Distance unit system by country.
+* Add: Premium - Navigation with Waze, apple maps, and google maps.
+* Add: Premium - Drivers Panel Branding - Add your logo and colors.
+* Add: Premium - Custom Fields - Add custom fields to the delivery panel from third-party plugins.
+* Add: Premium - Drivers Commissions.
+* Add: Premium - Drivers notes added to emails.
 
 == Upgrade Notice ==
 
 = 1.0.1 =
-Fixed customer phone number button.
+* Fix: Customer phone number button.
 
 = 1.0.2 =
-Fixed design.
+* Fix: Improved CSS.
 
 = 1.0.3 =
-Fixed delivery driver page
+* Fix: Improved delivery driver panel.
 
 = 1.0.4 =
-Fixed delivery driver panel
+* Fix: Improved delivery driver panel.
 
 = 1.1.0 =
-* The delivery process has been improved.
-* A new order status called "Driver assigned" has been added, all the drivers assigned orders will be in this status.
-* When the driver is assigned to order, the status change to "Driver assigned" automatically.
-* All security alerts have been updated to be more clear.
-* A notice for not using both admin and driver panels in the same browser on the same device has been added.
-* The customer name has been added to all orders screen on the driver panel.
-* Updates to the Premium plugin:
-* Orders filters.
-* Orders' notes have been improved to be more specifics.
-* New Dashboard screen has been added to the plugin menu.
-* The Dashboard screen includes:
-* How many orders each driver has in each status.
-* How many orders don’t have a driver.
-* How many orders are ready to claim.
-* List of all your active drivers,  availability, and claim permissions all statuses can be updated in one click.
-* Better admin users screen with drivers statuses updates in one click.
+* Fix: The delivery process has been improved.
+* Add: A new order status called "Driver assigned" has been added, all the drivers assigned orders will be in this status.
+* Add: When the driver is assigned to order, the status change to "Driver assigned" automatically.
+* Fix: All security alerts have been updated to be more clear.
+* Add: A notice for not using both admin and driver panels in the same browser on the same device has been added.
+* Add: The customer name has been added to all orders screen on the driver panel.
+* Add: Premium - Orders filters.
+* Fix: Premium - Orders' notes have been improved to be more specifics.
+* Add: Premium - New Dashboard screen has been added to the plugin menu.
+* Add: Premium - How many orders each driver has in each status.
+* Add: Premium - How many orders don’t have a driver.
+* Add: Premium - How many orders are ready to claim.
+* Add: Premium - List of all your active drivers,  availability, and claim permissions all statuses can be updated in one click.
+* Add: Premium - Admin users screen with drivers statuses updates in one click.
+
+= 1.2.0 =
+* Fix: Order status automatically changes to "driver assigned" only when a driver has been assigned to order that in processing status.
+* Fix: Drivers panel screen titles by current status names.
+* Fix: Drivers panel gets the site favicon if exist.
+* Fix: Premium - Distance unit system by country.
+* Add: Premium - Navigation with Waze, apple maps, and google maps.
+* Add: Premium - Drivers Panel Branding - Add your logo and colors.
+* Add: Premium - Custom Fields - Add custom fields to the delivery panel from third-party plugins.
+* Add: Premium - Drivers Commissions.
+* Add: Premium - Drivers notes added to emails.

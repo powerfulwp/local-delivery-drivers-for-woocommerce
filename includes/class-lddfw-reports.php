@@ -88,12 +88,15 @@ class LDDFW_Reports
             $total = '';
             echo  '
 				<tr>
-					<td>' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_processing_status' ) ) . '&post_type=shop_order&lddfw_orders_filter=-2">' . $processing_status . '</a>' ) . '</td>
-					<td class="lddfw-text-center">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_driver_assigned_status' ) ) . '&post_type=shop_order&lddfw_orders_filter=-2">' . $driver_assigned_orders . '</a>' ) . '</td>
-					<td class="lddfw-text-center">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_out_for_delivery_status' ) ) . '&post_type=shop_order&lddfw_orders_filter=-2">' . $out_for_delivery_orders . '</a>' ) . '</td>
-					<td class="lddfw-text-center">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_delivered_status' ) ) . '&lddfw_delivered_today=1&post_type=shop_order&lddfw_orders_filter=-2">' . $delivered_orders . '</a>' ) . '</td>
-					<td class="lddfw-text-center">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_failed_attempt_status' ) ) . '&post_type=shop_order&lddfw_orders_filter=-2">' . $failed_attempt_orders . '</a>' ) . '</td>
-					<td class="lddfw-text-center">' . lddfw_premium_feature( $total ) . '</td>
+					<td class="title column-title has-row-actions column-primary" data-colname="' . esc_html( __( 'Ready for claim', 'lddfw' ) ) . '" >
+					<button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button>
+					' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_processing_status' ) ) . '&post_type=shop_order&lddfw_orders_filter=-2">' . $processing_status . '</a>' ) . '
+					</td>
+					<td data-colname="' . esc_html( __( 'Driver assigned', 'lddfw' ) ) . '" class="lddfw-text-center">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_driver_assigned_status' ) ) . '&post_type=shop_order&lddfw_orders_filter=-2">' . $driver_assigned_orders . '</a>' ) . '</td>
+					<td data-colname="' . esc_html( __( 'Out for delivery', 'lddfw' ) ) . '" class="lddfw-text-center">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_out_for_delivery_status' ) ) . '&post_type=shop_order&lddfw_orders_filter=-2">' . $out_for_delivery_orders . '</a>' ) . '</td>
+					<td data-colname="' . esc_html( __( 'Delivered today', 'lddfw' ) ) . '" class="lddfw-text-center">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_delivered_status' ) ) . '&lddfw_to_date=' . gmdate( 'Y-m-d' ) . '&lddfw_from_date=' . gmdate( 'Y-m-d' ) . '&post_type=shop_order&lddfw_orders_filter=-2">' . $delivered_orders . '</a>' ) . '</td>
+					<td data-colname="' . esc_html( __( 'Failed delivery', 'lddfw' ) ) . '" class="lddfw-text-center">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_failed_attempt_status' ) ) . '&post_type=shop_order&lddfw_orders_filter=-2">' . $failed_attempt_orders . '</a>' ) . '</td>
+					<td data-colname="' . esc_html( __( 'Total', 'lddfw' ) ) . '" class="lddfw-text-center">' . lddfw_premium_feature( $total ) . '</td>
 				</tr>' ;
             echo  '</tbody>' ;
         }
@@ -141,7 +144,7 @@ class LDDFW_Reports
         if ( empty($report_array) ) {
             echo  '
 		<tr>
-			<td colspan="8" class="lddfw-text-center">' . esc_html( __( 'No orders', 'lddfw' ) ) . '</td>
+			<td colspan="7" class="lddfw-text-center">' . esc_html( __( 'No orders', 'lddfw' ) ) . '</td>
 		</tr>' ;
         } else {
             foreach ( $report_array as $row ) {
@@ -153,13 +156,16 @@ class LDDFW_Reports
                     $last_driver = $driver_id;
                     echo  '
 				<tr>
-					<td>' . $row->driver_name . '</td>
-					<td class="lddfw-text-center"><a href="tel:' . $phone . '">' . $phone . '</a></td>
-					<td class="lddfw-text-center">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_driver_assigned_status' ) ) . '&post_type=shop_order&lddfw_orders_filter=' . esc_attr( $driver_id ) . '">' . $driver_assigned_orders . '</a>' ) . '</td>
-					<td class="lddfw-text-center">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_out_for_delivery_status' ) ) . '&post_type=shop_order&lddfw_orders_filter=' . esc_attr( $driver_id ) . '">' . $out_for_delivery_orders . '</a>' ) . '</td>
-					<td class="lddfw-text-center">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_delivered_status' ) ) . '&lddfw_delivered_today=1&post_type=shop_order&lddfw_orders_filter=' . esc_attr( $driver_id ) . '">' . $delivered_orders . '</a>' ) . '</td>
-					<td class="lddfw-text-center">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_failed_attempt_status' ) ) . '&post_type=shop_order&lddfw_orders_filter=' . esc_attr( $driver_id ) . '">' . $failed_attempt_orders . '</a>' ) . '</td>
-					<td class="lddfw-text-center">' . lddfw_premium_feature( $sub_total ) . '</td>
+					<td class="title column-title has-row-actions column-primary" data-colname="' . esc_html( __( 'Driver', 'lddfw' ) ) . '" >
+						<button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button>
+						' . $row->driver_name . '
+					</td>
+				 	<td class="lddfw-text-center" data-colname="' . esc_html( __( 'Phone', 'lddfw' ) ) . '"><a href="tel:' . $phone . '">' . $phone . '</a></td>
+					<td class="lddfw-text-center" data-colname="' . esc_html( __( 'Driver assigned', 'lddfw' ) ) . '">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_driver_assigned_status' ) ) . '&post_type=shop_order&lddfw_orders_filter=' . esc_attr( $driver_id ) . '">' . $driver_assigned_orders . '</a>' ) . '</td>
+					<td class="lddfw-text-center" data-colname="' . esc_html( __( 'Out for delivery', 'lddfw' ) ) . '">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_out_for_delivery_status' ) ) . '&post_type=shop_order&lddfw_orders_filter=' . esc_attr( $driver_id ) . '">' . $out_for_delivery_orders . '</a>' ) . '</td>
+					<td class="lddfw-text-center" data-colname="' . esc_html( __( 'Delivered today', 'lddfw' ) ) . '">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_delivered_status' ) ) . '&lddfw_to_date=' . gmdate( 'Y-m-d' ) . '&lddfw_from_date=' . gmdate( 'Y-m-d' ) . '&post_type=shop_order&lddfw_orders_filter=' . esc_attr( $driver_id ) . '">' . $delivered_orders . '</a>' ) . '</td>
+					<td class="lddfw-text-center" data-colname="' . esc_html( __( 'Failed delivery', 'lddfw' ) ) . '">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_failed_attempt_status' ) ) . '&post_type=shop_order&lddfw_orders_filter=' . esc_attr( $driver_id ) . '">' . $failed_attempt_orders . '</a>' ) . '</td>
+					<td class="lddfw-text-center" data-colname="' . esc_html( __( 'Total', 'lddfw' ) ) . '">' . lddfw_premium_feature( $sub_total ) . '</td>
 				</tr>' ;
                 }
             
@@ -168,13 +174,168 @@ class LDDFW_Reports
         
         echo  '</tbody>
 		<tfoot>
-			<td>' . $driver_counter . ' ' . esc_html( __( 'Drivers', 'lddfw' ) ) . '</td>
+			<td class="title column-title has-row-actions column-primary">' . $driver_counter . ' ' . esc_html( __( 'Drivers', 'lddfw' ) ) . '</td>
 			<td class="lddfw-text-center"> </td>
 			<td class="lddfw-text-center">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_driver_assigned_status' ) ) . '&post_type=shop_order&lddfw_orders_filter=-1">' . $driver_assigned_orders_total . '</a>' ) . '</td>
 			<td class="lddfw-text-center">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_out_for_delivery_status' ) ) . '&post_type=shop_order&lddfw_orders_filter=-1">' . $out_for_delivery_orders_total . '</a>' ) . '</td>
-			<td class="lddfw-text-center">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_delivered_status' ) ) . '&lddfw_delivered_today=1&post_type=shop_order&lddfw_orders_filter=-1">' . $delivered_orders_total . '</a>' ) . '</td>
+			<td class="lddfw-text-center">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_delivered_status' ) ) . '&lddfw_to_date=' . gmdate( 'Y-m-d' ) . '&lddfw_from_date=' . gmdate( 'Y-m-d' ) . '&post_type=shop_order&lddfw_orders_filter=-1">' . $delivered_orders_total . '</a>' ) . '</td>
 			<td class="lddfw-text-center">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_failed_attempt_status' ) ) . '&post_type=shop_order&lddfw_orders_filter=-1">' . $failed_attempt_orders_total . '</a>' ) . '</td>
 			<td class="lddfw-text-center">' . lddfw_premium_feature( $total ) . '</td>
+		</tfoot>
+	</table>' ;
+    }
+    
+    /**
+     * drivers refund query.
+     *
+     * @since 1.1.2
+     * @return html
+     */
+    public function lddfw_drivers_refund_query( $fromdate, $todate, $driver_id = '' )
+    {
+        global  $wpdb ;
+        $driver_query = '';
+        if ( '' !== $driver_id ) {
+            $driver_query = $wpdb->prepare( 'pm.meta_value = %s and', array( $driver_id ) );
+        }
+        $query = $wpdb->get_results( $wpdb->prepare( 'select pm.meta_value as driver_id,
+				COALESCE(SUM( pm5.meta_value ),0) as refund  
+				from ' . $wpdb->prefix . 'posts p
+				inner join ' . $wpdb->prefix . 'postmeta pm on p.id=pm.post_id and pm.meta_key = \'lddfw_driverid\'
+				inner join ' . $wpdb->prefix . 'postmeta pm1 on p.id=pm1.post_id and pm1.meta_key = \'lddfw_delivered_date\'
+				left join ' . $wpdb->prefix . 'posts p2 on p.id=p2.post_parent
+				left join ' . $wpdb->prefix . 'postmeta pm5 on p2.id=pm5.post_id and pm5.meta_key = \'_refund_amount\'
+				where ' . $driver_query . ' p.post_type=\'shop_order\' and
+				( p.post_status = %s and CAST( pm1.meta_value AS DATE ) >= %s and CAST( pm1.meta_value AS DATE ) <= %s )
+				group by pm.meta_value
+				order by pm.meta_value ', array( get_option( 'lddfw_delivered_status', '' ), $fromdate, $todate ) ) );
+        // db call ok; no-cache ok.
+        return $query;
+    }
+    
+    /**
+     * drivers commissions query.
+     *
+     * @since 1.1.2
+     * @return html
+     */
+    public function lddfw_drivers_commission_query( $fromdate, $todate, $driver_id = '' )
+    {
+        global  $wpdb ;
+        $driver_query = '';
+        if ( '' !== $driver_id ) {
+            $driver_query = $wpdb->prepare( 'pm.meta_value = %s and', array( $driver_id ) );
+        }
+        $query = $wpdb->get_results( $wpdb->prepare( 'select pm.meta_value driver_id,
+				COALESCE(SUM( pm2.meta_value ),0) as commission ,
+				count(p.id) as orders,
+				COALESCE(SUM( pm3.meta_value),0)  as orders_total ,
+				COALESCE(SUM( pm4.meta_value ),0) as shipping_total
+				from ' . $wpdb->prefix . 'posts p
+				inner join ' . $wpdb->prefix . 'postmeta pm on p.id=pm.post_id and pm.meta_key = \'lddfw_driverid\'
+				inner join ' . $wpdb->prefix . 'postmeta pm1 on p.id=pm1.post_id and pm1.meta_key = \'lddfw_delivered_date\'
+				left join ' . $wpdb->prefix . 'postmeta pm2 on p.id=pm2.post_id and pm2.meta_key = \'lddfw_driver_commission\'
+				left join ' . $wpdb->prefix . 'postmeta pm3 on p.id=pm3.post_id and pm3.meta_key = \'_order_total\'
+				left join ' . $wpdb->prefix . 'postmeta pm4 on p.id=pm4.post_id and pm4.meta_key = \'_order_shipping\'
+				where ' . $driver_query . ' p.post_type=\'shop_order\' and
+				( p.post_status = %s and CAST( pm1.meta_value AS DATE ) >= %s and CAST( pm1.meta_value AS DATE ) <= %s )
+				group by pm.meta_value
+				order by pm.meta_value ', array( get_option( 'lddfw_delivered_status', '' ), $fromdate, $todate ) ) );
+        // db call ok; no-cache ok.
+        return $query;
+    }
+    
+    /**
+     * Drivers commissions report.
+     *
+     * @since 1.1.0
+     * @return html
+     */
+    public function drivers_commissions_report()
+    {
+        $lddfw_dates_range = ( isset( $_GET['lddfw_dates_range'] ) ? sanitize_text_field( wp_unslash( $_GET['lddfw_dates_range'] ) ) : 'today' );
+        $lddfw_dates_range_from = ( isset( $_GET['lddfw_dates_range_from'] ) ? sanitize_text_field( wp_unslash( $_GET['lddfw_dates_range_from'] ) ) : gmdate( 'Y-m-d' ) );
+        $lddfw_dates_range_to = ( isset( $_GET['lddfw_dates_range_to'] ) ? sanitize_text_field( wp_unslash( $_GET['lddfw_dates_range_to'] ) ) : gmdate( 'Y-m-d' ) );
+        $refund_array = $this->lddfw_drivers_refund_query( $lddfw_dates_range_from, $lddfw_dates_range_to );
+        $report_array = $this->lddfw_drivers_commission_query( $lddfw_dates_range_from, $lddfw_dates_range_to );
+        echo  '<h2>' . esc_html( __( 'Drivers commissions', 'lddfw' ) ) . '</h2>
+	<div id="lddfw_dates_range_wrap">
+		<form method="GET" action="">	
+		<div id="lddfw_dates_range_select">' . esc_html( __( 'Dates', 'lddfw' ) ) . '
+			<select class="custom-select custom-select-lg" name="lddfw_dates_range" id="lddfw_dates_range" data="' . lddfw_drivers_page_url( 'lddfw_screen=delivered' ) . '">
+				<option ' . selected( $lddfw_dates_range, 'today', false ) . ' fromdate="' . gmdate( 'Y-m-d' ) . '" todate="' . gmdate( 'Y-m-d' ) . '" value="today">' . esc_html( __( 'Today', 'lddfw' ) ) . '</option>
+				<option ' . selected( $lddfw_dates_range, 'yesterday', false ) . ' fromdate="' . gmdate( 'Y-m-d', strtotime( '-1 days' ) ) . '" todate="' . gmdate( 'Y-m-d', strtotime( '-1 days' ) ) . '" value="yesterday">' . esc_html( __( 'Yesterday', 'lddfw' ) ) . '</option>
+				<option ' . selected( $lddfw_dates_range, 'thismonth', false ) . '  fromdate="' . gmdate( 'Y-m-d', strtotime( 'first day of this month' ) ) . '" todate="' . gmdate( 'Y-m-d', strtotime( 'last day of this month' ) ) . '"  value="thismonth">' . esc_html( __( 'This month', 'lddfw' ) ) . '</option>
+				<option ' . selected( $lddfw_dates_range, 'lastmonth', false ) . '  fromdate="' . gmdate( 'Y-m-d', strtotime( 'first day of last month' ) ) . '" todate="' . gmdate( 'Y-m-d', strtotime( 'last day of last month' ) ) . '"  value="lastmonth">' . esc_html( __( 'Last month', 'lddfw' ) ) . '</option>
+				<option ' . selected( $lddfw_dates_range, 'custom' ), false . '  value="custom">' . esc_html( __( 'Custom', 'lddfw' ) ) . '</option>
+			</select>
+		</div>
+		<input type="hidden" name="page" value="lddfw-reports" >
+		<div id="lddfw_dates_custom_range" style="display:none">
+		' . esc_html( __( 'From', 'lddfw' ) ) . ' <input type = "text" value="' . $lddfw_dates_range_from . '" class="lddfw-datepicker" name="lddfw_dates_range_from" id = "lddfw_dates_range_from" >
+		' . esc_html( __( 'To', 'lddfw' ) ) . ' <input type = "text" value="' . $lddfw_dates_range_to . '" class="lddfw-datepicker"  name="lddfw_dates_range_to" id = "lddfw_dates_range_to" >
+		</div>
+		<input type="submit" name="submit" id="lddfw_dates_range_submit" class="button button-primary" value="' . esc_html( __( 'Send', 'lddfw' ) ) . '">
+		</form>
+	</div>
+
+
+	<table class="wp-list-table widefat fixed striped table-view-list posts">
+	<thead>
+		<tr>
+			<th class="manage-column column-primary ">' . esc_html( __( 'Drivers', 'lddfw' ) ) . '</td>
+			<th class="manage-column column-primary lddfw-text-center">' . esc_html( __( 'Orders', 'lddfw' ) ) . '</td>
+			<th class="manage-column column-primary lddfw-text-center">' . esc_html( __( 'Orders Total', 'lddfw' ) ) . '</td>
+			<th class="manage-column column-primary lddfw-text-center">' . esc_html( __( 'Shipping Total', 'lddfw' ) ) . '</td>
+			<th class="manage-column column-primary lddfw-text-center">' . esc_html( __( 'Commission', 'lddfw' ) ) . '</td>
+		</tr>
+	</thead>
+	<tbody>' ;
+        $last_driver = '';
+        $commission = 0;
+        $orders_price = 0;
+        $shipping_price = 0;
+        $orders_counter = 0;
+        $driver_counter = 0;
+        $commission_total = 0;
+        $orders_counter_total = 0;
+        $orders_total = 0;
+        $shipping_total = 0;
+        
+        if ( empty($report_array) ) {
+            echo  '
+		<tr>
+			<td colspan="5" class="lddfw-text-center">' . esc_html( __( 'No orders', 'lddfw' ) ) . '</td>
+		</tr>' ;
+        } else {
+            foreach ( $report_array as $row ) {
+                $driver_id = $row->driver_id;
+                
+                if ( $last_driver !== $driver_id ) {
+                    $driver = get_userdata( $driver_id );
+                    $driver_name = $driver->display_name;
+                    $driver_counter += 1;
+                    $last_driver = $driver_id;
+                    echo  '
+				<tr>
+					<td class="title column-title has-row-actions column-primary" data-colname="' . esc_html( __( 'Driver', 'lddfw' ) ) . '" >' . $driver_name . '<button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button></td>
+					<td class="lddfw-text-center" data-colname="' . esc_html( __( 'Orders', 'lddfw' ) ) . '" >' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_delivered_status' ) ) . '&post_type=shop_order&lddfw_from_date=' . $lddfw_dates_range_from . '&lddfw_to_date=' . $lddfw_dates_range_to . '&lddfw_orders_filter=' . esc_attr( $driver_id ) . '">' . $orders_counter . '</a>' ) . '</td>
+					<td class="lddfw-text-center" data-colname="' . esc_html( __( 'Orders Price', 'lddfw' ) ) . '" >' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_delivered_status' ) ) . '&post_type=shop_order&lddfw_from_date=' . $lddfw_dates_range_from . '&lddfw_to_date=' . $lddfw_dates_range_to . '&lddfw_orders_filter=' . esc_attr( $driver_id ) . '">' . get_woocommerce_currency_symbol() . $orders_price . '</a>' ) . '</td>
+					<td class="lddfw-text-center" data-colname="' . esc_html( __( 'Shipping Price', 'lddfw' ) ) . '" >' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_delivered_status' ) ) . '&post_type=shop_order&lddfw_from_date=' . $lddfw_dates_range_from . '&lddfw_to_date=' . $lddfw_dates_range_to . '&lddfw_orders_filter=' . esc_attr( $driver_id ) . '">' . get_woocommerce_currency_symbol() . $shipping_price . '</a>' ) . '</td>
+					<td class="lddfw-text-center" data-colname="' . esc_html( __( 'Commission', 'lddfw' ) ) . '" >' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_delivered_status' ) ) . '&post_type=shop_order&lddfw_from_date=' . $lddfw_dates_range_from . '&lddfw_to_date=' . $lddfw_dates_range_to . '&lddfw_orders_filter=' . esc_attr( $driver_id ) . '">' . get_woocommerce_currency_symbol() . $commission . '</a>' ) . '</td>
+				</tr>' ;
+                }
+            
+            }
+        }
+        
+        echo  '</tbody>
+		<tfoot>
+			<td class="title column-title has-row-actions column-primary" data-colname="' . esc_html( __( 'Driver', 'lddfw' ) ) . '" >' . $driver_counter . ' ' . esc_html( __( 'Drivers', 'lddfw' ) ) . '</td>
+			<td class="lddfw-text-center" data-colname="' . esc_html( __( 'Orders', 'lddfw' ) ) . '">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_delivered_status' ) ) . '&post_type=shop_order&lddfw_from_date=' . $lddfw_dates_range_from . '&lddfw_to_date=' . $lddfw_dates_range_to . '&lddfw_orders_filter=-1">' . $orders_counter_total . '</a>' ) . '</td>
+			<td class="lddfw-text-center" data-colname="' . esc_html( __( 'Orders Price', 'lddfw' ) ) . '">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_delivered_status' ) ) . '&post_type=shop_order&lddfw_from_date=' . $lddfw_dates_range_from . '&lddfw_to_date=' . $lddfw_dates_range_to . '&lddfw_orders_filter=-1">' . get_woocommerce_currency_symbol() . $orders_total . '</a>' ) . '</td>
+			<td class="lddfw-text-center" data-colname="' . esc_html( __( 'Shipping Price', 'lddfw' ) ) . '">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_delivered_status' ) ) . '&post_type=shop_order&lddfw_from_date=' . $lddfw_dates_range_from . '&lddfw_to_date=' . $lddfw_dates_range_to . '&lddfw_orders_filter=-1">' . get_woocommerce_currency_symbol() . $shipping_total . '</a>' ) . '</td>
+			<td class="lddfw-text-center" data-colname="' . esc_html( __( 'Commission', 'lddfw' ) ) . '">' . lddfw_premium_feature( '<a href="edit.php?post_status=' . esc_attr( get_option( 'lddfw_delivered_status' ) ) . '&post_type=shop_order&lddfw_from_date=' . $lddfw_dates_range_from . '&lddfw_to_date=' . $lddfw_dates_range_to . '&lddfw_orders_filter=-1">' . get_woocommerce_currency_symbol() . $commission_total . '</a>' ) . '</td>
 		</tfoot>
 	</table>' ;
     }
@@ -194,6 +355,23 @@ class LDDFW_Reports
         echo  $this->drivers_orders_dashboard_report() ;
         echo  $this->claim_orders_dashboard_report() ;
         echo  $this->drivers_dashboard_report() ;
+        echo  '
+		</div>' ;
+    }
+    
+    /**
+     * Admin report screen.
+     *
+     * @since 1.1.0
+     * @return html
+     */
+    public function screen_reports()
+    {
+        echo  '<div class="wrap">
+		<h1 class="wp-heading-inline">' . esc_html( __( 'Reports', 'lddfw' ) ) . '</h1>
+		  ' . LDDFW_Admin::lddfw_admin_plugin_bar() . '
+		  <hr class="wp-header-end">' ;
+        echo  $this->drivers_commissions_report() ;
         echo  '
 		</div>' ;
     }
@@ -279,12 +457,15 @@ class LDDFW_Reports
                     $total_driver++;
                     echo  '
 				<tr>
-					<td><a href="' . get_edit_user_link( $driver_id ) . '">' . esc_html( $full_name ) . '</a></td>
-					<td><a href="tel:' . esc_attr( $phone ) . '">' . esc_html( $phone ) . '</a></td>
-					<td  ><a href="mailto:' . esc_attr( $email ) . '">' . esc_html( $email ) . '</a></td>
-					<td>' . $billing_address . '</td>
-					<td class="lddfw-text-center">' . lddfw_premium_feature( $availability_icon ) . '</td>
-					<td class="lddfw-text-center">' . lddfw_premium_feature( $driver_claim_icon ) . '</td>
+					<td class="title column-title has-row-actions column-primary" data-colname="' . esc_html( __( 'Driver', 'lddfw' ) ) . '" >
+						<button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button>
+						<a href="' . get_edit_user_link( $driver_id ) . '">' . esc_html( $full_name ) . '</a>
+					</td>
+					<td data-colname="' . esc_html( __( 'Phone', 'lddfw' ) ) . '"><a href="tel:' . esc_attr( $phone ) . '">' . esc_html( $phone ) . '</a></td>
+					<td data-colname="' . esc_html( __( 'Email', 'lddfw' ) ) . '" ><a href="mailto:' . esc_attr( $email ) . '">' . esc_html( $email ) . '</a></td>
+					<td data-colname="' . esc_html( __( 'Address', 'lddfw' ) ) . '">' . $billing_address . '</td>
+					<td data-colname="' . esc_html( __( 'Availability', 'lddfw' ) ) . '" class="lddfw-text-center">' . lddfw_premium_feature( $availability_icon ) . '</td>
+					<td data-colname="' . esc_html( __( 'Claim orders', 'lddfw' ) ) . '" class="lddfw-text-center">' . lddfw_premium_feature( $driver_claim_icon ) . '</td>
 				</tr>' ;
                 }
             
@@ -293,7 +474,7 @@ class LDDFW_Reports
         
         echo  '</tbody>
 				<tfoot>
-					<td>' . $total_driver . ' ' . esc_html( __( 'Drivers', 'lddfw' ) ) . '</td>
+					<td class="title column-title has-row-actions column-primary">' . $total_driver . ' ' . esc_html( __( 'Drivers', 'lddfw' ) ) . '</td>
 					<td></td>
 					<td></td>
 					<td></td>

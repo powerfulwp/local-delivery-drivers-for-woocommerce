@@ -4,6 +4,9 @@
     
 /* Premium Code Stripped by Freemius */
 
+    jQuery(".lddfw_premium-feature button").click(function() {
+        jQuery(this).parent().find(".lddfw_lightbox").show();
+    });
 
     jQuery("#lddfw_out_for_delivery_button").click(
         function() {
@@ -66,14 +69,14 @@
 
 
 
-    jQuery(".lddfw_multi_checkbox").click(
+    jQuery(".lddfw_multi_checkbox .lddfw_wrap").click(
         function() {
             var lddfw_chk = jQuery(this).find(".custom-control-input");
             if (lddfw_chk.prop("checked") == true) {
-                jQuery(this).removeClass("lddfw_active");
+                jQuery(this).parents(".lddfw_multi_checkbox").removeClass("lddfw_active");
                 lddfw_chk.prop("checked", false);
             } else {
-                jQuery(this).addClass("lddfw_active");
+                jQuery(this).parents(".lddfw_multi_checkbox").addClass("lddfw_active");
                 lddfw_chk.prop("checked", true);
             }
         }
@@ -217,6 +220,13 @@
             return false;
         }
     );
+
+    if (jQuery("#lddfw_delivered_form .custom-control.custom-radio").length == 1) {
+        jQuery("#lddfw_delivered_form .custom-control.custom-radio").hide();
+    }
+    if (jQuery("#lddfw_failed_delivery_form .custom-control.custom-radio").length == 1) {
+        jQuery("#lddfw_failed_delivery_form .custom-control.custom-radio").hide();
+    }
 
     jQuery("#lddfw_driver_note_btn").click(
         function() {

@@ -110,7 +110,8 @@ class LDDFW_Order
         // Waze buttons.
         $shipping_direction_address = str_replace( '<br>', '', $shipping_address );
         $shipping_direction_address = str_replace( ',', '', $shipping_direction_address );
-        $waze = rawurlencode( $shipping_direction_address );
+        $navigation_address = rawurlencode( $shipping_direction_address );
+        $shipping_direction_address = str_replace( '  ', ' ', $shipping_direction_address );
         $shipping_direction_address = str_replace( ' ', '+', $shipping_direction_address );
         $store = new LDDFW_Store();
         $store_address = $store->lddfw_store_address( 'map_address' );
@@ -205,8 +206,10 @@ class LDDFW_Order
             if ( '' !== $billing_phone ) {
                 $html .= '	<div class="col-12 mt-1">
 								<span class="lddfw_label">' . esc_html( __( 'Phone', 'lddfw' ) ) . ': ' . $billing_phone . '</span>
-							</div>
-							<div class="col-12 mt-2">
+							</div>';
+            }
+            if ( '' !== $billing_phone ) {
+                $html .= '<div class="col-12 mt-2">
 								<a class="btn btn-secondary btn-block " href="tel:' . esc_attr( $billing_phone ) . '"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone" class="svg-inline--fa fa-phone fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"></path></svg> ' . esc_html( __( 'Call customer', 'lddfw' ) ) . '</a>
 							</div>';
             }
@@ -223,11 +226,14 @@ class LDDFW_Order
         $product_html = $this->lddfw_order_items( $order );
         $html .= $product_html;
         // Billing address.
+        
         if ( '' !== $billing_first_name ) {
             $html .= '<div class="lddfw_box">
 					<h3 class="lddfw_title"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="address-card" class="svg-inline--fa fa-address-card fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M528 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-352 96c35.3 0 64 28.7 64 64s-28.7 64-64 64-64-28.7-64-64 28.7-64 64-64zm112 236.8c0 10.6-10 19.2-22.4 19.2H86.4C74 384 64 375.4 64 364.8v-19.2c0-31.8 30.1-57.6 67.2-57.6h5c12.3 5.1 25.7 8 39.8 8s27.6-2.9 39.8-8h5c37.1 0 67.2 25.8 67.2 57.6v19.2zM512 312c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16zm0-64c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16zm0-64c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16z"></path></svg> ' . esc_html( __( 'Billing Address', 'lddfw' ) ) . '</h3>
-					' . $billing_full_name . $billing_address . '</div>';
+					' . $billing_full_name . $billing_address;
+            $html .= '</div>';
         }
+        
         $html .= '</div>
         	</div>
        	</div></div> ';
@@ -293,7 +299,8 @@ class LDDFW_Order
 		<form id="lddfw_delivered_form" class="lddfw_delivery_form">
 			<div class="row">
 			<div class="col-12">
-			<h1>' . esc_html( __( 'Where did you leave the order?', 'lddfw' ) ) . '</h1>';
+			<h1>' . esc_html( __( 'Where did you leave the package?', 'lddfw' ) ) . '</h1>
+			<p>' . esc_html( __( 'Add your note for the customer and click the send button', 'lddfw' ) ) . '</p>';
         $lddfw_delivery_dropoff_1 = get_option( 'lddfw_delivery_dropoff_1', '' );
         if ( '' !== $lddfw_delivery_dropoff_1 ) {
             $html .= '<div class="custom-control custom-radio">
@@ -383,7 +390,7 @@ class LDDFW_Order
 			<div class="row">
 			<div class="col-12">
 			<h1>' . esc_html( __( 'Why did the attempted delivery fail?', 'lddfw' ) ) . '</h1>
-			<p>' . esc_html( __( 'Please select an option or write a note and click the send button', 'lddfw' ) ) . '</p>';
+			<p>' . esc_html( __( 'Add your note for the customer and click the send button', 'lddfw' ) ) . '</p>';
         if ( '' !== $lddfw_failed_delivery_reason_1 ) {
             $html .= '<div class="custom-control custom-radio">
 				<input type="radio"  class="custom-control-input" id="lddfw_delivery_failed_1" value="' . $lddfw_failed_delivery_reason_1 . '" name="lddfw_delivery_failed_reason">
@@ -462,14 +469,17 @@ class LDDFW_Order
                 $variation_id = $item_data['variation_id'];
                 $product_description = '';
                 $product = false;
+                $product_image = '';
                 if ( null !== $product_id && 0 !== $product_id ) {
                     
                     if ( 0 !== $variation_id ) {
                         $product = wc_get_product( $variation_id );
                         $product_description = $product->get_description();
+                        $product_image = $product->get_image();
                     } else {
                         $product = wc_get_product( $product_id );
                         $product_description = $product->get_short_description();
+                        $product_image = $product->get_image();
                     }
                 
                 }
@@ -483,7 +493,8 @@ class LDDFW_Order
                 }
                 $unit_price = $item_total / $item_quantity;
                 $product_html .= '<tr class="lddfw_items">
-		<td colspan=2>' . $item_name . '<br>X ' . $item_quantity . '</td>
+				<td colspan="2">';
+                $product_html .= $item_name . '<br>X ' . $item_quantity . '</td>
 		<td class="lddfw_total_col">' . $currency_symbol . $item_subtotal . '</td>
 		</tr>';
             }
@@ -520,9 +531,18 @@ class LDDFW_Order
 		<td class="lddfw_total_col">' . $currency_symbol . $fee_total . '</td>
 		</tr>';
             }
+            
             if ( '' !== $total ) {
                 $product_html .= '<tr> <th colspan="2">' . __( 'Total', 'lddfw' ) . '</th>' . ' <td class="lddfw_total_col">' . $currency_symbol . $total . '</td>';
+                $refund = $order->get_total_refunded();
+                
+                if ( '' != $refund ) {
+                    $product_html .= '<tr style="color:#ca0303"> <th colspan="2">' . __( 'Refund', 'lddfw' ) . '</th>' . ' <td class="lddfw_total_col">-' . $currency_symbol . $refund . '</td>';
+                    $product_html .= '<tr> <th colspan="2">' . __( 'Net Total', 'lddfw' ) . '</th>' . ' <td class="lddfw_total_col">' . $currency_symbol . ($total - $refund) . '</td>';
+                }
+            
             }
+            
             $product_html .= '</tbody></table>';
             return $product_html;
         }

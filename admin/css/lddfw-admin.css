@@ -41,3 +41,16 @@
     outline: none !important;
     box-shadow: none !important;
 }
+
+#lddfw_dates_custom_range,
+#lddfw_dates_range_select,
+#lddfw_dates_range_submit {
+    margin-right: 15px;
+    float: left;
+}
+
+#lddfw_dates_range_wrap {
+    margin-bottom: 15px;
+    display: inline-block;
+    width: 100%;
+}

@@ -1,5 +1,28 @@
 jQuery(document).ready(
     function($) {
+
+        function lddfw_dates_range() {
+            var $lddfw_this = $("#lddfw_dates_range");
+            if ($lddfw_this.val() == "custom") {
+                $("#lddfw_dates_custom_range").show();
+            } else {
+                var lddfw_fromdate = $('option:selected', $lddfw_this).attr('fromdate');
+                var lddfw_todate = $('option:selected', $lddfw_this).attr('todate');
+                $("#lddfw_dates_custom_range").hide();
+                $("#lddfw_dates_range_from").val(lddfw_fromdate);
+                $("#lddfw_dates_range_to").val(lddfw_todate);
+            }
+        }
+
+        $("#lddfw_dates_range").change(function() {
+            lddfw_dates_range()
+        });
+
+        if ($("#lddfw_dates_range").length) {
+            lddfw_dates_range();
+        }
+
+
         
 /* Premium Code Stripped by Freemius */
 
