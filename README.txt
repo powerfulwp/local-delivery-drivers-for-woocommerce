@@ -92,11 +92,20 @@ The delivery driver can plan his route and navigate to his destination.
 
 * Optimize route by distance – Delivery Drivers can optimize their routes by distance and get a short path to the destination.
 * Plan route manually – Delivery drivers can plan their route manually to get the best route they want.
-* Destination navigation.
+* Navigation with Waze, Apple Maps, and Google Maps.
 * Next delivery – Once Delivery drivers complete their delivery, they can easily navigate to the next destination in their route.
 
 ## Drivers ready delivery notes.
 With this feature, delivery drivers can easily add notes to orders.
+
+## Drivers Commissions.
+Delivery drivers can see their deliveries commissions, and the admin has a full drivers’ commission report sorting by dates.
+
+## Branding - Add Your Brand.
+The branding feature lets you add your logo, text, and colors to the driver’s panel.
+
+## Third-party plugins support - custom fields.
+This great feature lets you add custom fields to the driver’s panel from third-party plugins like dokan, delivery slots, etc..
 
 ## SMS & EMAILS NOTIFICATIONS.
 Delivery drivers and customers are notified by emails and SMS,
@@ -152,6 +161,7 @@ Not at all. This plugin is straightforward to use.
 1. Premium - Delivery Drivers Mobile-Friendly Delivered & Next Delivery pages.
 1. Premium - Admin Drivers Dashboard.
 1. Premium - Admin Drivers Users.
+1. Premium - Drivers Commissions.
 
 == Changelog ==
 
@@ -197,6 +207,9 @@ Not at all. This plugin is straightforward to use.
 * Add: Premium - Drivers Commissions.
 * Add: Premium - Drivers notes added to emails.
 
+= 1.2.1 =
+* Fix: texts.
+
 == Upgrade Notice ==
 
 = 1.0.1 =
@@ -237,3 +250,6 @@ Not at all. This plugin is straightforward to use.
 * Add: Premium - Custom Fields - Add custom fields to the delivery panel from third-party plugins.
 * Add: Premium - Drivers Commissions.
 * Add: Premium - Drivers notes added to emails.
+
+= 1.2.1 =
+* Fix: texts.

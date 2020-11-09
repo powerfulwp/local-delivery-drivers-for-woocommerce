@@ -196,27 +196,27 @@ msgid "Not found in Trash"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:678
-msgid "All occasions"
+msgid "All Sections"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:679
-msgid "View occasion"
+msgid "View section"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:680
-msgid "Add New Occasion"
+msgid "Add New section"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:682
-msgid "Edit occasion"
+msgid "Edit section"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:683
-msgid "Update occasion"
+msgid "Update section"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:684
-msgid "Search occasions"
+msgid "Search sections"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:727 includes/class-lddfw-orders.php:605
@@ -341,7 +341,7 @@ msgid "Navigation APP"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:1021 includes/lddfw-metaboxes.php:55
-msgid "Driver Commissions"
+msgid "Driver Commission"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:1032 admin/class-lddfw-admin.php:1736
