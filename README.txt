@@ -53,6 +53,7 @@ The delivery drivers can add it to their mobile homepage for easy access.
 ## Who can use this plugin? =
 Any delivery service can use the Local Delivery Drivers for WooCommerce plugin.
 For example:
+
 * Flowers
 * Restaurants / Food-delivery services
 * Printer Ink
@@ -68,18 +69,19 @@ For example:
 
 [Local Delivery Drivers for WooCommerce Premium](https://powerfulwp.com/local-delivery-drivers-for-woocommerce-premium/) includes the following additional features:
 
-## Admin drivers dashboard
+## Fully Admin Drivers Dashboard.
 The dashboard lets you have a better view of all your drivers and orders.
 Dashboard includes:
+
 * How many orders each driver has in each status.
 * How many orders don’t have a driver.
 * How many orders are ready to claim.
 * List of all your active drivers,  availability, and claim permissions all statuses can be updated in one click.
 
-## Orders filters
+## Admin Orders Filters.
 You can filters orders by orders with drivers, orders without drivers, and each driver’s orders.
 
-## Better admin users screen
+## Manage Drivers.
 On the admin users screen, you can view all your drivers’ info, who is active, available, and have claim permission. each status can be updated easily with one click.
 
 ## ASSIGN ORDERS TO DELIVERY DRIVERS.
@@ -120,7 +122,7 @@ SMS notifications are sending with the Twilio SMS provider.
 Delivery drivers can apply to become a delivery driver.
 
 ## ORDERS NOTES
-All delivery actions saved on order notes with the users’ names.
+More specific orders notes with users names and more.
 
 [SVG created by fontawesome - www.fontawesome.com](https://fontawesome.com/license)
 [Design vector created by freepik - www.freepik.com](https://www.freepik.com/vectors/design)
@@ -206,9 +208,11 @@ Not at all. This plugin is straightforward to use.
 * Add: Premium - Custom Fields - Add custom fields to the delivery panel from third-party plugins.
 * Add: Premium - Drivers Commissions.
 * Add: Premium - Drivers notes added to emails.
-
 = 1.2.1 =
-* Fix: texts.
+* Fix: Texts.
+* Fix: Assign a driver edit permission.
+* Fix: Style.
+* Fix: Driver display name.
 
 == Upgrade Notice ==
 
@@ -252,4 +256,7 @@ Not at all. This plugin is straightforward to use.
 * Add: Premium - Drivers notes added to emails.
 
 = 1.2.1 =
-* Fix: texts.
+* Fix: Texts.
+* Fix: Assign a driver edit permission.
+* Fix: Style.
+* Fix: Driver display name.

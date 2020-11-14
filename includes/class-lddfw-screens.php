@@ -79,7 +79,7 @@ class LDDFW_Screens
 				<div id="lddfw_mySidenav" class="lddfw_sidenav">
 				<a href="javascript:void(0)" class="lddfw_closebtn" onclick="lddfw_closeNav()">&times;</a>
 				<span class="dropdown-header">
-					<h3>' . $lddfw_user->first_name . ' ' . $lddfw_user->last_name . '</h3>
+					<h3>' . $lddfw_user->display_name . '</h3>
 				</span>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="' . lddfw_drivers_page_url( "lddfw_screen=dashboard" ) . '">

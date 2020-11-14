@@ -837,7 +837,7 @@ msgid "Give the driver permission to claim orders."
 msgstr ""
 
 #: admin/class-lddfw-admin.php:2061
-msgid "Assign orders to the delivery driver"
+msgid "Assign a driver to orders"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:2227 includes/class-lddfw-reports.php:580

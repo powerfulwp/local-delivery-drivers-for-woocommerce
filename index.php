@@ -59,10 +59,12 @@ if ( !is_user_logged_in() ) {
         $lddfw_user_is_driver = 0;
         $lddfw_content = $lddfw_screens->lddfw_home();
     } else {
-        // User is a delivery driver.
+        /**
+         * User is a delivery driver.
+         */
         // Set global variables.
         $lddfw_user_is_driver = 1;
-        $lddfw_driver_name = $lddfw_user->first_name . ' ' . $lddfw_user->last_name;
+        $lddfw_driver_name = $lddfw_user->display_name;
         $lddfw_driver_availability = get_user_meta( $lddfw_driver_id, 'lddfw_driver_availability', true );
         // Get the number of orders in each status.
         $lddfw_orders = new LDDFW_Orders();

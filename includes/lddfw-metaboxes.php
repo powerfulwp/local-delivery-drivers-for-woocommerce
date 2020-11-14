@@ -80,8 +80,7 @@ function lddfw_driver_drivers_selectbox(
     ' ;
     $last_availability = '';
     foreach ( $drivers as $driver ) {
-        $first_name = get_user_meta( $driver->ID, 'first_name', true );
-        $last_name = get_user_meta( $driver->ID, 'last_name', true );
+        $driver_name = $driver->display_name;
         $availability = get_user_meta( $driver->ID, 'lddfw_driver_availability', true );
         $driver_account = get_user_meta( $driver->ID, 'lddfw_driver_account', true );
         $availability = ( '1' === $availability ? 'Available' : 'Unavailable' );
@@ -99,7 +98,7 @@ function lddfw_driver_drivers_selectbox(
         }
         
         if ( '1' === $driver_account || '1' != $driver_account && intval( $driver_id ) === $driver->ID ) {
-            echo  '<option ' . esc_attr( $selected ) . ' value="' . esc_attr( $driver->ID ) . '">' . esc_html( $first_name . ' ' . $last_name ) . '</option>' ;
+            echo  '<option ' . esc_attr( $selected ) . ' value="' . esc_attr( $driver->ID ) . '">' . esc_html( $driver_name ) . '</option>' ;
         }
     }
     echo  '</optgroup></select>' ;
@@ -115,9 +114,6 @@ function lddfw_driver_save_order_details( $post_id, $post )
 {
     $driver = new LDDFW_Driver();
     if ( !isset( $_POST['lddfw_metaboxes_key'] ) || !wp_verify_nonce( $_POST['lddfw_metaboxes_key'], 'lddfw-save-order' ) ) {
-        return $post->ID;
-    }
-    if ( !current_user_can( 'edit_post', $post->ID ) ) {
         return $post->ID;
     }
     $lddfw_driver_order_meta['lddfw_driverid'] = $_POST['lddfw_driverid'];
