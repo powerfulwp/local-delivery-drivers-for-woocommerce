@@ -95,11 +95,11 @@ msgid "The delivery driver changed the order status."
 msgstr ""
 
 #: admin/class-lddfw-admin.php:151
-msgid "Orders successfully marked as out of delivery."
+msgid "Orders successfully marked as out for delivery."
 msgstr ""
 
 #: admin/class-lddfw-admin.php:151
-msgid "View out of delivery orders"
+msgid "View out for delivery orders"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:156 admin/class-lddfw-admin.php:197

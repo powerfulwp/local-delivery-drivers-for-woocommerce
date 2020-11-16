@@ -107,7 +107,7 @@ Delivery drivers can see their deliveries commissions, and the admin has a full 
 The branding feature lets you add your logo, text, and colors to the driver’s panel.
 
 ## Third-party plugins support - custom fields.
-This great feature lets you add custom fields to the driver’s panel from third-party plugins like dokan, delivery slots, etc..
+This great feature lets you add order text custom fields to the driver’s panel from third-party plugins delivery slots, etc..
 
 ## SMS & EMAILS NOTIFICATIONS.
 Delivery drivers and customers are notified by emails and SMS,

@@ -165,7 +165,7 @@ class LDDFW_Admin
                                     $order->update_status( $out_for_delivery_status, __( 'The delivery driver changed the order status.', 'lddfw' ) );
                                     $order->save();
                                     $result = 1;
-                                    $error = '<div class=\'alert alert-success alert-dismissible fade show\'>' . __( 'Orders successfully marked as out of delivery.', 'lddfw' ) . '<button type=\'button\' class=\'close\' data-dismiss=\'alert\' aria-label=\'Close\'><span aria-hidden=\'true\'>&times;</span></button></div> <a id=\'view_out_of_delivery_orders_button\' href=\'' . lddfw_drivers_page_url( 'lddfw_screen=out_for_delivery' ) . '\'  class=\'btn btn-lg btn-block btn-primary\'>' . __( 'View out of delivery orders', 'lddfw' ) . '</a>';
+                                    $error = '<div class=\'alert alert-success alert-dismissible fade show\'>' . __( 'Orders successfully marked as out for delivery.', 'lddfw' ) . '<button type=\'button\' class=\'close\' data-dismiss=\'alert\' aria-label=\'Close\'><span aria-hidden=\'true\'>&times;</span></button></div> <a id=\'view_out_of_delivery_orders_button\' href=\'' . lddfw_drivers_page_url( 'lddfw_screen=out_for_delivery' ) . '\'  class=\'btn btn-lg btn-block btn-primary\'>' . __( 'View out for delivery orders', 'lddfw' ) . '</a>';
                                 }
                             
                             }
