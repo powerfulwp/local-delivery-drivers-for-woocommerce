@@ -205,6 +205,7 @@ wp_register_style(
 echo  '<title>' . esc_js( __( 'Delivery Driver', 'lddfw' ) ) . '</title>' ;
 ?>
 <meta name="robots" content="noindex" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="<?php 
 echo  get_site_icon_url( 32, esc_url( plugin_dir_url( __FILE__ ) . 'public/images/favicon-32x32.png?ver=' . LDDFW_VERSION ) ) ;

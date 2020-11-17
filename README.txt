@@ -208,11 +208,17 @@ Not at all. This plugin is straightforward to use.
 * Add: Premium - Custom Fields - Add custom fields to the delivery panel from third-party plugins.
 * Add: Premium - Drivers Commissions.
 * Add: Premium - Drivers notes added to emails.
+
 = 1.2.1 =
 * Fix: Texts.
 * Fix: Assign a driver edit permission.
 * Fix: Style.
 * Fix: Driver display name.
+
+= 1.2.2 =
+* Fix: UTF-8.
+* Fix: Texts.
+* Fix: Shipping address format.
 
 == Upgrade Notice ==
 
@@ -260,3 +266,8 @@ Not at all. This plugin is straightforward to use.
 * Fix: Assign a driver edit permission.
 * Fix: Style.
 * Fix: Driver display name.
+
+= 1.2.2 =
+* Fix: UTF-8.
+* Fix: Texts.
+* Fix: Shipping address format.

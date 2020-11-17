@@ -327,6 +327,7 @@ class LDDFW_Orders
                 $billing_country = $order->get_billing_country();
                 $billing_first_name = $order->get_billing_first_name();
                 $billing_last_name = $order->get_billing_last_name();
+                $billing_company = $order->get_billing_company();
                 $shipping_first_name = $order->get_shipping_first_name();
                 $shipping_last_name = $order->get_shipping_last_name();
                 $shipping_address_1 = $order->get_shipping_address_1();
@@ -335,6 +336,7 @@ class LDDFW_Orders
                 $shipping_state = $order->get_shipping_state();
                 $shipping_postcode = $order->get_shipping_postcode();
                 $shipping_country = $order->get_shipping_country();
+                $shipping_company = $order->get_shipping_company();
                 /**
                  * If shipping info is missing if show the billing info
                  */
@@ -348,12 +350,17 @@ class LDDFW_Orders
                     $shipping_state = $billing_state;
                     $shipping_postcode = $billing_postcode;
                     $shipping_country = $billing_country;
+                    $shipping_company = $billing_company;
                 }
                 
                 $route = get_post_meta( $orderid, 'lddfw_order_route', true );
-                $shippingaddress = $shipping_first_name . ' ' . $shipping_last_name . '<br>' . $shipping_address_1;
+                $shippingaddress = $shipping_first_name . ' ' . $shipping_last_name . '<br>';
+                if ( '' != $shipping_company ) {
+                    $shippingaddress .= $shipping_company . '<br>';
+                }
+                $shippingaddress .= $shipping_address_1;
                 if ( '' !== $shipping_address_2 ) {
-                    $shippingaddress .= ', ' . $shipping_address_2 . ', ';
+                    $shippingaddress .= ', ' . $shipping_address_2;
                 }
                 $distance = '';
                 if ( is_array( $route ) ) {
@@ -367,7 +374,7 @@ class LDDFW_Orders
 							<span class="lddfw_index lddfw_counter">' . $counter . '</span>
 							<input style="display:none" orderid="' . esc_attr( $orderid ) . '" type="checkbox" value="' . esc_attr( str_replace( "'", '', $shipping_address_1 . ' ' . $shipping_city ) ) . '" class="lddfw_address_chk">';
                 $html .= '<a class="btn lddfw_order_view btn-secondary btn-sm" href="' . esc_url( lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) ) . '">' . esc_html( __( 'Order #', 'lddfw' ) ) . $orderid . '</a>';
-                $html .= '<a class="lddfw_order_address" href="' . esc_url( lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) ) . '">' . $shippingaddress . '<br> ' . $shipping_city . ' ' . $shipping_state . '</a>';
+                $html .= '<a class="lddfw_order_address" href="' . esc_url( lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) ) . '">' . $shippingaddress . '<br> ' . $shipping_city . ' ' . $shipping_state . ' ' . $shipping_postcode . '</a>';
                 if ( '' !== $distance ) {
                     $html .= '<a class="lddfw_order_distance" href="' . esc_url( lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) ) . '">' . esc_html( __( 'Distance: ', 'lddfw' ) ) . $distance . '</a>';
                 }
@@ -414,6 +421,8 @@ class LDDFW_Orders
                 $billing_country = $order->get_billing_country();
                 $billing_first_name = $order->get_billing_first_name();
                 $billing_last_name = $order->get_billing_last_name();
+                $billing_company = $order->get_billing_company();
+                $shipping_company = $order->get_shipping_company();
                 $shipping_first_name = $order->get_shipping_first_name();
                 $shipping_last_name = $order->get_shipping_last_name();
                 $shipping_address_1 = $order->get_shipping_address_1();
@@ -435,14 +444,19 @@ class LDDFW_Orders
                     $shipping_state = $billing_state;
                     $shipping_postcode = $billing_postcode;
                     $shipping_country = $billing_country;
+                    $shipping_company = $billing_company;
                 }
                 
                 $delivered_date = get_post_meta( $orderid, 'lddfw_delivered_date', true );
                 $route = get_post_meta( $orderid, 'lddfw_order_route', true );
                 $failed_date = get_post_meta( $orderid, 'lddfw_failed_attempt_date', true );
-                $shippingaddress = $shipping_first_name . ' ' . $shipping_last_name . '<br>' . $shipping_address_1;
+                $shippingaddress = $shipping_first_name . ' ' . $shipping_last_name . '<br>';
+                if ( '' != $shipping_company ) {
+                    $shippingaddress .= $shipping_company . '<br>';
+                }
+                $shippingaddress .= $shipping_address_1;
                 if ( '' !== $shipping_address_2 ) {
-                    $shippingaddress .= ', ' . $shipping_address_2 . ', ';
+                    $shippingaddress .= ', ' . $shipping_address_2;
                 }
                 $distance = '';
                 if ( is_array( $route ) ) {
@@ -455,7 +469,7 @@ class LDDFW_Orders
 						<div class="col-12">
 							<span class="lddfw_counter">' . $counter . '</span>';
                 $html .= '<a class="btn lddfw_order_view btn-secondary btn-sm" href="' . esc_url( lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) ) . '">' . esc_html( __( 'Order #', 'lddfw' ) ) . $orderid . '</a>';
-                $html .= '<a class="lddfw_order_address line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">' . $shippingaddress . '<br>' . $shipping_city . ' ' . $shipping_state . '</a>';
+                $html .= '<a class="lddfw_order_address line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">' . $shippingaddress . '<br>' . $shipping_city . ' ' . $shipping_state . ' ' . $shipping_postcode . '</a>';
                 if ( '' !== $distance ) {
                     $html .= '<a class=\'lddfw_order_distance lddfw_line\' href=\'' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '\'>' . esc_html( __( 'Distance: ', 'lddfw' ) ) . $distance . '</a>';
                 }
@@ -501,6 +515,8 @@ class LDDFW_Orders
                 $billing_country = $order->get_billing_country();
                 $billing_first_name = $order->get_billing_first_name();
                 $billing_last_name = $order->get_billing_last_name();
+                $billing_company = $order->get_billing_company();
+                $shipping_company = $order->get_shipping_company();
                 $shipping_first_name = $order->get_shipping_first_name();
                 $shipping_last_name = $order->get_shipping_last_name();
                 $shipping_address_1 = $order->get_shipping_address_1();
@@ -522,12 +538,17 @@ class LDDFW_Orders
                     $shipping_state = $billing_state;
                     $shipping_postcode = $billing_postcode;
                     $shipping_country = $billing_country;
+                    $shipping_company = $billing_company;
                 }
                 
                 $route = get_post_meta( $orderid, 'lddfw_order_route', true );
-                $shippingaddress = $shipping_first_name . ' ' . $shipping_last_name . '<br>' . $shipping_address_1;
+                $shippingaddress = $shipping_first_name . ' ' . $shipping_last_name . '<br>';
+                if ( '' != $shipping_company ) {
+                    $shippingaddress .= $shipping_company . '<br>';
+                }
+                $shippingaddress .= $shipping_address_1;
                 if ( '' !== $shipping_address_2 ) {
-                    $shippingaddress .= ', ' . $shipping_address_2 . ', ';
+                    $shippingaddress .= ', ' . $shipping_address_2;
                 }
                 ++$counter;
                 $html .= '
@@ -542,7 +563,7 @@ class LDDFW_Orders
 									<label class="custom-control-label" for="lddfw_chk_order_id_' . $counter . '"></label>
 								</div>
 								<div class="lddfw_order">
-									<div class="lddfw_order_address">' . $shippingaddress . '<br>' . $shipping_city . ' ' . $shipping_state . '</div>';
+									<div class="lddfw_order_address">' . $shippingaddress . '<br>' . $shipping_city . ' ' . $shipping_state . ' ' . $shipping_postcode . '</div>';
                 $html .= '</div>
 							</div>';
                 $html .= '
@@ -583,6 +604,8 @@ class LDDFW_Orders
                 $billing_country = $order->get_billing_country();
                 $billing_first_name = $order->get_billing_first_name();
                 $billing_last_name = $order->get_billing_last_name();
+                $billing_company = $order->get_billing_company();
+                $shipping_company = $order->get_shipping_company();
                 $shipping_first_name = $order->get_shipping_first_name();
                 $shipping_last_name = $order->get_shipping_last_name();
                 $shipping_address_1 = $order->get_shipping_address_1();
@@ -604,11 +627,16 @@ class LDDFW_Orders
                     $shipping_state = $billing_state;
                     $shipping_postcode = $billing_postcode;
                     $shipping_country = $billing_country;
+                    $shipping_company = $billing_company;
                 }
                 
-                $shippingaddress = $shipping_first_name . ' ' . $shipping_last_name . '<br>' . $shipping_address_1;
+                $shippingaddress = $shipping_first_name . ' ' . $shipping_last_name . '<br>';
+                if ( '' != $shipping_company ) {
+                    $shippingaddress .= $shipping_company . '<br>';
+                }
+                $shippingaddress .= $shipping_address_1;
                 if ( '' !== $shipping_address_2 ) {
-                    $shippingaddress .= ', ' . $shipping_address_2 . ', ';
+                    $shippingaddress .= ', ' . $shipping_address_2;
                 }
                 ++$counter;
                 $html .= '
@@ -622,7 +650,7 @@ class LDDFW_Orders
 							</div>
 							<div class="lddfw_order">
 								<div class="lddfw_order_number"><b>' . esc_html( __( 'Order #', 'lddfw' ) ) . $orderid . '</b></div>
-								<div class="lddfw_order_address">' . $shippingaddress . '<br>' . $shipping_city . ' ' . $shipping_state . ' </div>';
+								<div class="lddfw_order_address">' . $shippingaddress . '<br>' . $shipping_city . ' ' . $shipping_state . ' ' . $shipping_postcode . '</div>';
                 $html .= '</div>
 						</div>
 						</div>
@@ -696,6 +724,8 @@ class LDDFW_Orders
                 $billing_country = $order->get_billing_country();
                 $billing_first_name = $order->get_billing_first_name();
                 $billing_last_name = $order->get_billing_last_name();
+                $billing_company = $order->get_billing_company();
+                $shipping_company = $order->get_shipping_company();
                 $shipping_first_name = $order->get_shipping_first_name();
                 $shipping_last_name = $order->get_shipping_last_name();
                 $shipping_address_1 = $order->get_shipping_address_1();
@@ -717,13 +747,18 @@ class LDDFW_Orders
                     $shipping_state = $billing_state;
                     $shipping_postcode = $billing_postcode;
                     $shipping_country = $billing_country;
+                    $shipping_company = $billing_company;
                 }
                 
                 $route = get_post_meta( $orderid, 'lddfw_order_route', true );
                 $delivered_date = get_post_meta( $orderid, 'lddfw_delivered_date', true );
-                $shippingaddress = $shipping_first_name . ' ' . $shipping_last_name . '<br>' . $shipping_address_1;
+                $shippingaddress = $shipping_first_name . ' ' . $shipping_last_name . '<br>';
+                if ( '' != $shipping_company ) {
+                    $shippingaddress .= $shipping_company . '<br>';
+                }
+                $shippingaddress .= $shipping_address_1;
                 if ( '' !== $shipping_address_2 ) {
-                    $shippingaddress .= ', ' . $shipping_address_2 . ', ';
+                    $shippingaddress .= ', ' . $shipping_address_2;
                 }
                 $distance = '';
                 if ( is_array( $route ) ) {
@@ -736,7 +771,7 @@ class LDDFW_Orders
 						<div class="col-12">
 							<span class="lddfw_counter">' . $counter . '</span>';
                 $html .= '<a class="btn lddfw_order_view btn-secondary btn-sm" href="' . esc_url( lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid . '&lddfw_dates=' . $lddfw_dates . '&lddfw_page=' . $lddfw_page ) ) . '">' . esc_html( __( 'Order #', 'lddfw' ) ) . $orderid . '</a>';
-                $html .= '<a class="lddfw_order_address lddfw_line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">' . $shippingaddress . '<br>' . $shipping_city . ' ' . $shipping_state . '</a>';
+                $html .= '<a class="lddfw_order_address lddfw_line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">' . $shippingaddress . '<br>' . $shipping_city . ' ' . $shipping_state . ' ' . $shipping_postcode . '</a>';
                 if ( '' !== $distance ) {
                     $html .= '<a class="lddfw_order_distance lddfw_line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">' . esc_html( __( 'Distance: ', 'lddfw' ) ) . $distance . '</a>';
                 }

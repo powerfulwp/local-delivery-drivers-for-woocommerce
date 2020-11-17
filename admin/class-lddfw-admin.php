@@ -791,7 +791,7 @@ class LDDFW_Admin
         echo  esc_attr( get_option( 'lddfw_google_api_key', '' ) ) ;
         ?>'>
 		<p class="description" id="lddfw-gooogle-api-key-description"><?php 
-        echo  esc_html( __( 'To use the Google Maps JavaScript API you must have an API key.', 'lddfw' ) ) ;
+        echo  esc_html( __( 'In order to use the Google Maps JavaScript API, you must have an API with the following authorizations ( Maps Embed API, Directions API, Distance Matrix API, Maps JavaScript API )', 'lddfw' ) ) ;
         ?></p>
 		<?php 
     }

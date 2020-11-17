@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: BUG-EMAIL-ADDR <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: yyyy-mm-dd hh:mm+0000\n"
-"PO-Revision-Date: 2020-11-08 00:40+0200\n"
+"PO-Revision-Date: 2020-11-17 21:55+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -24,46 +24,46 @@ msgid ""
 "activate a WooCommerce on your site."
 msgstr ""
 
-#: index.php:85 includes/class-lddfw-reports.php:56
+#: index.php:86 includes/class-lddfw-reports.php:56
 #: includes/class-lddfw-reports.php:98 includes/class-lddfw-reports.php:125
 #: includes/class-lddfw-reports.php:188
 msgid "Driver assigned"
 msgstr ""
 
-#: index.php:86 includes/class-lddfw-reports.php:57
+#: index.php:87 includes/class-lddfw-reports.php:57
 #: includes/class-lddfw-reports.php:99 includes/class-lddfw-reports.php:126
 #: includes/class-lddfw-reports.php:189 includes/class-lddfw-screens.php:445
 msgid "Out for delivery"
 msgstr ""
 
-#: index.php:87 admin/class-lddfw-admin.php:981
+#: index.php:88 admin/class-lddfw-admin.php:981
 #: includes/class-lddfw-reports.php:59 includes/class-lddfw-reports.php:101
 #: includes/class-lddfw-reports.php:128 includes/class-lddfw-reports.php:191
 msgid "Failed delivery"
 msgstr ""
 
-#: index.php:99 admin/class-lddfw-admin.php:753
+#: index.php:100 admin/class-lddfw-admin.php:753
 #: admin/class-lddfw-admin.php:781
 msgid "Failed Delivery Attempt"
 msgstr ""
 
-#: index.php:185 includes/lddfw-metaboxes.php:47
+#: index.php:186 includes/lddfw-metaboxes.php:47
 msgid "Delivery Driver"
 msgstr ""
 
-#: index.php:198 includes/class-lddfw-order.php:530
+#: index.php:200 includes/class-lddfw-order.php:530
 msgid "Are you sure?"
 msgstr ""
 
-#: index.php:200
+#: index.php:202
 msgid "hour"
 msgstr ""
 
-#: index.php:201
+#: index.php:203
 msgid "hours"
 msgstr ""
 
-#: index.php:202
+#: index.php:204
 msgid "mins"
 msgstr ""
 
@@ -219,7 +219,7 @@ msgstr ""
 msgid "Search sections"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:727 includes/class-lddfw-orders.php:605
+#: admin/class-lddfw-admin.php:727 includes/class-lddfw-orders.php:621
 msgid "Orders - Driver Assigned"
 msgstr ""
 
@@ -227,15 +227,15 @@ msgstr ""
 msgid "Orders - Out for Delivery"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:729 includes/class-lddfw-orders.php:486
+#: admin/class-lddfw-admin.php:729 includes/class-lddfw-orders.php:493
 msgid "Orders - Failed Delivery"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:730 includes/class-lddfw-orders.php:836
+#: admin/class-lddfw-admin.php:730 includes/class-lddfw-orders.php:864
 msgid "Orders - Delivered"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:731 includes/class-lddfw-orders.php:725
+#: admin/class-lddfw-admin.php:731 includes/class-lddfw-orders.php:747
 msgid "Orders - Claim Orders"
 msgstr ""
 
@@ -340,8 +340,8 @@ msgstr ""
 msgid "Navigation APP"
 msgstr ""
 
-#: admin/class-lddfw-admin.php:1021 includes/lddfw-metaboxes.php:55
-msgid "Driver Commission"
+#: admin/class-lddfw-admin.php:1021
+msgid "Driver Commissions"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:1032 admin/class-lddfw-admin.php:1736
@@ -692,7 +692,10 @@ msgid "Drivers can call this number if they have questions about orders."
 msgstr ""
 
 #: admin/class-lddfw-admin.php:1571
-msgid "To use the Google Maps JavaScript API you must have an API key."
+msgid ""
+"In order to use the Google Maps JavaScript API, you must have an API with "
+"the following authorizations ( Maps Embed API, Directions API, Distance "
+"Matrix API, Maps JavaScript API )"
 msgstr ""
 
 #: admin/class-lddfw-admin.php:1598
@@ -1046,7 +1049,7 @@ msgstr ""
 
 #: includes/class-lddfw-driver.php:75
 #, php-format
-msgid "by %s %s"
+msgid "by %s"
 msgstr ""
 
 #: includes/class-lddfw-driver.php:78
@@ -1251,37 +1254,37 @@ msgstr ""
 msgid "Net Total"
 msgstr ""
 
-#: includes/class-lddfw-orders.php:426 includes/class-lddfw-orders.php:548
-#: includes/class-lddfw-orders.php:660 includes/class-lddfw-orders.php:663
-#: includes/class-lddfw-orders.php:785 includes/class-lddfw-orders.php:930
+#: includes/class-lddfw-orders.php:433 includes/class-lddfw-orders.php:564
+#: includes/class-lddfw-orders.php:682 includes/class-lddfw-orders.php:685
+#: includes/class-lddfw-orders.php:813 includes/class-lddfw-orders.php:965
 #: includes/class-lddfw-screens.php:662
 msgid "Order #"
 msgstr ""
 
-#: includes/class-lddfw-orders.php:429 includes/class-lddfw-orders.php:551
-#: includes/class-lddfw-orders.php:933
+#: includes/class-lddfw-orders.php:436 includes/class-lddfw-orders.php:567
+#: includes/class-lddfw-orders.php:968
 msgid "Distance: "
 msgstr ""
 
-#: includes/class-lddfw-orders.php:452 includes/class-lddfw-orders.php:572
-#: includes/class-lddfw-orders.php:692 includes/class-lddfw-orders.php:803
-#: includes/class-lddfw-orders.php:968
+#: includes/class-lddfw-orders.php:459 includes/class-lddfw-orders.php:588
+#: includes/class-lddfw-orders.php:714 includes/class-lddfw-orders.php:831
+#: includes/class-lddfw-orders.php:1003
 msgid "There are no orders."
 msgstr ""
 
-#: includes/class-lddfw-orders.php:554
+#: includes/class-lddfw-orders.php:570
 msgid "Failed Date: "
 msgstr ""
 
-#: includes/class-lddfw-orders.php:855
+#: includes/class-lddfw-orders.php:883
 msgid "<<"
 msgstr ""
 
-#: includes/class-lddfw-orders.php:856
+#: includes/class-lddfw-orders.php:884
 msgid ">>"
 msgstr ""
 
-#: includes/class-lddfw-orders.php:936
+#: includes/class-lddfw-orders.php:971
 msgid "Delivered Date: "
 msgstr ""
 
@@ -1685,11 +1688,15 @@ msgstr ""
 msgid "Failed to send SMS to %s "
 msgstr ""
 
+#: includes/lddfw-metaboxes.php:55
+msgid "Driver Commission"
+msgstr ""
+
 #: includes/lddfw-metaboxes.php:77
 msgid "Assign a driver"
 msgstr ""
 
-#: includes/lddfw-metaboxes.php:94
+#: includes/lddfw-metaboxes.php:93
 msgid "drivers"
 msgstr ""
 

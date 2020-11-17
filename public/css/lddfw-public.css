@@ -356,6 +356,10 @@ label.error {
     margin-bottom: 10px;
 }
 
+a#view_assigned_orders_button {
+    margin-bottom: 15px;
+}
+
 #lddfw_orders_table .pagination {
     margin: 0px;
     margin-bottom: 7px;
