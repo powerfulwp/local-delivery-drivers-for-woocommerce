@@ -58,8 +58,8 @@ class LDDFW_Login
 							<form method="post" name="lddfw_login_frm" id="lddfw_login_frm" action="' . esc_url( admin_url( 'admin-ajax.php' ) ) . '" nextpage="' . lddfw_drivers_page_url( 'lddfw_screen=dashboard' ) . '">
 							<div class="lddfw_alert_wrap"></div>
 
-							<input type="text" autocapitalize=off class="form-control form-control-lg" placeholder="' . esc_attr( __( 'Email', 'lddfw' ) ) . '" name="lddfw_login_email" id="lddfw_login_email"  value="">
-								<input type="password" autocapitalize=off class="form-control form-control-lg" placeholder="' . esc_attr( __( 'Password', 'lddfw' ) ) . '" name="lddfw_login_password" id="lddfw_login_password" value="">
+							<input type="text" autocapitalize=off class="form-control form-control-lg"  autocomplete="username" placeholder="' . esc_attr( __( 'Email', 'lddfw' ) ) . '" name="lddfw_login_email" id="lddfw_login_email"  value="">
+								<input type="password" autocomplete="current-password" autocapitalize=off class="form-control form-control-lg" placeholder="' . esc_attr( __( 'Password', 'lddfw' ) ) . '" name="lddfw_login_password" id="lddfw_login_password" value="">
 								<button class="lddfw_submit_btn btn btn-lg btn-primary btn-block" type="submit">
 								' . esc_html( __( 'Login', 'lddfw' ) ) . '
 								</button>

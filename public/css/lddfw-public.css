@@ -253,10 +253,6 @@ h6 {
     font-size: 28px;
 }
 
-#lddfw_driver_note_wrap {
-    margin-top: 15px;
-}
-
 #lddfw_home .lddfw_cover {
     padding: 0px;
     height: 50%;
@@ -286,6 +282,39 @@ body::after {
     vertical-align: middle;
 }
 
+.lddfw_date_range {
+    line-height: 21px;
+}
+
+.lddfw_dashboard .lddfw_box.min.text-center {
+    min-height: 157px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+span.driver_photo_wrap {
+    border-radius: 100px;
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    display: block;
+    margin: 0 auto;
+    background: #fff;
+    text-align: center;
+    position: relative;
+    background: #011627;
+    margin-bottom: 6px;
+}
+
+img.driver_photo {
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 100px;
+}
+
 #lddfw_home {
     text-align: center;
     background-color: #fed14c;
@@ -293,6 +322,7 @@ body::after {
     position: fixed;
     width: 100%;
     height: 100%;
+    top: 0px;
 }
 
 .lddfw_cover img {
@@ -338,6 +368,8 @@ label.error {
 
 #lddfw_page {
     padding-bottom: 127px;
+    width: 100%;
+    display: inline-block;
 }
 
 .lddfw_page .lddfw_signup_button {
@@ -350,10 +382,6 @@ label.error {
     margin-top: 10px;
     margin-bottom: 10px;
     display: block;
-}
-
-#lddfw_delivered_screen_btn {
-    margin-bottom: 10px;
 }
 
 a#view_assigned_orders_button {
@@ -425,6 +453,7 @@ a#view_assigned_orders_button {
 #lddfw_thankyou .fa-check-circle {
     font-size: 75px;
     margin-bottom: 20px;
+    margin-top: 20px;
     width: 100px;
     color: #51b951;
 }
@@ -440,8 +469,35 @@ a#view_assigned_orders_button {
     width: 100%;
 }
 
+.delivered-report .lddfw_box b.lddfw_text {
+    font-size: 21px;
+}
+
+.lddfw_break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+.delivered-report .lddfw_box {
+    min-height: 111px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.delivery_header svg.fa-plus {
+    width: 15px;
+    top: -1px;
+}
+
+svg.fa-signature {
+    width: 32px;
+}
+
 .lddfw_lightbox_wrap .btn {
-    margin-bottom: 10px;
+    margin-bottom: 0px;
 }
 
 .lddfw_lightbox {
@@ -452,7 +508,7 @@ a#view_assigned_orders_button {
     top: 0px;
     left: 0px;
     z-index: 999;
-    padding-top: 70px;
+    padding-top: 20px;
 }
 
 .lddfw_footer_buttons {
@@ -466,17 +522,40 @@ a#view_assigned_orders_button {
     z-index: 99;
 }
 
+.lddfw_page_content {
+    margin-top: 85px;
+}
+
+div#signature-image {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+#lddfw_delivery_screen .screen_wrap {
+    margin-top: 50px;
+}
+
+#lddfw_driver_add_signature_btn {
+    white-space: nowrap;
+}
+
 .lddfw_lightbox_close {
     font-size: 58px;
-    right: 10px;
+    right: 30px;
     position: fixed;
     top: -11px;
     color: #011627;
     text-decoration: none;
+    z-index: 9999;
 }
 
 .lddfw_logout-col {
     margin-top: 10px;
+}
+
+.lddfw_header_title {
+    font-size: 20px;
 }
 
 #lddfw_header {
@@ -486,8 +565,12 @@ a#view_assigned_orders_button {
     background-color: #fff;
     margin-bottom: 0px;
     color: #011627;
-    padding-top: 19px;
+    padding-top: 17px;
     line-height: 32px;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    top: 0px;
 }
 
 #lddfw_header .lddfw_col-8.lddfw_text-center,
@@ -596,7 +679,7 @@ svg {
     width: 100px;
 }
 
-.lddfw_premium-feature .lddfw_content-title {
+.lddfw_content-subtitle {
     font-weight: bold;
     margin-bottom: 15px;
 }
@@ -609,12 +692,17 @@ svg {
     text-align: left;
 }
 
-.lddfw_premium-feature .lddfw_title {
-    margin-bottom: 50px;
-    text-align: center;
+.lddfw_premium-feature .btn svg {
+    margin-top: -4px;
 }
 
-.lddfw_premium-feature svg {
+.premium_feature_title {
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.lddfw_premium-feature-content svg {
     top: -3px;
 }
 
@@ -666,10 +754,6 @@ svg {
 .lddfw_total_col {
     width: 100px;
     text-align: center;
-}
-
-#lddfw_content {
-    padding-top: 15px;
 }
 
 .lddfw_home #lddfw_content {
@@ -831,10 +915,11 @@ a.lddfw_closebtn {
 
 .lddfw_sidenav .lddfw_closebtn {
     position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+    right: 10px !important;
+    margin-left: 0px;
+    padding: 0px !important;
+    top: 18px !important;
+    z-index: 9999;
 }
 
 #lddfw_main {
@@ -878,10 +963,13 @@ a.lddfw_closebtn {
     padding-bottom: 63px;
 }
 
+.lddfw_confirmation .lddfw_lightbox_close {
+    display: none;
+}
+
 .lddfw_confirmation h2 {
     text-align: center;
-    margin-top: 25%;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 
 #lddfw_total_route b {
@@ -949,7 +1037,7 @@ body {
 
 .lddfw_delivery_form .custom-control {
     border: 1px solid #f1f0f0;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     padding: 0px;
     border-radius: 4px;
     cursor: pointer;
@@ -971,8 +1059,181 @@ body {
     font-size: 22px;
 }
 
+.delivery_header {
+    border-bottom: 1px solid #f1f0f0;
+    padding-bottom: 0px;
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    top: 0px;
+    line-height: 36px;
+    left: 0px;
+    padding-top: 8px;
+    z-index: 999;
+    height: 57px;
+}
+
+.delivery_header h4 {
+    line-height: 40px;
+}
+
 .table.lddfw_order_total_tbl tr:last-child td {
     border-top: 1px solid #dee2e6;
+}
+
+#lddfw_delivery_screen .lddfw_lightbox_close {
+    display: none;
+}
+
+#lddfw_driver_cancel_btn {
+    margin-top: 8px;
+}
+
+#signature-line {
+    border-bottom: 1px solid #000;
+    width: 90%;
+    margin: 0 auto;
+    position: absolute;
+    top: 75%;
+    left: 5%;
+}
+
+.signature-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 9999;
+    top: 0px;
+    left: 0px;
+    background-color: #fff;
+    padding-bottom: 100px;
+}
+
+.signature-pad {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#signature-image img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+#signature-line svg {
+    position: absolute;
+    bottom: 10px;
+    font-size: small;
+}
+
+.lddfw_lightbox.lddfw_confirmation {
+    padding-top: 0px;
+}
+
+.lddfw_lightbox.lddfw_confirmation .lddfw_lightbox_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#signature-header {
+    height: 57px;
+    border-bottom: 1px solid #f1f0f0;
+    padding-top: 7px;
+    background-color: #fff;
+    margin-bottom: 0px;
+    color: #011627;
+    line-height: 39px;
+}
+
+.delivery_proof_bar {
+    text-align: center;
+}
+
+.delivery_proof_bar a {
+    color: #011627;
+    display: block;
+}
+
+.delivery_proof_bar a.active {
+    color: #007bff;
+}
+
+#lddfw_driver_complete_btn {
+    margin-top: 8px;
+}
+
+#delivery_image_wrap {
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+    min-height: 300px;
+}
+
+svg.fa-camera {
+    width: 27px;
+}
+
+#lddfw_driver_add_photo_btn .custom-file-label {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    text-align: center;
+    cursor: pointer;
+    border-radius: .3rem;
+    height: auto;
+    margin: 0px;
+}
+
+#lddfw_driver_add_photo_btn .custom-file {
+    margin-bottom: 10px;
+}
+
+#lddfw_driver_add_photo_btn .custom-file-label::after {
+    display: none;
+}
+
+.form-control,
+.custom-file-label {
+    border: 1px solid #f1f0f0;
+}
+
+#delivery_image_wrap img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#lddfw_driver_note,
+#lddfw_driver_delivered_note {
+    height: 100px;
+}
+
+#lddfw_delivery_screen.lddfw_lightbox {
+    height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 147px;
+}
+
+@media screen and (max-height: 731px) {
+    #lddfw_driver_note,
+    #lddfw_driver_delivered_note {
+        height: 70px;
+    }
+}
+
+@media screen and (max-height: 568px) {
+    .lddfw_delivery_form h4 {
+        margin: 0px;
+    }
 }
 
 @media screen and (max-height: 450px) {
@@ -981,5 +1242,41 @@ body {
     }
     .lddfw_sidenav a {
         font-size: 18px;
+    }
+}
+
+@media screen and (max-height: 414px) {
+    .delivery_proof_bar {
+        margin-bottom: 2px;
+    }
+    #lddfw_delivered_screen_btn,
+    #lddfw_failed_delivered_screen_btn {
+        margin-bottom: 0px;
+    }
+    #lddfw_failed_delivery_confirmation,
+    #lddfw_thankyou {
+        height: 100%;
+    }
+}
+
+.lddfw_footer_buttons .btn {
+    white-space: nowrap;
+}
+
+#lddfw_page.dashboard {
+    padding-bottom: 0px;
+}
+
+.lddfw_box.availability {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+@media screen and (max-width: 320px) {
+    #lddfw_page.dashboard span.lddfw_label {
+        font-size: 17px;
+    }
+    #lddfw_delivered_screen_btn {
+        margin-bottom: 10px;
     }
 }

@@ -67,8 +67,6 @@
         }
     );
 
-
-
     jQuery(".lddfw_multi_checkbox .lddfw_wrap").click(
         function() {
             var lddfw_chk = jQuery(this).find(".custom-control-input");
@@ -150,19 +148,33 @@
         jQuery("#lddfw_dates_range").val(lddfw_dates);
     }
 
+    function lddfw_delivered_screen_open() {
+        jQuery("#lddfw_driver_complete_btn").show();
+        jQuery(".lddfw_page_content").hide();
+        jQuery("#lddfw_delivery_signature").hide();
+        jQuery("#lddfw_delivery_photo").hide();
+        jQuery("#lddfw_delivered_form").hide();
+        jQuery("#lddfw_failed_delivery_form").hide();
+        jQuery(".delivery_proof_bar a").removeClass("active");
+        jQuery(".delivery_proof_bar a").eq(0).addClass("active");
+    }
 
     jQuery("#lddfw_delivered_screen_btn").click(
         function() {
-            jQuery(".lddfw_page_content").hide();
-            jQuery("#lddfw_delivered").show();
+            jQuery("#lddfw_driver_complete_btn").attr("delivery", "success");
+            lddfw_delivered_screen_open();
+            jQuery("#lddfw_delivered_form").show();
+            jQuery("#lddfw_delivery_screen").show();
             return false;
         }
     );
 
     jQuery("#lddfw_failed_delivered_screen_btn").click(
         function() {
-            jQuery(".lddfw_page_content").hide();
-            jQuery("#lddfw_failed_delivery").show();
+            jQuery("#lddfw_driver_complete_btn").attr("delivery", "failed");
+            lddfw_delivered_screen_open();
+            jQuery("#lddfw_failed_delivery_form").show();
+            jQuery("#lddfw_delivery_screen").show();
             return false;
         }
     );
@@ -179,14 +191,6 @@
         }
     );
 
-    jQuery("#lddfw_driver_delivered_note_btn").click(
-        function() {
-            jQuery("#lddfw_delivered").hide();
-            jQuery("#lddfw_delivered_confirmation").show();
-            return false;
-        }
-    );
-
     jQuery("#lddfw_delivered_confirmation .lddfw_ok").click(
         function() {
 
@@ -196,18 +200,26 @@
             }
             jQuery("#lddfw_delivered").hide();
             jQuery("#lddfw_thankyou").show();
+
+            var lddfw_orderid = jQuery("#lddfw_driver_complete_btn").attr("order_id");
+
+            
+/* Premium Code Stripped by Freemius */
+
+
             jQuery.ajax({
                 type: "POST",
                 url: lddfw_ajax_url,
                 data: {
                     action: 'lddfw_ajax',
                     lddfw_service: 'lddfw_status',
-                    lddfw_order_id: jQuery("#lddfw_driver_delivered_note_btn").attr("order_id"),
-                    lddfw_order_status: jQuery("#lddfw_driver_delivered_note_btn").attr("order_status"),
+                    lddfw_order_id: lddfw_orderid,
+                    lddfw_order_status: jQuery("#lddfw_driver_complete_btn").attr("delivered_status"),
                     lddfw_driver_id: lddfw_driver_id,
                     lddfw_note: jQuery("#lddfw_driver_delivered_note").val(),
                     lddfw_wpnonce: lddfw_nonce,
                     lddfw_data_type: 'html'
+
                 },
                 success: function(data) {
                     
@@ -228,10 +240,14 @@
         jQuery("#lddfw_failed_delivery_form .custom-control.custom-radio").hide();
     }
 
-    jQuery("#lddfw_driver_note_btn").click(
+    jQuery("#lddfw_driver_complete_btn").click(
         function() {
-            jQuery("#lddfw_failed_delivery").hide();
-            jQuery("#lddfw_failed_delivery_confirmation").show();
+            jQuery("#lddfw_delivery_screen").hide();
+            if (jQuery(this).attr("delivery") == "success") {
+                jQuery("#lddfw_delivered_confirmation").show();
+            } else {
+                jQuery("#lddfw_failed_delivery_confirmation").show();
+            }
             return false;
         }
     );
@@ -242,8 +258,15 @@
             if (lddfw_reason.attr("id") != "lddfw_delivery_failed_6") {
                 jQuery("#lddfw_driver_note").val(lddfw_reason.val());
             }
+
             jQuery("#lddfw_failed_delivery").hide();
             jQuery("#lddfw_thankyou").show();
+
+            var lddfw_orderid = jQuery("#lddfw_driver_complete_btn").attr("order_id");
+
+            
+/* Premium Code Stripped by Freemius */
+
 
             jQuery.ajax({
                 type: "POST",
@@ -251,12 +274,13 @@
                 data: {
                     action: 'lddfw_ajax',
                     lddfw_service: 'lddfw_status',
-                    lddfw_order_id: jQuery("#lddfw_driver_note_btn").attr("order_id"),
-                    lddfw_order_status: jQuery("#lddfw_driver_note_btn").attr("order_status"),
+                    lddfw_order_id: lddfw_orderid,
+                    lddfw_order_status: jQuery("#lddfw_driver_complete_btn").attr("failed_status"),
                     lddfw_driver_id: lddfw_driver_id,
                     lddfw_note: jQuery("#lddfw_driver_note").val(),
                     lddfw_wpnonce: lddfw_nonce,
                     lddfw_data_type: 'html'
+
                 },
                 success: function(data) {
                     
@@ -281,7 +305,7 @@
         }
     );
 
-    jQuery("#lddfw_failed_delivery input[type=radio]").click(
+    jQuery("#lddfw_failed_delivery_form input[type=radio]").click(
         function() {
             jQuery("#lddfw_driver_note").val("");
             if (jQuery(this).attr("id") == "lddfw_delivery_failed_6") {
@@ -292,14 +316,13 @@
         }
     );
 
-    jQuery(".lddfw_lightbox_close").click(
+    jQuery(".lddfw_lightbox_close,#lddfw_driver_cancel_btn").click(
         function() {
             jQuery(".lddfw_page_content").show();
             jQuery(this).parents(".lddfw_lightbox").hide();
             return false;
         }
     );
-
 
     jQuery("#lddfw_login_frm").submit(
         function(e) {
@@ -339,6 +362,7 @@
                     }
                 },
                 error: function(request, status, error) {
+                    lddfw_alert_wrap.html("<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">" + status + ' ' + error + "</div>");
                     lddfw_submit_btn.show();
                     lddfw_loading_btn.hide();
                 }
@@ -502,12 +526,11 @@
     jQuery("body").on("click", "#lddfw_orders_table .lddfw_box a", function() {
         jQuery(this).closest(".lddfw_box").addClass("lddfw_active");
     });
-
+    
+/* Premium Code Stripped by Freemius */
 
 
 })(jQuery);
-
-
 
 function lddfw_openNav() {
     jQuery(".lddfw_page_content").hide();
@@ -521,3 +544,26 @@ function lddfw_closeNav() {
 
 
 /* Premium Code Stripped by Freemius */
+
+jQuery("#lddfw_driver_add_signature_btn").click(function() {
+
+    jQuery(".signature-wrapper").show();
+    
+/* Premium Code Stripped by Freemius */
+
+});
+
+jQuery(".delivery_proof_bar a").click(function() {
+
+    var $lddfw_this = jQuery(this);
+    var $lddfw_screen_class = $lddfw_this.attr("href")
+    $lddfw_this.parents(".delivery_proof_bar").find("a").removeClass("active");
+    $lddfw_this.addClass("active");
+    $lddfw_this.parents(".lddfw_lightbox").find(".screen_wrap").hide();
+    $lddfw_this.parents(".lddfw_lightbox").find("." + $lddfw_screen_class).show();
+
+    
+/* Premium Code Stripped by Freemius */
+
+    return false;
+});

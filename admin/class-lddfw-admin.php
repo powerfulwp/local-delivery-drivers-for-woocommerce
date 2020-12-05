@@ -404,6 +404,7 @@ class LDDFW_Admin
                         
                         if ( '' !== $note ) {
                             $Driver_note = __( 'Driver note', 'lddfw' ) . ': ' . $note;
+                            $order->update_meta_data( 'lddfw_driver_note', $note );
                             $order->add_order_note( $Driver_note );
                         }
                         
@@ -654,6 +655,9 @@ class LDDFW_Admin
 			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Drivers Commissions.', 'lddfw' ) . '
 			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Drivers Panel Branding - Add Your Logo and Colors.', 'lddfw' ) . '
 			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Custom Fields - Add Custom Fields to the Delivery Panel from Third-party Plugins.', 'lddfw' ) . '
+			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Delivery Proof - Customer Signature and Delivery Photo', 'lddfw' ) . '
+			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Driver details - Photo, Vehicle Type, Licence Plate', 'lddfw' ) . '
+			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Customer get Driver Details and Phone Number', 'lddfw' ) . '
 			<hr>' ;
         }
     }
@@ -1038,7 +1042,7 @@ class LDDFW_Admin
             'lddfw-dashboard',
             esc_html( __( 'Dashboard', 'lddfw' ) ),
             esc_html( __( 'Dashboard', 'lddfw' ) ),
-            1,
+            'edit_pages',
             'lddfw-dashboard',
             array( &$this, 'lddfw_dashboard' )
         );
@@ -1046,7 +1050,7 @@ class LDDFW_Admin
             'lddfw-dashboard',
             esc_html( __( 'Reports', 'lddfw' ) ),
             esc_html( __( 'Reports', 'lddfw' ) ),
-            1,
+            'edit_pages',
             'lddfw-reports',
             array( &$this, 'lddfw_reports' )
         );
@@ -1054,7 +1058,7 @@ class LDDFW_Admin
             'lddfw-dashboard',
             esc_html( __( 'Settings', 'lddfw' ) ),
             esc_html( __( 'Settings', 'lddfw' ) ),
-            1,
+            'edit_pages',
             'lddfw-settings',
             array( &$this, 'lddfw_settings' )
         );
@@ -1275,6 +1279,43 @@ class LDDFW_Admin
 
 					</td>
 			</tr>
+
+			<tr>
+				<th><label for="lddfw_driver_image"><?php 
+            echo  esc_html( __( 'Driver Photo', 'lddfw' ) ) ;
+            ?></label></th>
+				<td>
+					<?php 
+            $html = '';
+            echo  lddfw_premium_feature( $html ) ;
+            ?>
+				</td>
+			</tr>
+
+			<tr>
+				<th><label for="lddfw_driver_vehicle"><?php 
+            echo  esc_html( __( 'Vehicle type', 'lddfw' ) ) ;
+            ?></label></th>
+				<td>
+					<?php 
+            $html = '';
+            echo  lddfw_premium_feature( $html ) ;
+            ?>
+				</td>
+			</tr>
+
+			<tr>
+				<th><label for="lddfw_driver_licence_plate"><?php 
+            echo  esc_html( __( 'Licence Plate', 'lddfw' ) ) ;
+            ?></label></th>
+				<td>
+				<?php 
+            $html = '';
+            echo  lddfw_premium_feature( $html ) ;
+            ?>
+				</td>
+			</tr>
+
 			</table>
 			<?php 
         }
@@ -1356,6 +1397,29 @@ class LDDFW_Admin
           			<p>' . esc_html( __( 'Local delivery drivers for WooCommerce is a WooCommerce add-on, you must activate a WooCommerce on your site.', 'lddfw' ) ) . '</p>
 		 		  </div>' ;
         }
+    }
+    
+    /**
+     * Exclude_custom_fields
+     *
+     * @since 1.3.0
+     */
+    public function lddfw_exclude_custom_fields( $protected, $meta_key )
+    {
+        if ( 'shop_order' == get_post_type() ) {
+            if ( in_array( $meta_key, array(
+                'lddfw_driver_commission',
+                'lddfw_order_route',
+                'lddfw_order_delivery_image',
+                'lddfw_order_signature',
+                'lddfw_failed_attempt_date',
+                'lddfw_delivered_date',
+                'lddfw_driverid'
+            ) ) ) {
+                return true;
+            }
+        }
+        return $protected;
     }
 
 }

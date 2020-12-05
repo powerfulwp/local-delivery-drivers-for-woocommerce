@@ -24,7 +24,7 @@ function lddfw_metaboxes()
 {
     add_meta_box(
         'lddfw_metaboxes',
-        __( 'Drivers', 'lddfw' ),
+        __( 'Delivery Driver', 'lddfw' ),
         'lddfw_metaboxes_build',
         'shop_order',
         'side',
@@ -42,7 +42,7 @@ function lddfw_metaboxes_build()
     echo  '<input type="hidden" name="lddfw_metaboxes_key" id="lddfw_metaboxes_key" value="' . esc_attr( wp_create_nonce( "lddfw-save-order" ) ) . '" />' ;
     $lddfw_driverid = get_post_meta( $post->ID, 'lddfw_driverid', true );
     echo  '<div class="lddfw-driver-box">
-	<label>' . esc_html( __( 'Delivery Driver', 'lddfw' ) ) . '</label>' ;
+	<label>' . esc_html( __( 'Driver', 'lddfw' ) ) . '</label>' ;
     $drivers = LDDFW_Driver::lddfw_get_drivers();
     echo  esc_html( lddfw_driver_drivers_selectbox(
         $drivers,
@@ -50,6 +50,31 @@ function lddfw_metaboxes_build()
         $post->ID,
         ''
     ) ) ;
+    /* driver note */
+    $lddfw_driver_note = get_post_meta( $post->ID, 'lddfw_driver_note', true );
+    
+    if ( '' !== $lddfw_driver_note ) {
+        echo  '<p><label>' . esc_html( __( 'Driver Note', 'lddfw' ) ) . '</label><br>' ;
+        echo  $lddfw_driver_note ;
+        echo  '</p>' ;
+    }
+    
+    $lddfw_delivered_date = get_post_meta( $post->ID, 'lddfw_delivered_date', true );
+    
+    if ( '' != $lddfw_delivered_date ) {
+        echo  '<p><label>' . esc_html( __( 'Delivered Date', 'lddfw' ) ) . '</label><br>' ;
+        echo  $lddfw_delivered_date ;
+        echo  '</p>' ;
+    }
+    
+    $lddfw_failed_attempt_date = get_post_meta( $post->ID, 'lddfw_failed_attempt_date', true );
+    
+    if ( '' != $lddfw_failed_attempt_date ) {
+        echo  '<p><label>' . esc_html( __( 'Failed Attempt Date', 'lddfw' ) ) . '</label><br>' ;
+        echo  $lddfw_failed_attempt_date ;
+        echo  '</p>' ;
+    }
+    
     echo  '</div> ' ;
 }
 

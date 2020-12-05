@@ -59,7 +59,7 @@ class LDDFW_Screens
 			<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-left" class="svg-inline--fa fa-arrow-left fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"></path></svg></a>';
         }
         $html .= '</div>';
-        $html .= '<div class="col-8 text-center">';
+        $html .= '<div class="col-8 text-center lddfw_header_title">';
         $html .= $title;
         $html .= '</div>';
         global 
@@ -72,6 +72,7 @@ class LDDFW_Screens
             $lddfw_assign_to_driver_counter,
             $lddfw_claim_orders_counter
         ;
+        $driver_photo = '';
         $html .= '<div class="col-2 text-right">
 				<a href="#" id="lddfw_menu" onclick="lddfw_openNav()">
 				<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="svg-inline--fa fa-bars fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>' . $availability_icon . '
@@ -79,7 +80,7 @@ class LDDFW_Screens
 				<div id="lddfw_mySidenav" class="lddfw_sidenav">
 				<a href="javascript:void(0)" class="lddfw_closebtn" onclick="lddfw_closeNav()">&times;</a>
 				<span class="dropdown-header">
-					<h3>' . $lddfw_user->display_name . '</h3>
+					<h3>' . $driver_photo . $lddfw_user->display_name . '</h3>
 				</span>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="' . lddfw_drivers_page_url( "lddfw_screen=dashboard" ) . '">
@@ -207,7 +208,7 @@ class LDDFW_Screens
         $html .= '<div id="lddfw_content" class="container lddfw_dashboard lddfw_page_content">
 				<div class="row">
 				<div class="col-12">
-				<div class="lddfw_box">
+				<div class="lddfw_box availability">
 				<div class="row">
 				<div class="col-9 availability-text">' . esc_html( __( 'I am', 'lddfw' ) );
         
@@ -330,7 +331,7 @@ class LDDFW_Screens
             $html .= '
 			<div class="col-12">
 				<h1>' . esc_html( __( 'Mark orders as out for delivery', 'lddfw' ) ) . '</h1>
-				<div class="lddfw_subtitle" >' . esc_html( __( 'Choose orders and click on the button', 'lddfw' ) );
+				<div class="lddfw_subtitle" >' . esc_html( __( 'Choose orders and click on the Out For Delivery button', 'lddfw' ) );
             
             if ( lddfw_is_free() ) {
                 $content = lddfw_premium_feature( '' ) . ' ' . esc_html( __( "View orders details on this screen.", "lddfw" ) );
@@ -431,11 +432,11 @@ class LDDFW_Screens
             $orders_counter = $report_array[0]->orders;
             $content = lddfw_premium_feature( '' ) . ' ' . esc_html( __( "View how much money did you make, orders total, and shipping total.", "lddfw" ) );
             $html .= '
-				<div class="row">
+				<div class="row delivered-report">
 					 <div class = "col-6 col-md-3">
 						<div class="lddfw_box min text-center">
 							<b class="lddfw_text">' . $orders_counter . '</b>
-							<br>' . esc_html( __( 'Orders', 'lddfw' ) ) . '</div>
+							<div class="lddfw_break"></div>' . esc_html( __( 'Orders', 'lddfw' ) ) . '</div>
 					 </div>
 					 <div class = "col-6 col-md-3"><div class="lddfw_box min text-center">';
             
@@ -445,7 +446,7 @@ class LDDFW_Screens
                 $html .= '<b class="lddfw_text">' . lddfw_premium_feature( get_woocommerce_currency_symbol() . $orders_price ) . '</b>';
             }
             
-            $html .= '<br> ' . esc_html( __( 'Orders Total', 'lddfw' ) ) . '</div></div>
+            $html .= '<div class="lddfw_break"></div> ' . esc_html( __( 'Orders Total', 'lddfw' ) ) . '</div></div>
 					 <div class = "col-6 col-md-3"><div class="lddfw_box min text-center">';
             
             if ( lddfw_is_free() ) {
@@ -454,7 +455,7 @@ class LDDFW_Screens
                 $html .= '<b class="lddfw_text">' . lddfw_premium_feature( get_woocommerce_currency_symbol() . $shipping_price ) . '</b>';
             }
             
-            $html .= '<br> ' . esc_html( __( 'Shipping Total', 'lddfw' ) ) . '</div></div>
+            $html .= '<div class="lddfw_break"></div> ' . esc_html( __( 'Shipping Total', 'lddfw' ) ) . '</div></div>
 					 <div class = "col-6 col-md-3"><div class="lddfw_box min text-center">';
             
             if ( lddfw_is_free() ) {
@@ -463,7 +464,7 @@ class LDDFW_Screens
                 $html .= '<b class="lddfw_text">' . lddfw_premium_feature( get_woocommerce_currency_symbol() . $commission ) . '</b>';
             }
             
-            $html .= '<br> ' . esc_html( __( 'Commission', 'lddfw' ) ) . '</div></div>
+            $html .= '<div class="lddfw_break"></div> ' . esc_html( __( 'Commission', 'lddfw' ) ) . '</div></div>
 				</div>';
         }
         

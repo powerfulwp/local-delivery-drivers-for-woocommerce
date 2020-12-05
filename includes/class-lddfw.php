@@ -216,6 +216,16 @@ if ( !class_exists( 'LDDFW' ) ) {
                 20
             );
             /**
+             * Order custom fields
+             */
+            $this->loader->add_filter(
+                'is_protected_meta',
+                $plugin_admin,
+                'lddfw_exclude_custom_fields',
+                10,
+                2
+            );
+            /**
              * Sortable columns
              */
             $this->loader->add_filter( 'manage_edit-shop_order_sortable_columns', $plugin_admin, 'lddfw_orders_list_sortable_columns' );
@@ -268,9 +278,19 @@ if ( !class_exists( 'LDDFW' ) ) {
         private function define_public_hooks()
         {
             $plugin_public = new LDDFW_Public( $this->get_plugin_name(), $this->get_version() );
+            // Drivers page.
             $this->loader->add_filter( 'page_template', $plugin_public, 'lddfw_page_template' );
+            // Scripts.
             $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
             $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+            // Customer order.
+            $this->loader->add_action(
+                'woocommerce_order_details_before_order_table',
+                $plugin_public,
+                'lddfw_action_order_details_before_order_table',
+                10,
+                4
+            );
         }
         
         /**

@@ -16,7 +16,7 @@
  * Plugin Name:       Local Delivery Drivers for WooCommerce
  * Plugin URI:        https://powerfulwp.com/local-delivery-drivers-for-woocommerce-premium/
  * Description:       Improve the way you deliver, manage drivers, assign drivers to orders, and with premium version much more, send SMS and email notifications, routes planning, navigation & more!
- * Version:           1.2.2
+ * Version:           1.3.0
  * Author:            powerfulwp
  * Author URI:        http://www.powerfulwp.com
  * License:           GPL-2.0+
@@ -81,7 +81,7 @@ if ( !function_exists( 'lddfw_activate' ) ) {
      * Currently plugin version.
      * Start at version 1.0.0 and use SemVer - https://semver.org
      */
-    define( 'LDDFW_VERSION', '1.2.2' );
+    define( 'LDDFW_VERSION', '1.3.0' );
     /**
      * Define delivery driver page id.
      */
@@ -115,6 +115,24 @@ if ( !function_exists( 'lddfw_activate' ) ) {
     }
     
     /**
+     * Premium feature notice content.
+     *
+     * @since 1.3.0
+     * @param string $html html.
+     * @return html
+     */
+    function lddfw_premium_feature_notice_content( $html )
+    {
+        return '
+		<div class="lddfw_premium-feature-content"><div class="lddfw_title premium_feature_title">
+		 <h2>' . esc_html( __( "Premium Feature", "lddfw" ) ) . '</h2>
+		 <p>' . esc_html( __( "You Discovered a Premium Feature!", "lddfw" ) ) . '</p>
+		</div>
+		 <p class="lddfw_content-subtitle">' . esc_html( __( "With premium version you will be able to:", "lddfw" ) ) . '</p>
+		' . $html . '</div>';
+    }
+    
+    /**
      * Premium feature notice.
      *
      * @since 1.1.2
@@ -126,21 +144,15 @@ if ( !function_exists( 'lddfw_activate' ) ) {
     function lddfw_premium_feature_notice( $button, $html, $class )
     {
         return '<div class="lddfw_premium-feature ' . $class . '">
-<button class="btn btn-secondary btn-sm">' . lddfw_premium_feature( '' ) . ' ' . $button . '</button>
-<div class="lddfw_lightbox" style="display:none">
-<div class="lddfw_lightbox_wrap">
-<div class="container">
-<a href="#" class="lddfw_lightbox_close">×</a>
-	<div class="lddfw_title">
-	 <h2>' . esc_html( __( "Premium Feature", "lddfw" ) ) . '</h2>
-	 <p>' . esc_html( __( "You Discovered a Premium Feature!", "lddfw" ) ) . '</p>
-	</div>
-	 <p class="lddfw_content-title">' . esc_html( __( "With premium version you will be able to:", "lddfw" ) ) . '</p>
-	' . $html . '
-</div>
-</div>
-</div>
-</div>';
+			<button class="btn btn-secondary btn-sm">' . lddfw_premium_feature( '' ) . ' ' . $button . '</button>
+			<div class="lddfw_lightbox" style="display:none">
+				<div class="lddfw_lightbox_wrap">
+					<div class="container">
+						<a href="#" class="lddfw_lightbox_close">×</a>' . lddfw_premium_feature_notice_content( $html ) . '
+					</div>
+				</div>
+			</div>
+		</div>';
     }
     
     /**

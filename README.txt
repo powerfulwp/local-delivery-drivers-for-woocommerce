@@ -220,6 +220,17 @@ Not at all. This plugin is straightforward to use.
 * Fix: Texts.
 * Fix: Shipping address format.
 
+= 1.3.0 =
+* Fix: Driver panel UI.
+* Fix: Images lazyload.
+* Fix: Texts.
+* Add: Texts.
+* Add: Premium - Delivery proof - signature
+* Add: Premium - Delivery proof - photo
+* Add: Premium - Customer order page - drivers details + call the driver
+* Add: Premium - Customer emails - drivers details + call the driver
+* Add: Premium - Drivers photo, veichel type, licence number.
+
 == Upgrade Notice ==
 
 = 1.0.1 =
@@ -271,3 +282,14 @@ Not at all. This plugin is straightforward to use.
 * Fix: UTF-8.
 * Fix: Texts.
 * Fix: Shipping address format.
+
+= 1.3.0 =
+* Fix: Driver panel design.
+* Fix: Images lazyload.
+* Fix: Texts.
+* Add: Texts.
+* Add: Premium - Delivery proof - signature
+* Add: Premium - Delivery proof - photo
+* Add: Premium - Customer order page - drivers details + call the driver
+* Add: Premium - Customer emails - drivers details + call the driver
+* Add: Premium - Drivers photo, veichel type, licence number.

@@ -225,13 +225,22 @@ echo  '<script>
 </script>' ;
 ?>
 
+
 </head>
 <body>
-	<div id="lddfw_page" ><?php 
+	<div id="lddfw_page" class="<?php 
+echo  $lddfw_screen ;
+?>" ><?php 
 echo  $lddfw_content ;
 ?></div>
 <?php 
-wp_print_scripts( [ 'lddfw-bootstrap', 'lddfw-public' ] );
+
+if ( lddfw_is_free() ) {
+    wp_print_scripts( [ 'lddfw-bootstrap', 'lddfw-public' ] );
+} else {
+    wp_print_scripts( [ 'lddfw-bootstrap', 'lddfw-signature', 'lddfw-public' ] );
+}
+
 ?>
 </body>
 </html>

@@ -77,6 +77,14 @@ class LDDFW_Activator
         add_option( 'lddfw_processing_status', 'wc-processing' );
         add_option( 'lddfw_sms_assign_to_driver_template', 'Hello [delivery_driver_first_name], order #[order_id] with [store_name] has been assigned to you. [delivery_driver_page]' );
         add_option( 'lddfw_sms_out_for_delivery_template', 'Hello [billing_first_name], status of your order #[order_id] with [store_name] has been changed to [order_status].' );
+        add_option( 'lddfw_failed_delivery_reason_1', __( 'Refused by the recipient.', 'lddfw' ) );
+        add_option( 'lddfw_failed_delivery_reason_2', __( 'Incorrect address.', 'lddfw' ) );
+        add_option( 'lddfw_failed_delivery_reason_3', __( 'Failed delivery attempt.', 'lddfw' ) );
+        add_option( 'lddfw_failed_delivery_reason_4', __( 'Item Lost.', 'lddfw' ) );
+        add_option( 'lddfw_failed_delivery_reason_5', __( 'Item damaged.', 'lddfw' ) );
+        add_option( 'lddfw_delivery_dropoff_1', __( 'Delivered to the customer.', 'lddfw' ) );
+        add_option( 'lddfw_delivery_dropoff_2', __( 'Left at the front door.', 'lddfw' ) );
+        add_option( 'lddfw_delivery_dropoff_3', __( 'Left with the neighbor.', 'lddfw' ) );
     }
 
 }
