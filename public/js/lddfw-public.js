@@ -202,7 +202,8 @@
             jQuery("#lddfw_thankyou").show();
 
             var lddfw_orderid = jQuery("#lddfw_driver_complete_btn").attr("order_id");
-
+            var lddfw_signature = '';
+            var lddfw_delivery_image = '';
             
 /* Premium Code Stripped by Freemius */
 
@@ -218,7 +219,10 @@
                     lddfw_driver_id: lddfw_driver_id,
                     lddfw_note: jQuery("#lddfw_driver_delivered_note").val(),
                     lddfw_wpnonce: lddfw_nonce,
-                    lddfw_data_type: 'html'
+                    lddfw_data_type: 'html',
+                    lddfw_signature: lddfw_signature,
+                    lddfw_delivery_image: lddfw_delivery_image
+
 
                 },
                 success: function(data) {
@@ -264,6 +268,8 @@
 
             var lddfw_orderid = jQuery("#lddfw_driver_complete_btn").attr("order_id");
 
+            var lddfw_signature = '';
+            var lddfw_delivery_image = '';
             
 /* Premium Code Stripped by Freemius */
 
@@ -279,8 +285,9 @@
                     lddfw_driver_id: lddfw_driver_id,
                     lddfw_note: jQuery("#lddfw_driver_note").val(),
                     lddfw_wpnonce: lddfw_nonce,
-                    lddfw_data_type: 'html'
-
+                    lddfw_data_type: 'html',
+                    lddfw_signature: lddfw_signature,
+                    lddfw_delivery_image: lddfw_delivery_image
                 },
                 success: function(data) {
                     

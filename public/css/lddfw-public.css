@@ -89,6 +89,12 @@ body {
     height: 100%;
 }
 
+.lddfw_dashboard .lddfw_box a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
 #lddfw_header .lddfw_sidenav a.active,
 #lddfw_header .lddfw_sidenav a:active {
     background-color: #cce5ff;
@@ -681,7 +687,7 @@ svg {
 
 .lddfw_content-subtitle {
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 15px !important;
 }
 
 .lddfw_subtitle {
@@ -697,9 +703,31 @@ svg {
 }
 
 .premium_feature_title {
-    margin-bottom: 20px;
+    margin-bottom: 20px !important;
     text-align: center;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5 !important;
+    font-size: 20px !important;
+    padding-bottom: 15px !important;
+}
+
+.premium_feature_title p {
+    margin: 0px;
+}
+
+div#lddfw_directions {
+    margin-top: 48px;
+}
+
+.lddfw_premium-feature-content {
+    margin-top: 35px;
+}
+
+#google_map {
+    margin-top: -15px;
+}
+
+#lddfw_delivery_screen .screen_wrap .lddfw_premium-feature-content {
+    margin-top: -15px;
 }
 
 .lddfw_premium-feature-content svg {
@@ -815,7 +843,7 @@ svg {
 
 #lddfw_directions-panel-listing {
     padding-top: 0;
-    height: 40%;
+    height: 36%;
     overflow-y: auto;
     font-size: 14px;
     bottom: 0px;
@@ -983,7 +1011,7 @@ a.lddfw_closebtn {
 }
 
 #lddfw_map123 {
-    height: 60%;
+    height: 55%;
 }
 
 #lddfw_right-panel {
@@ -1094,7 +1122,7 @@ body {
     width: 90%;
     margin: 0 auto;
     position: absolute;
-    top: 75%;
+    top: 65%;
     left: 5%;
 }
 

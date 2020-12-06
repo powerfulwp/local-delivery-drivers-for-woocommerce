@@ -388,6 +388,8 @@ class LDDFW_Admin
                 $order_status = ( isset( $_POST['lddfw_order_status'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_order_status'] ) ) : '' );
                 $driver_id = ( isset( $_POST['lddfw_driver_id'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_driver_id'] ) ) : '' );
                 $note = ( isset( $_POST['lddfw_note'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_note'] ) ) : '' );
+                $signature = ( isset( $_POST['lddfw_signature'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_signature'] ) ) : '' );
+                $delivery_image = ( isset( $_POST['lddfw_delivery_image'] ) ? sanitize_text_field( wp_unslash( $_POST['lddfw_delivery_image'] ) ) : '' );
                 /* Check if the variables are not empty */
                 
                 if ( '' !== $order_id && '' !== $order_status && '' !== $driver_id ) {
@@ -655,9 +657,9 @@ class LDDFW_Admin
 			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Drivers Commissions.', 'lddfw' ) . '
 			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Drivers Panel Branding - Add Your Logo and Colors.', 'lddfw' ) . '
 			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Custom Fields - Add Custom Fields to the Delivery Panel from Third-party Plugins.', 'lddfw' ) . '
-			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Delivery Proof - Customer Signature and Delivery Photo', 'lddfw' ) . '
-			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Driver details - Photo, Vehicle Type, Licence Plate', 'lddfw' ) . '
-			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Customer get Driver Details and Phone Number', 'lddfw' ) . '
+			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Delivery Proof - Customer Signature and Delivery Photo.', 'lddfw' ) . '
+			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Driver details - Photo, Vehicle Type, Licence Plate.', 'lddfw' ) . '
+			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Customer get Driver Details and Phone Number.', 'lddfw' ) . '
 			<hr>' ;
         }
     }
@@ -1410,7 +1412,9 @@ class LDDFW_Admin
             if ( in_array( $meta_key, array(
                 'lddfw_driver_commission',
                 'lddfw_order_route',
+                'lddfw_order_last_delivery_image',
                 'lddfw_order_delivery_image',
+                'lddfw_order_last_signature',
                 'lddfw_order_signature',
                 'lddfw_failed_attempt_date',
                 'lddfw_delivered_date',

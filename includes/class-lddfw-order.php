@@ -67,16 +67,16 @@ class LDDFW_Order
         if ( '' !== $billing_company ) {
             $billing_full_name .= $billing_company . '<br>';
         }
-        $billing_address = $billing_address_1;
+        $billing_address = $billing_address_1 . ' ';
         if ( '' !== $billing_address_2 ) {
-            $billing_address .= ', ' . $billing_address_2;
+            $billing_address .= ', ' . $billing_address_2 . ' ';
         }
-        $billing_address .= '<br>' . $billing_city;
+        $billing_address .= '<br>' . $billing_city . ' ';
         if ( '' !== $billing_state ) {
-            $billing_address .= ' ' . $billing_state;
+            $billing_address .= $billing_state . ' ';
         }
         if ( '' !== $billing_postcode ) {
-            $billing_address .= ' ' . $billing_postcode;
+            $billing_address .= $billing_postcode . ' ';
         }
         if ( '' !== $billing_country ) {
             $billing_address .= '<br>' . $billing_country;
@@ -88,16 +88,16 @@ class LDDFW_Order
             if ( '' !== $shipping_company ) {
                 $shipping_full_name .= $shipping_company . ' <br>';
             }
-            $shipping_address = $shipping_address_1;
+            $shipping_address = $shipping_address_1 . ' ';
             if ( '' !== $shipping_address_2 ) {
-                $shipping_address .= ', ' . $shipping_address_2;
+                $shipping_address .= ',' . $shipping_address_2 . ' ';
             }
-            $shipping_address .= '<br>' . $shipping_city;
+            $shipping_address .= '<br>' . $shipping_city . ' ';
             if ( '' !== $shipping_state ) {
-                $shipping_address .= ' ' . $shipping_state . ' ';
+                $shipping_address .= $shipping_state . ' ';
             }
             if ( '' !== $shipping_postcode ) {
-                $shipping_address .= ' ' . $shipping_postcode . ' ';
+                $shipping_address .= $shipping_postcode . ' ';
             }
             if ( '' !== $shipping_country ) {
                 $shipping_address .= '<br>' . $shipping_country;
@@ -127,7 +127,7 @@ class LDDFW_Order
         // Map.
         if ( '' !== $lddfw_google_api_key ) {
             $html .= '
-		<div class="container-fluid p-0" >
+		<div id="google_map" class="container-fluid p-0" >
 			<iframe
 				width="100%"
 				height="350"

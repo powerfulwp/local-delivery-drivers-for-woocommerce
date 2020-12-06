@@ -223,6 +223,7 @@ Not at all. This plugin is straightforward to use.
 = 1.3.0 =
 * Fix: Driver panel UI.
 * Fix: Images lazyload.
+* Fix: Map address.
 * Fix: Texts.
 * Add: Texts.
 * Add: Premium - Delivery proof - signature
@@ -286,6 +287,7 @@ Not at all. This plugin is straightforward to use.
 = 1.3.0 =
 * Fix: Driver panel design.
 * Fix: Images lazyload.
+* Fix: Map address.
 * Fix: Texts.
 * Add: Texts.
 * Add: Premium - Delivery proof - signature
