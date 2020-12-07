@@ -432,7 +432,7 @@ class LDDFW_Order
     }
     
     /**
-     * Delivery proof bar
+     * Proof of Delivery bar
      *
      * @since 1.3.0
      * @return html

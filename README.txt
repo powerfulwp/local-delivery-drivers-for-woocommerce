@@ -226,8 +226,8 @@ Not at all. This plugin is straightforward to use.
 * Fix: Map address.
 * Fix: Texts.
 * Add: Texts.
-* Add: Premium - Delivery proof - signature
-* Add: Premium - Delivery proof - photo
+* Add: Premium - Proof of Delivery - signature
+* Add: Premium - Proof of Delivery - photo
 * Add: Premium - Customer order page - drivers details + call the driver
 * Add: Premium - Customer emails - drivers details + call the driver
 * Add: Premium - Drivers photo, veichel type, licence number.
@@ -290,8 +290,8 @@ Not at all. This plugin is straightforward to use.
 * Fix: Map address.
 * Fix: Texts.
 * Add: Texts.
-* Add: Premium - Delivery proof - signature
-* Add: Premium - Delivery proof - photo
+* Add: Premium - Proof of Delivery - signature
+* Add: Premium - Proof of Delivery - photo
 * Add: Premium - Customer order page - drivers details + call the driver
 * Add: Premium - Customer emails - drivers details + call the driver
 * Add: Premium - Drivers photo, veichel type, licence number.

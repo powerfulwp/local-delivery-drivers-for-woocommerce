@@ -657,9 +657,9 @@ class LDDFW_Admin
 			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Drivers Commissions.', 'lddfw' ) . '
 			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Drivers Panel Branding - Add Your Logo and Colors.', 'lddfw' ) . '
 			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Custom Fields - Add Custom Fields to the Delivery Panel from Third-party Plugins.', 'lddfw' ) . '
-			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Delivery Proof - Customer Signature and Delivery Photo.', 'lddfw' ) . '
+			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Proof of Delivery - Customer Signature and Delivery Photo.', 'lddfw' ) . '
 			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Driver details - Photo, Vehicle Type, Licence Plate.', 'lddfw' ) . '
-			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Customer get Driver Details and Phone Number.', 'lddfw' ) . '
+			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Customer gets Driver Details and Phone Number.', 'lddfw' ) . '
 			<hr>' ;
         }
     }

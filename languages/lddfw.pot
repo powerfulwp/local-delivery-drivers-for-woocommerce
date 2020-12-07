@@ -486,7 +486,7 @@ msgid ""
 msgstr ""
 
 #: admin/class-lddfw-admin.php:1199
-msgid "Delivery Proof - Customer Signature and Delivery Photo."
+msgid "Proof of Delivery - Customer Signature and Delivery Photo."
 msgstr ""
 
 #: admin/class-lddfw-admin.php:1200
