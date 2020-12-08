@@ -364,7 +364,7 @@ class LDDFW_Order
         $lddfw_delivery_dropoff_2 = '';
         $lddfw_delivery_dropoff_3 = '';
         $html = '
-		<form id="lddfw_delivered_form" class="lddfw_delivery_form screen_wrap">
+		<form id="lddfw_delivered_form" class="lddfw_delivered_form lddfw_delivery_form screen_wrap">
 		<div class="delivery_header">
 			<div class="container">
 				<div class="row">
@@ -517,7 +517,7 @@ class LDDFW_Order
         $lddfw_failed_delivery_reason_3 = '';
         $lddfw_failed_delivery_reason_4 = '';
         $lddfw_failed_delivery_reason_5 = '';
-        $html = '<form id="lddfw_failed_delivery_form" class="lddfw_delivery_form lddfw_notes_wrap screen_wrap">
+        $html = '<form id="lddfw_failed_delivery_form" class="lddfw_failed_delivery_form lddfw_delivery_form lddfw_notes_wrap screen_wrap">
 		<div class="delivery_header">
 			<div class="container">
 				<div class="row">

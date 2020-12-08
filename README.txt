@@ -232,6 +232,12 @@ Not at all. This plugin is straightforward to use.
 * Add: Premium - Customer emails - drivers details + call the driver
 * Add: Premium - Drivers photo, veichel type, licence number.
 
+= 1.3.1 =
+* Fix: Premium - Driver upload photo button.
+
+= 1.3.2 =
+* Fix: Premium - Driver delivered notes.
+
 == Upgrade Notice ==
 
 = 1.0.1 =
@@ -295,3 +301,10 @@ Not at all. This plugin is straightforward to use.
 * Add: Premium - Customer order page - drivers details + call the driver
 * Add: Premium - Customer emails - drivers details + call the driver
 * Add: Premium - Drivers photo, veichel type, licence number.
+
+
+= 1.3.1 =
+* Fix: Premium - Driver upload photo button.
+
+= 1.3.2 =
+* Fix: Premium - Driver delivered notes.

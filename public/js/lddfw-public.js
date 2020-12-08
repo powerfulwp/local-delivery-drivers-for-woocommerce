@@ -162,6 +162,7 @@
     jQuery("#lddfw_delivered_screen_btn").click(
         function() {
             jQuery("#lddfw_driver_complete_btn").attr("delivery", "success");
+            jQuery(".delivery_proof_notes").attr("href", "lddfw_delivered_form");
             lddfw_delivered_screen_open();
             jQuery("#lddfw_delivered_form").show();
             jQuery("#lddfw_delivery_screen").show();
@@ -172,6 +173,7 @@
     jQuery("#lddfw_failed_delivered_screen_btn").click(
         function() {
             jQuery("#lddfw_driver_complete_btn").attr("delivery", "failed");
+            jQuery(".delivery_proof_notes").attr("href", "lddfw_failed_delivery_form");
             lddfw_delivered_screen_open();
             jQuery("#lddfw_failed_delivery_form").show();
             jQuery("#lddfw_delivery_screen").show();
