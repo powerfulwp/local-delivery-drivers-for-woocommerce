@@ -152,10 +152,6 @@ if ( !class_exists( 'LDDFW' ) ) {
              * The file responsible for reports in admin panel
              */
             include_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-lddfw-reports.php';
-            /**
-             * The file responsible for tracking in admin panel
-             */
-            include_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-lddfw-tracking.php';
             $this->loader = new LDDFW_Loader();
         }
         

@@ -269,13 +269,6 @@ class LDDFW_Admin
         
         }
         
-        /* drivers_locations */
-        
-        if ( 'lddfw_drivers_locations' === $lddfw_service ) {
-            $tracking = new LDDFW_Tracking();
-            echo  $tracking->lddfw_drivers_locations() ;
-        }
-        
         /* drivers routes service */
         
         if ( 'lddfw_drivers_routes' === $lddfw_service ) {
