@@ -553,7 +553,9 @@ div#signature-image {
     top: -11px;
     color: #011627;
     text-decoration: none;
-    z-index: 9999;
+    z-index: 99999;
+    width: auto !important;
+    height: auto !important;
 }
 
 .lddfw_logout-col {

@@ -667,6 +667,7 @@ class LDDFW_Admin
 			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Proof of Delivery - Customer Signature and Delivery Photo.', 'lddfw' ) . '
 			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Driver details - Photo, Vehicle Type, Licence Plate.', 'lddfw' ) . '
 			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Customer gets Driver Details and Phone Number.', 'lddfw' ) . '
+			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Admin drivers routes map.', 'lddfw' ) . '
 			<hr>' ;
         }
     }
@@ -1121,8 +1122,13 @@ class LDDFW_Admin
      */
     public function lddfw_routes()
     {
-        $route = new LDDFW_Route();
-        echo  $route->lddfw_admin_routes_screen() ;
+        
+        if ( lddfw_is_free() ) {
+            $content = lddfw_premium_feature( '' ) . ' ' . esc_html( __( "View drivers' routes on a map.", "lddfw" ) ) . '
+					<hr>' . lddfw_premium_feature( '' ) . ' ' . esc_html( __( "View routes' duration and distance.", "lddfw" ) );
+            echo  lddfw_premium_feature_notice_content( $content ) ;
+        }
+    
     }
     
     public function lddfw_users_list_columns( $column )

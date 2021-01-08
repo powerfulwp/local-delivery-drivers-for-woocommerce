@@ -259,6 +259,7 @@ Not at all. This plugin is straightforward to use.
 * Fix: Words.
 * Add: languages: Spanish, French, Hebrew.
 * Add: RTL support.
+* Add: When the driver logs out he becomes unavailable for work.
 * Fix: Premium - Custom fields.
 * Fix: Premium - Routes.
 * Add: Premium - Admin drivers routes map.
@@ -339,6 +340,7 @@ Not at all. This plugin is straightforward to use.
 * Fix: Words.
 * Add: languages: Spanish, French, Hebrew.
 * Add: RTL support.
+* Add: When the driver logs out he becomes unavailable for work.
 * Fix: Premium - Custom fields.
 * Fix: Premium - Routes.
 * Add: Premium - Admin drivers routes map.

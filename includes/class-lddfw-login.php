@@ -28,6 +28,14 @@ class LDDFW_Login
      */
     public static function lddfw_logout()
     {
+        //Set availability off
+        $user = wp_get_current_user();
+        
+        if ( in_array( 'driver', (array) $user->roles, true ) ) {
+            $driver_id = $user->ID;
+            update_user_meta( $driver_id, 'lddfw_driver_availability', "0" );
+        }
+        
         wp_logout();
         header( 'Location: ' . lddfw_drivers_page_url( '' ) );
         exit;
