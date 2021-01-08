@@ -240,7 +240,7 @@ class LDDFW_Screens
         $commission = 0;
         if ( !empty($report_array) ) {
         }
-        $html .= '<div class = "col-12 "><div class="lddfw_box min">' . esc_html( __( 'Today Earnings: ', 'lddfw' ) );
+        $html .= '<div class = "col-12 "><div class="lddfw_box min">' . esc_html( __( 'Today Earnings', 'lddfw' ) ) . ': ';
         
         if ( lddfw_is_free() ) {
             $content = lddfw_premium_feature( '' ) . ' ' . esc_html( __( "View how much money did you make today.", "lddfw" ) );

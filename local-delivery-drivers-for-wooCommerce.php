@@ -16,13 +16,15 @@
  * Plugin Name:       Local Delivery Drivers for WooCommerce
  * Plugin URI:        https://powerfulwp.com/local-delivery-drivers-for-woocommerce-premium/
  * Description:       Improve the way you deliver, manage drivers, assign drivers to orders, and with premium version much more, send SMS and email notifications, routes planning, navigation & more!
- * Version:           1.3.2
+ * Version:           1.4.0
  * Author:            powerfulwp
  * Author URI:        http://www.powerfulwp.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       lddfw
  * Domain Path:       /languages
+ * WC requires at least: 3.0
+ * WC tested up to: 4.8
  *
  *
  */
@@ -81,7 +83,7 @@ if ( !function_exists( 'lddfw_activate' ) ) {
      * Currently plugin version.
      * Start at version 1.0.0 and use SemVer - https://semver.org
      */
-    define( 'LDDFW_VERSION', '1.3.2' );
+    define( 'LDDFW_VERSION', '1.4.0' );
     /**
      * Define delivery driver page id.
      */
@@ -108,10 +110,13 @@ if ( !function_exists( 'lddfw_activate' ) ) {
      */
     function lddfw_is_free()
     {
-        if ( LDDFW_FOLDER === 'local-delivery-drivers-for-woocommerce' ) {
+        
+        if ( lddfw_fs()->is__premium_only() && lddfw_fs()->can_use_premium_code() ) {
+            return false;
+        } else {
             return true;
         }
-        return false;
+    
     }
     
     /**

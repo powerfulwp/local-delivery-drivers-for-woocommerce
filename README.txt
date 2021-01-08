@@ -100,6 +100,19 @@ The delivery driver can plan his route and navigate to his destination.
 ## Drivers ready delivery notes.
 With this feature, delivery drivers can easily add notes to orders.
 
+## Proof of Delivery.
+* Signature - The driver can sign the customer as a proof of delivery.
+* Photo - The driver can take a photo as proof of delivery.
+
+## What does the customer see?
+The customer can see the driver’s details and the proof of delivery in his emails and in the order page in his account.
+
+* Driver details - The customer gets the driver’s name and photo.
+* Call the driver - The customer can easily call the driver.
+* Driver vehicle details - The customer gets the vehicle type, and license number.
+* Signature - The customer can see his signature.
+* Proof of delivery - The customer can see the photo that the driver took.
+
 ## Drivers Commissions.
 Delivery drivers can see their deliveries commissions, and the admin has a full drivers’ commission report sorting by dates.
 
@@ -164,6 +177,9 @@ Not at all. This plugin is straightforward to use.
 1. Premium - Admin Drivers Dashboard.
 1. Premium - Admin Drivers Users.
 1. Premium - Drivers Commissions.
+1. Premium - Proof of delivery - Signature.
+1. Premium - Proof of delivery - Photo.
+1. Premium - Drivers details.
 
 == Changelog ==
 
@@ -233,10 +249,19 @@ Not at all. This plugin is straightforward to use.
 * Add: Premium - Drivers photo, veichel type, licence number.
 
 = 1.3.1 =
-* Fix: Premium - Driver upload photo button.
+* Fix: Driver upload photo button.
 
 = 1.3.2 =
-* Fix: Premium - Driver delivered notes.
+* Fix: Driver delivered notes.
+
+= 1.4.0 =
+* Fix: Drivers roles query.
+* Fix: Words.
+* Add: languages: Spanish, French, Hebrew.
+* Add: RTL support.
+* Fix: Premium - Custom fields.
+* Fix: Premium - Routes.
+* Add: Premium - Admin drivers routes map.
 
 == Upgrade Notice ==
 
@@ -304,7 +329,17 @@ Not at all. This plugin is straightforward to use.
 
 
 = 1.3.1 =
-* Fix: Premium - Driver upload photo button.
+* Fix: Driver upload photo button.
 
 = 1.3.2 =
-* Fix: Premium - Driver delivered notes.
+* Fix: Driver delivered notes.
+
+= 1.4.0 =
+* Fix: Drivers roles query.
+* Fix: Words.
+* Add: languages: Spanish, French, Hebrew.
+* Add: RTL support.
+* Fix: Premium - Custom fields.
+* Fix: Premium - Routes.
+* Add: Premium - Admin drivers routes map.
+

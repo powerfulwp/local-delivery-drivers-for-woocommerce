@@ -269,6 +269,20 @@ class LDDFW_Admin
         
         }
         
+        /* drivers_locations */
+        
+        if ( 'lddfw_drivers_locations' === $lddfw_service ) {
+            $tracking = new LDDFW_Tracking();
+            echo  $tracking->lddfw_drivers_locations() ;
+        }
+        
+        /* drivers routes service */
+        
+        if ( 'lddfw_drivers_routes' === $lddfw_service ) {
+            $route = new LDDFW_Route();
+            echo  $route->lddfw_drivers_routes__premium_only() ;
+        }
+        
         /* login driver service */
         
         if ( 'lddfw_login' === $lddfw_service ) {
@@ -1050,6 +1064,14 @@ class LDDFW_Admin
         );
         add_submenu_page(
             'lddfw-dashboard',
+            esc_html( __( 'Routes', 'lddfw' ) ),
+            esc_html( __( 'Routes', 'lddfw' ) ),
+            'edit_pages',
+            'lddfw-routes',
+            array( &$this, 'lddfw_routes' )
+        );
+        add_submenu_page(
+            'lddfw-dashboard',
             esc_html( __( 'Reports', 'lddfw' ) ),
             esc_html( __( 'Reports', 'lddfw' ) ),
             'edit_pages',
@@ -1097,6 +1119,17 @@ class LDDFW_Admin
     {
         $reports = new LDDFW_Reports();
         echo  $reports->screen_reports() ;
+    }
+    
+    /**
+     * Admin routes screen.
+     *
+     * @since 1.0.0
+     */
+    public function lddfw_routes()
+    {
+        $route = new LDDFW_Route();
+        echo  $route->lddfw_admin_routes_screen() ;
     }
     
     public function lddfw_users_list_columns( $column )

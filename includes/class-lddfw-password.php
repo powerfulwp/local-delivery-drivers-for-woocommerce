@@ -39,7 +39,6 @@ class LDDFW_Password {
 				if ( isset( $_POST['lddfw_user_email'] ) ) {
 					$email = sanitize_text_field( wp_unslash( $_POST['lddfw_user_email'] ) );
 				}
-
 				if ( empty( $email ) ) {
 					// email is empty.
 					$error = __( 'Email field is empty.', 'lddfw' );
@@ -54,7 +53,7 @@ class LDDFW_Password {
 							// user not founded.
 							$error = __( 'The email you entered was not found.', 'lddfw' );
 						} else {
-							if ( 'driver' !== $user->roles[0] ) {
+							if ( ! in_array( 'driver', (array) $user->roles, true ) ) {
 								// user is not driver.
 								$error = __( 'You are not a registered delivery driver.', 'lddfw' );
 							} else {

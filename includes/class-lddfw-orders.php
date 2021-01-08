@@ -372,11 +372,11 @@ class LDDFW_Orders
 					<div class="row">
 						<div class="col-12">
 							<span class="lddfw_index lddfw_counter">' . $counter . '</span>
-							<input style="display:none" orderid="' . esc_attr( $orderid ) . '" type="checkbox" value="' . esc_attr( str_replace( "'", '', $shipping_address_1 . ' ' . $shipping_city ) ) . '" class="lddfw_address_chk">';
+							<input style="display:none" orderid="' . esc_attr( $orderid ) . '" type="checkbox" value="' . esc_attr( str_replace( "'", '', $shipping_address_1 . ' ' . $shipping_city . ' ' . $shipping_country ) ) . '" class="lddfw_address_chk">';
                 $html .= '<a class="btn lddfw_order_view btn-secondary btn-sm" href="' . esc_url( lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) ) . '">' . esc_html( __( 'Order #', 'lddfw' ) ) . $orderid . '</a>';
                 $html .= '<a class="lddfw_order_address" href="' . esc_url( lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) ) . '">' . $shippingaddress . '<br> ' . $shipping_city . ' ' . $shipping_state . ' ' . $shipping_postcode . '</a>';
                 if ( '' !== $distance ) {
-                    $html .= '<a class="lddfw_order_distance" href="' . esc_url( lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) ) . '">' . esc_html( __( 'Distance: ', 'lddfw' ) ) . $distance . '</a>';
+                    $html .= '<a class="lddfw_order_distance" href="' . esc_url( lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) ) . '">' . esc_html( __( 'Distance', 'lddfw' ) ) . ': ' . $distance . '</a>';
                 }
                 $html .= '<div class="lddfw_handle_column"  style="display:none"><button  class="lddfw_sort-up btn btn-outline-secondary "><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-up" class="svg-inline--fa fa-chevron-up fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"></path></svg></button><button class="btn btn-outline-secondary lddfw_sort-down">
 							<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" class="svg-inline--fa fa-chevron-down fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path></svg></button></div>
@@ -471,10 +471,10 @@ class LDDFW_Orders
                 $html .= '<a class="btn lddfw_order_view btn-secondary btn-sm" href="' . esc_url( lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) ) . '">' . esc_html( __( 'Order #', 'lddfw' ) ) . $orderid . '</a>';
                 $html .= '<a class="lddfw_order_address line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">' . $shippingaddress . '<br>' . $shipping_city . ' ' . $shipping_state . ' ' . $shipping_postcode . '</a>';
                 if ( '' !== $distance ) {
-                    $html .= '<a class=\'lddfw_order_distance lddfw_line\' href=\'' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '\'>' . esc_html( __( 'Distance: ', 'lddfw' ) ) . $distance . '</a>';
+                    $html .= '<a class=\'lddfw_order_distance lddfw_line\' href=\'' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '\'>' . esc_html( __( 'Distance', 'lddfw' ) ) . ': ' . $distance . '</a>';
                 }
                 if ( '' !== $delivered_date ) {
-                    $html .= '<a class=\'lddfw_order_failed_date lddfw_line\' href=\'' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '\'>' . esc_html( __( 'Failed Date: ', 'lddfw' ) ) . date( $date_format . ' ' . $time_format, strtotime( $failed_date ) ) . '</a>';
+                    $html .= '<a class=\'lddfw_order_failed_date lddfw_line\' href=\'' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '\'>' . esc_html( __( 'Failed Date', 'lddfw' ) ) . ': ' . date( $date_format . ' ' . $time_format, strtotime( $failed_date ) ) . '</a>';
                 }
                 $html .= '<input style="display:none" orderid="' . $orderid . '" type="checkbox" value="' . str_replace( "'", '', $shipping_address_1 . ' ' . $shipping_city ) . '" class="lddfw_address_chk">
 						</div>
@@ -773,10 +773,10 @@ class LDDFW_Orders
                 $html .= '<a class="btn lddfw_order_view btn-secondary btn-sm" href="' . esc_url( lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid . '&lddfw_dates=' . $lddfw_dates . '&lddfw_page=' . $lddfw_page ) ) . '">' . esc_html( __( 'Order #', 'lddfw' ) ) . $orderid . '</a>';
                 $html .= '<a class="lddfw_order_address lddfw_line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">' . $shippingaddress . '<br>' . $shipping_city . ' ' . $shipping_state . ' ' . $shipping_postcode . '</a>';
                 if ( '' !== $distance ) {
-                    $html .= '<a class="lddfw_order_distance lddfw_line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">' . esc_html( __( 'Distance: ', 'lddfw' ) ) . $distance . '</a>';
+                    $html .= '<a class="lddfw_order_distance lddfw_line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">' . esc_html( __( 'Distance', 'lddfw' ) ) . ': ' . $distance . '</a>';
                 }
                 if ( '' !== $delivered_date ) {
-                    $html .= '<a class="lddfw_order_delivered_date lddfw_line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">' . esc_html( __( 'Delivered Date: ', 'lddfw' ) ) . date( $date_format . ' ' . $time_format, strtotime( $delivered_date ) ) . '</a>';
+                    $html .= '<a class="lddfw_order_delivered_date lddfw_line" href="' . lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) . '">' . esc_html( __( 'Delivered Date', 'lddfw' ) ) . ': ' . date( $date_format . ' ' . $time_format, strtotime( $delivered_date ) ) . '</a>';
                 }
                 $html .= '<input style="display:none" orderid="' . $orderid . '" type="checkbox" value="' . str_replace( "'", '', $shipping_address_1 . ' ' . $shipping_city ) . '" class="address_chk">
 						</div>

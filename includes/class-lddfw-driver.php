@@ -65,7 +65,7 @@ class LDDFW_Driver
         if ( $driver_id !== $order_driverid && '-1' !== $driver_id && '' !== $driver_id ) {
             $driver = get_userdata( $driver_id );
             $driver_name = $driver->display_name;
-            $note = __( 'Delivery driver has been assigned to order', 'lddfw' );
+            $note = __( 'Delivery driver has been assigned to order.', 'lddfw' );
             $user_note = '';
             update_post_meta( $order_id, 'lddfw_driverid', $driver_id );
             /**

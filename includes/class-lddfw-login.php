@@ -131,7 +131,7 @@ class LDDFW_Login
                                     $error = __( 'Either the email or password you entered is invalid.', 'lddfw' );
                                 } else {
                                     
-                                    if ( 'driver' !== $user->roles[0] ) {
+                                    if ( !in_array( 'driver', (array) $user->roles, true ) ) {
                                         $error = __( 'You are not a registered delivery driver.', 'lddfw' );
                                     } else {
                                         $lddfw_driver_account = get_user_meta( $user->ID, 'lddfw_driver_account', true );

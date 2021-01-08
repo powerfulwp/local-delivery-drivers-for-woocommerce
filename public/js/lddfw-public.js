@@ -576,3 +576,9 @@ jQuery(".delivery_proof_bar a").click(function() {
 
     return false;
 });
+
+//switch lazyload src
+jQuery("img.lazyload").each(function() {
+    var $lddfw_src = $(this).attr("data-src");
+    $(this).attr("src", $lddfw_src);
+});

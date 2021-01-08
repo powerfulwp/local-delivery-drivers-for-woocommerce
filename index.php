@@ -212,6 +212,18 @@ echo  get_site_icon_url( 32, esc_url( plugin_dir_url( __FILE__ ) . 'public/image
 ?>" >
 <?php 
 wp_print_styles( [ 'lddfw-fonts', 'lddfw-bootstrap', 'lddfw-public' ] );
+
+if ( is_rtl() === true ) {
+    wp_register_style(
+        'lddfw-public-rtl',
+        plugin_dir_url( __FILE__ ) . 'public/css/lddfw-public-rtl.css',
+        array(),
+        LDDFW_VERSION,
+        'all'
+    );
+    wp_print_styles( [ 'lddfw-public-rtl' ] );
+}
+
 wp_print_scripts( [ 'lddfw-jquery-validate' ] );
 echo  '<script>
 	var lddfw_driver_id = "' . esc_js( $lddfw_driver_id ) . '";

@@ -640,8 +640,17 @@ class LDDFW_Order
                 $shipping_meta = $shipping_data['meta_data'];
                 $shipping_total = $shipping_data['total'];
                 $shipping_meta_html = '';
-                foreach ( $shipping_meta as $meta_id => $line_item ) {
-                    $shipping_meta_html .= '<br>' . $line_item->key . ': ' . $line_item->value;
+                foreach ( $shipping_meta as $meta_id => $meta_line_item ) {
+                    $shipping_meta_html .= '<br>' . $meta_line_item->key . ': ';
+                    
+                    if ( is_array( $meta_line_item->value ) ) {
+                        foreach ( $meta_line_item->value as $shipping_meta_value ) {
+                            $shipping_meta_html .= $shipping_meta_value;
+                        }
+                    } else {
+                        $shipping_meta_html .= $meta_line_item->value;
+                    }
+                
                 }
                 $product_html .= '<tr class=\'lddfw_items\'>
 		<th colspan=\'2\'>' . esc_html( __( 'Shipping', 'lddfw' ) ) . '<br><i>' . esc_html( __( 'via', 'lddfw' ) ) . ' ' . $shipping_name . $shipping_meta_html . '</i></th>
