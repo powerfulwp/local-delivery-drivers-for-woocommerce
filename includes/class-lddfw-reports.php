@@ -267,7 +267,7 @@ class LDDFW_Reports
 				<option ' . selected( $lddfw_dates_range, 'yesterday', false ) . ' fromdate="' . gmdate( 'Y-m-d', strtotime( '-1 days' ) ) . '" todate="' . gmdate( 'Y-m-d', strtotime( '-1 days' ) ) . '" value="yesterday">' . esc_html( __( 'Yesterday', 'lddfw' ) ) . '</option>
 				<option ' . selected( $lddfw_dates_range, 'thismonth', false ) . '  fromdate="' . gmdate( 'Y-m-d', strtotime( 'first day of this month' ) ) . '" todate="' . gmdate( 'Y-m-d', strtotime( 'last day of this month' ) ) . '"  value="thismonth">' . esc_html( __( 'This month', 'lddfw' ) ) . '</option>
 				<option ' . selected( $lddfw_dates_range, 'lastmonth', false ) . '  fromdate="' . gmdate( 'Y-m-d', strtotime( 'first day of last month' ) ) . '" todate="' . gmdate( 'Y-m-d', strtotime( 'last day of last month' ) ) . '"  value="lastmonth">' . esc_html( __( 'Last month', 'lddfw' ) ) . '</option>
-				<option ' . selected( $lddfw_dates_range, 'custom' ), false . '  value="custom">' . esc_html( __( 'Custom', 'lddfw' ) ) . '</option>
+				<option ' . selected( $lddfw_dates_range, 'custom', false ) . '  value="custom">' . esc_html( __( 'Custom', 'lddfw' ) ) . '</option>
 			</select>
 		</div>
 		<input type="hidden" name="page" value="lddfw-reports" >
@@ -409,7 +409,7 @@ class LDDFW_Reports
         if ( empty($drivers) ) {
             echo  '
 			<tr>
-				<td colspan="3" class="lddfw-text-center">' . esc_html( __( 'No drivers', 'lddfw' ) ) . '</td>
+				<td colspan="6" class="lddfw-text-center">' . esc_html( __( 'No drivers', 'lddfw' ) ) . '</td>
 			</tr>' ;
         } else {
             foreach ( $drivers as $driver ) {

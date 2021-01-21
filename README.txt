@@ -180,6 +180,7 @@ Not at all. This plugin is straightforward to use.
 1. Premium - Proof of delivery - Signature.
 1. Premium - Proof of delivery - Photo.
 1. Premium - Drivers details.
+1. Premium - Admin drivers routes map.
 
 == Changelog ==
 
@@ -264,6 +265,15 @@ Not at all. This plugin is straightforward to use.
 * Fix: Premium - Routes.
 * Add: Premium - Admin drivers routes map.
 
+= 1.4.1 =
+* Fix: Bug in tracking class.
+
+= 1.4.2 =
+* Fix: Drivers colors in the admin map.
+
+= 1.4.3 =
+* Fix: Bug in admin reports.
+
 == Upgrade Notice ==
 
 = 1.0.1 =
@@ -345,3 +355,11 @@ Not at all. This plugin is straightforward to use.
 * Fix: Premium - Routes.
 * Add: Premium - Admin drivers routes map.
 
+= 1.4.1 =
+* Fix: Bug in tracking class.
+
+= 1.4.2 =
+* Fix: Drivers colors in the admin map.
+
+= 1.4.3 =
+* Fix: Bug in admin reports.
