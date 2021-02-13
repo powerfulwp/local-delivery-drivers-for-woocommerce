@@ -16,7 +16,7 @@
  * Plugin Name:       Local Delivery Drivers for WooCommerce
  * Plugin URI:        https://powerfulwp.com/local-delivery-drivers-for-woocommerce-premium/
  * Description:       Improve the way you deliver, manage drivers, assign drivers to orders, and with premium version much more, send SMS and email notifications, routes planning, navigation & more!
- * Version:           1.4.3
+ * Version:           1.5.0
  * Author:            powerfulwp
  * Author URI:        http://www.powerfulwp.com
  * License:           GPL-2.0+
@@ -83,7 +83,7 @@ if ( !function_exists( 'lddfw_activate' ) ) {
      * Currently plugin version.
      * Start at version 1.0.0 and use SemVer - https://semver.org
      */
-    define( 'LDDFW_VERSION', '1.4.3' );
+    define( 'LDDFW_VERSION', '1.5.0' );
     /**
      * Define delivery driver page id.
      */
@@ -92,6 +92,19 @@ if ( !function_exists( 'lddfw_activate' ) ) {
      * Define plugin folder name.
      */
     define( 'LDDFW_FOLDER', $lddfw_plugin_folder );
+    /**
+     * Define suppoerted plugins.
+     */
+    $lddfw_plugins = array();
+    if ( is_plugin_active( 'woocommerce-extra-checkout-fields-for-brazil/woocommerce-extra-checkout-fields-for-brazil.php' ) ) {
+        //Brazil checkout fields.
+        $lddfw_plugins[] = "woocommerce-extra-checkout-fields-for-brazil";
+    }
+    if ( is_plugin_active( 'comunas-de-chile-para-woocommerce/woocoomerce-comunas.php' ) ) {
+        //Chile states.
+        $lddfw_plugins[] = "comunas-de-chile-para-woocommerce";
+    }
+    define( 'LDDFW_PLUGINS', $lddfw_plugins );
     /**
      * The code that runs during plugin activation.
      * This action is documented in includes/class-lddfw-activator.php

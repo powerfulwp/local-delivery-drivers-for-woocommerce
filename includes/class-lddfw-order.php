@@ -47,8 +47,11 @@ class LDDFW_Order
         $billing_address_1 = $order->get_billing_address_1();
         $billing_address_2 = $order->get_billing_address_2();
         $billing_city = $order->get_billing_city();
-        $billing_state = $order->get_billing_state();
-        $billing_country = WC()->countries->countries[$order->get_billing_country()];
+        $billing_state = $this->lddfw_states( $order->get_billing_state() );
+        $billing_country = $order->get_billing_country();
+        if ( '' !== $billing_country ) {
+            $billing_country = WC()->countries->countries[$billing_country];
+        }
         $billing_postcode = $order->get_billing_postcode();
         $billing_phone = $order->get_billing_phone();
         $shipping_first_name = $order->get_shipping_first_name();
@@ -57,11 +60,24 @@ class LDDFW_Order
         $shipping_address_1 = $order->get_shipping_address_1();
         $shipping_address_2 = $order->get_shipping_address_2();
         $shipping_city = $order->get_shipping_city();
-        $shipping_state = $order->get_shipping_state();
+        $shipping_state = $this->lddfw_states( $order->get_shipping_state() );
         $shipping_postcode = $order->get_shipping_postcode();
-        $shipping_country = WC()->countries->countries[$order->get_shipping_country()];
+        $shipping_country = $order->get_shipping_country();
+        if ( '' !== $shipping_country ) {
+            $shipping_country = WC()->countries->countries[$shipping_country];
+        }
         $customer_note = $order->get_customer_note();
         $payment_method = $order->get_payment_method();
+        
+        if ( in_array( 'woocommerce-extra-checkout-fields-for-brazil', LDDFW_PLUGINS ) ) {
+            // Add shipping number to address.
+            $shipping_number = get_post_meta( $lddfw_order_id, '_shipping_number', true );
+            $shipping_address_1 .= ' ' . $shipping_number;
+            // Add shipping number to address.
+            $billing_number = get_post_meta( $lddfw_order_id, '_billing_number', true );
+            $billing_address_1 .= ' ' . $billing_number;
+        }
+        
         // Format billing address.
         $billing_full_name = $billing_first_name . ' ' . $billing_last_name . '<br>';
         if ( '' !== $billing_company ) {
@@ -133,7 +149,7 @@ class LDDFW_Order
 				height="350"
 				frameborder="0"
 				style="border:0"
-				src="https://www.google.com/maps/embed/v1/directions?origin=' . $origin . '&destination=' . $shipping_direction_address . '&key=' . $lddfw_google_api_key . '"
+				src="https://www.google.com/maps/embed/v1/directions?mode=' . LDDFW_Driver::get_driver_driving_mode( $driver_id, 'lowercase' ) . '&origin=' . $origin . '&destination=' . $shipping_direction_address . '&key=' . $lddfw_google_api_key . '"
 				allowfullscreen>
 			</iframe>
 		</div>
@@ -174,11 +190,6 @@ class LDDFW_Order
         $html .= '<div class="col-12">
 						<p id="lddfw_order_total">' . esc_html( __( 'Total', 'lddfw' ) ) . ': ' . $currency_symbol . $total . '</p>
 					</div>';
-        if ( '' !== $lddfw_dispatch_phone_number ) {
-            $html .= '<div class="col-12 mt-2">
-						<a class="btn btn-block btn-secondary"  href="tel:' . esc_attr( get_option( 'lddfw_dispatch_phone_number', '' ) ) . '"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone" class="svg-inline--fa fa-phone fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"></path></svg> ' . esc_html( __( 'Call Dispatch', 'lddfw' ) ) . '</a>
-					</div>';
-        }
         $html .= '</div>
 			</div>';
         // Shipping address.
@@ -211,7 +222,7 @@ class LDDFW_Order
             }
             if ( '' !== $billing_phone ) {
                 $html .= '<div class="col-12 mt-2">
-								<a class="btn btn-secondary btn-block " href="tel:' . esc_attr( $billing_phone ) . '"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone" class="svg-inline--fa fa-phone fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"></path></svg> ' . esc_html( __( 'Call customer', 'lddfw' ) ) . '</a>
+								<a class="btn btn-secondary btn-block " href="tel:' . esc_attr( $billing_phone ) . '"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone" class="svg-inline--fa fa-phone fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"></path></svg> ' . esc_html( __( 'Call Customer', 'lddfw' ) ) . '</a>
 							</div>';
             }
             $html .= '</div>
@@ -235,6 +246,7 @@ class LDDFW_Order
             $html .= '</div>';
         }
         
+        // Driver.
         $html .= '<div class="lddfw_box">
 			<h3 class="lddfw_title">
 			<svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="user" class="svg-inline--fa fa-user fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"></path></svg>
@@ -247,7 +259,7 @@ class LDDFW_Order
         // Driver name
         if ( '' !== $lddfw_driver_name ) {
             $html .= '<div class="col-12">
-							<p>' . esc_html( __( 'Driver', 'lddfw' ) ) . ': ' . esc_html( $lddfw_driver_name ) . '</p>
+							<p>' . esc_html( __( 'Name', 'lddfw' ) ) . ': ' . esc_html( $lddfw_driver_name ) . '</p>
 						</div>';
         }
         // Driver note
@@ -267,17 +279,20 @@ class LDDFW_Order
         $html .= $this->lddfw_order_delivery_screen( $driver_id );
         $html .= $this->lddfw_order_thankyou_screen();
         // Action buttons.
+        
         if ( get_option( 'lddfw_failed_attempt_status', '' ) === 'wc-' . $order_status || get_option( 'lddfw_out_for_delivery_status', '' ) === 'wc-' . $order_status ) {
             $html .= '<div class="lddfw_footer_buttons">
 					<div class="container">
-						<div class="row"> 
-						 <div class="col"><a href="' . esc_url( admin_url( 'admin-ajax.php' ) ) . '" id="lddfw_delivered_screen_btn" order_status="' . esc_attr( get_option( 'lddfw_delivered_status', '' ) ) . '" order_id="' . esc_attr( $lddfw_order_id ) . '" driver_id="' . esc_attr( $driver_id ) . '" class="btn btn-block btn-lg btn-success">' . esc_html( __( 'Delivered', 'lddfw' ) ) . '</a></div>
-					 	 <div class="col"><a href="' . esc_url( admin_url( 'admin-ajax.php' ) ) . '" id="lddfw_failed_delivered_screen_btn" order_status="' . esc_attr( get_option( 'lddfw_failed_attempt_status', '' ) ) . '" order_id="' . esc_attr( $lddfw_order_id ) . '" driver_id="' . esc_attr( $driver_id ) . '" class="btn  btn-lg  btn-block btn-danger">' . esc_html( __( 'Not Delivered', 'lddfw' ) ) . '</a></div>
-			 		</div>
+						<div class="row">';
+            $order_status_buttons_style = '';
+            $html .= '<div class="col lddfw_order_status_buttons"  ' . $order_status_buttons_style . ' ><a href="' . esc_url( admin_url( 'admin-ajax.php' ) ) . '" id="lddfw_delivered_screen_btn" order_status="' . esc_attr( get_option( 'lddfw_delivered_status', '' ) ) . '" order_id="' . esc_attr( $lddfw_order_id ) . '" driver_id="' . esc_attr( $driver_id ) . '" class="btn btn-block btn-lg btn-success">' . esc_html( __( 'Delivered', 'lddfw' ) ) . '</a></div>
+					 	 	<div class="col lddfw_order_status_buttons"  ' . $order_status_buttons_style . '><a href="' . esc_url( admin_url( 'admin-ajax.php' ) ) . '" id="lddfw_failed_delivered_screen_btn" order_status="' . esc_attr( get_option( 'lddfw_failed_attempt_status', '' ) ) . '" order_id="' . esc_attr( $lddfw_order_id ) . '" driver_id="' . esc_attr( $driver_id ) . '" class="btn  btn-lg  btn-block btn-danger">' . esc_html( __( 'Not Delivered', 'lddfw' ) ) . '</a></div>
+			 			</div>
 					</div>
 				</div>
 			';
         }
+        
         return $html;
     }
     
@@ -318,9 +333,9 @@ class LDDFW_Order
         $html = '<div style="display:none;position:relative" id="lddfw_delivery_photo" class="lddfw_photo_wrap screen_wrap">';
         
         if ( lddfw_is_free() ) {
-            $content = lddfw_premium_feature( '' ) . ' ' . esc_html( __( "Get proof of delivery.", "lddfw" ) ) . '
-					<hr>' . lddfw_premium_feature( '' ) . ' ' . esc_html( __( "Add a photo to order.", "lddfw" ) ) . '
-					<hr>' . lddfw_premium_feature( '' ) . ' ' . esc_html( __( "Customer and admin can view the photo at any time.", "lddfw" ) );
+            $content = lddfw_premium_feature( '' ) . ' ' . esc_html( __( 'Get proof of delivery.', 'lddfw' ) ) . '
+					<hr>' . lddfw_premium_feature( '' ) . ' ' . esc_html( __( 'Add a photo to order.', 'lddfw' ) ) . '
+					<hr>' . lddfw_premium_feature( '' ) . ' ' . esc_html( __( 'Customer and admin can view the photo at any time.', 'lddfw' ) );
             $html .= lddfw_premium_feature_notice_content( $content );
         }
         
@@ -340,9 +355,9 @@ class LDDFW_Order
 				<div style="display:none" id="lddfw_delivery_signature" class="lddfw_signature_wrap screen_wrap">';
         
         if ( lddfw_is_free() ) {
-            $content = lddfw_premium_feature( '' ) . ' ' . esc_html( __( "Get proof of delivery.", "lddfw" ) ) . '
-							<hr>' . lddfw_premium_feature( '' ) . ' ' . esc_html( __( "Add a signature to order.", "lddfw" ) ) . '
-							<hr>' . lddfw_premium_feature( '' ) . ' ' . esc_html( __( "Customer and admin can view the signature at any time.", "lddfw" ) );
+            $content = lddfw_premium_feature( '' ) . ' ' . esc_html( __( 'Get proof of delivery.', 'lddfw' ) ) . '
+							<hr>' . lddfw_premium_feature( '' ) . ' ' . esc_html( __( 'Add a signature to order.', 'lddfw' ) ) . '
+							<hr>' . lddfw_premium_feature( '' ) . ' ' . esc_html( __( 'Customer and admin can view the signature at any time.', 'lddfw' ) );
             $html .= lddfw_premium_feature_notice_content( $content );
         }
         
@@ -676,7 +691,7 @@ class LDDFW_Order
                 $product_html .= '<tr> <th colspan="2">' . __( 'Total', 'lddfw' ) . '</th>' . ' <td class="lddfw_total_col">' . $currency_symbol . $total . '</td>';
                 $refund = $order->get_total_refunded();
                 
-                if ( '' != $refund ) {
+                if ( '' !== $refund ) {
                     $product_html .= '<tr style="color:#ca0303"> <th colspan="2">' . __( 'Refund', 'lddfw' ) . '</th>' . ' <td class="lddfw_total_col">-' . $currency_symbol . $refund . '</td>';
                     $product_html .= '<tr> <th colspan="2">' . __( 'Net Total', 'lddfw' ) . '</th>' . ' <td class="lddfw_total_col">' . $currency_symbol . ($total - $refund) . '</td>';
                 }
@@ -687,6 +702,31 @@ class LDDFW_Order
             return $product_html;
         }
     
+    }
+    
+    /**
+     * Get the state.
+     *
+     * @since 1.5.0
+     * @param string $state state name/code.
+     * @return string
+     */
+    public static function lddfw_states( $state )
+    {
+        if ( in_array( 'comunas-de-chile-para-woocommerce', LDDFW_PLUGINS ) ) {
+            // Get chile states.
+            
+            if ( function_exists( 'comunas_de_chile' ) ) {
+                $chile_states = comunas_de_chile( "" );
+                if ( array_key_exists( 'CL', $chile_states ) ) {
+                    if ( array_key_exists( $state, $chile_states['CL'] ) ) {
+                        $state = $chile_states['CL'][$state];
+                    }
+                }
+            }
+        
+        }
+        return $state;
     }
 
 }

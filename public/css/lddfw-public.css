@@ -644,11 +644,13 @@ div#signature-image {
     top: -2px;
 }
 
-#lddfw_availability .fa-toggle-off {
+#lddfw_availability .fa-toggle-off,
+#lddfw_trackme .lddfw_trackme_off {
     color: #dc3545;
 }
 
-#lddfw_availability .fa-toggle-on {
+#lddfw_availability .fa-toggle-on,
+#lddfw_trackme .lddfw_trackme_on {
     color: #28a745;
 }
 
@@ -750,7 +752,8 @@ div#lddfw_directions {
 .lddfw_back_link svg,
 #lddfw_menu .fa-bars,
 #lddfw_availability svg,
-#lddfw_hide_map_btn .fa-arrow-left {
+#lddfw_hide_map_btn .fa-arrow-left,
+#lddfw_trackme svg {
     width: 30px;
 }
 
@@ -931,7 +934,7 @@ a.lddfw_closebtn {
 }
 
 #lddfw_header .lddfw_sidenav a {
-    padding: 8px 8px 8px 32px;
+    padding: 6px 8px 6px 32px;
     text-decoration: none;
     font-size: 18px;
     color: #011627;
@@ -1251,6 +1254,95 @@ svg.fa-camera {
     height: 100%;
     overflow-y: scroll;
     padding-bottom: 147px;
+}
+
+#driver_form {
+    margin-top: 89px;
+}
+
+#driver_form .upload_image_wrap {
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    border: 1px solid #ced4da;
+}
+
+#driver_form .upload_image_wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+#driver_form .custom-file-input {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#driver_form .custom-file-label {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    text-align: center;
+    cursor: pointer;
+    border-radius: .3rem;
+    height: auto;
+    margin: 0px;
+}
+
+#lddfw_page.driver {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+#lddfw_password_holder {
+    margin-top: 20px;
+}
+
+#driver_form .custom-file-label::after {
+    display: none;
+}
+
+#driver_form .col-form-label {
+    font-size: 14px;
+}
+
+#driver_form .photo_upload {
+    max-width: 100px;
+    margin-top: 10px;
+}
+
+#lddfw_start_delivery_notice_duration {
+    display: block;
+    font-size: 36px;
+}
+
+#lddfw_start_delivery_notice_distance {
+    display: block;
+    font-size: 22px;
+}
+
+#lddfw_start_delivery_notice {
+    margin-bottom: 15px;
+}
+
+#lddfw_start_delivery_notice_duration {
+    display: block;
+    font-size: 36px;
+}
+
+#lddfw_page.settings {
+    padding-bottom: 70px;
+}
+
+#lddfw_page.settings .lddfw_footer_buttons .btn {
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 @media screen and (max-height: 731px) {

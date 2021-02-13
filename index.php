@@ -35,6 +35,9 @@ $lddfw_driver = new LDDFW_Driver();
 $lddfw_screens = new LDDFW_Screens();
 $lddfw_content = '';
 $lddfw_driver_id = '';
+$lddfw_wpnonce = wp_create_nonce( 'lddfw-nonce' );
+$lddfw_drivers_tracking_timing = '';
+$lddfw_tracking_status = '';
 /**
  * Log out delivery driver.
 */
@@ -142,6 +145,9 @@ if ( !is_user_logged_in() ) {
         if ( 'delivered' === $lddfw_screen ) {
             $lddfw_content = $lddfw_screens->lddfw_delivered_screen( $lddfw_driver_id );
         }
+        if ( 'settings' === $lddfw_screen && '' !== $lddfw_driver_id ) {
+            $lddfw_content = $lddfw_screens->lddfw_driver_settings_screen( $lddfw_driver_id );
+        }
         if ( 'assign_to_driver' === $lddfw_screen ) {
             $lddfw_content = $lddfw_screens->lddfw_assign_to_driver_screen( $lddfw_driver_id );
         }
@@ -229,11 +235,12 @@ echo  '<script>
 	var lddfw_driver_id = "' . esc_js( $lddfw_driver_id ) . '";
 	var lddfw_ajax_url = "' . esc_url( admin_url( 'admin-ajax.php' ) ) . '";
 	var lddfw_confirm_text = "' . esc_js( __( 'Are you sure?', 'lddfw' ) ) . '";
-	var lddfw_nonce = "' . esc_js( wp_create_nonce( 'lddfw-nonce' ) ) . '";
+	var lddfw_nonce = "' . esc_js( $lddfw_wpnonce ) . '";
 	var lddfw_hour_text = "' . esc_js( __( 'hour', 'lddfw' ) ) . '";
 	var lddfw_hours_text = "' . esc_js( __( 'hours', 'lddfw' ) ) . '";
 	var lddfw_mins_text = "' . esc_js( __( 'mins', 'lddfw' ) ) . '";
 	var lddfw_dates = "' . esc_js( $lddfw_dates ) . '";
+	var lddfw_tracking_status = "' . esc_js( $lddfw_tracking_status ) . '";
 </script>' ;
 ?>
 
@@ -246,6 +253,7 @@ echo  $lddfw_screen ;
 echo  $lddfw_content ;
 ?></div>
 <?php 
+//Print scripts.
 
 if ( lddfw_is_free() ) {
     wp_print_scripts( [ 'lddfw-bootstrap', 'lddfw-public' ] );

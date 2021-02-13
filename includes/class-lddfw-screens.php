@@ -97,6 +97,10 @@ class LDDFW_Screens
 					<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-double-right" class="svg-inline--fa fa-angle-double-right fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg> ' . esc_html( __( 'Delivered', 'lddfw' ) ) . ' (' . $lddfw_delivered_counter . ')</a>
 					';
         $html .= '<div class="dropdown-divider"></div>
+					<a class="dropdown-item" title="' . esc_attr( __( "Settings", 'lddfw' ) ) . '" href="' . lddfw_drivers_page_url( "lddfw_screen=settings" ) . '">
+					<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="cog" class="svg-inline--fa fa-cog fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M487.4 315.7l-42.6-24.6c4.3-23.2 4.3-47 0-70.2l42.6-24.6c4.9-2.8 7.1-8.6 5.5-14-11.1-35.6-30-67.8-54.7-94.6-3.8-4.1-10-5.1-14.8-2.3L380.8 110c-17.9-15.4-38.5-27.3-60.8-35.1V25.8c0-5.6-3.9-10.5-9.4-11.7-36.7-8.2-74.3-7.8-109.2 0-5.5 1.2-9.4 6.1-9.4 11.7V75c-22.2 7.9-42.8 19.8-60.8 35.1L88.7 85.5c-4.9-2.8-11-1.9-14.8 2.3-24.7 26.7-43.6 58.9-54.7 94.6-1.7 5.4.6 11.2 5.5 14L67.3 221c-4.3 23.2-4.3 47 0 70.2l-42.6 24.6c-4.9 2.8-7.1 8.6-5.5 14 11.1 35.6 30 67.8 54.7 94.6 3.8 4.1 10 5.1 14.8 2.3l42.6-24.6c17.9 15.4 38.5 27.3 60.8 35.1v49.2c0 5.6 3.9 10.5 9.4 11.7 36.7 8.2 74.3 7.8 109.2 0 5.5-1.2 9.4-6.1 9.4-11.7v-49.2c22.2-7.9 42.8-19.8 60.8-35.1l42.6 24.6c4.9 2.8 11 1.9 14.8-2.3 24.7-26.7 43.6-58.9 54.7-94.6 1.5-5.5-.7-11.3-5.6-14.1zM256 336c-44.1 0-80-35.9-80-80s35.9-80 80-80 80 35.9 80 80-35.9 80-80 80z"></path></svg> ' . esc_html( __( 'Settings', 'lddfw' ) ) . '</a>
+					';
+        $html .= '<div class="dropdown-divider"></div>
 					<a class="dropdown-item" title="' . esc_attr( __( "Log out", 'lddfw' ) ) . '" href="' . lddfw_drivers_page_url( "lddfw_screen=logout" ) . '">
 					<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sign-out-alt" class="svg-inline--fa fa-sign-out-alt fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M497 273L329 441c-15 15-41 4.5-41-17v-96H152c-13.3 0-24-10.7-24-24v-96c0-13.3 10.7-24 24-24h136V88c0-21.4 25.9-32 41-17l168 168c9.3 9.4 9.3 24.6 0 34zM192 436v-40c0-6.6-5.4-12-12-12H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h84c6.6 0 12-5.4 12-12V76c0-6.6-5.4-12-12-12H96c-53 0-96 43-96 96v192c0 53 43 96 96 96h84c6.6 0 12-5.4 12-12z"></path></svg> ' . esc_html( __( 'Log out', 'lddfw' ) ) . '</a>
 			</div>
@@ -214,20 +218,21 @@ class LDDFW_Screens
         
         if ( '1' === $lddfw_driver_availability ) {
             $html .= '
-				<span id="lddfw_availability_status" available="' . esc_attr( __( 'Available', 'lddfw' ) ) . '" unavailable="' . esc_attr( __( 'Unavailable', 'lddfw' ) ) . '">' . esc_html( __( 'Available', 'lddfw' ) ) . '</span>
-				</div>
-				<div class="col-3 text-right">
-				<a id="lddfw_availability" class="lddfw_active" title="' . esc_attr( __( 'Availability status', 'lddfw' ) ) . '" href="' . esc_url( admin_url( 'admin-ajax.php' ) ) . '">
-				<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="toggle-on" class="svg-inline--fa fa-toggle-on fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M384 64H192C86 64 0 150 0 256s86 192 192 192h192c106 0 192-86 192-192S490 64 384 64zm0 320c-70.8 0-128-57.3-128-128 0-70.8 57.3-128 128-128 70.8 0 128 57.3 128 128 0 70.8-57.3 128-128 128z"></path></svg></a></div>
-				';
+						<span id="lddfw_availability_status" available="' . esc_attr( __( 'Available', 'lddfw' ) ) . '" unavailable="' . esc_attr( __( 'Unavailable', 'lddfw' ) ) . '">' . esc_html( __( 'Available', 'lddfw' ) ) . '</span>
+						</div>
+						<div class="col-3 text-right">
+							<a id="lddfw_availability" class="lddfw_active" title="' . esc_attr( __( 'Availability status', 'lddfw' ) ) . '" href="' . esc_url( admin_url( 'admin-ajax.php' ) ) . '">
+							<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="toggle-on" class="svg-inline--fa fa-toggle-on fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M384 64H192C86 64 0 150 0 256s86 192 192 192h192c106 0 192-86 192-192S490 64 384 64zm0 320c-70.8 0-128-57.3-128-128 0-70.8 57.3-128 128-128 70.8 0 128 57.3 128 128 0 70.8-57.3 128-128 128z"></path></svg></a>
+						</div>
+						';
         } else {
             $html .= '
-				<span id="lddfw_availability_status" available="' . esc_attr( __( 'Available', 'lddfw' ) ) . '" unavailable="' . esc_attr( __( 'Unavailable', 'lddfw' ) ) . '">' . esc_html( __( 'Unavailable', 'lddfw' ) ) . '</span>
-				</div>
-				<div class="col-3 text-right">
-				<a id="lddfw_availability" class="" title="' . esc_attr( __( 'Availability status', 'lddfw' ) ) . '" href="' . esc_url( admin_url( 'admin-ajax.php' ) ) . '">
-
-<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="toggle-off" class="svg-inline--fa fa-toggle-off fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M384 64H192C85.961 64 0 149.961 0 256s85.961 192 192 192h192c106.039 0 192-85.961 192-192S490.039 64 384 64zM64 256c0-70.741 57.249-128 128-128 70.741 0 128 57.249 128 128 0 70.741-57.249 128-128 128-70.741 0-128-57.249-128-128zm320 128h-48.905c65.217-72.858 65.236-183.12 0-256H384c70.741 0 128 57.249 128 128 0 70.74-57.249 128-128 128z"></path></svg></a></div>';
+						<span id="lddfw_availability_status" available="' . esc_attr( __( 'Available', 'lddfw' ) ) . '" unavailable="' . esc_attr( __( 'Unavailable', 'lddfw' ) ) . '">' . esc_html( __( 'Unavailable', 'lddfw' ) ) . '</span>
+						</div>
+						<div class="col-3 text-right">
+							<a id="lddfw_availability" class="" title="' . esc_attr( __( 'Availability status', 'lddfw' ) ) . '" href="' . esc_url( admin_url( 'admin-ajax.php' ) ) . '">
+							<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="toggle-off" class="svg-inline--fa fa-toggle-off fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M384 64H192C85.961 64 0 149.961 0 256s85.961 192 192 192h192c106.039 0 192-85.961 192-192S490.039 64 384 64zM64 256c0-70.741 57.249-128 128-128 70.741 0 128 57.249 128 128 0 70.741-57.249 128-128 128-70.741 0-128-57.249-128-128zm320 128h-48.905c65.217-72.858 65.236-183.12 0-256H384c70.741 0 128 57.249 128 128 0 70.74-57.249 128-128 128z"></path></svg></a>
+						</div>';
         }
         
         $html .= '
@@ -488,37 +493,62 @@ class LDDFW_Screens
     {
         global  $lddfw_order_id ;
         $order_class = new LDDFW_Order();
-        $order = new WC_Order( $lddfw_order_id );
-        $order_driverid = get_post_meta( $lddfw_order_id, 'lddfw_driverid', true );
-        $order_status = $order->get_status();
-        // Set back url.
         $back_url = lddfw_drivers_page_url( 'lddfw_screen=dashboard' );
-        switch ( 'wc-' . $order_status ) {
-            case get_option( 'lddfw_delivered_status' ):
-                $back_url = lddfw_drivers_page_url( 'lddfw_screen=delivered' );
-                break;
-            case get_option( 'lddfw_failed_attempt_status' ):
-                $back_url = lddfw_drivers_page_url( 'lddfw_screen=failed_delivery' );
-                break;
-            case get_option( 'lddfw_out_for_delivery_status' ):
-                $back_url = lddfw_drivers_page_url( 'lddfw_screen=out_for_delivery' );
-                break;
-            case get_option( 'lddfw_driver_assigned_status' ):
-                $back_url = lddfw_drivers_page_url( 'lddfw_screen=assign_to_driver' );
-                break;
+        // Check if valid order number.
+        
+        if ( get_post_type( $lddfw_order_id ) == "shop_order" ) {
+            $order = new WC_Order( $lddfw_order_id );
+            $order_driverid = get_post_meta( $lddfw_order_id, 'lddfw_driverid', true );
+            $order_status = $order->get_status();
+            // Set back url.
+            switch ( 'wc-' . $order_status ) {
+                case get_option( 'lddfw_delivered_status' ):
+                    $back_url = lddfw_drivers_page_url( 'lddfw_screen=delivered' );
+                    break;
+                case get_option( 'lddfw_failed_attempt_status' ):
+                    $back_url = lddfw_drivers_page_url( 'lddfw_screen=failed_delivery' );
+                    break;
+                case get_option( 'lddfw_out_for_delivery_status' ):
+                    $back_url = lddfw_drivers_page_url( 'lddfw_screen=out_for_delivery' );
+                    break;
+                case get_option( 'lddfw_driver_assigned_status' ):
+                    $back_url = lddfw_drivers_page_url( 'lddfw_screen=assign_to_driver' );
+                    break;
+            }
         }
+        
         // Set back url from parameter.
         $back_url = ( isset( $_GET['lddfw_dates'] ) ? $back_url . '&lddfw_dates=' . sanitize_text_field( wp_unslash( $_GET['lddfw_dates'] ) ) : $back_url );
         $back_url = ( isset( $_GET['lddfw_page'] ) ? $back_url . '&lddfw_page=' . sanitize_text_field( wp_unslash( $_GET['lddfw_page'] ) ) : $back_url );
         $title = __( 'Order #', 'lddfw' ) . ' ' . $lddfw_order_id;
         $html = $this->lddfw_header( $title, $back_url );
+        $driver_claim = get_user_meta( $driver_id, 'lddfw_driver_claim', true );
+        // Show the order page.
         
-        if ( intval( $order_driverid ) === intval( $driver_id ) ) {
+        if ( intval( $order_driverid ) === intval( $driver_id ) || ($order_driverid == '' || $order_driverid == '-1') && '1' === $driver_claim && 'wc-' . $order_status === get_option( 'lddfw_processing_status' ) ) {
             $html .= $order_class->lddfw_order_page( $order, $driver_id );
         } else {
-            $html .= '<div class="alert alert-danger">' . esc_html( __( 'Access Denied, You do not have permissions to access this order', 'lddfw' ) ) . '</div>';
+            $html .= '<div style="margin-top:100px" class="alert alert-danger">' . esc_html( __( 'Access Denied, You do not have permissions to access this order', 'lddfw' ) ) . '</div>';
         }
         
+        $html .= $this->lddfw_footer();
+        return $html;
+    }
+    
+    /**
+     * Edit driver screen.
+     *
+     * @since 1.5.0
+     * @param int $vendor_id vendor user id.
+     * @return html
+     */
+    public function lddfw_driver_settings_screen( $driver_id )
+    {
+        $back_url = lddfw_drivers_page_url( 'lddfw_screen=dashboard' );
+        $title = esc_html( __( 'Settings', 'lddfw' ) );
+        $html = $this->lddfw_header( $title, $back_url );
+        $driver = new LDDFW_Driver();
+        $html .= $driver->lddfw_edit_driver_form( $driver_id );
         $html .= $this->lddfw_footer();
         return $html;
     }

@@ -322,7 +322,7 @@ class LDDFW_Orders
                 $billing_address_1 = $order->get_billing_address_1();
                 $billing_address_2 = $order->get_billing_address_2();
                 $billing_city = $order->get_billing_city();
-                $billing_state = $order->get_billing_state();
+                $billing_state = LDDFW_Order::lddfw_states( $order->get_billing_state() );
                 $billing_postcode = $order->get_billing_postcode();
                 $billing_country = $order->get_billing_country();
                 $billing_first_name = $order->get_billing_first_name();
@@ -333,10 +333,20 @@ class LDDFW_Orders
                 $shipping_address_1 = $order->get_shipping_address_1();
                 $shipping_address_2 = $order->get_shipping_address_2();
                 $shipping_city = $order->get_shipping_city();
-                $shipping_state = $order->get_shipping_state();
+                $shipping_state = LDDFW_Order::lddfw_states( $order->get_shipping_state() );
                 $shipping_postcode = $order->get_shipping_postcode();
                 $shipping_country = $order->get_shipping_country();
                 $shipping_company = $order->get_shipping_company();
+                
+                if ( in_array( "woocommerce-extra-checkout-fields-for-brazil", LDDFW_PLUGINS ) ) {
+                    // Add shipping number to address.
+                    $shipping_number = get_post_meta( $orderid, '_shipping_number', true );
+                    $shipping_address_1 .= ' ' . $shipping_number;
+                    // Add shipping number to address.
+                    $billing_number = get_post_meta( $orderid, '_billing_number', true );
+                    $billing_address_1 .= ' ' . $billing_number;
+                }
+                
                 /**
                  * If shipping info is missing if show the billing info
                  */
@@ -363,8 +373,10 @@ class LDDFW_Orders
                     $shippingaddress .= ', ' . $shipping_address_2;
                 }
                 $distance = '';
-                if ( is_array( $route ) ) {
-                    $distance = $route['distance_text'];
+                if ( !empty($route) ) {
+                    if ( isset( $route['distance_text'] ) ) {
+                        $distance = $route['distance_text'];
+                    }
                 }
                 ++$counter;
                 $html .= '
@@ -416,7 +428,7 @@ class LDDFW_Orders
                 $billing_address_1 = $order->get_billing_address_1();
                 $billing_address_2 = $order->get_billing_address_2();
                 $billing_city = $order->get_billing_city();
-                $billing_state = $order->get_billing_state();
+                $billing_state = LDDFW_Order::lddfw_states( $order->get_billing_state() );
                 $billing_postcode = $order->get_billing_postcode();
                 $billing_country = $order->get_billing_country();
                 $billing_first_name = $order->get_billing_first_name();
@@ -428,9 +440,19 @@ class LDDFW_Orders
                 $shipping_address_1 = $order->get_shipping_address_1();
                 $shipping_address_2 = $order->get_shipping_address_2();
                 $shipping_city = $order->get_shipping_city();
-                $shipping_state = $order->get_shipping_state();
+                $shipping_state = LDDFW_Order::lddfw_states( $order->get_shipping_state() );
                 $shipping_postcode = $order->get_shipping_postcode();
                 $shipping_country = $order->get_shipping_country();
+                
+                if ( in_array( "woocommerce-extra-checkout-fields-for-brazil", LDDFW_PLUGINS ) ) {
+                    // Add shipping number to address.
+                    $shipping_number = get_post_meta( $orderid, '_shipping_number', true );
+                    $shipping_address_1 .= ' ' . $shipping_number;
+                    // Add shipping number to address.
+                    $billing_number = get_post_meta( $orderid, '_billing_number', true );
+                    $billing_address_1 .= ' ' . $billing_number;
+                }
+                
                 /**
                  * If shipping info is missing if show the billing info
                  */
@@ -459,8 +481,10 @@ class LDDFW_Orders
                     $shippingaddress .= ', ' . $shipping_address_2;
                 }
                 $distance = '';
-                if ( is_array( $route ) ) {
-                    $distance = $route['distance_text'];
+                if ( !empty($route) ) {
+                    if ( isset( $route['distance_text'] ) ) {
+                        $distance = $route['distance_text'];
+                    }
                 }
                 ++$counter;
                 $html .= '
@@ -510,7 +534,7 @@ class LDDFW_Orders
                 $billing_address_1 = $order->get_billing_address_1();
                 $billing_address_2 = $order->get_billing_address_2();
                 $billing_city = $order->get_billing_city();
-                $billing_state = $order->get_billing_state();
+                $billing_state = LDDFW_Order::lddfw_states( $order->get_billing_state() );
                 $billing_postcode = $order->get_billing_postcode();
                 $billing_country = $order->get_billing_country();
                 $billing_first_name = $order->get_billing_first_name();
@@ -522,9 +546,19 @@ class LDDFW_Orders
                 $shipping_address_1 = $order->get_shipping_address_1();
                 $shipping_address_2 = $order->get_shipping_address_2();
                 $shipping_city = $order->get_shipping_city();
-                $shipping_state = $order->get_shipping_state();
+                $shipping_state = LDDFW_Order::lddfw_states( $order->get_shipping_state() );
                 $shipping_postcode = $order->get_shipping_postcode();
                 $shipping_country = $order->get_shipping_country();
+                
+                if ( in_array( "woocommerce-extra-checkout-fields-for-brazil", LDDFW_PLUGINS ) ) {
+                    // Add shipping number to address.
+                    $shipping_number = get_post_meta( $orderid, '_shipping_number', true );
+                    $shipping_address_1 .= ' ' . $shipping_number;
+                    // Add shipping number to address.
+                    $billing_number = get_post_meta( $orderid, '_billing_number', true );
+                    $billing_address_1 .= ' ' . $billing_number;
+                }
+                
                 /**
                  * If shipping info is missing if show the billing info
                  */
@@ -541,7 +575,6 @@ class LDDFW_Orders
                     $shipping_company = $billing_company;
                 }
                 
-                $route = get_post_meta( $orderid, 'lddfw_order_route', true );
                 $shippingaddress = $shipping_first_name . ' ' . $shipping_last_name . '<br>';
                 if ( '' != $shipping_company ) {
                     $shippingaddress .= $shipping_company . '<br>';
@@ -570,92 +603,6 @@ class LDDFW_Orders
 							</div>
 						</div>
 					</div>';
-            }
-        } else {
-            $html .= '<div class="lddfw_box min lddfw_no_orders"><p>' . esc_html( __( 'There are no orders.', 'lddfw' ) ) . '</p></div>';
-        }
-        
-        return $html;
-    }
-    
-    /**
-     * Claim orders
-     *
-     * @since 1.0.0
-     * @param int $driver_id driver user id.
-     * @return html
-     */
-    public function lddfw_claim_orders( $driver_id )
-    {
-        $html = '';
-        $counter = 0;
-        $wc_query = $this->lddfw_orders_query( $driver_id, get_option( 'lddfw_processing_status', '' ), 'claim_orders' );
-        
-        if ( $wc_query->have_posts() ) {
-            while ( $wc_query->have_posts() ) {
-                $wc_query->the_post();
-                $orderid = get_the_ID();
-                $order = new WC_Order( $orderid );
-                $billing_address_1 = $order->get_billing_address_1();
-                $billing_address_2 = $order->get_billing_address_2();
-                $billing_city = $order->get_billing_city();
-                $billing_state = $order->get_billing_state();
-                $billing_postcode = $order->get_billing_postcode();
-                $billing_country = $order->get_billing_country();
-                $billing_first_name = $order->get_billing_first_name();
-                $billing_last_name = $order->get_billing_last_name();
-                $billing_company = $order->get_billing_company();
-                $shipping_company = $order->get_shipping_company();
-                $shipping_first_name = $order->get_shipping_first_name();
-                $shipping_last_name = $order->get_shipping_last_name();
-                $shipping_address_1 = $order->get_shipping_address_1();
-                $shipping_address_2 = $order->get_shipping_address_2();
-                $shipping_city = $order->get_shipping_city();
-                $shipping_state = $order->get_shipping_state();
-                $shipping_postcode = $order->get_shipping_postcode();
-                $shipping_country = $order->get_shipping_country();
-                /**
-                 * If shipping info is missing if show the billing info
-                 */
-                
-                if ( '' === $shipping_first_name && '' === $shipping_address_1 ) {
-                    $shipping_first_name = $billing_first_name;
-                    $shipping_last_name = $billing_last_name;
-                    $shipping_address_1 = $billing_address_1;
-                    $shipping_address_2 = $billing_address_2;
-                    $shipping_city = $billing_city;
-                    $shipping_state = $billing_state;
-                    $shipping_postcode = $billing_postcode;
-                    $shipping_country = $billing_country;
-                    $shipping_company = $billing_company;
-                }
-                
-                $shippingaddress = $shipping_first_name . ' ' . $shipping_last_name . '<br>';
-                if ( '' != $shipping_company ) {
-                    $shippingaddress .= $shipping_company . '<br>';
-                }
-                $shippingaddress .= $shipping_address_1;
-                if ( '' !== $shipping_address_2 ) {
-                    $shippingaddress .= ', ' . $shipping_address_2;
-                }
-                ++$counter;
-                $html .= '
-				<div class="lddfw_box lddfw_multi_checkbox">
-					<div class="row">
-						<div class="col-12">
-							<div class="lddfw_wrap">
-							<div class="custom-control custom-checkbox mr-sm-2 lddfw_order_checkbox">
-								<input value="' . $orderid . '" type="checkbox" class="custom-control-input" name="lddfw_order_id" id="lddfw_chk_order_id_' . $counter . '">
-								<label class="custom-control-label" for="lddfw_chk_order_id_' . $counter . '"></label>
-							</div>
-							<div class="lddfw_order">
-								<div class="lddfw_order_number"><b>' . esc_html( __( 'Order #', 'lddfw' ) ) . $orderid . '</b></div>
-								<div class="lddfw_order_address">' . $shippingaddress . '<br>' . $shipping_city . ' ' . $shipping_state . ' ' . $shipping_postcode . '</div>';
-                $html .= '</div>
-						</div>
-						</div>
-					</div>
-				</div>';
             }
         } else {
             $html .= '<div class="lddfw_box min lddfw_no_orders"><p>' . esc_html( __( 'There are no orders.', 'lddfw' ) ) . '</p></div>';
@@ -719,7 +666,7 @@ class LDDFW_Orders
                 $billing_address_1 = $order->get_billing_address_1();
                 $billing_address_2 = $order->get_billing_address_2();
                 $billing_city = $order->get_billing_city();
-                $billing_state = $order->get_billing_state();
+                $billing_state = LDDFW_Order::lddfw_states( $order->get_billing_state() );
                 $billing_postcode = $order->get_billing_postcode();
                 $billing_country = $order->get_billing_country();
                 $billing_first_name = $order->get_billing_first_name();
@@ -731,9 +678,19 @@ class LDDFW_Orders
                 $shipping_address_1 = $order->get_shipping_address_1();
                 $shipping_address_2 = $order->get_shipping_address_2();
                 $shipping_city = $order->get_shipping_city();
-                $shipping_state = $order->get_shipping_state();
+                $shipping_state = LDDFW_Order::lddfw_states( $order->get_shipping_state() );
                 $shipping_postcode = $order->get_shipping_postcode();
                 $shipping_country = $order->get_shipping_country();
+                
+                if ( in_array( "woocommerce-extra-checkout-fields-for-brazil", LDDFW_PLUGINS ) ) {
+                    // Add shipping number to address.
+                    $shipping_number = get_post_meta( $orderid, '_shipping_number', true );
+                    $shipping_address_1 .= ' ' . $shipping_number;
+                    // Add shipping number to address.
+                    $billing_number = get_post_meta( $orderid, '_billing_number', true );
+                    $billing_address_1 .= ' ' . $billing_number;
+                }
+                
                 /**
                  * If shipping info is missing if show the billing info
                  */
@@ -761,8 +718,10 @@ class LDDFW_Orders
                     $shippingaddress .= ', ' . $shipping_address_2;
                 }
                 $distance = '';
-                if ( is_array( $route ) ) {
-                    $distance = $route['distance_text'];
+                if ( !empty($route) ) {
+                    if ( isset( $route['distance_text'] ) ) {
+                        $distance = $route['distance_text'];
+                    }
                 }
                 ++$counter;
                 $html .= '

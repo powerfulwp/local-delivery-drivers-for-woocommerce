@@ -7,18 +7,19 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: BUG-EMAIL-ADDR <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: yyyy-mm-dd hh:mm+0000\n"
-"PO-Revision-Date: 2020-12-19 13:23+0200\n"
+"PO-Revision-Date: 2021-02-12 12:09+0000\n"
 "Last-Translator: \n"
-"Language-Team: \n"
+"Language-Team: Hebrew\n"
 "Language: he_IL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
-"2 : 3);\n"
-"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? 2 :"
+" 3);\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.4.3; wp-5.6.1"
 
-#: index.php:21 admin/class-lddfw-admin.php:2332
+#: index.php:21 admin/class-lddfw-admin.php:2584
 msgid ""
 "Local delivery drivers for WooCommerce is a WooCommerce add-on, you must "
 "activate a WooCommerce on your site."
@@ -26,65 +27,65 @@ msgstr ""
 "Local delivery drivers for WooCommerce זהו תוסף עבור  WooCommerce  עליך "
 "לאקטב  WooCommerce באתר שלך."
 
-#: index.php:86 includes/class-lddfw-reports.php:56
+#: index.php:96 includes/class-lddfw-reports.php:56
 #: includes/class-lddfw-reports.php:98 includes/class-lddfw-reports.php:125
 #: includes/class-lddfw-reports.php:188
 msgid "Driver assigned"
 msgstr "שליח שוייך"
 
-#: index.php:87 includes/class-lddfw-reports.php:57
+#: index.php:97 includes/class-lddfw-reports.php:57
 #: includes/class-lddfw-reports.php:99 includes/class-lddfw-reports.php:126
-#: includes/class-lddfw-reports.php:189 includes/class-lddfw-screens.php:461
+#: includes/class-lddfw-reports.php:189 includes/class-lddfw-screens.php:504
 msgid "Out for delivery"
 msgstr "יצא למשלוח"
 
-#: index.php:88 admin/class-lddfw-admin.php:999
+#: index.php:98 admin/class-lddfw-admin.php:1064
 #: includes/class-lddfw-reports.php:59 includes/class-lddfw-reports.php:101
 #: includes/class-lddfw-reports.php:128 includes/class-lddfw-reports.php:191
 msgid "Failed delivery"
 msgstr "המשלוח נכשל"
 
-#: index.php:100 admin/class-lddfw-admin.php:771
-#: admin/class-lddfw-admin.php:799
+#: index.php:110 admin/class-lddfw-admin.php:834
+#: admin/class-lddfw-admin.php:862
 msgid "Failed Delivery Attempt"
 msgstr "ניסיון משלוח כשל"
 
-#: index.php:193 includes/lddfw-metaboxes.php:26
+#: index.php:208 includes/lddfw-metaboxes.php:26
 msgid "Delivery Driver"
 msgstr "שליח"
 
-#: index.php:207 includes/class-lddfw-order.php:727
+#: index.php:228 includes/class-lddfw-order.php:803
 msgid "Are you sure?"
 msgstr "האם אתה בטוח?"
 
-#: index.php:209
+#: index.php:230 includes/class-lddfw-route.php:1032
 msgid "hour"
 msgstr "שעה"
 
-#: index.php:210
+#: index.php:231 includes/class-lddfw-route.php:1033
 msgid "hours"
 msgstr "שעות"
 
-#: index.php:211
+#: index.php:232 includes/class-lddfw-route.php:1034
 msgid "mins"
 msgstr "דקות"
 
-#: local-delivery-drivers-for-wooCommerce.php:174
+#: local-delivery-drivers-for-wooCommerce.php:195
 msgid "Premium Feature"
 msgstr "תכונת פרימיום"
 
-#: local-delivery-drivers-for-wooCommerce.php:175
+#: local-delivery-drivers-for-wooCommerce.php:196
 msgid "You Discovered a Premium Feature!"
 msgstr "גילית תכונת פרימיום!"
 
-#: local-delivery-drivers-for-wooCommerce.php:177
+#: local-delivery-drivers-for-wooCommerce.php:198
 msgid "With premium version you will be able to:"
 msgstr "עם גרסת הפרימיום תוכל:"
 
-#: admin/class-lddfw-admin.php:132 admin/class-lddfw-admin.php:182
-#: admin/class-lddfw-admin.php:227 includes/class-lddfw-application.php:41
-#: includes/class-lddfw-login.php:99 includes/class-lddfw-password.php:37
-#: includes/class-lddfw-password.php:98 includes/class-lddfw-route.php:207
+#: admin/class-lddfw-admin.php:136 admin/class-lddfw-admin.php:186
+#: admin/class-lddfw-admin.php:231 includes/class-lddfw-application.php:41
+#: includes/class-lddfw-login.php:126 includes/class-lddfw-password.php:37
+#: includes/class-lddfw-password.php:97 includes/class-lddfw-route.php:461
 msgid ""
 "Security Check Failure - This alert may occur when you are logged in as an "
 "administrator and as a delivery driver on the same browser and the same "
@@ -95,49 +96,49 @@ msgstr ""
 "באותו הדפדפן ובאותו המכשיר. אם אתה רוצה לעבוד על שני הממשקים אנא נסה לעבוד "
 "עם שני דפדפנים שונים."
 
-#: admin/class-lddfw-admin.php:148
+#: admin/class-lddfw-admin.php:152
 msgid "The delivery driver changed the order status."
 msgstr "השליח שינה את סטטוס ההזמנה."
 
-#: admin/class-lddfw-admin.php:151
+#: admin/class-lddfw-admin.php:155
 msgid "Orders successfully marked as out for delivery."
 msgstr "ההזמנות עודכנו לייצאו למשלוח."
 
-#: admin/class-lddfw-admin.php:151
+#: admin/class-lddfw-admin.php:155
 msgid "View out for delivery orders"
 msgstr "צפה בהזמנות שיצאו למשלוח"
 
-#: admin/class-lddfw-admin.php:156 admin/class-lddfw-admin.php:197
+#: admin/class-lddfw-admin.php:160 admin/class-lddfw-admin.php:201
 msgid "Please choose the orders."
 msgstr "בחר הזמנות."
 
-#: admin/class-lddfw-admin.php:161
+#: admin/class-lddfw-admin.php:165
 msgid "User is not a delivery driver"
 msgstr "המשתמש אינו שליח"
 
-#: admin/class-lddfw-admin.php:195
+#: admin/class-lddfw-admin.php:199
 msgid "Orders successfully assigned to you."
 msgstr "הזמנות שויכו לך בהצלחה."
 
-#: admin/class-lddfw-admin.php:195
+#: admin/class-lddfw-admin.php:199
 msgid "View assigned orders"
 msgstr "צפה בהזמנות ששויכו"
 
-#: admin/class-lddfw-admin.php:202
+#: admin/class-lddfw-admin.php:206
 msgid "User is not a driver"
 msgstr "המשתמש אינו שליח"
 
-#: admin/class-lddfw-admin.php:455
+#: admin/class-lddfw-admin.php:515
 msgid "Driver changed order status"
 msgstr "השליח שינה את סטטוס ההזמנה"
 
-#: admin/class-lddfw-admin.php:458
+#: admin/class-lddfw-admin.php:518
 #, php-format
 msgid "Driver %s changed order status"
 msgstr "השליח %s שינה את סטטוס ההזמנה"
 
-#: admin/class-lddfw-admin.php:463 admin/class-lddfw-admin.php:2422
-#: admin/class-lddfw-admin.php:2475 includes/class-lddfw-order.php:419
+#: admin/class-lddfw-admin.php:523 admin/class-lddfw-admin.php:2674
+#: admin/class-lddfw-admin.php:2727 includes/class-lddfw-order.php:483
 #: public/class-lddfw-public.php:156
 #: woocommerce/emails/admin-delivered-order.php:71
 #: woocommerce/emails/customer-failed-delivery-order.php:74
@@ -146,135 +147,139 @@ msgstr "השליח %s שינה את סטטוס ההזמנה"
 msgid "Driver note"
 msgstr "הערת השליח"
 
-#: admin/class-lddfw-admin.php:467
+#: admin/class-lddfw-admin.php:527
 #, php-format
 msgid "Driver %s note"
 msgstr "הערת השליח %s "
 
-#: admin/class-lddfw-admin.php:654
+#: admin/class-lddfw-admin.php:717
 msgctxt "Post Type General Name"
 msgid "Custom Fields"
 msgstr "שדות מיוחדים"
 
-#: admin/class-lddfw-admin.php:655
+#: admin/class-lddfw-admin.php:718
 msgctxt "Post Type Singular Name"
 msgid "Custom Fields"
 msgstr "שדות מיוחדים"
 
-#: admin/class-lddfw-admin.php:656 admin/class-lddfw-admin.php:671
-#: admin/class-lddfw-admin.php:672 admin/class-lddfw-admin.php:1836
+#: admin/class-lddfw-admin.php:719 admin/class-lddfw-admin.php:734
+#: admin/class-lddfw-admin.php:735 admin/class-lddfw-admin.php:2034
 msgid "Custom Fields"
 msgstr "שדות מיוחדים"
 
-#: admin/class-lddfw-admin.php:657
+#: admin/class-lddfw-admin.php:720
 msgid "Parent Rule"
 msgstr "כלל אב"
 
-#: admin/class-lddfw-admin.php:658
+#: admin/class-lddfw-admin.php:721
 msgid "All Custom Fields"
 msgstr "כל השדות המיוחדים"
 
-#: admin/class-lddfw-admin.php:659
+#: admin/class-lddfw-admin.php:722
 msgid "View Custom Fields"
 msgstr "צפה בשדות מיוחדים"
 
-#: admin/class-lddfw-admin.php:660
+#: admin/class-lddfw-admin.php:723
 msgid "Add New Custom Fields"
 msgstr "הוסף שדה מיוחד"
 
-#: admin/class-lddfw-admin.php:661 admin/class-lddfw-admin.php:699
+#: admin/class-lddfw-admin.php:724 admin/class-lddfw-admin.php:762
 msgid "Add New"
 msgstr "הוסף חדש"
 
-#: admin/class-lddfw-admin.php:662
+#: admin/class-lddfw-admin.php:725
 msgid "Edit Custom Fields"
 msgstr "עדכן שדה מיוחד"
 
-#: admin/class-lddfw-admin.php:663
+#: admin/class-lddfw-admin.php:726
 msgid "Update Custom Fields"
 msgstr "עדכן שדה מיוחד"
 
-#: admin/class-lddfw-admin.php:664
+#: admin/class-lddfw-admin.php:727
 msgid "Search Custom Fields"
 msgstr "חפש שדה מיוחד"
 
-#: admin/class-lddfw-admin.php:665 admin/class-lddfw-admin.php:703
+#: admin/class-lddfw-admin.php:728 admin/class-lddfw-admin.php:766
 msgid "Not Found"
 msgstr "לא נמצא"
 
-#: admin/class-lddfw-admin.php:666 admin/class-lddfw-admin.php:704
+#: admin/class-lddfw-admin.php:729 admin/class-lddfw-admin.php:767
 msgid "Not found in Trash"
 msgstr "לא נמצא בסל מחזור"
 
-#: admin/class-lddfw-admin.php:696
+#: admin/class-lddfw-admin.php:759
 msgid "All Sections"
 msgstr "כל האזורים"
 
-#: admin/class-lddfw-admin.php:697
+#: admin/class-lddfw-admin.php:760
 msgid "View section"
 msgstr "צפה באזור"
 
-#: admin/class-lddfw-admin.php:698
+#: admin/class-lddfw-admin.php:761
 msgid "Add New section"
 msgstr "הוסף אזור חדש"
 
-#: admin/class-lddfw-admin.php:700
+#: admin/class-lddfw-admin.php:763
 msgid "Edit section"
 msgstr "ערוך אזור"
 
-#: admin/class-lddfw-admin.php:701
+#: admin/class-lddfw-admin.php:764
 msgid "Update section"
 msgstr "עדכן אזור"
 
-#: admin/class-lddfw-admin.php:702
+#: admin/class-lddfw-admin.php:765
 msgid "Search sections"
 msgstr "חפש אזור"
 
-#: admin/class-lddfw-admin.php:745 includes/class-lddfw-orders.php:621
+#: admin/class-lddfw-admin.php:780
+msgid "Sections"
+msgstr "חלקים"
+
+#: admin/class-lddfw-admin.php:808 includes/class-lddfw-orders.php:645
 msgid "Orders - Driver Assigned"
 msgstr "הזמנות - שויך לשליח"
 
-#: admin/class-lddfw-admin.php:746 includes/class-lddfw-orders.php:364
+#: admin/class-lddfw-admin.php:809 includes/class-lddfw-orders.php:364
 msgid "Orders - Out for Delivery"
 msgstr "הזמנות - יצא למשלוח"
 
-#: admin/class-lddfw-admin.php:747 includes/class-lddfw-orders.php:493
+#: admin/class-lddfw-admin.php:810 includes/class-lddfw-orders.php:505
 msgid "Orders - Failed Delivery"
 msgstr "הזמנות - משלוח נכשל"
 
-#: admin/class-lddfw-admin.php:748 includes/class-lddfw-orders.php:864
+#: admin/class-lddfw-admin.php:811 includes/class-lddfw-orders.php:908
 msgid "Orders - Delivered"
 msgstr "הזמנות - סופק"
 
-#: admin/class-lddfw-admin.php:749 includes/class-lddfw-orders.php:747
+#: admin/class-lddfw-admin.php:812 includes/class-lddfw-orders.php:781
 msgid "Orders - Claim Orders"
 msgstr "הזמנות - שיוך הזמנות"
 
-#: admin/class-lddfw-admin.php:750 includes/class-lddfw-order.php:242
+#: admin/class-lddfw-admin.php:813 includes/class-lddfw-order.php:228
 msgid "Order - Info"
 msgstr "הזמנה - מידע"
 
-#: admin/class-lddfw-admin.php:751 includes/class-lddfw-order.php:278
+#: admin/class-lddfw-admin.php:814 includes/class-lddfw-order.php:263
 msgid "Order - Shipping Address"
 msgstr "הזמנה - כתובת למשלוח"
 
-#: admin/class-lddfw-admin.php:752 includes/class-lddfw-order.php:329
+#: admin/class-lddfw-admin.php:815 includes/class-lddfw-order.php:340
 msgid "Order - Customer"
 msgstr "הזמנה - לקוח"
 
-#: admin/class-lddfw-admin.php:753 includes/class-lddfw-order.php:380
+#: admin/class-lddfw-admin.php:816 includes/class-lddfw-order.php:391
 msgid "Order - Billing Address"
 msgstr "הזמנה - פרטי המזמין"
 
-#: admin/class-lddfw-admin.php:769 admin/class-lddfw-admin.php:811
+#: admin/class-lddfw-admin.php:832 admin/class-lddfw-admin.php:874
 msgid "Driver Assigned"
 msgstr "שליח שויך"
 
-#: admin/class-lddfw-admin.php:770 admin/class-lddfw-admin.php:787
+#: admin/class-lddfw-admin.php:833 admin/class-lddfw-admin.php:850
 msgid "Out for Delivery"
 msgstr "יצא למשלוח"
 
-#: admin/class-lddfw-admin.php:793
+#: admin/class-lddfw-admin.php:856
 #, php-format
 msgid "Out for Delivery <span class=\"count\">(%s)</span>"
 msgid_plural "Out for Delivery <span class=\"count\">(%s)</span>"
@@ -283,7 +288,7 @@ msgstr[1] "יצא למשלוח <span class=\"count\">(%s)</span>"
 msgstr[2] "יצא למשלוח <span class=\"count\">(%s)</span>"
 msgstr[3] "יצא למשלוח <span class=\"count\">(%s)</span>"
 
-#: admin/class-lddfw-admin.php:805
+#: admin/class-lddfw-admin.php:868
 #, php-format
 msgid "Failed Delivery Attempt <span class=\"count\">(%s)</span>"
 msgid_plural "Failed Delivery Attempt <span class=\"count\">(%s)</span>"
@@ -292,7 +297,7 @@ msgstr[1] "משלוח נכשל <span class=\"count\">(%s)</span>"
 msgstr[2] "משלוח נכשל <span class=\"count\">(%s)</span>"
 msgstr[3] "משלוח נכשל <span class=\"count\">(%s)</span>"
 
-#: admin/class-lddfw-admin.php:817
+#: admin/class-lddfw-admin.php:880
 #, php-format
 msgid "Driver Assigned <span class=\"count\">(%s)</span>"
 msgid_plural "Driver Assigned <span class=\"count\">(%s)</span>"
@@ -301,410 +306,480 @@ msgstr[1] "שליח שוייך <span class=\"count\">(%s)</span>"
 msgstr[2] "שליח שוייך <span class=\"count\">(%s)</span>"
 msgstr[3] "שליח שוייך <span class=\"count\">(%s)</span>"
 
-#: admin/class-lddfw-admin.php:917
+#: admin/class-lddfw-admin.php:982
 msgid "Delivery drivers page"
 msgstr "דף שליחים"
 
-#: admin/class-lddfw-admin.php:925
+#: admin/class-lddfw-admin.php:990
 msgid "Google API key"
 msgstr "Google API key"
 
-#: admin/class-lddfw-admin.php:933
+#: admin/class-lddfw-admin.php:998
 msgid "Dispatch phone number"
 msgstr "טלפון החנות"
 
-#: admin/class-lddfw-admin.php:941
+#: admin/class-lddfw-admin.php:1006
 msgid "Delivery statuses"
 msgstr "סטטוס משלוחים"
 
-#: admin/class-lddfw-admin.php:948
+#: admin/class-lddfw-admin.php:1013
 msgid "Driver assigned status"
 msgstr "סטטוס שויך לשליח"
 
-#: admin/class-lddfw-admin.php:956
+#: admin/class-lddfw-admin.php:1021
 msgid "Out for delivery status"
 msgstr "סטטוס יצא למשלוח"
 
-#: admin/class-lddfw-admin.php:964
+#: admin/class-lddfw-admin.php:1029
 msgid "Delivered status"
 msgstr "סטטוס סופק"
 
-#: admin/class-lddfw-admin.php:972
+#: admin/class-lddfw-admin.php:1037
 msgid "Failed delivery attempt status"
 msgstr "סטטוס משלוח נכשל"
 
-#: admin/class-lddfw-admin.php:980
+#: admin/class-lddfw-admin.php:1045
 msgid "Order processing status"
 msgstr "סטטוס הזמנה בתהליך"
 
-#: admin/class-lddfw-admin.php:992
+#: admin/class-lddfw-admin.php:1057
 msgid "Ready notes for the drivers"
 msgstr "הודעות מוכנות לשליחים"
 
-#: admin/class-lddfw-admin.php:1007
+#: admin/class-lddfw-admin.php:1072
 msgid "Successful delivery"
 msgstr "נשלח בהצלחה"
 
-#: admin/class-lddfw-admin.php:1015
+#: admin/class-lddfw-admin.php:1080
 msgid "Drivers can claim orders"
 msgstr "שליחים יכולים לשייך הזמנות"
 
-#: admin/class-lddfw-admin.php:1023
+#: admin/class-lddfw-admin.php:1088
 msgid "Auto-assign delivery drivers"
 msgstr "שיוך אוטומטי לשליחים"
 
-#: admin/class-lddfw-admin.php:1031
+#: admin/class-lddfw-admin.php:1096
+msgid "Auto-assign method"
+msgstr "שיטת חלוקת הזמנות אוטומטית לשליחים"
+
+#: admin/class-lddfw-admin.php:1104
+msgid "New drivers application form"
+msgstr "טופס בקשה לנהגים חדשים"
+
+#: admin/class-lddfw-admin.php:1112 includes/class-lddfw-driver.php:368
 msgid "Navigation APP"
 msgstr "אפליקציית ניווט"
 
-#: admin/class-lddfw-admin.php:1039
+#: admin/class-lddfw-admin.php:1120
 msgid "Driver Commissions"
 msgstr "עמלות שליחים"
 
-#: admin/class-lddfw-admin.php:1050 admin/class-lddfw-admin.php:1759
+#: admin/class-lddfw-admin.php:1131 admin/class-lddfw-admin.php:1956
 msgid "SMS Settings"
 msgstr "הגדרות SMS"
 
-#: admin/class-lddfw-admin.php:1057
+#: admin/class-lddfw-admin.php:1138
 msgid "SMS provider"
 msgstr "ספק SMS"
 
-#: admin/class-lddfw-admin.php:1065
+#: admin/class-lddfw-admin.php:1146
 msgid "API SID"
 msgstr "API SID"
 
-#: admin/class-lddfw-admin.php:1073
+#: admin/class-lddfw-admin.php:1154
 msgid "API AUTH TOKEN"
 msgstr "API AUTH TOKEN"
 
-#: admin/class-lddfw-admin.php:1081
+#: admin/class-lddfw-admin.php:1162
 msgid "SMS phone number"
 msgstr "SMS מספר טלפון"
 
-#: admin/class-lddfw-admin.php:1089
-msgid "SMS to driver"
-msgstr "SMS לשליח"
+#: admin/class-lddfw-admin.php:1170
+msgid "SMS to the driver"
+msgstr "SMS לנהג"
 
-#: admin/class-lddfw-admin.php:1097
-msgid "SMS to customer"
+#: admin/class-lddfw-admin.php:1178
+msgid "SMS to the customer"
 msgstr "SMS ללקוח"
 
-#: admin/class-lddfw-admin.php:1108
+#: admin/class-lddfw-admin.php:1189
 msgid "Drivers initial screen"
 msgstr "מסך פתיחה לשליחים"
 
-#: admin/class-lddfw-admin.php:1115
+#: admin/class-lddfw-admin.php:1196
 msgid "Logo"
 msgstr "לוגו"
 
-#: admin/class-lddfw-admin.php:1122
+#: admin/class-lddfw-admin.php:1203
 msgid "Title"
 msgstr "כותרת"
 
-#: admin/class-lddfw-admin.php:1130
+#: admin/class-lddfw-admin.php:1211
 msgid "Subtitle"
 msgstr "כותרת משנית"
 
-#: admin/class-lddfw-admin.php:1138
+#: admin/class-lddfw-admin.php:1219
 msgid "Page background"
 msgstr "רקע הדף"
 
-#: admin/class-lddfw-admin.php:1146
+#: admin/class-lddfw-admin.php:1227
 msgid "Text color"
 msgstr "צבע הכתב"
 
-#: admin/class-lddfw-admin.php:1153
+#: admin/class-lddfw-admin.php:1234
 msgid "Button text color"
 msgstr "צפה כתב הכפתור"
 
-#: admin/class-lddfw-admin.php:1160
+#: admin/class-lddfw-admin.php:1241
 msgid "Button background"
 msgstr "צפה רקע הכפתור"
 
-#: admin/class-lddfw-admin.php:1181
+#: admin/class-lddfw-admin.php:1262
 msgid "Premium features:"
 msgstr "תכונות פרמיום:"
 
-#: admin/class-lddfw-admin.php:1182
+#: admin/class-lddfw-admin.php:1263
 msgid "Delivery Route Planning."
 msgstr "תכנון מסלול."
 
-#: admin/class-lddfw-admin.php:1183
+#: admin/class-lddfw-admin.php:1264
 msgid "Navigation with Waze, Apple Maps, and Google Maps."
 msgstr "ניווט באמצעות Waze, מפות אפל ומפות גוגל."
 
-#: admin/class-lddfw-admin.php:1184
+#: admin/class-lddfw-admin.php:1265
 msgid "Next Delivery - Drivers Easily Navigate to the Next Destination."
 msgstr "המשלוח הבא - שליחים מנווטים בקלות ליעד הבא."
 
-#: admin/class-lddfw-admin.php:1185
+#: admin/class-lddfw-admin.php:1266
 msgid "Ready Notes for The Drivers."
 msgstr "הערות מוכנות לשליחים."
 
-#: admin/class-lddfw-admin.php:1186
+#: admin/class-lddfw-admin.php:1267
 msgid "Drivers can Claim Orders."
 msgstr "שליחים יכולים לשייך הזמנות."
 
-#: admin/class-lddfw-admin.php:1187
+#: admin/class-lddfw-admin.php:1268
 msgid "Fully Admin Driver Dashboard."
 msgstr "מימשק מנהל מלא."
 
-#: admin/class-lddfw-admin.php:1188
+#: admin/class-lddfw-admin.php:1269
 msgid "Admin Orders Filters."
 msgstr "סינוני הזמנות."
 
-#: admin/class-lddfw-admin.php:1189
+#: admin/class-lddfw-admin.php:1270
 msgid ""
 "One-click to Update Drivers Availability, Claim Permission, and Accounts."
 msgstr "עדכון זמינות שליחים בלחיצה אחת, הרשאות שיוך הזמנות וחשבונות שליחים."
 
-#: admin/class-lddfw-admin.php:1190
+#: admin/class-lddfw-admin.php:1271
 msgid "Users Names in Orders Notes."
 msgstr "שמות שליחים בהערות הזמנה."
 
-#: admin/class-lddfw-admin.php:1191
+#: admin/class-lddfw-admin.php:1272
 msgid "Auto-assign Delivery Drivers."
 msgstr "שיוך הזמנות אוטומטי לשליחים."
 
-#: admin/class-lddfw-admin.php:1192
+#: admin/class-lddfw-admin.php:1273
 msgid "SMS Notifications for Customers and Drivers."
 msgstr "שליחת SMS לשליחים וללקוחות."
 
-#: admin/class-lddfw-admin.php:1193
+#: admin/class-lddfw-admin.php:1274
 msgid "Emails Notifications for Customers and Drivers."
 msgstr "שליחת מיילים לשליחים ולקוחות."
 
-#: admin/class-lddfw-admin.php:1194
+#: admin/class-lddfw-admin.php:1275
 msgid "Bulk-assign Delivery Drivers."
 msgstr "שיוך הזמנות מהיר לשליחים."
 
-#: admin/class-lddfw-admin.php:1195
+#: admin/class-lddfw-admin.php:1276
 msgid "Delivery Drivers Application."
 msgstr "טופס בקשה לעבוד כשליח."
 
-#: admin/class-lddfw-admin.php:1196
+#: admin/class-lddfw-admin.php:1277
 msgid "Drivers Commissions."
 msgstr "עמלות שליחים."
 
-#: admin/class-lddfw-admin.php:1197
+#: admin/class-lddfw-admin.php:1278
 msgid "Drivers Panel Branding - Add Your Logo and Colors."
 msgstr "מיתוג - הוסף את הלוגו והצבעים שלך."
 
-#: admin/class-lddfw-admin.php:1198
+#: admin/class-lddfw-admin.php:1279
 msgid ""
 "Custom Fields - Add Custom Fields to the Delivery Panel from Third-party "
 "Plugins."
 msgstr "שדות מיוחדים מתוספים של צד ג'."
 
-#: admin/class-lddfw-admin.php:1199
+#: admin/class-lddfw-admin.php:1280
 msgid "Proof of Delivery - Customer Signature and Delivery Photo."
 msgstr "הוכחת משלוח - תמונה וחתימה."
 
-#: admin/class-lddfw-admin.php:1200
+#: admin/class-lddfw-admin.php:1281
 msgid "Driver details - Photo, Vehicle Type, Licence Plate."
 msgstr "פרטי שליח - תמונה, סוג רכב, לוחית רישוי."
 
-#: admin/class-lddfw-admin.php:1201
-msgid "Customer get Driver Details and Phone Number."
-msgstr "לקוח יכול לצפות בפרטי השליח ולחייג אליו."
+#: admin/class-lddfw-admin.php:1282
+msgid "Customer gets Driver Details and Phone Number."
+msgstr "הלקוח מקבל את פרטי השליח ומספר טלפון."
 
-#: admin/class-lddfw-admin.php:1213 includes/class-lddfw-screens.php:148
+#: admin/class-lddfw-admin.php:1283
+msgid "Admin drivers routes map."
+msgstr "מפת מסלולי הנהגים של מנהלי המערכת."
+
+#: admin/class-lddfw-admin.php:1295 includes/class-lddfw-screens.php:153
 msgid "WELCOME"
 msgstr "ברוך הבא"
 
-#: admin/class-lddfw-admin.php:1224 includes/class-lddfw-screens.php:149
+#: admin/class-lddfw-admin.php:1306 includes/class-lddfw-screens.php:154
 msgid "To delivery drivers manager"
 msgstr "למנהל המשלוחים"
 
-#: admin/class-lddfw-admin.php:1246 admin/class-lddfw-admin.php:2093
+#: admin/class-lddfw-admin.php:1328 admin/class-lddfw-admin.php:2342
 msgid "Select a image"
 msgstr "בחר תמונה"
 
-#: admin/class-lddfw-admin.php:1247 admin/class-lddfw-admin.php:2094
+#: admin/class-lddfw-admin.php:1329 admin/class-lddfw-admin.php:2343
 msgid "Delete image"
 msgstr "מחק תמונה"
 
-#: admin/class-lddfw-admin.php:1313
+#: admin/class-lddfw-admin.php:1395
 msgid "Delivery Driver First Name"
 msgstr "שם פרטי של השליח"
 
-#: admin/class-lddfw-admin.php:1314
+#: admin/class-lddfw-admin.php:1396
 msgid "Delivery Driver Last Name"
 msgstr "שם משפחה של השליח"
 
-#: admin/class-lddfw-admin.php:1315
+#: admin/class-lddfw-admin.php:1397
 msgid "Delivery Driver Page"
 msgstr "עמוד השליחים"
 
-#: admin/class-lddfw-admin.php:1316
+#: admin/class-lddfw-admin.php:1398
 msgid "Store Name"
 msgstr "שם החנות"
 
-#: admin/class-lddfw-admin.php:1318
+#: admin/class-lddfw-admin.php:1400
 msgid "Order Id"
 msgstr "מספר השמנה"
 
-#: admin/class-lddfw-admin.php:1319
+#: admin/class-lddfw-admin.php:1401
 msgid "Order Create Date"
 msgstr "תאריך יצירת הזמנה"
 
-#: admin/class-lddfw-admin.php:1320
+#: admin/class-lddfw-admin.php:1402
 msgid "Order Status"
 msgstr "סטטוס הזמנה"
 
-#: admin/class-lddfw-admin.php:1321
+#: admin/class-lddfw-admin.php:1403
 msgid "Order Amount"
 msgstr "סכום הזמנה"
 
-#: admin/class-lddfw-admin.php:1322
+#: admin/class-lddfw-admin.php:1404
 msgid "Order Currency"
 msgstr "מטבע"
 
-#: admin/class-lddfw-admin.php:1323
+#: admin/class-lddfw-admin.php:1405
 msgid "Shipping Method"
 msgstr "סוג המשלוח"
 
-#: admin/class-lddfw-admin.php:1324
+#: admin/class-lddfw-admin.php:1406
 msgid "Payment Method"
 msgstr "סוג התשלום"
 
-#: admin/class-lddfw-admin.php:1326
+#: admin/class-lddfw-admin.php:1408
 msgid "Billing First Name"
 msgstr "שם פרטי"
 
-#: admin/class-lddfw-admin.php:1327
+#: admin/class-lddfw-admin.php:1409
 msgid "Billing Last Name"
 msgstr "שם משפחה"
 
-#: admin/class-lddfw-admin.php:1328
+#: admin/class-lddfw-admin.php:1410
 msgid "Billing Company"
 msgstr "שם חברה"
 
-#: admin/class-lddfw-admin.php:1329
+#: admin/class-lddfw-admin.php:1411
 msgid "Billing Address 1"
 msgstr "כתובת 1"
 
-#: admin/class-lddfw-admin.php:1330
+#: admin/class-lddfw-admin.php:1412
 msgid "Billing Address 2"
 msgstr "כתובת 2"
 
-#: admin/class-lddfw-admin.php:1331
+#: admin/class-lddfw-admin.php:1413
 msgid "Billing City"
 msgstr "עיר"
 
-#: admin/class-lddfw-admin.php:1332
+#: admin/class-lddfw-admin.php:1414
 msgid "Billing State"
 msgstr "מדינה"
 
-#: admin/class-lddfw-admin.php:1333
+#: admin/class-lddfw-admin.php:1415
 msgid "Billing Postcode"
 msgstr "מיקוד"
 
-#: admin/class-lddfw-admin.php:1334
+#: admin/class-lddfw-admin.php:1416
 msgid "Billing Country"
 msgstr "ארץ"
 
-#: admin/class-lddfw-admin.php:1335
+#: admin/class-lddfw-admin.php:1417
 msgid "Billing Phone"
 msgstr "טלפון המזמין"
 
-#: admin/class-lddfw-admin.php:1337
+#: admin/class-lddfw-admin.php:1419
 msgid "Shipping First Name"
 msgstr "שם פרטי"
 
-#: admin/class-lddfw-admin.php:1338
+#: admin/class-lddfw-admin.php:1420
 msgid "Shipping Last Name"
 msgstr "שם משפחה"
 
-#: admin/class-lddfw-admin.php:1339
+#: admin/class-lddfw-admin.php:1421
 msgid "Shipping Company"
 msgstr "חברה"
 
-#: admin/class-lddfw-admin.php:1340
+#: admin/class-lddfw-admin.php:1422
 msgid "Shipping Address 1"
 msgstr "כתובת 1"
 
-#: admin/class-lddfw-admin.php:1341
+#: admin/class-lddfw-admin.php:1423
 msgid "Shipping Address 2"
 msgstr "כתובת 2"
 
-#: admin/class-lddfw-admin.php:1342
+#: admin/class-lddfw-admin.php:1424
 msgid "Shipping City"
 msgstr "עיר"
 
-#: admin/class-lddfw-admin.php:1343
+#: admin/class-lddfw-admin.php:1425
 msgid "Shipping State"
 msgstr "מדינה"
 
-#: admin/class-lddfw-admin.php:1344
+#: admin/class-lddfw-admin.php:1426
 msgid "Shipping Postcode"
 msgstr "מיקוד"
 
-#: admin/class-lddfw-admin.php:1345
+#: admin/class-lddfw-admin.php:1427
 msgid "Shipping Country"
 msgstr "ארץ"
 
-#: admin/class-lddfw-admin.php:1361
+#: admin/class-lddfw-admin.php:1444
 msgid "SMS to customer when order is out for delivery."
 msgstr "הודעת SMS ללקוח כאשר ההזמנה יוצאת למשלוח."
 
-#: admin/class-lddfw-admin.php:1364 admin/class-lddfw-admin.php:1487
+#: admin/class-lddfw-admin.php:1447 admin/class-lddfw-admin.php:1473
+#: admin/class-lddfw-admin.php:1504 admin/class-lddfw-admin.php:1684
 msgid "SMS template"
 msgstr "תבנית SMS"
 
-#: admin/class-lddfw-admin.php:1365 admin/class-lddfw-admin.php:1488
+#: admin/class-lddfw-admin.php:1448 admin/class-lddfw-admin.php:1474
+#: admin/class-lddfw-admin.php:1505 admin/class-lddfw-admin.php:1685
 msgid "Default template"
 msgstr "תבנית ברירת מחדל"
 
-#: admin/class-lddfw-admin.php:1390
+#: admin/class-lddfw-admin.php:1470
+msgid "SMS to customer when the driver started the delivery."
+msgstr "הודעת SMS ללקוח כשהנהג מתחיל במסירה."
+
+#: admin/class-lddfw-admin.php:1480
+msgid "ETA"
+msgstr "זמן הגעה משוער"
+
+#: admin/class-lddfw-admin.php:1501
+msgid "SMS to customer when delivery has been started."
+msgstr "SMS ללקוח עם תחילת המסירה."
+
+#: admin/class-lddfw-admin.php:1530
 msgid "Enable drivers to claim orders"
 msgstr "אפשר לשליחים לשייך הזמנות"
 
-#: admin/class-lddfw-admin.php:1392
+#: admin/class-lddfw-admin.php:1532
 msgid "Claim orders option available for processing status orders."
 msgstr "אפשרות לשייך הזמנות זמינה לסטטוס הזמנה בתהליך."
 
-#: admin/class-lddfw-admin.php:1420
+#: admin/class-lddfw-admin.php:1560
+msgid "None"
+msgstr "אף אחד"
+
+#: admin/class-lddfw-admin.php:1561
+msgid "Every 1 Minute"
+msgstr "כל דקה"
+
+#: admin/class-lddfw-admin.php:1562
+msgid "Every 2 Minutes"
+msgstr "כל 2 דקות"
+
+#: admin/class-lddfw-admin.php:1563
+msgid "Every 3 Minutes"
+msgstr "כל 3 דקות"
+
+#: admin/class-lddfw-admin.php:1564
+msgid "Every 4 Minutes"
+msgstr "כל 4 דקות"
+
+#: admin/class-lddfw-admin.php:1565
+msgid "Every 5 Minutes"
+msgstr "כל 5 דקות"
+
+#: admin/class-lddfw-admin.php:1567
+msgid "Set the tracking timing for getting the driver position."
+msgstr "הגדר את תזמון המעקב לקבלת מיקום הנהג."
+
+#: admin/class-lddfw-admin.php:1583
 msgid "Select"
 msgstr "בחר"
 
-#: admin/class-lddfw-admin.php:1421
+#: admin/class-lddfw-admin.php:1584
 msgid "Fixed Price"
 msgstr "מחיר"
 
-#: admin/class-lddfw-admin.php:1422
+#: admin/class-lddfw-admin.php:1585
 msgid "Delivery total percentage"
 msgstr "אחוז ממחיר המשלוח"
 
-#: admin/class-lddfw-admin.php:1423
+#: admin/class-lddfw-admin.php:1586
 msgid "Order total percentage"
 msgstr "אחוז מסכום הזמנה"
 
-#: admin/class-lddfw-admin.php:1447
+#: admin/class-lddfw-admin.php:1610 includes/class-lddfw-driver.php:371
 msgid "Waze"
 msgstr "Waze"
 
-#: admin/class-lddfw-admin.php:1448
+#: admin/class-lddfw-admin.php:1611 includes/class-lddfw-driver.php:372
 msgid "Apple Maps"
 msgstr "Apple Maps"
 
-#: admin/class-lddfw-admin.php:1449
+#: admin/class-lddfw-admin.php:1612 includes/class-lddfw-driver.php:373
 msgid "Google Maps"
 msgstr "Google Maps"
 
-#: admin/class-lddfw-admin.php:1466
+#: admin/class-lddfw-admin.php:1629
+msgid "Enable new drivers application form."
+msgstr "אפשר טופס בקשה לנהגים חדשים."
+
+#: admin/class-lddfw-admin.php:1645
+msgid "Equally according to the number of orders each driver has."
+msgstr "בצורה שווה לפי מספר ההזמנות שיש לכל שליח."
+
+#: admin/class-lddfw-admin.php:1646
+msgid ""
+"Unevenly in the following order: zip code, city, state, country, and the "
+"number of orders each driver has."
+msgstr ""
+"באופן לא אחיד לפי הסדר הבא: מיקוד, עיר, מדינה, ארץ ומספר ההזמנות שיש לכל "
+"שליח."
+
+#: admin/class-lddfw-admin.php:1663
 msgid "Enable auto-assigns delivery drivers."
 msgstr "אפשר שיוך הזמנות אוטומטי לשליחים."
 
-#: admin/class-lddfw-admin.php:1468
+#: admin/class-lddfw-admin.php:1665
 msgid "Auto-assign drivers action  happen on processing status orders."
 msgstr "פעולת שיוך הזמנות אוטומטית לשליחים מתרחשת בסטטוס הזמנה בתהליך."
 
-#: admin/class-lddfw-admin.php:1484
+#: admin/class-lddfw-admin.php:1681
 msgid "SMS to the delivery driver when a new order is assigned."
 msgstr "SMS לשליח כאשר משויכת הזמנה חדשה."
 
-#: admin/class-lddfw-admin.php:1509
+#: admin/class-lddfw-admin.php:1706
 msgid ""
 "Phone number to send SMS should be in the following format (+)(country code)"
 "(area code)(phone number) e.g +15024658206"
@@ -712,17 +787,17 @@ msgstr ""
 "מספר הטלפון לשליחת SMS צריך להיות בפורמט הבא (+) (קוד מדינה) (קידומת) (מספר "
 "טלפון) למשל +15024658206"
 
-#: admin/class-lddfw-admin.php:1543
+#: admin/class-lddfw-admin.php:1740
 msgid ""
 "These are the driver ready notes for the delivery, to delete an option "
 "please leave blank."
 msgstr "אלה ההערות המוכנות לשליח, למחיקת אפשרות אנא השאר ריק."
 
-#: admin/class-lddfw-admin.php:1582
+#: admin/class-lddfw-admin.php:1779
 msgid "Drivers can call this number if they have questions about orders."
 msgstr "שליחים יכולים להתקשר למספר זה אם יש להם שאלות לגבי הזמנות."
 
-#: admin/class-lddfw-admin.php:1594
+#: admin/class-lddfw-admin.php:1791
 msgid ""
 "In order to use the Google Maps JavaScript API, you must have an API with "
 "the following authorizations ( Maps Embed API, Directions API, Distance "
@@ -732,169 +807,216 @@ msgstr ""
 "API עם ההרשאות הבאות (Maps Embed API, API API, Distance Matrix API, API של "
 "JavaScript JavaScript)"
 
-#: admin/class-lddfw-admin.php:1621
+#: admin/class-lddfw-admin.php:1818
 msgid "The orders are ready for delivery and drivers are able to claim."
 msgstr "ההזמנות מוכנות למסירה ושליחים יכולים לשייך."
 
-#: admin/class-lddfw-admin.php:1648
+#: admin/class-lddfw-admin.php:1845
 msgid "The delivery driver attempted to deliver but failed."
 msgstr "השליח ניסה למסור אך נכשל."
 
-#: admin/class-lddfw-admin.php:1675
+#: admin/class-lddfw-admin.php:1872
 msgid "The shipment was delivered successfully."
 msgstr "המשלוח סופק בהצלחה."
 
-#: admin/class-lddfw-admin.php:1701
+#: admin/class-lddfw-admin.php:1898
 msgid "The delivery driver was assigned to order."
 msgstr "השליח שויך להזמנה."
 
-#: admin/class-lddfw-admin.php:1727
+#: admin/class-lddfw-admin.php:1924
 msgid "The delivery driver is about to deliver the shipment."
 msgstr "השליח עומד למסור את המשלוח."
 
-#: admin/class-lddfw-admin.php:1737
+#: admin/class-lddfw-admin.php:1934
 msgid "This Section Description"
 msgstr "תיאור אזור"
 
-#: admin/class-lddfw-admin.php:1754
+#: admin/class-lddfw-admin.php:1951
 msgid "General Settings"
 msgstr "הגדרות כלליות"
 
-#: admin/class-lddfw-admin.php:1762
+#: admin/class-lddfw-admin.php:1959
 msgid "Drivers Settings"
 msgstr "הגדרות שליחים"
 
-#: admin/class-lddfw-admin.php:1765 admin/class-lddfw-admin.php:1781
+#: admin/class-lddfw-admin.php:1962 admin/class-lddfw-admin.php:1978
 msgid "Branding"
 msgstr "מיתוג"
 
-#: admin/class-lddfw-admin.php:1778
+#: admin/class-lddfw-admin.php:1975
 msgid "General settings"
 msgstr "הגדרות כלליות"
 
-#: admin/class-lddfw-admin.php:1779
+#: admin/class-lddfw-admin.php:1976
 msgid "Drivers settings"
 msgstr "הגדרות שליחים"
 
-#: admin/class-lddfw-admin.php:1780
+#: admin/class-lddfw-admin.php:1977
 msgid "SMS settings"
 msgstr "הגדרות SMS"
 
-#: admin/class-lddfw-admin.php:1830
+#: admin/class-lddfw-admin.php:2027
 msgid "Delivery Drivers Settings"
 msgstr "הגדרות שליח"
 
-#: admin/class-lddfw-admin.php:1830
+#: admin/class-lddfw-admin.php:2027
 msgid "Delivery Drivers"
 msgstr "שליחים"
 
-#: admin/class-lddfw-admin.php:1831 includes/class-lddfw-reports.php:415
-#: includes/class-lddfw-screens.php:95 includes/class-lddfw-screens.php:277
+#: admin/class-lddfw-admin.php:2028 includes/class-lddfw-reports.php:415
+#: includes/class-lddfw-screens.php:95 includes/class-lddfw-screens.php:282
 msgid "Dashboard"
 msgstr "ראשי"
 
-#: admin/class-lddfw-admin.php:1832 includes/class-lddfw-reports.php:433
+#: admin/class-lddfw-admin.php:2029
+msgid "Routes"
+msgstr "מסלולים"
+
+#: admin/class-lddfw-admin.php:2030 includes/class-lddfw-reports.php:433
 msgid "Reports"
 msgstr "דוחות"
 
-#: admin/class-lddfw-admin.php:1833
+#: admin/class-lddfw-admin.php:2031 includes/class-lddfw-screens.php:119
+#: includes/class-lddfw-screens.php:120 includes/class-lddfw-screens.php:750
 msgid "Settings"
 msgstr "הגדרות"
 
-#: admin/class-lddfw-admin.php:1848
+#: admin/class-lddfw-admin.php:2046
 msgid "Developed by"
 msgstr "פותח ע\"י"
 
-#: admin/class-lddfw-admin.php:1848
+#: admin/class-lddfw-admin.php:2046
 msgid "Premium"
 msgstr "פרימיום"
 
-#: admin/class-lddfw-admin.php:1848
+#: admin/class-lddfw-admin.php:2046
 msgid "Documents"
 msgstr "מסמכים"
 
-#: admin/class-lddfw-admin.php:1965 includes/class-lddfw-order.php:398
-#: includes/class-lddfw-order.php:410 includes/class-lddfw-reports.php:183
-#: includes/class-lddfw-reports.php:387 includes/class-lddfw-reports.php:398
-#: includes/class-lddfw-reports.php:542 includes/lddfw-metaboxes.php:47
+#: admin/class-lddfw-admin.php:2079
+msgid "View drivers' routes on a map."
+msgstr "הצג את מסלולי הנהג במפה."
+
+#: admin/class-lddfw-admin.php:2080
+msgid "View routes' duration and distance."
+msgstr "צפו במשך ובמרחק של המסלולים."
+
+#: admin/class-lddfw-admin.php:2189 includes/class-lddfw-order.php:445
+#: includes/class-lddfw-reports.php:183 includes/class-lddfw-reports.php:387
+#: includes/class-lddfw-reports.php:398 includes/class-lddfw-reports.php:542
+#: includes/lddfw-metaboxes.php:47
 msgid "Driver"
 msgstr "שליח"
 
-#: admin/class-lddfw-admin.php:2031
+#: admin/class-lddfw-admin.php:2257
 msgid "Delivery Driver Info"
 msgstr "מידע אודות השליח"
 
-#: admin/class-lddfw-admin.php:2034
+#: admin/class-lddfw-admin.php:2260
 msgid "Driver account status"
 msgstr "סטטוס חשבון שליח"
 
-#: admin/class-lddfw-admin.php:2037
+#: admin/class-lddfw-admin.php:2263
 msgid "Not active"
 msgstr "לא פעיל"
 
-#: admin/class-lddfw-admin.php:2039
+#: admin/class-lddfw-admin.php:2265
 msgid "Active"
 msgstr "פעיל"
 
-#: admin/class-lddfw-admin.php:2041
+#: admin/class-lddfw-admin.php:2267
 msgid "Only drivers with active accounts can access the drivers' panel."
 msgstr "רק שליחים עם חשבונות פעילים יכולים לגשת לממשק שליחים."
 
-#: admin/class-lddfw-admin.php:2045
+#: admin/class-lddfw-admin.php:2271
 msgid "Driver availability"
 msgstr "זמינות השליח"
 
-#: admin/class-lddfw-admin.php:2048 includes/class-lddfw-screens.php:289
-#: includes/class-lddfw-screens.php:297
+#: admin/class-lddfw-admin.php:2274 includes/class-lddfw-driver.php:300
+#: includes/class-lddfw-driver.php:309 includes/class-lddfw-screens.php:294
+#: includes/class-lddfw-screens.php:303
 msgid "Unavailable"
 msgstr "לא פנוי"
 
-#: admin/class-lddfw-admin.php:2050 includes/class-lddfw-screens.php:289
-#: includes/class-lddfw-screens.php:297
+#: admin/class-lddfw-admin.php:2276 includes/class-lddfw-driver.php:300
+#: includes/class-lddfw-driver.php:309 includes/class-lddfw-screens.php:294
+#: includes/class-lddfw-screens.php:303
 msgid "Available"
 msgstr "פנוי"
 
-#: admin/class-lddfw-admin.php:2052
+#: admin/class-lddfw-admin.php:2278
 msgid "The delivery driver availability for work today."
 msgstr "זמינות שליח לעבודה היום."
 
-#: admin/class-lddfw-admin.php:2056
+#: admin/class-lddfw-admin.php:2282 includes/class-lddfw-driver.php:348
+msgid "Transportation Mode"
+msgstr "מצב תחבורה"
+
+#: admin/class-lddfw-admin.php:2292 includes/class-lddfw-driver.php:351
+msgid "Driving"
+msgstr "נהיגה"
+
+#: admin/class-lddfw-admin.php:2293 includes/class-lddfw-driver.php:352
+msgid "Walking"
+msgstr "הליכה"
+
+#: admin/class-lddfw-admin.php:2294 includes/class-lddfw-driver.php:353
+msgid "Bicycling"
+msgstr "רכיבה על אופניים"
+
+#: admin/class-lddfw-admin.php:2295 includes/class-lddfw-driver.php:354
+msgid "Transit"
+msgstr "תחבורה ציבורית"
+
+#: admin/class-lddfw-admin.php:2297 includes/class-lddfw-driver.php:356
+msgid ""
+"When you calculate directions, you may specify the transportation mode to "
+"use."
+msgstr "כאשר אתה מתכנן מסלולים, אתה יכול לציין את מצב התחבורה הרצוי."
+
+#: admin/class-lddfw-admin.php:2305
 msgid "Driver can claim orders"
 msgstr "שליחים יכולים לשייך הזמנות"
 
-#: admin/class-lddfw-admin.php:2064
+#: admin/class-lddfw-admin.php:2313
 msgid "No"
 msgstr "לא"
 
-#: admin/class-lddfw-admin.php:2065
+#: admin/class-lddfw-admin.php:2314
 msgid "Yes"
 msgstr "כן"
 
-#: admin/class-lddfw-admin.php:2067
+#: admin/class-lddfw-admin.php:2316
 msgid "Give the driver permission to claim orders."
 msgstr "תן לשליח אישור לשייך הזמנות."
 
-#: admin/class-lddfw-admin.php:2077
+#: admin/class-lddfw-admin.php:2326
 msgid "Driver Photo"
 msgstr "תמונת השליח"
 
-#: admin/class-lddfw-admin.php:2103
+#: admin/class-lddfw-admin.php:2352 includes/class-lddfw-driver.php:383
+#: includes/class-lddfw-driver.php:385
 msgid "Vehicle type"
 msgstr "סוג רכב"
 
-#: admin/class-lddfw-admin.php:2110
+#: admin/class-lddfw-admin.php:2359 includes/class-lddfw-driver.php:386
 msgid "Write the driver vehicle type / model."
 msgstr "הכנס סוג רכב, לוחית רישוי של השליח."
 
-#: admin/class-lddfw-admin.php:2119 admin/class-lddfw-admin.php:2126
+#: admin/class-lddfw-admin.php:2370 admin/class-lddfw-admin.php:2377
+#: includes/class-lddfw-driver.php:393 includes/class-lddfw-driver.php:395
 msgid "Licence Plate"
 msgstr "לוחית רכב"
 
-#: admin/class-lddfw-admin.php:2149
+#: admin/class-lddfw-admin.php:2400
 msgid "Assign a driver to orders"
 msgstr "שייך הזמנה לשליח"
 
-#: admin/class-lddfw-admin.php:2315 includes/class-lddfw-reports.php:580
+#: admin/class-lddfw-admin.php:2564
+msgid "Drivers app"
+msgstr "אפליקציית שליחים"
+
+#: admin/class-lddfw-admin.php:2567 includes/class-lddfw-reports.php:580
 #, php-format
 msgid ""
 "The link above is the delivery driver's Mobile-Friendly panel URL. %s The "
@@ -903,7 +1025,7 @@ msgstr ""
 "הקישור שלמעלה הוא כתובת ממשק השליחים. % s שליחים יכולים לגשת אליו מהטלפונים "
 "הניידים שלהם. % s"
 
-#: admin/class-lddfw-admin.php:2316 includes/class-lddfw-reports.php:581
+#: admin/class-lddfw-admin.php:2568 includes/class-lddfw-reports.php:581
 #, php-format
 msgid ""
 "Notice: If you want to be logged in as an administrator and to check the "
@@ -911,65 +1033,71 @@ msgid ""
 "browsers otherwise you will log out from the admin panel and the drivers' "
 "panel won't function correctly.%s"
 msgstr ""
-"שים לב: אם אתה רוצה להיות מחובר כמנהל ולבדוק את ממשק השליחים באותו המכשיר,% s"
-"% sאתה חייב לעבוד עם שני דפדפנים שונים אחרת אתה תתנתק ממשק הניהול וממשק "
+"שים לב: אם אתה רוצה להיות מחובר כמנהל ולבדוק את ממשק השליחים באותו המכשיר,% "
+"s% sאתה חייב לעבוד עם שני דפדפנים שונים אחרת אתה תתנתק ממשק הניהול וממשק "
 "השליחים לא יתפקד כראוי.%s"
 
-#: admin/class-lddfw-admin.php:2347
+#: admin/class-lddfw-admin.php:2599
 msgid "Filter By"
 msgstr "סינון ע\"י"
 
-#: admin/class-lddfw-admin.php:2350
+#: admin/class-lddfw-admin.php:2602
 msgid "With drivers"
 msgstr "עם שליחים"
 
-#: admin/class-lddfw-admin.php:2353
+#: admin/class-lddfw-admin.php:2605
 msgid "Without drivers"
 msgstr "ללא שליחים"
 
-#: admin/class-lddfw-admin.php:2355 includes/class-lddfw-reports.php:123
+#: admin/class-lddfw-admin.php:2607 includes/class-lddfw-reports.php:123
 #: includes/class-lddfw-reports.php:199 includes/class-lddfw-reports.php:328
 #: includes/class-lddfw-reports.php:398 includes/class-lddfw-reports.php:459
 #: includes/class-lddfw-reports.php:557
 msgid "Drivers"
 msgstr "שליחים"
 
-#: admin/class-lddfw-admin.php:2386 admin/class-lddfw-admin.php:2448
+#: admin/class-lddfw-admin.php:2638 admin/class-lddfw-admin.php:2700
 #: public/class-lddfw-public.php:112
 #: woocommerce/emails/admin-delivered-order.php:35
 #: woocommerce/emails/customer-failed-delivery-order.php:39
 #: woocommerce/emails/customer-out-for-delivery-order.php:39
+#: woocommerce/emails/customer-start-delivery-order.php:49
 #: woocommerce/emails/plain/admin-delivered-order.php:33
 #: woocommerce/emails/plain/customer-failed-delivery-order.php:33
 #: woocommerce/emails/plain/customer-out-for-delivery-order.php:33
+#: woocommerce/emails/plain/customer-start-delivery-order.php:42
 msgid "Driver details"
 msgstr "פרטי השליח"
 
-#: admin/class-lddfw-admin.php:2406 admin/class-lddfw-admin.php:2459
+#: admin/class-lddfw-admin.php:2658 admin/class-lddfw-admin.php:2711
 #: public/class-lddfw-public.php:139
 #: woocommerce/emails/admin-delivered-order.php:55
 #: woocommerce/emails/customer-failed-delivery-order.php:59
 #: woocommerce/emails/customer-out-for-delivery-order.php:59
+#: woocommerce/emails/customer-start-delivery-order.php:69
 #: woocommerce/emails/plain/admin-delivered-order.php:44
 #: woocommerce/emails/plain/customer-failed-delivery-order.php:44
 #: woocommerce/emails/plain/customer-out-for-delivery-order.php:44
+#: woocommerce/emails/plain/customer-start-delivery-order.php:53
 msgid "Call driver"
 msgstr "התקשר לשליח"
 
-#: admin/class-lddfw-admin.php:2413 admin/class-lddfw-admin.php:2466
+#: admin/class-lddfw-admin.php:2665 admin/class-lddfw-admin.php:2718
 #: public/class-lddfw-public.php:146
 #: woocommerce/emails/admin-delivered-order.php:62
 #: woocommerce/emails/customer-failed-delivery-order.php:66
 #: woocommerce/emails/customer-out-for-delivery-order.php:66
+#: woocommerce/emails/customer-start-delivery-order.php:76
 #: woocommerce/emails/plain/admin-delivered-order.php:51
 #: woocommerce/emails/plain/customer-failed-delivery-order.php:51
 #: woocommerce/emails/plain/customer-out-for-delivery-order.php:51
+#: woocommerce/emails/plain/customer-start-delivery-order.php:60
 msgid "Vehicle"
 msgstr "רכב"
 
-#: admin/class-lddfw-admin.php:2429 admin/class-lddfw-admin.php:2481
-#: includes/class-lddfw-order.php:431 includes/class-lddfw-order.php:588
-#: includes/class-lddfw-order.php:757 includes/lddfw-metaboxes.php:91
+#: admin/class-lddfw-admin.php:2681 admin/class-lddfw-admin.php:2733
+#: includes/class-lddfw-order.php:495 includes/class-lddfw-order.php:664
+#: includes/class-lddfw-order.php:833 includes/lddfw-metaboxes.php:91
 #: public/class-lddfw-public.php:167
 #: woocommerce/emails/admin-delivered-order.php:79
 #: woocommerce/emails/customer-failed-delivery-order.php:81
@@ -978,10 +1106,10 @@ msgstr "רכב"
 msgid "Signature"
 msgstr "חתימה"
 
-#: admin/class-lddfw-admin.php:2438 admin/class-lddfw-admin.php:2488
-#: includes/class-lddfw-order.php:442 includes/class-lddfw-order.php:535
-#: includes/class-lddfw-order.php:764 includes/lddfw-metaboxes.php:101
-#: public/class-lddfw-public.php:176
+#: admin/class-lddfw-admin.php:2690 admin/class-lddfw-admin.php:2740
+#: includes/class-lddfw-driver.php:410 includes/class-lddfw-order.php:506
+#: includes/class-lddfw-order.php:613 includes/class-lddfw-order.php:840
+#: includes/lddfw-metaboxes.php:101 public/class-lddfw-public.php:176
 #: woocommerce/emails/admin-delivered-order.php:88
 #: woocommerce/emails/customer-failed-delivery-order.php:90
 #: woocommerce/emails/plain/admin-delivered-order.php:73
@@ -989,35 +1117,35 @@ msgstr "חתימה"
 msgid "Photo"
 msgstr "תמונה"
 
-#: includes/class-lddfw-activator.php:92
+#: includes/class-lddfw-activator.php:83
 msgid "Refused by the recipient."
 msgstr "סורב ע\"י המקבל."
 
-#: includes/class-lddfw-activator.php:93
+#: includes/class-lddfw-activator.php:84
 msgid "Incorrect address."
 msgstr "כתובת לא נכונה."
 
-#: includes/class-lddfw-activator.php:94
+#: includes/class-lddfw-activator.php:85
 msgid "Failed delivery attempt."
 msgstr "ניסיון משלוח כושל."
 
-#: includes/class-lddfw-activator.php:95
+#: includes/class-lddfw-activator.php:86
 msgid "Item Lost."
 msgstr "פריט אבד."
 
-#: includes/class-lddfw-activator.php:96
+#: includes/class-lddfw-activator.php:87
 msgid "Item damaged."
 msgstr "פריט ניזוק."
 
-#: includes/class-lddfw-activator.php:97
+#: includes/class-lddfw-activator.php:88
 msgid "Delivered to the customer."
 msgstr "סופק ללקוח."
 
-#: includes/class-lddfw-activator.php:98
+#: includes/class-lddfw-activator.php:89
 msgid "Left at the front door."
 msgstr "הושאר ליד הדלת."
 
-#: includes/class-lddfw-activator.php:99
+#: includes/class-lddfw-activator.php:90
 msgid "Left with the neighbor."
 msgstr "הושאר אצל שכן."
 
@@ -1029,7 +1157,8 @@ msgstr "טופס שליח לא זמין."
 msgid "The full name field is empty."
 msgstr "חסר שדה שם מלא."
 
-#: includes/class-lddfw-application.php:69 includes/class-lddfw-login.php:111
+#: includes/class-lddfw-application.php:69 includes/class-lddfw-driver.php:617
+#: includes/class-lddfw-login.php:138
 msgid "The email field is empty."
 msgstr "כתובת האימייל ריק."
 
@@ -1063,7 +1192,7 @@ msgstr "אנו ניצור עמך קשר בהקדם."
 
 #: includes/class-lddfw-application.php:118
 #: includes/class-lddfw-application.php:164
-#: includes/class-lddfw-password.php:168
+#: includes/class-lddfw-password.php:167
 msgid "Back to login"
 msgstr "חזרה להתחברות"
 
@@ -1079,14 +1208,15 @@ msgstr "אנא מלא את הטופס למטה ואנו ניצור אתך קשר
 msgid "Full name"
 msgstr "שם מלא"
 
-#: includes/class-lddfw-application.php:153 includes/class-lddfw-order.php:312
-#: includes/class-lddfw-reports.php:124 includes/class-lddfw-reports.php:187
-#: includes/class-lddfw-reports.php:460 includes/class-lddfw-reports.php:546
+#: includes/class-lddfw-application.php:153 includes/class-lddfw-order.php:323
+#: includes/class-lddfw-order.php:418 includes/class-lddfw-reports.php:124
+#: includes/class-lddfw-reports.php:187 includes/class-lddfw-reports.php:460
+#: includes/class-lddfw-reports.php:546
 msgid "Phone"
 msgstr "טלפון"
 
-#: includes/class-lddfw-application.php:154 includes/class-lddfw-login.php:58
-#: includes/class-lddfw-password.php:159 includes/class-lddfw-reports.php:461
+#: includes/class-lddfw-application.php:154 includes/class-lddfw-login.php:66
+#: includes/class-lddfw-password.php:158 includes/class-lddfw-reports.php:461
 #: includes/class-lddfw-reports.php:547
 msgid "Email"
 msgstr "מייל"
@@ -1096,14 +1226,14 @@ msgid "Message"
 msgstr "הודעה"
 
 #: includes/class-lddfw-application.php:157
-#: includes/class-lddfw-password.php:161 includes/class-lddfw-password.php:283
-#: includes/class-lddfw-password.php:287 includes/class-lddfw-reports.php:320
+#: includes/class-lddfw-password.php:160 includes/class-lddfw-password.php:282
+#: includes/class-lddfw-password.php:286 includes/class-lddfw-reports.php:320
 msgid "Send"
 msgstr "שלח"
 
-#: includes/class-lddfw-application.php:161 includes/class-lddfw-login.php:65
-#: includes/class-lddfw-password.php:165 includes/class-lddfw-screens.php:463
-#: includes/class-lddfw-screens.php:519
+#: includes/class-lddfw-application.php:161 includes/class-lddfw-driver.php:557
+#: includes/class-lddfw-login.php:73 includes/class-lddfw-password.php:164
+#: includes/class-lddfw-screens.php:506 includes/class-lddfw-screens.php:562
 msgid "Loading"
 msgstr "טוען"
 
@@ -1128,6 +1258,7 @@ msgstr "הזמנות ששויכו"
 #: includes/class-lddfw-assigned-order-email-driver.php:158
 #: includes/class-lddfw-failed-delivery-email.php:143
 #: includes/class-lddfw-out-for-delivery-email.php:142
+#: includes/class-lddfw-start-delivery-email.php:142
 msgid "Thanks for using {site_address}!"
 msgstr "תודה שקנית ב {site_address}!"
 
@@ -1154,19 +1285,177 @@ msgstr "הזמנה סופקה"
 msgid "woocommerce"
 msgstr "woocommerce"
 
-#: includes/class-lddfw-driver.php:67
+#: includes/class-lddfw-driver.php:82
 msgid "Delivery driver has been assigned to order."
 msgstr "שליח שויך להזמנה."
 
-#: includes/class-lddfw-driver.php:75
+#: includes/class-lddfw-driver.php:90
 #, php-format
 msgid "by %s"
 msgstr "על ידי %s"
 
-#: includes/class-lddfw-driver.php:78
+#: includes/class-lddfw-driver.php:93
 #, php-format
-msgid "Delivery driver %s has been assigned to order%s"
-msgstr "השליח% s שויך להזמנה% s"
+msgid "Delivery driver %1$s has been assigned to order %2$s"
+msgstr "השליח %1$s שויך להזמנה %2$s"
+
+#: includes/class-lddfw-driver.php:292
+msgid "Delivery Settings"
+msgstr "הגדרות משלוח"
+
+#: includes/class-lddfw-driver.php:296 includes/class-lddfw-screens.php:290
+msgid "I am"
+msgstr "אני"
+
+#: includes/class-lddfw-driver.php:303 includes/class-lddfw-driver.php:312
+#: includes/class-lddfw-screens.php:297 includes/class-lddfw-screens.php:306
+msgid "Availability status"
+msgstr "סטטוס זמינות"
+
+#: includes/class-lddfw-driver.php:325 includes/class-lddfw-screens.php:325
+msgid "Track Me"
+msgstr "הפעל מיקום"
+
+#: includes/class-lddfw-driver.php:329 includes/class-lddfw-screens.php:329
+msgid "Tracking status"
+msgstr "סטטוס מעקב"
+
+#: includes/class-lddfw-driver.php:405
+msgid "Contact Info"
+msgstr "פרטים"
+
+#: includes/class-lddfw-driver.php:440 includes/class-lddfw-driver.php:442
+msgid "First name"
+msgstr "שם פרטי"
+
+#: includes/class-lddfw-driver.php:446 includes/class-lddfw-driver.php:448
+msgid "Last name"
+msgstr "שם משפחה"
+
+#: includes/class-lddfw-driver.php:452 includes/class-lddfw-driver.php:454
+msgid "Company"
+msgstr "חברה"
+
+#: includes/class-lddfw-driver.php:458 includes/class-lddfw-driver.php:460
+msgid "Address line 1"
+msgstr "כתובת 1"
+
+#: includes/class-lddfw-driver.php:464 includes/class-lddfw-driver.php:466
+msgid "Address line 2"
+msgstr "כתובת 2"
+
+#: includes/class-lddfw-driver.php:470 includes/class-lddfw-driver.php:472
+msgid "City"
+msgstr "עיר"
+
+#: includes/class-lddfw-driver.php:476 includes/class-lddfw-driver.php:478
+msgid "Postcode / ZIP"
+msgstr "מיקוד"
+
+#: includes/class-lddfw-driver.php:492
+msgid "Country / Region"
+msgstr "מדינה / אזור"
+
+#: includes/class-lddfw-driver.php:494
+msgid "Select Country / Region"
+msgstr "בחר מדינה / אזור"
+
+#: includes/class-lddfw-driver.php:502 includes/class-lddfw-driver.php:509
+msgid "State / County"
+msgstr "מדינה / מחוז"
+
+#: includes/class-lddfw-driver.php:504
+msgid "Select State / County"
+msgstr "בחר מדינה / מחוז"
+
+#: includes/class-lddfw-driver.php:513 includes/class-lddfw-driver.php:515
+msgid "Phone number"
+msgstr "מספר טלפון"
+
+#: includes/class-lddfw-driver.php:522
+msgid "Account"
+msgstr "חשבון"
+
+#: includes/class-lddfw-driver.php:526
+msgid "Email address"
+msgstr "כתובת דוא\"ל"
+
+#: includes/class-lddfw-driver.php:528
+msgid "Enter email"
+msgstr "הזן דוא\"ל"
+
+#: includes/class-lddfw-driver.php:534 includes/class-lddfw-login.php:67
+msgid "Password"
+msgstr "סיסמא"
+
+#: includes/class-lddfw-driver.php:536
+msgid "Set New Password"
+msgstr "הגדר סיסמה חדשה"
+
+#: includes/class-lddfw-driver.php:539
+msgid "Enter password"
+msgstr "הזן סיסמה"
+
+#: includes/class-lddfw-driver.php:542 includes/class-lddfw-order.php:805
+#: includes/class-lddfw-order.php:880
+msgid "Cancel"
+msgstr "ביטול"
+
+#: includes/class-lddfw-driver.php:553
+msgid "Update"
+msgstr "עדכן"
+
+#: includes/class-lddfw-driver.php:583
+msgid ""
+"Security Check Failure - This alert may occur when you are logged in as an "
+"administrator and as a vendor on the same browser and the same device. If "
+"you want to work on both panels please try to work with two different "
+"browsers."
+msgstr ""
+"כשל בבדיקת אבטחה - התראה זו עשויה להתרחש כאשר אתה מחובר כמנהל וכספק באותו "
+"דפדפן ובאותו מכשיר. אם אתה רוצה לעבוד בשני הפאנלים, נסה לעבוד עם שני דפדפנים "
+"שונים."
+
+#: includes/class-lddfw-driver.php:612
+msgid "Driver number is empty."
+msgstr "מספר הנהג ריק."
+
+#: includes/class-lddfw-driver.php:621 includes/class-lddfw-login.php:146
+msgid "The email is invalid."
+msgstr "כתובת המייל אינה תקינה."
+
+#: includes/class-lddfw-driver.php:627
+msgid "Email exist for another user."
+msgstr "דוא\"ל קיים עבור משתמש אחר."
+
+#: includes/class-lddfw-driver.php:630
+msgid "First name is empty."
+msgstr "שדה שם פרטי ריק"
+
+#: includes/class-lddfw-driver.php:633
+msgid "Last name is empty."
+msgstr "שדה שם משפחה ריק"
+
+#: includes/class-lddfw-driver.php:636
+msgid "Phone is empty."
+msgstr "שדה טלפון ריק."
+
+#: includes/class-lddfw-driver.php:639
+msgid "Address 1 is empty."
+msgstr "כתובת 1 ריקה"
+
+#: includes/class-lddfw-driver.php:642
+msgid "City is empty."
+msgstr "שדה עיר ריק."
+
+#: includes/class-lddfw-driver.php:645
+msgid "Country is empty."
+msgstr ""
+"שדה מדינה ריק.\n"
+
+#: includes/class-lddfw-driver.php:720
+msgid "Successfully updated."
+msgstr "עודכן בהצלחה."
 
 #: includes/class-lddfw-failed-delivery-email.php:35
 msgid "Failed delivery order"
@@ -1186,257 +1475,263 @@ msgstr "משלוח הזמנתך ב {site_title} נכשל!"
 
 #: includes/class-lddfw-failed-delivery-email.php:68
 #: includes/class-lddfw-out-for-delivery-email.php:67
+#: includes/class-lddfw-start-delivery-email.php:67
 msgid "Thank you for your order."
 msgstr "תודה על הזמנתך."
 
-#: includes/class-lddfw-login.php:53 includes/class-lddfw-login.php:61
-#: includes/class-lddfw-password.php:203
+#: includes/class-lddfw-login.php:61 includes/class-lddfw-login.php:69
+#: includes/class-lddfw-password.php:202
 msgid "Login"
 msgstr "התחבר"
 
-#: includes/class-lddfw-login.php:54
+#: includes/class-lddfw-login.php:62
 msgid "Enter your details below to continue."
 msgstr "הזן את הפרטים שלך להלן כדי להמשיך."
 
-#: includes/class-lddfw-login.php:59
-msgid "Password"
-msgstr "סיסמא"
-
-#: includes/class-lddfw-login.php:67
+#: includes/class-lddfw-login.php:75
 msgid "Forgot password?"
 msgstr "שכחת סיסמא?"
 
-#: includes/class-lddfw-login.php:74
+#: includes/class-lddfw-login.php:82
 msgid "New Driver? Apply for Delivery Driver."
 msgstr "שליח חדש? שלח בקשה להצטרף."
 
-#: includes/class-lddfw-login.php:115
+#: includes/class-lddfw-login.php:142
 msgid "The password field is empty."
 msgstr "שדה סיסמא ריק."
 
-#: includes/class-lddfw-login.php:119
-msgid "The email is invalid."
-msgstr "כתובת המייל אינה תקינה."
-
-#: includes/class-lddfw-login.php:126 includes/class-lddfw-login.php:131
+#: includes/class-lddfw-login.php:153 includes/class-lddfw-login.php:158
 msgid "Either the email or password you entered is invalid."
 msgstr "הדוא\"ל או הסיסמה שהזנת אינם חוקיים."
 
-#: includes/class-lddfw-login.php:134 includes/class-lddfw-password.php:59
+#: includes/class-lddfw-login.php:161 includes/class-lddfw-password.php:58
 msgid "You are not a registered delivery driver."
 msgstr "אינך שליח רשום."
 
-#: includes/class-lddfw-login.php:138
+#: includes/class-lddfw-login.php:165
 msgid "Your account is not active, please contact the dispatch center."
 msgstr "חשבונך אינו פעיל, אנא פנה לחנות."
 
-#: includes/class-lddfw-order.php:162 includes/class-lddfw-order.php:165
-#: includes/class-lddfw-order.php:168
-msgid "Navigate"
-msgstr "נווט"
-
-#: includes/class-lddfw-order.php:188
+#: includes/class-lddfw-order.php:180
 msgid "Info"
 msgstr "מידע"
 
-#: includes/class-lddfw-order.php:191
+#: includes/class-lddfw-order.php:183
 msgid "Date"
 msgstr "תאריך"
 
-#: includes/class-lddfw-order.php:194
+#: includes/class-lddfw-order.php:186
 msgid "Status"
 msgstr "סטטוס"
 
-#: includes/class-lddfw-order.php:199
+#: includes/class-lddfw-order.php:191
 msgid "Failed date"
 msgstr "תאריך כישלון משלוח"
 
-#: includes/class-lddfw-order.php:205
+#: includes/class-lddfw-order.php:197
 msgid "Delivered date"
 msgstr "תאריך משלוח"
 
-#: includes/class-lddfw-order.php:212
+#: includes/class-lddfw-order.php:204
 msgid "Payment method"
 msgstr "אמצעי תשלום"
 
-#: includes/class-lddfw-order.php:218 includes/class-lddfw-order.php:921
-#: includes/class-lddfw-order.php:1005 includes/class-lddfw-reports.php:60
+#: includes/class-lddfw-order.php:210 includes/class-lddfw-order.php:997
+#: includes/class-lddfw-order.php:1087 includes/class-lddfw-reports.php:60
 #: includes/class-lddfw-reports.php:102 includes/class-lddfw-reports.php:129
 #: includes/class-lddfw-reports.php:192
 msgid "Total"
 msgstr "סה\"כ"
 
-#: includes/class-lddfw-order.php:224
-msgid "Call Dispatch"
-msgstr "התקשר לחנות"
-
-#: includes/class-lddfw-order.php:262
+#: includes/class-lddfw-order.php:247
 msgid "Shipping Address"
 msgstr "כתובת למשלוח"
 
-#: includes/class-lddfw-order.php:294
+#: includes/class-lddfw-order.php:279
 msgid "Map"
 msgstr "מפה"
 
-#: includes/class-lddfw-order.php:306
+#: includes/class-lddfw-order.php:295 includes/class-lddfw-order.php:298
+#: includes/class-lddfw-order.php:301 includes/class-lddfw-order.php:428
+#: includes/class-lddfw-order.php:431 includes/class-lddfw-order.php:434
+msgid "Navigate"
+msgstr "נווט"
+
+#: includes/class-lddfw-order.php:317
 msgid "Customer"
 msgstr "לקוח"
 
-#: includes/class-lddfw-order.php:342
-msgid "Call customer"
+#: includes/class-lddfw-order.php:353
+msgid "Call Customer"
 msgstr "התקשר ללקוח"
 
-#: includes/class-lddfw-order.php:364
+#: includes/class-lddfw-order.php:375
 msgid "Billing Address"
 msgstr "כתובת המזמין"
 
-#: includes/class-lddfw-order.php:466 includes/class-lddfw-screens.php:115
-#: includes/class-lddfw-screens.php:374 includes/class-lddfw-screens.php:538
-msgid "Delivered"
-msgstr "נשלח"
+#: includes/class-lddfw-order.php:414
+msgid "Pickup Address"
+msgstr "כתובת איסוף"
 
-#: includes/class-lddfw-order.php:467
-msgid "Not Delivered"
-msgstr "לא נשלח"
+#: includes/class-lddfw-order.php:423
+msgid "Call"
+msgstr "חייג"
 
-#: includes/class-lddfw-order.php:491
-msgid "Thank you!"
-msgstr "תודה!"
-
-#: includes/class-lddfw-order.php:497
-msgid "Loading next delivery"
-msgstr "טוען את המשלוח הבא"
-
-#: includes/class-lddfw-order.php:502
-msgid "View deliveries"
-msgstr "הצג משלוחים"
-
-#: includes/class-lddfw-order.php:523 includes/class-lddfw-order.php:575
-msgid "Get proof of delivery."
-msgstr "קבל הוכחת משלוח."
-
-#: includes/class-lddfw-order.php:524
-msgid "Add a photo to order."
-msgstr "הוסף תמונה להזמנה."
-
-#: includes/class-lddfw-order.php:525
-msgid "Customer and admin can view the photo at any time."
-msgstr "לקוח ומנהל יכולים לצפות בתמונה בכל עת."
-
-#: includes/class-lddfw-order.php:543 includes/class-lddfw-order.php:595
-msgid "Add"
-msgstr "הוסף"
-
-#: includes/class-lddfw-order.php:576
-msgid "Add a signature to order."
-msgstr "הוסף חתימה להזמנה."
-
-#: includes/class-lddfw-order.php:577
-msgid "Customer and admin can view the signature at any time."
-msgstr "לקוח ומנהל יכולים לצפות בחתימה בכל עת."
-
-#: includes/class-lddfw-order.php:603
-msgid "Write the signer's name and add a signature."
-msgstr "כתוב את שם החותם והוסף חתימה."
-
-#: includes/class-lddfw-order.php:607
+#: includes/class-lddfw-order.php:457 includes/class-lddfw-order.php:683
 msgid "Name"
 msgstr "שם"
 
-#: includes/class-lddfw-order.php:615
+#: includes/class-lddfw-order.php:473 includes/class-lddfw-sms.php:121
+msgid "Estimated time of arrival"
+msgstr "זמן הגעה משוער"
+
+#: includes/class-lddfw-order.php:535
+msgid "Start Delivery"
+msgstr "התחל משלוח"
+
+#: includes/class-lddfw-order.php:544 includes/class-lddfw-screens.php:115
+#: includes/class-lddfw-screens.php:417 includes/class-lddfw-screens.php:581
+msgid "Delivered"
+msgstr "נשלח"
+
+#: includes/class-lddfw-order.php:545
+msgid "Not Delivered"
+msgstr "לא נשלח"
+
+#: includes/class-lddfw-order.php:569
+msgid "Thank you!"
+msgstr "תודה!"
+
+#: includes/class-lddfw-order.php:575
+msgid "Loading next delivery"
+msgstr "טוען את המשלוח הבא"
+
+#: includes/class-lddfw-order.php:580
+msgid "View deliveries"
+msgstr "הצג משלוחים"
+
+#: includes/class-lddfw-order.php:601 includes/class-lddfw-order.php:651
+msgid "Get proof of delivery."
+msgstr "קבל הוכחת משלוח."
+
+#: includes/class-lddfw-order.php:602
+msgid "Add a photo to order."
+msgstr "הוסף תמונה להזמנה."
+
+#: includes/class-lddfw-order.php:603
+msgid "Customer and admin can view the photo at any time."
+msgstr "לקוח ומנהל יכולים לצפות בתמונה בכל עת."
+
+#: includes/class-lddfw-order.php:621 includes/class-lddfw-order.php:671
+msgid "Add"
+msgstr "הוסף"
+
+#: includes/class-lddfw-order.php:652
+msgid "Add a signature to order."
+msgstr "הוסף חתימה להזמנה."
+
+#: includes/class-lddfw-order.php:653
+msgid "Customer and admin can view the signature at any time."
+msgstr "לקוח ומנהל יכולים לצפות בחתימה בכל עת."
+
+#: includes/class-lddfw-order.php:679
+msgid "Write the signer's name and add a signature."
+msgstr "כתוב את שם החותם והוסף חתימה."
+
+#: includes/class-lddfw-order.php:691
 msgid "Draw signature"
 msgstr "צייר חתימה"
 
-#: includes/class-lddfw-order.php:621 includes/class-lddfw-order.php:803
+#: includes/class-lddfw-order.php:697 includes/class-lddfw-order.php:879
 msgid "Done"
 msgstr "סיים"
 
-#: includes/class-lddfw-order.php:668 includes/class-lddfw-order.php:750
-#: includes/class-lddfw-order.php:844
+#: includes/class-lddfw-order.php:744 includes/class-lddfw-order.php:826
+#: includes/class-lddfw-order.php:920
 msgid "Note"
 msgstr "הודעה"
 
-#: includes/class-lddfw-order.php:674 includes/class-lddfw-order.php:850
+#: includes/class-lddfw-order.php:750 includes/class-lddfw-order.php:926
 msgid "Write your note for the customer."
 msgstr "כתוב הערה ללקוח."
 
-#: includes/class-lddfw-order.php:702
+#: includes/class-lddfw-order.php:778
 msgid "Other"
 msgstr "אחר"
 
-#: includes/class-lddfw-order.php:705 includes/class-lddfw-order.php:892
+#: includes/class-lddfw-order.php:781 includes/class-lddfw-order.php:968
 msgid "Write your note"
 msgstr "כתוב הערה"
 
-#: includes/class-lddfw-order.php:728
+#: includes/class-lddfw-order.php:804
 msgid "Ok"
 msgstr "אישור"
 
-#: includes/class-lddfw-order.php:729 includes/class-lddfw-order.php:804
-msgid "Cancel"
-msgstr "ביטול"
-
-#: includes/class-lddfw-order.php:889
+#: includes/class-lddfw-order.php:965
 msgid "Other issues."
 msgstr "אחר."
 
-#: includes/class-lddfw-order.php:915
+#: includes/class-lddfw-order.php:991
 msgid "Products"
 msgstr "מוצרים"
 
-#: includes/class-lddfw-order.php:919
+#: includes/class-lddfw-order.php:995
 msgid "Item"
 msgstr "פריט"
 
-#: includes/class-lddfw-order.php:968
+#: includes/class-lddfw-order.php:1044
 msgid "Discount"
 msgstr "הנחה"
 
-#: includes/class-lddfw-order.php:982
+#: includes/class-lddfw-order.php:1064
 msgid "Shipping"
 msgstr "משלוח"
 
-#: includes/class-lddfw-order.php:982
+#: includes/class-lddfw-order.php:1064
 msgid "via"
 msgstr "עם"
 
-#: includes/class-lddfw-order.php:1009
+#: includes/class-lddfw-order.php:1091
 msgid "Refund"
 msgstr "החזר כספי"
 
-#: includes/class-lddfw-order.php:1010
+#: includes/class-lddfw-order.php:1092
 msgid "Net Total"
 msgstr "סכום ביניים"
 
-#: includes/class-lddfw-orders.php:433 includes/class-lddfw-orders.php:564
-#: includes/class-lddfw-orders.php:682 includes/class-lddfw-orders.php:685
-#: includes/class-lddfw-orders.php:813 includes/class-lddfw-orders.php:965
-#: includes/class-lddfw-screens.php:678
+#: includes/class-lddfw-orders.php:445 includes/class-lddfw-orders.php:588
+#: includes/class-lddfw-orders.php:716 includes/class-lddfw-orders.php:719
+#: includes/class-lddfw-orders.php:851 includes/class-lddfw-orders.php:1021
+#: includes/class-lddfw-screens.php:725
 msgid "Order #"
 msgstr "הזמנה #"
 
-#: includes/class-lddfw-orders.php:436 includes/class-lddfw-orders.php:567
-#: includes/class-lddfw-orders.php:968
+#: includes/class-lddfw-orders.php:448 includes/class-lddfw-orders.php:591
+#: includes/class-lddfw-orders.php:1024
 msgid "Distance"
 msgstr "מרחק"
 
-#: includes/class-lddfw-orders.php:459 includes/class-lddfw-orders.php:588
-#: includes/class-lddfw-orders.php:714 includes/class-lddfw-orders.php:831
-#: includes/class-lddfw-orders.php:1003
+#: includes/class-lddfw-orders.php:471 includes/class-lddfw-orders.php:612
+#: includes/class-lddfw-orders.php:748 includes/class-lddfw-orders.php:875
+#: includes/class-lddfw-orders.php:1059
 msgid "There are no orders."
 msgstr "אין הזמנות."
 
-#: includes/class-lddfw-orders.php:570
+#: includes/class-lddfw-orders.php:594
 msgid "Failed Date"
 msgstr "תאריך כישלון משלוח"
 
-#: includes/class-lddfw-orders.php:883
+#: includes/class-lddfw-orders.php:927
 msgid "<<"
 msgstr "<<"
 
-#: includes/class-lddfw-orders.php:884
+#: includes/class-lddfw-orders.php:928
 msgid ">>"
 msgstr ">>"
+
+#: includes/class-lddfw-orders.php:1027 includes/lddfw-metaboxes.php:73
+msgid "Delivered Date"
+msgstr "תאריך משלוח"
 
 #: includes/class-lddfw-out-for-delivery-email.php:34
 msgid "Out for delivery order"
@@ -1453,56 +1748,56 @@ msgstr ""
 msgid "Your {site_title} order is out for delivery!"
 msgstr "ההזמנה שלך ב- {site_title} יוצאת למשלוח!"
 
-#: includes/class-lddfw-password.php:45
+#: includes/class-lddfw-password.php:44
 msgid "Email field is empty."
 msgstr "כתובת מייל ריקה."
 
-#: includes/class-lddfw-password.php:49
+#: includes/class-lddfw-password.php:48
 msgid "The email you entered is invalid."
 msgstr "כתובת המייל אינה תקינה."
 
-#: includes/class-lddfw-password.php:55
+#: includes/class-lddfw-password.php:54
 msgid "The email you entered was not found."
 msgstr "האימייל שהזנת לא נמצא."
 
-#: includes/class-lddfw-password.php:65
+#: includes/class-lddfw-password.php:64
 msgid "Someone requested that the password be reset for the following account:"
 msgstr "מישהו ביקש לאפס את הסיסמה עבור החשבון הבא:"
 
-#: includes/class-lddfw-password.php:67
+#: includes/class-lddfw-password.php:66
 #, php-format
 msgid "Email: %s"
 msgstr "מייל: %s"
 
-#: includes/class-lddfw-password.php:68
+#: includes/class-lddfw-password.php:67
 msgid "If this was a mistake, just ignore this email and nothing will happen."
 msgstr "אם זו הייתה טעות, פשוט התעלם מדוא\"ל זה ושום דבר לא יקרה."
 
-#: includes/class-lddfw-password.php:69
+#: includes/class-lddfw-password.php:68
 msgid "To reset your password, visit the following address:"
 msgstr "כדי לאפס את הסיסמה שלך, בקר בכתובת הבאה:"
 
-#: includes/class-lddfw-password.php:73
+#: includes/class-lddfw-password.php:72
 msgid "Password reset"
 msgstr "איפוס סיסמא"
 
-#: includes/class-lddfw-password.php:75
+#: includes/class-lddfw-password.php:74
 msgid "An error occurred while sending mail."
 msgstr "אירעה שגיאה בעת שליחת מייל."
 
-#: includes/class-lddfw-password.php:109
+#: includes/class-lddfw-password.php:108
 msgid "The new password field is empty."
 msgstr "שדה הסיסמה החדשה ריק."
 
-#: includes/class-lddfw-password.php:113
+#: includes/class-lddfw-password.php:112
 msgid "The confirm password field is empty."
 msgstr "שדה הסיסמה לאישור ריק."
 
-#: includes/class-lddfw-password.php:117
+#: includes/class-lddfw-password.php:116
 msgid "New password and confirm password do not match."
 msgstr "סיסמה חדשה ואישור סיסמה אינם תואמים."
 
-#: includes/class-lddfw-password.php:127
+#: includes/class-lddfw-password.php:126
 msgid ""
 "This key is invalid or has already been used. Please reset your password "
 "again if needed."
@@ -1510,27 +1805,27 @@ msgstr ""
 "מפתח זה אינו חוקי או שכבר נעשה בו שימוש. אנא אפס את הסיסמה שלך שוב במידת "
 "הצורך."
 
-#: includes/class-lddfw-password.php:155
+#: includes/class-lddfw-password.php:154
 msgid "Forgot your password?"
 msgstr "שכחת סיסמא?"
 
-#: includes/class-lddfw-password.php:156
+#: includes/class-lddfw-password.php:155
 msgid "Enter your email, and we'll email you a link to change your password."
 msgstr "הזן את המייל שלך ואנחנו נשלח לך קישור לשינוי הסיסמה שלך."
 
-#: includes/class-lddfw-password.php:200
+#: includes/class-lddfw-password.php:199
 msgid "Your password has been changed successfully."
 msgstr "הסיסמה שלך שונתה בהצלחה."
 
-#: includes/class-lddfw-password.php:201
+#: includes/class-lddfw-password.php:200
 msgid "Please click on the login button to login with your new password"
 msgstr "אנא לחץ על כפתור הכניסה כדי להתחבר באמצעות הסיסמה החדשה שלך"
 
-#: includes/class-lddfw-password.php:232
+#: includes/class-lddfw-password.php:231
 msgid "Reset password"
 msgstr "אפס סיסמא"
 
-#: includes/class-lddfw-password.php:233
+#: includes/class-lddfw-password.php:232
 msgid ""
 "A password reset link was sent. Click the link in the email to create a new "
 "password. If you do not receive an email within 5 minutes, please click on "
@@ -1539,23 +1834,23 @@ msgstr ""
 "נשלח קישור לאיפוס סיסמה. לחץ על הקישור בדוא\"ל כדי ליצור סיסמה חדשה. אם אינך "
 "מקבל דוא\"ל תוך חמש דקות, לחץ על כפתור הדוא\"ל שלח שוב למטה."
 
-#: includes/class-lddfw-password.php:235
+#: includes/class-lddfw-password.php:234
 msgid "Resend email"
 msgstr "שלח מייל שוב"
 
-#: includes/class-lddfw-password.php:238 includes/class-lddfw-password.php:291
+#: includes/class-lddfw-password.php:237 includes/class-lddfw-password.php:290
 msgid "Back to forgot password"
 msgstr "חזרה לשכחת סיסמא"
 
-#: includes/class-lddfw-password.php:276
+#: includes/class-lddfw-password.php:275
 msgid "Create a new password."
 msgstr "צור סיסמא חדשה."
 
-#: includes/class-lddfw-password.php:278
+#: includes/class-lddfw-password.php:277
 msgid "New password"
 msgstr "סיסמא חדשה"
 
-#: includes/class-lddfw-password.php:279
+#: includes/class-lddfw-password.php:278
 msgid "Confirm password"
 msgstr "חזור על הסיסמא"
 
@@ -1618,20 +1913,20 @@ msgid "To"
 msgstr "ל-"
 
 #: includes/class-lddfw-reports.php:329 includes/class-lddfw-reports.php:388
-#: includes/class-lddfw-reports.php:399 includes/class-lddfw-screens.php:605
+#: includes/class-lddfw-reports.php:399 includes/class-lddfw-screens.php:648
 msgid "Orders"
 msgstr "הזמנות"
 
-#: includes/class-lddfw-reports.php:330 includes/class-lddfw-screens.php:614
+#: includes/class-lddfw-reports.php:330 includes/class-lddfw-screens.php:657
 msgid "Orders Total"
 msgstr "סכום הזמנות"
 
-#: includes/class-lddfw-reports.php:331 includes/class-lddfw-screens.php:621
+#: includes/class-lddfw-reports.php:331 includes/class-lddfw-screens.php:664
 msgid "Shipping Total"
 msgstr "סכום משלוח"
 
 #: includes/class-lddfw-reports.php:332 includes/class-lddfw-reports.php:391
-#: includes/class-lddfw-reports.php:402 includes/class-lddfw-screens.php:629
+#: includes/class-lddfw-reports.php:402 includes/class-lddfw-screens.php:672
 msgid "Commission"
 msgstr "עמלה"
 
@@ -1664,7 +1959,7 @@ msgid "Availability"
 msgstr "זמינות"
 
 #: includes/class-lddfw-reports.php:464 includes/class-lddfw-reports.php:550
-#: includes/class-lddfw-screens.php:102 includes/class-lddfw-screens.php:342
+#: includes/class-lddfw-screens.php:102 includes/class-lddfw-screens.php:385
 msgid "Claim orders"
 msgstr "שייך הזמנות"
 
@@ -1713,7 +2008,7 @@ msgid "Please wait..."
 msgstr "אנא המתן..."
 
 #: includes/class-lddfw-route.php:57 includes/class-lddfw-route.php:58
-#: includes/class-lddfw-screens.php:230
+#: includes/class-lddfw-screens.php:235
 msgid "Plan your route"
 msgstr "תכנן מסלול"
 
@@ -1721,135 +2016,190 @@ msgstr "תכנן מסלול"
 msgid "Finish planning route"
 msgstr "סיים לתכנן מסלול"
 
-#: includes/class-lddfw-route.php:143
+#: includes/class-lddfw-route.php:204
 msgid "Your delivery route is completed"
 msgstr "המסלול שלך הסתיים"
 
-#: includes/class-lddfw-route.php:187
+#: includes/class-lddfw-route.php:258
 msgid "Your next delivery"
 msgstr "המשלוח הבא"
 
-#: includes/class-lddfw-route.php:187
+#: includes/class-lddfw-route.php:258
 msgid "Drive to the next delivery"
 msgstr "צא למשלוח הבא"
 
-#: includes/class-lddfw-route.php:362
+#: includes/class-lddfw-route.php:343
+msgid "An unexpected error has occurred."
+msgstr "שגיאה בלתי צפויה התרחשה."
+
+#: includes/class-lddfw-route.php:373
+msgid "Distance service returned an error status."
+msgstr "שירות המרחק החזיר מצב שגיאה."
+
+#: includes/class-lddfw-route.php:377
+msgid "Google API key not exists."
+msgstr "מפתח ה- API של גוגל לא קיים."
+
+#: includes/class-lddfw-route.php:412
+#, php-format
+msgid "The driver %s started delivery on %s"
+msgstr "השליח %s החל את המסירה ב %s"
+
+#: includes/class-lddfw-route.php:639 includes/class-lddfw-route.php:739
 msgid "An unexpected error has occurred, please try again."
 msgstr "חלה תקלה, נסה שנית."
 
-#: includes/class-lddfw-route.php:529
+#: includes/class-lddfw-route.php:814
 msgid "View Route"
 msgstr "צפה במסלול"
 
-#: includes/class-lddfw-route.php:554
+#: includes/class-lddfw-route.php:839
 msgid "Route"
 msgstr "מסלול"
 
-#: includes/class-lddfw-screens.php:119 includes/class-lddfw-screens.php:120
+#: includes/class-lddfw-route.php:1004
+msgid "Drivers Routes"
+msgstr "מסלולי שליחים"
+
+#: includes/class-lddfw-route.php:1007
+msgid "There are no routes for drivers."
+msgstr "אין מסלולים לנהגים."
+
+#: includes/class-lddfw-route.php:1019
+msgid "Google maps not showing – missing key."
+msgstr "מפות גוגל לא מוצגות - חסר מפתח."
+
+#: includes/class-lddfw-route.php:1075 includes/class-lddfw-route.php:1133
+msgid "Track drivers"
+msgstr "עקוב אחר שליחים"
+
+#: includes/class-lddfw-route.php:1091
+msgid "Route on map"
+msgstr "מסלול במפה"
+
+#: includes/class-lddfw-route.php:1128
+msgid "Done, please wait for next track."
+msgstr "בוצע, אנא המתן למעקב הבא."
+
+#: includes/class-lddfw-route.php:1339
+msgid "Tracking is on"
+msgstr "המעקב פועל"
+
+#: includes/class-lddfw-route.php:1343
+msgid "Tracking is off"
+msgstr "המעקב מושבת"
+
+#: includes/class-lddfw-screens.php:124 includes/class-lddfw-screens.php:125
 msgid "Log out"
 msgstr "התנתק"
 
-#: includes/class-lddfw-screens.php:184
+#: includes/class-lddfw-screens.php:189
 msgid "Get started"
 msgstr "התחל"
 
-#: includes/class-lddfw-screens.php:231
+#: includes/class-lddfw-screens.php:236
 msgid "Plan your Route by Distance or Manually."
 msgstr "תכנן את המסלול שלך לפי מרחק או באופן ידני."
 
-#: includes/class-lddfw-screens.php:232
+#: includes/class-lddfw-screens.php:237
 msgid "View your Route on Google Maps."
 msgstr "צפה במסלול שלך במפות Google."
 
-#: includes/class-lddfw-screens.php:233
+#: includes/class-lddfw-screens.php:238
 msgid "Navigate with Waze, Apple Maps, or Google Maps."
 msgstr "נווט עם Waze, Apple Maps, או Google Maps."
 
-#: includes/class-lddfw-screens.php:285
-msgid "I am"
-msgstr "אני"
-
-#: includes/class-lddfw-screens.php:292 includes/class-lddfw-screens.php:300
-msgid "Availability status"
-msgstr "סטטוס זמינות"
-
-#: includes/class-lddfw-screens.php:325
+#: includes/class-lddfw-screens.php:368
 msgid "Today Earnings"
 msgstr "רווחים של היום"
 
-#: includes/class-lddfw-screens.php:327
+#: includes/class-lddfw-screens.php:370
 msgid "View how much money did you make today."
 msgstr "צפה כמה כסף הרווחת היום."
 
-#: includes/class-lddfw-screens.php:431
+#: includes/class-lddfw-screens.php:474
 msgid "Mark orders as out for delivery"
 msgstr "סמן הזמנות ליציאה למשלוח"
 
-#: includes/class-lddfw-screens.php:432
+#: includes/class-lddfw-screens.php:475
 msgid "Choose orders and click on the Out For Delivery button"
 msgstr "בחר הזמנות ולחץ על כפתור למשלוח"
 
-#: includes/class-lddfw-screens.php:435
+#: includes/class-lddfw-screens.php:478
 msgid "View orders details on this screen."
 msgstr "הצג פרטי הזמנות במסך זה."
 
-#: includes/class-lddfw-screens.php:482 includes/class-lddfw-screens.php:517
+#: includes/class-lddfw-screens.php:525 includes/class-lddfw-screens.php:560
 msgid "Claim Orders"
 msgstr "שיוך הזמנות"
 
-#: includes/class-lddfw-screens.php:493
+#: includes/class-lddfw-screens.php:536
 msgid "Assign orders to you"
 msgstr "שייך הזמנה אליך"
 
-#: includes/class-lddfw-screens.php:494
+#: includes/class-lddfw-screens.php:537
 msgid "Choose orders and click on the Claim Orders button"
 msgstr "בחר הזמנות ולחץ על כפתור שיוך הזמנות"
 
-#: includes/class-lddfw-screens.php:599
+#: includes/class-lddfw-screens.php:642
 msgid "View how much money did you make, orders total, and shipping total."
 msgstr "ראה כמה כסף עשית, סכום הזמנות וסכום משלוח."
 
-#: includes/class-lddfw-screens.php:684
+#: includes/class-lddfw-screens.php:734
 msgid "Access Denied, You do not have permissions to access this order"
 msgstr "הגישה נדחתה, אין לך הרשאות לגשת להזמנה זו"
 
-#: includes/class-lddfw-sms.php:178
+#: includes/class-lddfw-sms.php:208
 msgid "Failed to send SMS, the SMS provider is missing."
 msgstr "שליחת ה- SMS נכשלה, ספק ה- SMS חסר."
 
-#: includes/class-lddfw-sms.php:181
+#: includes/class-lddfw-sms.php:211
 msgid "Failed to send SMS, the SMS provider is not supported."
 msgstr "שליחת ה- SMS נכשלה, ספק ה- SMS אינו נתמך."
 
-#: includes/class-lddfw-sms.php:186
+#: includes/class-lddfw-sms.php:216
 msgid "Failed to send SMS, the SID is missing."
 msgstr "שליחת ה- SMS נכשלה, ה- SID חסר."
 
-#: includes/class-lddfw-sms.php:191
+#: includes/class-lddfw-sms.php:221
 msgid "Failed to send SMS, the auth token is missing."
 msgstr "שליחת ה- SMS נכשלה, אסימון האימות חסר."
 
-#: includes/class-lddfw-sms.php:196
+#: includes/class-lddfw-sms.php:226
 msgid "Failed to send SMS, the SMS phone number is missing."
 msgstr "שליחת ה- SMS נכשלה, מספר הטלפון של ה- SMS חסר."
 
-#: includes/class-lddfw-sms.php:200
+#: includes/class-lddfw-sms.php:230
 msgid "Failed to send SMS, the phone number is missing."
 msgstr "שליחת ה- SMS נכשלה, מספר הטלפון חסר."
 
-#: includes/class-lddfw-sms.php:203
+#: includes/class-lddfw-sms.php:233
 msgid "Failed to send SMS, the SMS text is missing."
 msgstr "שליחת ה- SMS נכשלה, טקסט ה- SMS חסר."
 
-#: includes/class-lddfw-sms.php:310
+#: includes/class-lddfw-sms.php:343
 #, php-format
 msgid "SMS successfully has been sent to %s"
 msgstr "SMS נשלח בהצלחה ל %s"
 
-#: includes/class-lddfw-sms.php:313
+#: includes/class-lddfw-sms.php:346
 #, php-format
 msgid "Failed to send SMS to %s "
 msgstr "שליחת SMS ל %s נכשלה "
+
+#: includes/class-lddfw-start-delivery-email.php:34
+msgid "The delivery of your order has been started"
+msgstr "משלוח ההזמנה שלך החל"
+
+#: includes/class-lddfw-start-delivery-email.php:35
+msgid ""
+"This is an order notification sent to customers containing order details "
+"when delivery has been started."
+msgstr "זוהי הודעת הזמנה שנשלחה ללקוחות המכילה פרטי הזמנה עם תחילת המסירה."
+
+#: includes/class-lddfw-start-delivery-email.php:57
+msgid "Your {site_title} order delivery has been started!"
+msgstr "משלוח הזמנתך באתר {site_title} החל!"
 
 #: includes/lddfw-metaboxes.php:56
 msgid "Driver Commission"
@@ -1858,10 +2208,6 @@ msgstr "עמלת שליח"
 #: includes/lddfw-metaboxes.php:65
 msgid "Driver Note"
 msgstr "הערת שליח"
-
-#: includes/lddfw-metaboxes.php:73
-msgid "Delivered Date"
-msgstr "תאריך משלוח"
 
 #: includes/lddfw-metaboxes.php:80
 msgid "Failed Attempt Date"
@@ -1883,9 +2229,11 @@ msgstr "הזמנה #%s נמסרה:"
 
 #: woocommerce/emails/customer-failed-delivery-order.php:28
 #: woocommerce/emails/customer-out-for-delivery-order.php:28
+#: woocommerce/emails/customer-start-delivery-order.php:28
 #: woocommerce/emails/driver-assigned-order.php:32
 #: woocommerce/emails/plain/customer-failed-delivery-order.php:25
 #: woocommerce/emails/plain/customer-out-for-delivery-order.php:25
+#: woocommerce/emails/plain/customer-start-delivery-order.php:25
 #: woocommerce/emails/plain/driver-assigned-order.php:28
 #, php-format
 msgid "Hi %s,"
@@ -1900,8 +2248,23 @@ msgstr "אנו מצטערים להודיעך &mdash; שהמשלוח בהזמנת
 #: woocommerce/emails/customer-out-for-delivery-order.php:30
 #: woocommerce/emails/plain/customer-out-for-delivery-order.php:27
 #, php-format
-msgid "Just to let you know &mdash; your order #%s is out for delivery:"
-msgstr "אנו שמחים להודיעך &mdash; שהזמנתך #%s יצאה למשלוח:"
+msgid "Just to let you know &mdash; your order #%s is out for delivery."
+msgstr "אנו שמחים להודיעך &mdash; שהזמנתך #%s יצאה למשלוח."
+
+#: woocommerce/emails/customer-start-delivery-order.php:30
+#: woocommerce/emails/plain/customer-start-delivery-order.php:27
+#, php-format
+msgid ""
+"Just to let you know &mdash; the delivery for your order #%s has been "
+"started."
+msgstr ""
+"אנו שמחים להודיעך — שהזמנתך #%s בדרך אליך.\n"
+
+#: woocommerce/emails/customer-start-delivery-order.php:40
+#: woocommerce/emails/plain/customer-start-delivery-order.php:34
+#, php-format
+msgid "Estimated time of arrival: %s"
+msgstr "זמן הגעה משוער: %s"
 
 #: woocommerce/emails/driver-assigned-order.php:34
 #: woocommerce/emails/plain/driver-assigned-order.php:30
@@ -1912,5 +2275,6 @@ msgstr "הזמנה #%s שויכה אליך."
 #: woocommerce/emails/plain/admin-delivered-order.php:38
 #: woocommerce/emails/plain/customer-failed-delivery-order.php:38
 #: woocommerce/emails/plain/customer-out-for-delivery-order.php:38
+#: woocommerce/emails/plain/customer-start-delivery-order.php:47
 msgid "Driver name"
 msgstr "שם השליח"

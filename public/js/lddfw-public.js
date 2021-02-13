@@ -554,6 +554,98 @@ function lddfw_closeNav() {
 
 /* Premium Code Stripped by Freemius */
 
+
+
+jQuery("#cancel_password_button").on("click", function() {
+    jQuery("#lddfw_password_holder").hide();
+    jQuery("#lddfw_password").val("");
+});
+
+jQuery("#new_password_button").on("click", function() {
+    jQuery("#lddfw_password_holder").show();
+    jQuery("#lddfw_password").val(Math.random().toString(36).slice(2));
+});
+
+jQuery("#billing_state_select").on("change", function() {
+    jQuery("#billing_state_input").val(jQuery(this).val());
+});
+jQuery("#billing_country").on("change", function() {
+    if (jQuery(this).val() == "US") {
+        jQuery("#billing_state_select").show();
+        jQuery("#billing_state_input").hide();
+    } else {
+        jQuery("#billing_state_input").show();
+        jQuery("#billing_state_select").hide();
+    }
+});
+if (jQuery("#billing_country").length) {
+    jQuery("#billing_country").trigger("change");
+}
+
+function scrolltoelement(element) {
+    jQuery('html, body').animate({
+        scrollTop: element.offset().top - 100
+    }, 1000);
+}
+
+jQuery(".lddfw_form").validate({
+    submitHandler: function(form) {
+        var lddfw_form = jQuery(form);
+        var lddfw_loading_btn = lddfw_form.find(".lddfw_loading_btn")
+        var lddfw_submit_btn = lddfw_form.find(".lddfw_submit_btn")
+        var lddfw_alert_wrap = lddfw_form.find(".lddfw_alert_wrap");
+        var lddfw_service = lddfw_form.attr("service");
+        lddfw_submit_btn.hide();
+        lddfw_loading_btn.show();
+        lddfw_alert_wrap.html("");
+        jQuery.ajax({
+            type: "POST",
+            url: lddfw_ajax_url,
+            data: lddfw_form.serialize() + '&action=lddfw_ajax&lddfw_service=' + lddfw_service + '&lddfw_data_type=json',
+            success: function(data) {
+                try {
+                    var lddfw_json = JSON.parse(data);
+                    if (lddfw_json["result"] == "0") {
+                        lddfw_alert_wrap.html("<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">" + lddfw_json["error"] + "</div>");
+                        lddfw_submit_btn.show();
+                        lddfw_loading_btn.hide();
+                        scrolltoelement(lddfw_alert_wrap);
+                    }
+                    if (lddfw_json["result"] == "1") {
+                        var lddfw_hide_on_success = lddfw_form.find(".lddfw_hide_on_success");
+                        if (lddfw_hide_on_success.length) {
+                            lddfw_hide_on_success.replaceWith("");
+                        }
+                        lddfw_alert_wrap.html("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">" + lddfw_json["error"] + "</div>");
+                        lddfw_submit_btn.show();
+                        lddfw_loading_btn.hide();
+                        if (lddfw_json["nonce"] != "") {
+                            lddfw_form.find("#lddfw_wpnonce").val(lddfw_json["nonce"]);
+                            lddfw_nonce = lddfw_json["nonce"];
+                        }
+                        scrolltoelement(lddfw_alert_wrap);
+                    }
+
+                } catch (e) {
+                    lddfw_alert_wrap.html("<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">" + e + "</div>");
+                    lddfw_submit_btn.show();
+                    lddfw_loading_btn.hide();
+                    scrolltoelement(lddfw_alert_wrap);
+                }
+            },
+            error: function(request, status, error) {
+                lddfw_alert_wrap.html("<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">" + e + "</div>");
+                lddfw_submit_btn.show();
+                lddfw_loading_btn.hide();
+                scrolltoelement(lddfw_alert_wrap);
+            }
+        });
+
+        return false;
+    }
+});
+
+
 jQuery("#lddfw_driver_add_signature_btn").click(function() {
 
     jQuery(".signature-wrapper").show();

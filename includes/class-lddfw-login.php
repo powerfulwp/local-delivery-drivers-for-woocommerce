@@ -28,12 +28,12 @@ class LDDFW_Login
      */
     public static function lddfw_logout()
     {
-        //Set availability off
+        //Set availability off.
         $user = wp_get_current_user();
         
         if ( in_array( 'driver', (array) $user->roles, true ) ) {
             $driver_id = $user->ID;
-            update_user_meta( $driver_id, 'lddfw_driver_availability', "0" );
+            update_user_meta( $driver_id, 'lddfw_driver_availability', '0' );
         }
         
         wp_logout();
@@ -83,6 +83,25 @@ class LDDFW_Login
 				</div>
 				';
         return $html;
+    }
+    
+    /**
+     * User login.
+     *
+     * @since 1.5.0
+     */
+    public static function lddfw_user_login( $user, $password )
+    {
+        $user_login = $user->user_login;
+        $creds = array();
+        $creds['user_login'] = $user_login;
+        $creds['user_password'] = $password;
+        $creds['remember'] = true;
+        $user = wp_signon( $creds, false );
+        $user_id = $user->ID;
+        wp_set_current_user( $user_id, $user_login );
+        wp_set_auth_cookie( $user_id, true, false );
+        do_action( 'wp_login', $user_login, $user );
     }
     
     /**
@@ -147,16 +166,7 @@ class LDDFW_Login
                                         if ( '1' !== $lddfw_driver_account ) {
                                             $error = __( 'Your account is not active, please contact the dispatch center.', 'lddfw' );
                                         } else {
-                                            $user_login = $user->user_login;
-                                            $creds = array();
-                                            $creds['user_login'] = $user_login;
-                                            $creds['user_password'] = $password;
-                                            $creds['remember'] = true;
-                                            $user = wp_signon( $creds, false );
-                                            $user_id = $user->ID;
-                                            wp_set_current_user( $user_id, $user_login );
-                                            wp_set_auth_cookie( $user_id, true, false );
-                                            do_action( 'wp_login', $user_login, $user );
+                                            $this->lddfw_user_login( $user, $password );
                                             $error = '';
                                             $result = '1';
                                         }

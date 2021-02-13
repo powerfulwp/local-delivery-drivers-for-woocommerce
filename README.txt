@@ -84,7 +84,7 @@ You can filters orders by orders with drivers, orders without drivers, and each 
 ## Manage Drivers.
 On the admin users screen, you can view all your drivers’ info, who is active, available, and have claim permission. each status can be updated easily with one click.
 
-## ASSIGN ORDERS TO DELIVERY DRIVERS.
+## ASSIGN DELIVERY DRIVERS TO ORDERS.
 * Bulk assign delivery drivers to orders on the admin panel.
 * Auto-assign available delivery drivers to orders.
 * Delivery drivers can claim orders that in process status.
@@ -107,6 +107,7 @@ With this feature, delivery drivers can easily add notes to orders.
 ## What does the customer see?
 The customer can see the driver’s details and the proof of delivery in his emails and in the order page in his account.
 
+* Estimated time of arrival.
 * Driver details - The customer gets the driver’s name and photo.
 * Call the driver - The customer can easily call the driver.
 * Driver vehicle details - The customer gets the vehicle type, and license number.
@@ -274,6 +275,19 @@ Not at all. This plugin is straightforward to use.
 = 1.4.3 =
 * Fix: Bug in admin reports.
 
+= 1.5.0 =
+* Fix: Texts updated.
+* Add: New texts have been added.
+* Add: Support for brazil checkout fields plugin.
+* Add: Support for chile states plugin.
+* Add: Driver settings page in the drivers' panel.
+* Fix: Premium - Driver application form option.
+* Add: Premium - Start delivery button that sends a notification to the customer that his delivery has been started and ETA.
+* Add: Premium - Auto-assign method: 1. Equally according to the number of orders each driver has 2.Unevenly in the following order: zip code, city, state, country, and the number of orders each driver has.
+* Add: Premium - Drivers can set their Transportation Mode and Navigation APP.
+* Add: Premium - Driver can see the order details from the claim orders screen.
+* Add: Premium - Pickup info: call option and navigate on the driver panel order page.
+
 == Upgrade Notice ==
 
 = 1.0.1 =
@@ -338,7 +352,6 @@ Not at all. This plugin is straightforward to use.
 * Add: Premium - Customer emails - drivers details + call the driver
 * Add: Premium - Drivers photo, veichel type, licence number.
 
-
 = 1.3.1 =
 * Fix: Driver upload photo button.
 
@@ -363,3 +376,19 @@ Not at all. This plugin is straightforward to use.
 
 = 1.4.3 =
 * Fix: Bug in admin reports.
+
+= 1.5.0 =
+* Fix: Texts updated.
+* Add: New texts have been added.
+* Add: Support for brazil checkout fields plugin.
+* Add: Support for chile states plugin.
+* Add: Driver settings page in the drivers' panel.
+* Fix: Premium - Driver application form option.
+* Add: Premium - Start delivery button that sends a notification to the customer that his delivery has been started and ETA.
+* Add: Premium - Auto-assign method: 1. Equally according to the number of orders each driver has 2.Unevenly in the following order: zip code, city, state, country, and the number of orders each driver has.
+* Add: Premium - Drivers can set their Transportation Mode and Navigation APP.
+* Add: Premium - Driver can see the order details from the claim orders screen.
+* Add: Premium - Pickup info: call option and navigate on the driver panel order page.
+
+
+
