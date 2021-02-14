@@ -152,6 +152,10 @@ class LDDFW_Reports
                 
                 if ( $last_driver !== $driver_id ) {
                     $driver_counter += 1;
+                    $out_for_delivery_orders = '';
+                    $driver_assigned_orders = '';
+                    $failed_attempt_orders = '';
+                    $delivered_orders = '';
                     $phone = get_user_meta( $driver_id, 'billing_phone', true );
                     $last_driver = $driver_id;
                     echo  '
