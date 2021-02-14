@@ -95,6 +95,7 @@ The delivery driver can plan his route and navigate to his destination.
 * Optimize route by distance – Delivery Drivers can optimize their routes by distance and get a short path to the destination.
 * Plan route manually – Delivery drivers can plan their route manually to get the best route they want.
 * Navigation with Waze, Apple Maps, and Google Maps.
+* Travel Modes in Directions - Driving, Walking, Bicycling, Transit.
 * Next delivery – Once Delivery drivers complete their delivery, they can easily navigate to the next destination in their route.
 
 ## Drivers ready delivery notes.
