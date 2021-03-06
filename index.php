@@ -125,11 +125,6 @@ if ( !is_user_logged_in() ) {
                     break;
             }
         }
-        // Claim orders query.
-        $lddfw_array = $lddfw_orders->lddfw_claim_orders_count_query();
-        if ( !empty($lddfw_array) ) {
-            $lddfw_claim_orders_counter = $lddfw_array[0]->orders;
-        }
         /**
          * Drivers screens.
          */

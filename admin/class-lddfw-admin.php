@@ -393,7 +393,7 @@ class LDDFW_Admin
         if ( get_option( 'lddfw_delivered_status', '' ) === 'wc-' . $status_to ) {
             $order_driverid = $order->get_meta( 'lddfw_driverid' );
             // Update delivered date.
-            update_post_meta( $order_id, 'lddfw_delivered_date', gmdate( 'Y-m-d H:i:s' ) );
+            update_post_meta( $order_id, 'lddfw_delivered_date', date_i18n( 'Y-m-d H:i:s' ) );
             
             if ( '' !== $order_driverid ) {
                 // Delete route meta
@@ -406,7 +406,7 @@ class LDDFW_Admin
         
         if ( get_option( 'lddfw_failed_attempt_status', '' ) === 'wc-' . $status_to ) {
             // Update failed attempt date.
-            update_post_meta( $order_id, 'lddfw_failed_attempt_date', gmdate( 'Y-m-d H:i:s' ) );
+            update_post_meta( $order_id, 'lddfw_failed_attempt_date', date_i18n( 'Y-m-d H:i:s' ) );
             // Delete route meta
             delete_post_meta( $order_id, 'lddfw_order_origin' );
             delete_post_meta( $order_id, 'lddfw_order_sort' );
@@ -1264,7 +1264,6 @@ class LDDFW_Admin
 
 					</td>
 			</tr>
-
 			<tr>
 				<th><label for="lddfw_driver_image"><?php 
             echo  esc_html( __( 'Driver Photo', 'lddfw' ) ) ;
@@ -1276,7 +1275,6 @@ class LDDFW_Admin
             ?>
 				</td>
 			</tr>
-
 			<tr>
 				<th><label for="lddfw_driver_vehicle"><?php 
             echo  esc_html( __( 'Vehicle type', 'lddfw' ) ) ;
@@ -1288,9 +1286,6 @@ class LDDFW_Admin
             ?>
 				</td>
 			</tr>
-
-			
-
 			<tr>
 				<th><label for="lddfw_driver_licence_plate"><?php 
             echo  esc_html( __( 'Licence Plate', 'lddfw' ) ) ;
@@ -1302,7 +1297,6 @@ class LDDFW_Admin
             ?>
 				</td>
 			</tr>
-
 			</table>
 			<?php 
         }

@@ -87,6 +87,10 @@ body {
     margin-top: 0px;
     z-index: 0;
     height: 100%;
+    background: #f7f7f7;
+    border-radius: .25rem;
+    padding: 5px;
+    padding-top: 15px;
 }
 
 .lddfw_dashboard .lddfw_box a {
@@ -456,6 +460,10 @@ a#view_assigned_orders_button {
     margin-top: 20px;
 }
 
+#lddfw_start_delivery_loading_btn {
+    margin: 0px;
+}
+
 #lddfw_thankyou .fa-check-circle {
     font-size: 75px;
     margin-bottom: 20px;
@@ -762,13 +770,23 @@ div#lddfw_directions {
     top: -1px;
 }
 
-#lddfw_order svg {
+#lddfw_order svg,
+.lddfw_done_btn svg {
     top: -2px;
     width: 16px;
 }
 
 #lddfw_plainroute_btn svg {
     top: -3px;
+}
+
+#lddfw_plain_route_row .lddfw_loading_btn,
+#lddfw_plain_route_row .lddfw_done_btn {
+    margin: 0px;
+}
+
+#lddfw_sortroute_btn svg {
+    height: 20px;
 }
 
 #lddfw_plainroute_btn .fa-lock {

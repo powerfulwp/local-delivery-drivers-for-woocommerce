@@ -494,9 +494,10 @@ class LDDFW_Screens
         global  $lddfw_order_id ;
         $order_class = new LDDFW_Order();
         $back_url = lddfw_drivers_page_url( 'lddfw_screen=dashboard' );
+        $order_driverid = '';
         // Check if valid order number.
         
-        if ( get_post_type( $lddfw_order_id ) == "shop_order" ) {
+        if ( get_post_type( $lddfw_order_id ) === "shop_order" ) {
             $order = new WC_Order( $lddfw_order_id );
             $order_driverid = get_post_meta( $lddfw_order_id, 'lddfw_driverid', true );
             $order_status = $order->get_status();

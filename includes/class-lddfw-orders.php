@@ -99,11 +99,10 @@ class LDDFW_Orders
 				left join ' . $wpdb->prefix . 'postmeta pm1 on p.id=pm1.post_id and pm1.meta_key = \'lddfw_delivered_date\'
 				where post_type=\'shop_order\' and ( pm.meta_value is null or pm.meta_value = \'-1\' or pm.meta_value = \'\' ) and
 				(
-					post_status in (%s,%s,%s,%s) or
+					post_status in (%s,%s,%s) or
 					( post_status = %s and CAST( pm1.meta_value AS DATE ) >= %s and CAST( pm1.meta_value AS DATE ) <= %s )
 				)
 				group by post_status', array(
-            get_option( 'lddfw_processing_status', '' ),
             get_option( 'lddfw_driver_assigned_status', '' ),
             get_option( 'lddfw_out_for_delivery_status', '' ),
             get_option( 'lddfw_failed_attempt_status', '' ),
@@ -113,22 +112,6 @@ class LDDFW_Orders
         ) ) );
         // db call ok; no-cache ok.
         return $query;
-    }
-    
-    /**
-     * Claim orders count query.
-     *
-     * @since 1.0.0
-     * @return array
-     */
-    public function lddfw_claim_orders_count_query()
-    {
-        global  $wpdb ;
-        return $wpdb->get_results( $wpdb->prepare( 'select count(*) as orders from ' . $wpdb->prefix . 'posts p
-				left join ' . $wpdb->prefix . 'postmeta pm on p.id=pm.post_id and pm.meta_key = \'lddfw_driverid\'
-				where post_type=\'shop_order\' and post_status in (%s) and ( pm.meta_value is null or pm.meta_value = \'-1\' or pm.meta_value = \'\')  group by post_status
-				', array( get_option( 'lddfw_processing_status', '' ) ) ) );
-        // db call ok; no-cache ok.
     }
     
     /**

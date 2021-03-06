@@ -41,9 +41,9 @@ class LDDFW_Activator
         
         if ( '' === $lddfw_delivery_drivers_page ) {
             $array = array(
-                'post_title'     => 'Delivery Drivers',
+                'post_title'     => 'Delivery Driver App',
                 'post_type'      => 'page',
-                'post_name'      => 'lddfw',
+                'post_name'      => 'driver',
                 'post_status'    => 'publish',
                 'comment_status' => 'closed',
                 'ping_status'    => 'closed',

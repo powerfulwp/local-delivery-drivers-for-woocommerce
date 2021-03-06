@@ -671,6 +671,6 @@ jQuery(".delivery_proof_bar a").click(function() {
 
 //switch lazyload src
 jQuery("img.lazyload").each(function() {
-    var $lddfw_src = $(this).attr("data-src");
-    $(this).attr("src", $lddfw_src);
+    var $lddfw_src = jQuery(this).attr("data-src");
+    jQuery(this).attr("src", $lddfw_src);
 });

@@ -108,13 +108,6 @@ class LDDFW_Public
             $lddfw_driver_id = $order->get_meta( 'lddfw_driverid' );
             
             if ( '' !== $lddfw_driver_id ) {
-                $driver = get_user_by( 'id', $lddfw_driver_id );
-                echo  '<h2 class="woocommerce-column__title">' . esc_html( __( 'Driver details', 'lddfw' ) ) . '</h2>' ;
-                /* driver name */
-                $driver_name = $driver->display_name;
-                if ( '' !== $driver_name ) {
-                    echo  '<b>' . esc_html( $driver_name ) . '</b><br>' ;
-                }
                 /* driver note */
                 $lddfw_driver_note = $order->get_meta( 'lddfw_driver_note' );
                 if ( '' !== $lddfw_driver_note ) {

@@ -130,16 +130,16 @@ class LDDFW_Order
         $shipping_direction_address = str_replace( '  ', ' ', $shipping_direction_address );
         $shipping_direction_address = str_replace( ' ', '+', $shipping_direction_address );
         $store = new LDDFW_Store();
-        $store_address = $store->lddfw_store_address( 'map_address' );
         $origin = get_post_meta( $lddfw_order_id, 'lddfw_order_origin', true );
         $failed_date = get_post_meta( $lddfw_order_id, 'lddfw_failed_attempt_date', true );
         $delivered_date = get_post_meta( $lddfw_order_id, 'lddfw_delivered_date', true );
         $html = '<div class="lddfw_page_content">';
         if ( '' === $origin ) {
-            $origin = $store_address;
+            $origin = $store->lddfw_store_address( 'map_address' );
         }
         $lddfw_google_api_key = get_option( 'lddfw_google_api_key', '' );
-        $lddfw_dispatch_phone_number = get_option( 'lddfw_dispatch_phone_number', '' );
+        $seller_id = $store->lddfw_order_seller( $order );
+        $store_phone = $store->lddfw_store_phone( $order, $seller_id );
         // Map.
         if ( '' !== $lddfw_google_api_key ) {
             $html .= '
@@ -190,11 +190,11 @@ class LDDFW_Order
         $html .= '<div class="col-12">
 						<p id="lddfw_order_total">' . esc_html( __( 'Total', 'lddfw' ) ) . ': ' . $currency_symbol . $total . '</p>
 					</div>';
-        // Dispatch phone_number for the free plugin.
+        // Store phone number for the free plugin.
         if ( lddfw_is_free() ) {
-            if ( '' !== $lddfw_dispatch_phone_number ) {
+            if ( '' !== $store_phone ) {
                 $html .= '<div class="col-12 mt-2">
-							<a class="btn btn-block btn-secondary"  href="tel:' . esc_attr( get_option( 'lddfw_dispatch_phone_number', '' ) ) . '"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone" class="svg-inline--fa fa-phone fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"></path></svg> ' . esc_html( __( 'Call Dispatch', 'lddfw' ) ) . '</a>
+							<a class="btn btn-block btn-secondary"  href="tel:' . esc_attr( $store_phone ) . '"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone" class="svg-inline--fa fa-phone fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"></path></svg> ' . esc_html( __( 'Call Dispatch', 'lddfw' ) ) . '</a>
 						</div>';
             }
         }
@@ -662,7 +662,9 @@ class LDDFW_Order
                 $shipping_name = $shipping_data['name'];
                 $shipping_meta = $shipping_data['meta_data'];
                 $shipping_total = $shipping_data['total'];
+                $shipping_method_id = $shipping_data['method_id'];
                 $shipping_meta_html = '';
+                $local_pick_up = ( 'local_pickup' === $shipping_method_id ? '( ' . esc_html( __( 'Local pickup', 'lddfw' ) ) . ' )' : '' );
                 foreach ( $shipping_meta as $meta_id => $meta_line_item ) {
                     $shipping_meta_html .= '<br>' . $meta_line_item->key . ': ';
                     
@@ -676,7 +678,7 @@ class LDDFW_Order
                 
                 }
                 $product_html .= '<tr class=\'lddfw_items\'>
-		<th colspan=\'2\'>' . esc_html( __( 'Shipping', 'lddfw' ) ) . '<br><i>' . esc_html( __( 'via', 'lddfw' ) ) . ' ' . $shipping_name . $shipping_meta_html . '</i></th>
+		<th colspan=\'2\'>' . esc_html( __( 'Shipping', 'lddfw' ) ) . '<br><i>' . esc_html( __( 'via', 'lddfw' ) ) . ' ' . $shipping_name . ' ' . $local_pick_up . ' ' . $shipping_meta_html . '</i></th>
 		<td class=\'lddfw_total_col\'>' . $currency_symbol . $shipping_total . '</td>
 		</tr>';
             }
@@ -725,10 +727,12 @@ class LDDFW_Order
             // Get chile states.
             
             if ( function_exists( 'comunas_de_chile' ) ) {
-                $chile_states = comunas_de_chile( "" );
-                if ( array_key_exists( 'CL', $chile_states ) ) {
-                    if ( array_key_exists( $state, $chile_states['CL'] ) ) {
-                        $state = $chile_states['CL'][$state];
+                $chile_states = comunas_de_chile( array() );
+                if ( is_array( $chile_states ) ) {
+                    if ( array_key_exists( 'CL', $chile_states ) ) {
+                        if ( array_key_exists( $state, $chile_states['CL'] ) ) {
+                            $state = $chile_states['CL'][$state];
+                        }
                     }
                 }
             }

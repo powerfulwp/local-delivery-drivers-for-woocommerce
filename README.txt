@@ -289,6 +289,15 @@ Not at all. This plugin is straightforward to use.
 * Add: Premium - Driver can see the order details from the claim orders screen.
 * Add: Premium - Pickup info: call option and navigate on the driver panel order page.
 
+= 1.6.0 =
+* Add: Driver page name has been changed for new installations.
+* Fix: Local Dates.
+* Fix: Premium - Orders that have a local pickup or virtual products are blocked from auto-assign and claim orders.
+* Fix: Premium - We split the plan route button into two buttons, one for optimizing route and one for manually.
+* Add: Premium - Enable drivers info to customers on email and order page.
+* Add: Premium - Vendor Pickup address, phone and navigation on the driver panel for dokan, wcfm and wcmp plugins.
+* Add: Premium - Disable auto assign drivers option for shipping method.
+
 == Upgrade Notice ==
 
 = 1.0.1 =
@@ -390,6 +399,16 @@ Not at all. This plugin is straightforward to use.
 * Add: Premium - Drivers can set their Transportation Mode and Navigation APP.
 * Add: Premium - Driver can see the order details from the claim orders screen.
 * Add: Premium - Pickup info: call option and navigate on the driver panel order page.
+
+= 1.6.0 =
+* Add: Driver page name has been changed for new installations.
+* Fix: Local Dates.
+* Fix: Premium - We split the plan route button into two buttons, one for optimizing route and one for manually.
+* Fix: Premium - Orders that have a local pickup or virtual products are blocked from auto-assign and claim orders.
+* Add: Premium - Enable drivers info to customers on email and order page.
+* Add: Premium - Vendor Pickup address, phone and navigation on the driver panel for dokan, wcfm and wcmp plugins.
+* Add: Premium - Disable auto assign drivers option for shipping method.
+
 
 
 

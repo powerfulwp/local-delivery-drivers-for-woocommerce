@@ -83,7 +83,7 @@ class LDDFW_Driver
             // Update order driver.
             update_post_meta( $order_id, 'lddfw_driverid', $driver_id );
             // Update assigned date.
-            update_user_meta( $driver_id, 'lddfw_assigned_date', gmdate( 'Y-m-d H:i:s' ) );
+            update_user_meta( $driver_id, 'lddfw_assigned_date', date_i18n( 'Y-m-d H:i:s' ) );
             /**
              * Update order status to driver assigned.
              */
