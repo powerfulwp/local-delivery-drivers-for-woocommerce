@@ -604,6 +604,7 @@ class LDDFW_Admin
 			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Driver details - Photo, Vehicle Type, Licence Plate.', 'lddfw' ) . '
 			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Customer gets Driver Details and Phone Number.', 'lddfw' ) . '
 			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Admin drivers routes map.', 'lddfw' ) . '
+			<hr>' . lddfw_premium_feature( '' ) . ' ' . __( 'Multivendor Marketplace Support (DOKAN, WCFM, WCMP)', 'lddfw' ) . '
 			<hr>' ;
         }
     }

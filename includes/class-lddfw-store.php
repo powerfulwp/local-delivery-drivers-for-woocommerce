@@ -34,6 +34,19 @@ class LDDFW_Store
     }
     
     /**
+     * Pickup address.
+     *
+     * @since 1.0.0
+     * @param string $format address format.
+     * @return html
+     */
+    public function lddfw_pickup_address( $format, $order, $seller_id )
+    {
+        $store_address = $this->lddfw_store_address( $format );
+        return $store_address;
+    }
+    
+    /**
      * Store phone.
      *
      * @since 1.6.0

@@ -241,7 +241,7 @@ class LDDFW_Screens
 			</div>';
         // Driver report.
         $report = new LDDFW_Reports();
-        $report_array = $report->lddfw_drivers_commission_query( gmdate( 'Y-m-d' ), gmdate( 'Y-m-d' ), $driver_id );
+        $report_array = $report->lddfw_drivers_commission_query( date_i18n( 'Y-m-d' ), date_i18n( 'Y-m-d' ), $driver_id );
         $commission = 0;
         if ( !empty($report_array) ) {
         }
@@ -389,37 +389,37 @@ class LDDFW_Screens
 		<div class="row">
 		<div class="col-12">
 		<select class="custom-select custom-select-lg" id="lddfw_dates_range" data="' . lddfw_drivers_page_url( 'lddfw_screen=delivered' ) . '">
-		<option value="' . gmdate( 'Y-m-d' ) . ',' . gmdate( 'Y-m-d' ) . '">Today</option>
-		<option value="' . gmdate( 'Y-m-d', strtotime( '-1 days' ) ) . ',' . gmdate( 'Y-m-d', strtotime( '-1 days' ) ) . '">Yesterday</option>
-		<option value="' . gmdate( 'Y-m-d', strtotime( 'first day of this month' ) ) . ',' . gmdate( 'Y-m-d', strtotime( 'last day of this month' ) ) . '">This month</option>
-		<option value="' . gmdate( 'Y-m-d', strtotime( 'first day of last month' ) ) . ',' . gmdate( 'Y-m-d', strtotime( 'last day of last month' ) ) . '">Last month</option>
+		<option value="' . date_i18n( 'Y-m-d' ) . ',' . date_i18n( 'Y-m-d' ) . '">Today</option>
+		<option value="' . date_i18n( 'Y-m-d', strtotime( '-1 days' ) ) . ',' . date_i18n( 'Y-m-d', strtotime( '-1 days' ) ) . '">Yesterday</option>
+		<option value="' . date_i18n( 'Y-m-d', strtotime( 'first day of this month' ) ) . ',' . date_i18n( 'Y-m-d', strtotime( 'last day of this month' ) ) . '">This month</option>
+		<option value="' . date_i18n( 'Y-m-d', strtotime( 'first day of last month' ) ) . ',' . date_i18n( 'Y-m-d', strtotime( 'last day of last month' ) ) . '">Last month</option>
 		</select>
 		<div class="lddfw_date_range">
 		';
         
         if ( '' === $lddfw_dates ) {
-            $html .= gmdate( lddfw_date_format( 'date' ) );
-            $from_date = gmdate( 'Y-m-d' );
-            $to_date = gmdate( 'Y-m-d' );
+            $html .= date_i18n( lddfw_date_format( 'date' ) );
+            $from_date = date_i18n( 'Y-m-d' );
+            $to_date = date_i18n( 'Y-m-d' );
         } else {
             $lddfw_dates_array = explode( ',', $lddfw_dates );
             
             if ( 1 < count( $lddfw_dates_array ) ) {
                 
                 if ( $lddfw_dates_array[0] === $lddfw_dates_array[1] ) {
-                    $html .= gmdate( lddfw_date_format( 'date' ), strtotime( $lddfw_dates_array[0] ) );
-                    $from_date = gmdate( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
-                    $to_date = gmdate( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
+                    $html .= date_i18n( lddfw_date_format( 'date' ), strtotime( $lddfw_dates_array[0] ) );
+                    $from_date = date_i18n( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
+                    $to_date = date_i18n( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
                 } else {
-                    $html .= gmdate( lddfw_date_format( 'date' ), strtotime( $lddfw_dates_array[0] ) ) . ' - ' . gmdate( lddfw_date_format( 'date' ), strtotime( $lddfw_dates_array[1] ) );
-                    $from_date = gmdate( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
-                    $to_date = gmdate( 'Y-m-d', strtotime( $lddfw_dates_array[1] ) );
+                    $html .= date_i18n( lddfw_date_format( 'date' ), strtotime( $lddfw_dates_array[0] ) ) . ' - ' . date_i18n( lddfw_date_format( 'date' ), strtotime( $lddfw_dates_array[1] ) );
+                    $from_date = date_i18n( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
+                    $to_date = date_i18n( 'Y-m-d', strtotime( $lddfw_dates_array[1] ) );
                 }
             
             } else {
-                $html .= gmdate( lddfw_date_format( 'date' ), strtotime( $lddfw_dates_array[0] ) );
-                $from_date = gmdate( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
-                $to_date = gmdate( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
+                $html .= date_i18n( lddfw_date_format( 'date' ), strtotime( $lddfw_dates_array[0] ) );
+                $from_date = date_i18n( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
+                $to_date = date_i18n( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
             }
         
         }

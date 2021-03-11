@@ -44,8 +44,8 @@ class LDDFW_Orders
             get_option( 'lddfw_out_for_delivery_status', '' ),
             get_option( 'lddfw_failed_attempt_status', '' ),
             get_option( 'lddfw_delivered_status', '' ),
-            gmdate( 'Y-m-d' ),
-            gmdate( 'Y-m-d' )
+            date_i18n( 'Y-m-d' ),
+            date_i18n( 'Y-m-d' )
         ) ) );
         // db call ok; no-cache ok.
         return $query;
@@ -77,8 +77,8 @@ class LDDFW_Orders
             get_option( 'lddfw_out_for_delivery_status', '' ),
             get_option( 'lddfw_failed_attempt_status', '' ),
             get_option( 'lddfw_delivered_status', '' ),
-            gmdate( 'Y-m-d' ),
-            gmdate( 'Y-m-d' )
+            date_i18n( 'Y-m-d' ),
+            date_i18n( 'Y-m-d' )
         ) ) );
         // db call ok; no-cache ok.
         return $query;
@@ -107,8 +107,8 @@ class LDDFW_Orders
             get_option( 'lddfw_out_for_delivery_status', '' ),
             get_option( 'lddfw_failed_attempt_status', '' ),
             get_option( 'lddfw_delivered_status', '' ),
-            gmdate( 'Y-m-d' ),
-            gmdate( 'Y-m-d' )
+            date_i18n( 'Y-m-d' ),
+            date_i18n( 'Y-m-d' )
         ) ) );
         // db call ok; no-cache ok.
         return $query;
@@ -204,24 +204,24 @@ class LDDFW_Orders
             $paged = $lddfw_page;
             
             if ( '' === $lddfw_dates ) {
-                $from_date = gmdate( 'Y-m-d' );
-                $to_date = gmdate( 'Y-m-d' );
+                $from_date = date_i18n( 'Y-m-d' );
+                $to_date = date_i18n( 'Y-m-d' );
             } else {
                 $lddfw_dates_array = explode( ',', $lddfw_dates );
                 
                 if ( 1 < count( $lddfw_dates_array ) ) {
                     
                     if ( $lddfw_dates_array[0] === $lddfw_dates_array[1] ) {
-                        $from_date = gmdate( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
-                        $to_date = gmdate( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
+                        $from_date = date_i18n( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
+                        $to_date = date_i18n( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
                     } else {
-                        $from_date = gmdate( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
-                        $to_date = gmdate( 'Y-m-d', strtotime( $lddfw_dates_array[1] ) );
+                        $from_date = date_i18n( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
+                        $to_date = date_i18n( 'Y-m-d', strtotime( $lddfw_dates_array[1] ) );
                     }
                 
                 } else {
-                    $from_date = gmdate( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
-                    $to_date = gmdate( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
+                    $from_date = date_i18n( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
+                    $to_date = date_i18n( 'Y-m-d', strtotime( $lddfw_dates_array[0] ) );
                 }
             
             }
@@ -293,6 +293,7 @@ class LDDFW_Orders
     public function lddfw_out_for_delivery( $driver_id )
     {
         $html = '';
+        $store = new LDDFW_Store();
         $counter = 0;
         $wc_query = $this->lddfw_orders_query( $driver_id, get_option( 'lddfw_out_for_delivery_status', '' ) );
         
@@ -347,6 +348,8 @@ class LDDFW_Orders
                 }
                 
                 $route = get_post_meta( $orderid, 'lddfw_order_route', true );
+                $seller_id = $store->lddfw_order_seller( $order );
+                $store_address = $store->lddfw_pickup_address( 'map_address', $order, $seller_id );
                 $shippingaddress = $shipping_first_name . ' ' . $shipping_last_name . '<br>';
                 if ( '' != $shipping_company ) {
                     $shippingaddress .= $shipping_company . '<br>';
@@ -367,7 +370,8 @@ class LDDFW_Orders
 					<div class="row">
 						<div class="col-12">
 							<span class="lddfw_index lddfw_counter">' . $counter . '</span>
-							<input style="display:none" orderid="' . esc_attr( $orderid ) . '" type="checkbox" value="' . esc_attr( str_replace( "'", '', $shipping_address_1 . ' ' . $shipping_city . ' ' . $shipping_country ) ) . '" class="lddfw_address_chk">';
+							<input style="display:none" orderid="' . esc_attr( $orderid ) . '" type="checkbox" value="' . esc_attr( str_replace( "'", '', $shipping_address_1 . ' ' . $shipping_city . ' ' . $shipping_country ) ) . '" class="lddfw_address_chk">
+							<input style="display:none" orderid="' . esc_attr( $orderid ) . '" type="hidden" value="' . esc_attr( str_replace( "'", '', $store_address ) ) . '" class="lddfw_origin_chk">';
                 $html .= '<a class="btn lddfw_order_view btn-secondary btn-sm" href="' . esc_url( lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) ) . '">' . esc_html( __( 'Order #', 'lddfw' ) ) . $orderid . '</a>';
                 $html .= '<a class="lddfw_order_address" href="' . esc_url( lddfw_drivers_page_url( 'lddfw_screen=order&lddfw_orderid=' . $orderid ) ) . '">' . $shippingaddress . '<br> ' . $shipping_city . ' ' . $shipping_state . ' ' . $shipping_postcode . '</a>';
                 if ( '' !== $distance ) {

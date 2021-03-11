@@ -134,12 +134,12 @@ class LDDFW_Order
         $failed_date = get_post_meta( $lddfw_order_id, 'lddfw_failed_attempt_date', true );
         $delivered_date = get_post_meta( $lddfw_order_id, 'lddfw_delivered_date', true );
         $html = '<div class="lddfw_page_content">';
-        if ( '' === $origin ) {
-            $origin = $store->lddfw_store_address( 'map_address' );
-        }
         $lddfw_google_api_key = get_option( 'lddfw_google_api_key', '' );
         $seller_id = $store->lddfw_order_seller( $order );
         $store_phone = $store->lddfw_store_phone( $order, $seller_id );
+        if ( '' === $origin ) {
+            $origin = $store->lddfw_pickup_address( 'map_address', $order, $seller_id );
+        }
         // Map.
         if ( '' !== $lddfw_google_api_key ) {
             $html .= '
